@@ -1,0 +1,51 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{datetime}
+
+\usepackage{breqn} % this package is one option for math lines
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\hypersetup{linktoc=all}
+
+\newdateformat{gerDate}{\THEDAY \space \monthname[\THEMONTH], \THEYEAR} % german date format
+
+\begin{document}
+	\begin{titlepage} % good tital page template, only needs the class X notes part to be changed for each new class
+	\centering
+	\includegraphics[width=0.40\textwidth]{UniLogo}\par\vspace{1cm}
+		{\scshape\LARGE Universität Heidelberg \par}
+		\vspace{1cm}
+		{\huge\bfseries Class X Notes \par}
+		\vspace{2cm}
+		{\Large\itshape by Charles Barbret \par}
+		
+		\vfill
+
+		% Bottom of the page
+		{\large \gerDate\today\par}
+	\end{titlepage}
+
+\tableofcontents % creats a table of contents, ensured already that it is clickable
+\newpage % starts the actual document on a new page so there is no weird colision of text and toc
+
+
+\section{Kapitel 1}
+\subsection{Definition 1}
+Dies wird hier nun definiert
+\newline
+Viel viel text Bla bla bla
+\subsection{Beispiel 1}
+Bla bla bla
+\begin{dmath}
+\sum_{i = 0}^{n}a_i
+\end{dmath}
+\subsection{Satz 1}
+Hier ist ein netter Satz ohne Beweis weil Trivial
+\subsection{Definition 2}
+Neue Definition weil Platz testen und so
+\subsection{Definition 3}
+Weitere Definition
+
+\end{document}
