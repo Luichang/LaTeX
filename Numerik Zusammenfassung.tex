@@ -11,6 +11,8 @@
 
 \usepackage{amssymb} % package for Natural Number sign etc
 
+\usepackage{soul} % this package is for strike outs
+
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 \newcommand{\tab}[1]{\hspace{.2\textwidth}\rlap{#1}} % own tab function
 
@@ -37,11 +39,10 @@
 	
 	
 	\section{Fehleranalyse}
-	\subsection{}
-	Zahlendarstellung und Rundungsfehler Schema für Gleitkomma Zahl:
-	\begin{dmath}
+	\subsection[Zahlendarstellung und Rundungsfehler]{Zahlendarstellung und Rundungsfehler Schema für Gleitkomma Zahl}
+	\begin{displaymath}
 		x = \pm m * b^{\pm e}
-	\end{dmath}
+	\end{displaymath}
 	Basis $b \in \mathbb{N}$ \space b $\geq 2 \space $ \footnote{Beispiel: $ 2^e$ oder $10^e $}
 	\newline
 	Mantisse $ m = m_1 b^{-1} + m_2 b^{-2} + ... \in \mathbb{R} $ \footnote{ Beispiel: $ m_1 = 3, m_2 = 1, m_3 = 4 \Rightarrow m = 314 $ normal kommt nach $ m_1 $ ein Komma, also m = 3,14}
@@ -58,6 +59,42 @@
 	\newline \indent 
 	$\Rightarrow $ muss nicht explizit angegeben werden
 	\newline
-	X wird gespeichert als: ($\pm$)[$m_1 , ..., m_r $]($\pm$)[$e_{s - 1} , ..., e_0 $]
+	X wird gespeichert als: ($\pm$)[$m_1 , \dots, m_r $]($\pm$)[$e_{s - 1} , \dots, e_0 $]
+	\newline
+	r + 1 Einträge um m zu speichern ($\pm$ ist ein Eintrag)
+	\newline
+	s + 1 Einträge um s zu speichern ($\pm$ ist ein Eintrag)
+	\newline
+	$X_{max/min} = \pm (1 - b^-r) * b^{b^s - 1}$ \footnote{1 oder 0 für erste Speicherzelle, sonst nur 1en}
+	\newline
+	$X_{posmin/negmax} = \pm b^{-b^s}$ \footnote{1 oder 0 für erste Speicherzelle, eine 1, sonst nur 0en}
+	\newline
+	\subsubsection{Rundungsoperation}
+	$\|x - rd(x)\|$ = $min_{y \in A}\|x - y\|$ \footnote{Wobei diese Operation x als nächst darstellbare Zahl zurück gibt}
+	\newline
+	Dies verläuft von D $\rightarrow$ A, wobei D:=$[X_{min}, x_{negmax}]\{0\}[X_{posmin}, X_{max}]$
+	ist und A die Menge der darstellbaren Zahlen \footnote{D gibt die Theoretisch minimalen Zahlen bis Theoretisch maximalen Zahlen an}
+	\newline
+	$rd(x) = \pm$
+	$\left\{
+	\begin{array}{ll}
+		m_1 \dots m_{53} * 2^e & für \space m_{54} = 0 \\ % OK so there is an error here but I have no idea how to fix it
+		(m_1 \dots m_{53} + 2^{-53}) * 2^e \footnote{Hier wird die Zahl um 1 incrementiert, als Rundung} & für \space m_{54} = 1
+	\end{array}
+	\right.$
+	
+	Der absolute Rundungsfehler sieht aus:
+	\begin{displaymath}
+		|x - rd(x)| \le \frac{1}{2}b^{-s}b^e
+	\end{displaymath}
+	TODO: insert image
+	\newline
+	absolut weil er noch vom Exponenten abhängt
+	\newline
+	Der relative Fehler:
+	\begin{displaymath}
+		|\frac{x - rd(x)}{x} \le \frac{1}{2} \frac{b^{-r} \st{b^e}}{|m| \st{b^e}}
+	\end{displaymath}
+	
 	
 \end{document}
