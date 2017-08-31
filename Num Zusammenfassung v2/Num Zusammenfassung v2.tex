@@ -1,0 +1,168 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{datetime}
+
+\usepackage{breqn} % this package is one option for math lines
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\hypersetup{linktoc=all}
+
+\usepackage{amssymb} % package for Natural Number sign etc
+
+%added commands:
+\newcommand*\conj[1]{\bar{#1}}
+\newcommand*\mean[1]{\bar{#1}}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\begin{document}
+	\tableofcontents % creats a table of contents, ensured already that it is clickable
+	\newpage % starts the actual document on a new page so there is no weird colision of text and toc
+	\section{Norm und Skalarprodukt}
+		\subsection{Norm}
+		Definitheit: $||x|| = 0 \Rightarrow x = 0$
+			
+		absolute Homogenität: $||\alpha x|| = |\alpha| * ||x||$
+		
+		Dreiecksungleichung: $||x + y|| \le ||x|| + ||y||$
+		
+		\subsection{Skalarprodukt}
+		<x + y, z> = <x, z> + <y, z>
+		
+		<x, y + z> = <x, y> + <x, z>
+		
+		TODO: Klammer
+		
+		$<\lambda x, y> = \lambda <x, y>$
+		
+		$<x, \lambda y> = \lambda <x, y>$
+		
+		<x, y> = <y, x>
+		
+		$<x, x> \ge 0$
+		
+		$<x, x> = 0 \Rightarrow x = 0$
+		
+		
+		\subsubsection{Vom Skalarprodukt induzierte Norm}
+		$||x|| = \sqrt{<x, x>}$
+		
+		\subsubsection{Cauchy-Schwarzche Ungleichung}
+		$|<x, y>| \le ||x||*||y||$
+		
+		\newpage
+		
+		\section{Symmetrische, positiv definite Matrix}
+		TODO: Matrizen
+		
+		insbesonders: Diagonalmatrizen, Einheitsmatrizen
+		
+		positiv definit: $x^t Ax > 0 $(beliebige Matrix)
+		
+			alle EW > 0 (symmetrische Matrix)
+			
+			alle Haupt[TODO: ?] > 0 (symetrische Matrix)
+			
+			TODO: Matrix 	$\Rightarrow$ 3 Hauptminoren[?] = det(a), det(TODO: Matrix), det(TODO: Matrix)
+			
+			\subsection{Cholesky-Zerlegung $A = GG^t$}
+			G unter der Matrix, invertierbar (symmetrische Matrix)
+			
+			\subsection{[?] diagonaldominant und alle $a_{ii} \ge 0$}
+			(symmetrische Matrix)
+			
+			\subsection{Eigenwerte}
+			$det(\lambda En - A) = 0$
+			
+			\subsection{Eigenvektor}
+			$f(v) = \lambda v$
+			
+		\newpage
+		
+		\section{Matrixnormen}
+		
+		\subsection{Natürliche Matrixnorm}
+		
+		$||A||_\infty := max_{x \ne 0} \frac{||Ax||_\infty}{||x||_\infty} = max_{||x|| = 1}||Ax||_\infty$
+		
+		$||A|| = 0 \Rightarrow A = 0, ||\lambda A|| = |\lambda|*||A||, ||A+B|| \le ||A|| + ||B||, ||A*B|| \le ||A|| * ||B||$
+		
+		\subsection{Verträglichkeit}
+		$||Ax|| \le ||A|| * ||x||$
+		
+		\subsection{Zeilensummennorm}
+		= natürliche Matrixnorm
+		
+		$||A||_\infty = max_{||x||_\infty = 1} ||Ax||_\infty = max_{i = 1, ..., m} \sum_{j = 1}^{n} |a_{ij}|$
+		
+		$A = TODO: Matrix  ||A||_\infty = max{|1| + |-2| + |-3|, |2| + |3| + |-1|} = max{6, 6} = 6$
+		
+		\subsection{Spaltensummennorm}
+		
+		$||A||_1 := max_{x \ne 0} \frac{||Ax||_1}{||x||_1} = max_{||x||_1 = 1} ||Ax||_1 = max_{j = 1, ..., n} \sum_{i = 1}^{m}|a_{ij}|$
+		
+		$A = TODO: Matrix  ||A||_1 = max{|1| + |2|, |-2| + |3|, |-3| + |-1|} = max{3, 5, 4} = 5$
+		
+		$||A^t||_1 = ||A||_\infty$
+		
+		\subsection{Spektralnorm}
+		
+		$||A||_2 := max_{||x||_2 = 1} ||Ax||_2 = max_{x \ne 0} \frac{||Ax||_2}{||x||_2} = max_{||x||_2 = 1} <Ax, Ax> = max_{||x||_2 = 1} <A^tAx, x> = max{\sqrt{|\lambda |}, \lambda * EW von A^tA}$
+		
+		$A = TODO: Matrix  , A^tA = TODO: Matrix    det(\mu E_n - A^tA) = 0 \Leftrightarrow \mu_{1, 2} = {16, 1}$
+		
+		$||A||_2 = \sqrt{max(\mu_1, \mu_2)} = \sqrt{\mu_1} = \sqrt{16} = 4$
+		
+		\newpage
+		
+		\section{Spektralradius, Konditionszahl einer Matrix}
+		
+		\subsection{Spektralradius $\varphi$}
+		
+		$\varphi(A) = max:{1 \le i \le n} |\lambda_i(A)| = spr(A)$ der betragsmäßig größte Eigenwert von A
+		
+		$||A|| \ge |\lambda|$ (für jede Matrixnorm, die mit einer Vektornorm verträglich ist)
+		
+		\subsection{Konditionszahl einer Matrix A}
+		
+		$cond(A) = ||A||*||A^{-1}||$
+		
+		\subsection{Sonderfall symmetrisch, positiv definite Matrix}
+		
+		$cond(A) = \frac{ \lambda_{max}}{ \lambda_{min}}$
+		
+		\newpage
+		
+		\section{Ähnlichkeitstransformation, Invarianz der Eigenwerte}
+		
+		y = Ax
+		
+		$\conj{x} = Cx, \conj{y} = Cy \tab (det C \ne 0), C \in GL$ 
+		
+		$y = Ax \Rightarrow C^{-1} \conj{y} = AC^{-1} \conj{x} \Rightarrow \conj{y} = CAC^{-1} \conj{x} \Rightarrow \conj{y}\conj{A}\conj{x}$
+		
+		$\conj{A} = CAC^{-1} \Rightarrow \conj{A} \sim A$
+		
+		$\lambda EW, v EV zu A$
+		
+		$\Rightarrow Av = C^{-1}\conj{A}Cv = \lambda v$
+		
+		$\Rightarrow \conj{A} und A $ haben dieselben Eigenwerte, algebraisch und geometrische Vielfalten stimmen überein (Invarianz der Eigenwerte)
+		
+		\subsection{Reduktionsmethoden}
+		
+		A duch Ähnlichkeitstransformationen 
+		
+		$A = A^{(0)} = T_1^{-1} A^{-1}T_1 = Q ... = T_i^{-1}A^{(i)}T_i = ...$
+		
+		auf Form bringen, für welche EW und EV leicht zu berechnen sind (z.B. Jordan-Normalform)
+		
+		\newpage
+		
+		\section[Gleitkommazahlen]{Gleitkommazahlen, Gleitkommagitter, Maschienengenauigkeit, Rundungsfehler}
+		
+		
+		
+		
+\end{document}

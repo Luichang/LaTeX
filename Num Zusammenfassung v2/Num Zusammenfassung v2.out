@@ -1,0 +1,23 @@
+\BOOKMARK [1][-]{section.1}{Norm und Skalarprodukt}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Norm}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Skalarprodukt}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Vom Skalarprodukt induzierte Norm}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{Cauchy-Schwarzche Ungleichung}{subsection.1.2}% 5
+\BOOKMARK [1][-]{section.2}{Symmetrische, positiv definite Matrix}{}% 6
+\BOOKMARK [2][-]{subsection.2.1}{Cholesky-Zerlegung A = GG^t}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{[?] diagonaldominant und alle a_ii 0}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Eigenwerte}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.4}{Eigenvektor}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Matrixnormen}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Nat\374rliche Matrixnorm}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.2}{Vertr\344glichkeit}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.3}{Zeilensummennorm}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.4}{Spaltensummennorm}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.5}{Spektralnorm}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{Spektralradius, Konditionszahl einer Matrix}{}% 17
+\BOOKMARK [2][-]{subsection.4.1}{Spektralradius }{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.2}{Konditionszahl einer Matrix A}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.3}{Sonderfall symmetrisch, positiv definite Matrix}{section.4}% 20
+\BOOKMARK [1][-]{section.5}{\304hnlichkeitstransformation, Invarianz der Eigenwerte}{}% 21
+\BOOKMARK [2][-]{subsection.5.1}{Reduktionsmethoden}{section.5}% 22
+\BOOKMARK [1][-]{section.6}{Gleitkommazahlen}{}% 23
