@@ -5,6 +5,7 @@
 \usepackage{datetime}
 
 \usepackage{breqn} % this package is one option for math lines
+\usepackage{mathtools}
 
 \usepackage{hyperref} % these two lines are so that the table of content is clickable
 \hypersetup{linktoc=all}
@@ -14,7 +15,7 @@
 %added commands:
 \newcommand*\conj[1]{\bar{#1}}
 \newcommand*\mean[1]{\bar{#1}}
-\newcommand\tab[1][1cm]{\hspace*{#1}}
+\newcommand*\tab[1][1cm]{\hspace*{#1}}
 
 \begin{document}
 	\tableofcontents % creats a table of contents, ensured already that it is clickable
@@ -162,7 +163,256 @@
 		
 		\section[Gleitkommazahlen]{Gleitkommazahlen, Gleitkommagitter, Maschienengenauigkeit, Rundungsfehler}
 		
+		\subsection{Gleitkommazahl (normalisiert)}
+		
+		$b \in \mathbb{N}, b \ge 2, x \in \mathbb{R}$
+		
+		$x = \pm m * b^{\pm e}$
+		
+		Mantisse: $m = m_1b^{-1} + m_2b^{-2} + ... \in \mathbb{R}$
+		
+		Exponent: $e = e_{s-1}b^{s-1} + ... + e_0b^0 \in \mathbb{N}$
+		
+		für $x \ne 0$ eindeutig
+		
+		\subsection{Gleitkommagitter}
+		
+		A = A(b\footnote{Basis}, r\footnote{Mantissenlänge}, s\footnote{Exponentenlänge}) \tab größte Darstellbare Zahl: $(1 - b^{-r})*b^{b^s-1}$
+		
+		$(b = 10): 0,314 * 10^1 = 3,14$
+		
+		$0,123 * 10^6 = 123.000$
+		
+		Beispiel: konvertiere von Basis 8 zu Basis 10:
+		
+		$x = (0,5731 * 10^5)_8 \in A(8, 5, 1)$
+		
+		$x = (5 * 8^{-1} + 7 * 8^{-2} + 3 * 8^{-3} + 1 * 8^{-4}) * 8^5$
+		
+		$x = 5 * 8^4 + 7 * 8^3 + 3 * 8^2 + 1 * 8^1 = 24.264 * 10^0$
+		
+		\subsection{Maschienengenauigkeit eps}
+		
+		$eps = \frac{1}{2}b^{-r + 1}, IEEE: eps = \frac{1}{2} * 2^{-52} \approx 10^{-16}$
+		
+		\subsection{Rundungsfehler}
+		
+		$absolut: |x - rd(x)| \le \frac{1}{2}b^{-r}b^e$
+		
+		$relativ: |\frac{x - rd(x)}{x}| \le \frac{1}{2}b^{-r+1} = eps$
+		
+		\newpage
+		
+		\section{Darstellung des Interpolationsfehlers}
+		
+		\subsection{Fehler I}
+		
+		$f \in C^{n+1}[a, b], \forall x \in [a, b] \exists \xi_x \in (\overline{x_0, ..., x_n, x})\footnote{kleinstes Intervall, das alle x_i enthällt}, s.d.$
+		
+		$f(x) - p(x) = \frac{f^{(n+1)}(\xi x)}{(n+1)!} \prod_{j = 0}^{n}(x - x_j)$
+		
+		\subsection{Fehler II}
+		
+		$f \in C^{n + 1}[a, b], \forall x \in [a, b]$ \textbackslash ${x_0, ..., x_n} gilt:$
+		
+		$f(x) - p(x) = f[x_0, ..., x_n, x] \prod_{j = 0}^{n}(x - x_j)$
+		
+		mit $f[x_i, ..., x_{i + k}] = y[x_i, ..., x_{i + k}]$
+		
+		und $f[x_0, ..., x_n, x] = \int_{0}^{1}\int_{0}^{t_1}...\int_{0}^{t_n}f^{n+1}(x_0 + t_1(x_1 - x_0) + ... + t_n(x_n-x_{n - 1} + t(x - x_n))dtdt_n...dt_1$ 
+		
+		für $x_0 = x_1 = ... = x_n: $
+		
+		$f[x_0, ..., x_n] = \frac{1}{n!}f^{(n)}(x_0)$
+		
+		$\frac{f^{(n + 1)}(\xi_x)}{(n + 1)!} \prod_{j = 0}^{n} (x-x_j) = f(x) - p(x) = f[x_0, ..., x_n, x] \prod_{j = 0}^{n}(x - x_j)$
+		
+		$\Rightarrow f[x_0, ..., x_n, x] = \frac{f^{(n + 1)}(\xi_x)}{(n + 1)!}$
+		
+		\newpage
+		
+		\section{Konditionierung einer numerischen Aufgabe, Konditionszahlen $k_{ij}$}
+		
+		\subsection{numerische Aufgabe}
+		
+		$x_j \in \mathbb{R} mit f(x_1, ..., x_m) \Rightarrow y_i = f_i(x_j)$
+		
+		fehlerhafte Eingangsgrößen $x_i + \Delta y_i$
+		
+		$|\Delta y_i|$ ist der absolute Fehler, $|\frac{\Delta y_i}{y_i}|$ ist der relative Fehler
+		
+		\subsection{Konditionszahl (relativ)}
+		
+		$k_{ij}(x) = \frac{\partial f_i}{\partial x_i}(x) \frac{\Delta x_j}{x_j}$
+		
+		$\frac{\Delta y_i}{y_i} = \sum_{j = 1}^{m}k_{ij}(x)\frac{\Delta x_j}{x_j}$
+		
+		$|k_{ij}(x)| >> 1 \Rightarrow$ schlecht konditioniert
+		
+		$|k_{ij}(x)| << 1 \Rightarrow$ gut konditioniert, ohne Fehlerverstärkung
+		
+		$|k_{ij}(x)| > 1 \Rightarrow$ Fehlerverstärkung
+		
+		$|k_{ij}(x)| < 1 \Rightarrow$ Fehlerdämpfung
+		
+		\newpage
+		
+		\section{Stabilität eines Algorithmus}
+		
+		\subsection{stabiler Algorithmus}
+		
+		akkumulierte Fehler der Rechnung (Rundungsfehler, Auswertungsfehler, etc.) übersteigen den unvermeidbaren Problemfehler der Konditionierung der Aufgabe nicht. Aka Trotz Ungenauigkeiten bei den Eingabe Variablen erhalten wir fast sehr genaue Ergebnisse.
+		
+		\newpage
+		
+		\section{Auslöschung}
+		
+		Verlust von Genauigkeit bei der Subtraktion von Zahlen mit gleichem Vorzeichen
+		
+		TODO: bei bedarf ein Beispiel
+		
+		\newpage
+		
+		\section{Horner-Schema*}
+		
+		$p(x) = a_0 + x(... + x(a_{n-1} + a_nx)...)$
+		
+		\subsection{Code}
+		
+		def horner(Ac\footnote{Vektor mit Koeffizienten}, Ax\footnote{Stützstellen}, n\footnote{Anzahl der Stützstellen}, x\footnote{Auswertungspunkt}): // \footnote{wobei Ac und Ax np Arrays sind, n ein int und x ein double}
+		
+		y = 0.0
+		
+		for i in reversed range(n):
+		
+		\tab y = y * (x - Ax[i]) + Ac[i]
+		  
+		return y
+		
+		Immer Horner-Schema zur Auswertung von Polynomen verwenden.
+		
+		\subsection{Auswertung}
+		TODO: subsection
+		
+		\newpage
+		
+		\section{Interpolation und Approximation}
+		
+		\subsection{Grundproblem}
+		
+		Darstellung und Auswertung von Funktionen
+		
+		\subsection{Aufgabenstellung}
+		
+		f(x) nur auf Diskreter Menge von Argumenten $x_0, ..., x_n$ bekannt und soll rekonstruiert werden
+		
+		analytisch gegebene Funktion soll auf Reelwerte dargestellt werden, damit jederzeit Werte zu beliebigen x berechnet werden können.
+		
+		Einfach konstruierte Funktionen in Klassen P:
+		
+		Polynome: $p(x) = a_0 + a_1x + a_2x^2 + ... + a_nx^n$
+		
+		rationale Funktion: $r(x) = \frac{a_0 + a_1x + ... + a_nx^n}{b_0 + b_1x + ... + b_mx^m}$
+		
+		trigonometrische Funktion: $t(x) = \frac{1}{2}a_0 + \sum_{k = 1}^{n}(a_kcos(kx) + b_ksin(kx))$
+		
+		Exponentialsummen: $e(x) = \sum_{k = 1}^{n}a_kexp(b_kx)$
+		
+		\subsection{Interpolation}
+		
+		Zuordnung von $g \in P$ zu f durch Fixieren von Funktionswerten
+		
+		$g(x_i) = y_i = f(x_i), i = 0, ..., n$
+		
+		\subsection{Approximation}
+		
+		$g \in P$ beste Darstellung, z.B. 
+		
+		$max_{a \le x \le b}|f(x) - g(x)| minimal$
+		
+		$(\int_{a}^{b}|f(x) - g(x)|^2dx)^{\frac{1}{2}} minimal$
+		
+		\newpage
+		
+		\section{Lagransche Interpolationsaufgabe}
+		
+		\subsection{Aufgabe}
+		
+		Finde zu n + 1 verschiedene Stützstellen/Knoten $x_0, ..., x_n \in \mathbb{R} und WErten y_0, ..., y_n \in \mathbb{R} ein Polynom p \in P_n mit p(x_i) = y_i$
+		
+		\subsection{Eindeutigkeit + Existenz}
+		
+		Die Lagransche Interpolationsaufgabe ist eindeutig lösbar
+		
+		TODO: bei bedarf Beweis rein kopieren den Ich nicht verstanden hab
+		
+		\subsection{Lagransche Basispolynome}
+		
+		$L_i^{(n)}(x) = \prod_{j = 0, j \ne i}^{n} \frac{x - x_j}{x_i - x_j} \in P_n, i = 0, ..., n$
+		
+		\subsection{Eigenschaften}
+		
+		ortogonal: es gilt $L_i^{(n)}(x_k) = d_{ik} =$ TODO: split over 2 lines    1, i = k 0, sonst
+		
+		bilden Basis von $P_n$
+		
+		haben Grad n
+		
+		\subsection{Lagransche Darstellung}
+		
+		$p(x) = \sum_{i = 0}^{n}y_iL_i^{(n)}(x) \in P_n$ mit $p(x_j) = y_j$
+		
+		Nachteil: Bei Hinzunahme von $(x_{n+1}, y_{n+1})$ ändert sich das Basispolynom komplett
 		
 		
+		TODO: Beispiel
 		
+		\newpage
+		
+		\section{Newtonsche Basispolynome, dividierte Differenzen}
+		
+		\subsection{Newton-Polynome}
+		
+		$N_0(x) = 1, N_i(x) = \prod_{j = 0}^{i - 1}(x - x_j)$ mit $p(x) = \sum_{i = 0}^{n}a_iN_i(x)$
+		
+		\subsubsection{Auswertung}
+		
+		$y_0 = p(x_0) = a_0$
+		
+		$y_1 = p(x_1) = a_0 + a_1 * (x_1 - x_0)$
+		
+		$\vdots$
+		
+		$y_n = p(x_n) = a_0 + a_1(x_1 - x_0) + ... + a_n(x_n - x_0) * ... * (x_n - x_{n - 1})$
+		
+		\subsubsection{Vorteil}
+		
+		Bei Hinzunahme von $(x_{n + 1}, y_{n + 1})$ muss nur eine neue Rechnung durchgeführt werden, und nicht das gesamte Polynom neu berechnet werden
+		
+		TODO: Beispiel
+		
+		\subsection[Newtonsche Darstellung]{Newtonsche Darstellung(stabile Variante)}
+		
+		$p(x) = \sum_{i = 0}^{n}y[x_0, ..., x_i] N_i(x)$
+		
+		\subsection{Dividierte Differenzen*}
+		
+		$y[x_i, ..., x_{k + 1}] = \frac{y[x_{i + 1}, ..., x_{k + 1}] - y[x_i, ..., x_{i + k - 1}]}{x_{i + k} - x_i}$ mit k = 1, ..., j und i = k - j
+		
+		für beliebige [?] $\sigma:{0, ..., n} \rightarrow {0, ..., n}$ gilt $y[\tilde{x_0}, ..., \tilde{x_n}] = y[x_0, ..., x_n]$
+		
+		\newpage
+		
+		\section{Nevillsche Darstellung}
+		
+		$p_{jj}(x) = y_j \tab j = 0, ..., n \tab k = 1, ..., j \tab i = k - j$
+		
+		$p_{i, i + k}(x) = p_{i, i + k - 1}(x) + (x - x_i)\frac{p_{i + 1, i + k}(x) - p_{i, i + k - 1}(x)}{x_{i + k} - x_i}$
+		
+		\subsection{Schema}
+		
+		\begin{aligant*}
+			x && k = 0 &&                 && k = 2    && {}\ldots{} && k = n - 1    && k = n    & \\
+			x_0 && y_0   && \longrightarrow && p_{0, 1} && {}\ldots{} && p_{0, n - 1} && p_{0, n} & \\
+		\end{aligant*}
 \end{document}
