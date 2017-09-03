@@ -4,8 +4,9 @@
 \usepackage[ngerman]{babel} % german spell check
 \usepackage{datetime}
 
-\usepackage{breqn} % this package is one option for math lines
-\usepackage{mathtools}
+%\usepackage{breqn} % this package is one option for math lines
+\usepackage{mathtools} % this package contains math functions and a kind of table generator (align)
+\usepackage{mathdots}
 
 \usepackage{hyperref} % these two lines are so that the table of content is clickable
 \hypersetup{linktoc=all}
@@ -13,7 +14,7 @@
 \usepackage{amssymb} % package for Natural Number sign etc
 
 %added commands:
-\newcommand*\conj[1]{\bar{#1}}
+\newcommand*\conj[1]{\overline{#1}}
 \newcommand*\mean[1]{\bar{#1}}
 \newcommand*\tab[1][1cm]{\hspace*{#1}}
 
@@ -21,398 +22,635 @@
 	\tableofcontents % creats a table of contents, ensured already that it is clickable
 	\newpage % starts the actual document on a new page so there is no weird colision of text and toc
 	\section{Norm und Skalarprodukt}
-		\subsection{Norm}
-		Definitheit: $||x|| = 0 \Rightarrow x = 0$
-			
-		absolute Homogenität: $||\alpha x|| = |\alpha| * ||x||$
-		
-		Dreiecksungleichung: $||x + y|| \le ||x|| + ||y||$
-		
-		\subsection{Skalarprodukt}
-		<x + y, z> = <x, z> + <y, z>
-		
-		<x, y + z> = <x, y> + <x, z>
-		
-		TODO: Klammer
-		
-		$<\lambda x, y> = \lambda <x, y>$
-		
-		$<x, \lambda y> = \lambda <x, y>$
-		
-		<x, y> = <y, x>
-		
-		$<x, x> \ge 0$
-		
-		$<x, x> = 0 \Rightarrow x = 0$
-		
-		
-		\subsubsection{Vom Skalarprodukt induzierte Norm}
-		$||x|| = \sqrt{<x, x>}$
-		
-		\subsubsection{Cauchy-Schwarzche Ungleichung}
-		$|<x, y>| \le ||x||*||y||$
-		
-		\newpage
-		
-		\section{Symmetrische, positiv definite Matrix}
-		TODO: Matrizen
-		
-		insbesonders: Diagonalmatrizen, Einheitsmatrizen
-		
-		positiv definit: $x^t Ax > 0 $(beliebige Matrix)
-		
-			alle EW > 0 (symmetrische Matrix)
-			
-			alle Haupt[TODO: ?] > 0 (symetrische Matrix)
-			
-			TODO: Matrix 	$\Rightarrow$ 3 Hauptminoren[?] = det(a), det(TODO: Matrix), det(TODO: Matrix)
-			
-			\subsection{Cholesky-Zerlegung $A = GG^t$}
-			G unter der Matrix, invertierbar (symmetrische Matrix)
-			
-			\subsection{[?] diagonaldominant und alle $a_{ii} \ge 0$}
-			(symmetrische Matrix)
-			
-			\subsection{Eigenwerte}
-			$det(\lambda En - A) = 0$
-			
-			\subsection{Eigenvektor}
-			$f(v) = \lambda v$
-			
-		\newpage
-		
-		\section{Matrixnormen}
-		
-		\subsection{Natürliche Matrixnorm}
-		
-		$||A||_\infty := max_{x \ne 0} \frac{||Ax||_\infty}{||x||_\infty} = max_{||x|| = 1}||Ax||_\infty$
-		
-		$||A|| = 0 \Rightarrow A = 0, ||\lambda A|| = |\lambda|*||A||, ||A+B|| \le ||A|| + ||B||, ||A*B|| \le ||A|| * ||B||$
-		
-		\subsection{Verträglichkeit}
-		$||Ax|| \le ||A|| * ||x||$
-		
-		\subsection{Zeilensummennorm}
-		= natürliche Matrixnorm
-		
-		$||A||_\infty = max_{||x||_\infty = 1} ||Ax||_\infty = max_{i = 1, ..., m} \sum_{j = 1}^{n} |a_{ij}|$
-		
-		$A = TODO: Matrix  ||A||_\infty = max{|1| + |-2| + |-3|, |2| + |3| + |-1|} = max{6, 6} = 6$
-		
-		\subsection{Spaltensummennorm}
-		
-		$||A||_1 := max_{x \ne 0} \frac{||Ax||_1}{||x||_1} = max_{||x||_1 = 1} ||Ax||_1 = max_{j = 1, ..., n} \sum_{i = 1}^{m}|a_{ij}|$
-		
-		$A = TODO: Matrix  ||A||_1 = max{|1| + |2|, |-2| + |3|, |-3| + |-1|} = max{3, 5, 4} = 5$
-		
-		$||A^t||_1 = ||A||_\infty$
-		
-		\subsection{Spektralnorm}
-		
-		$||A||_2 := max_{||x||_2 = 1} ||Ax||_2 = max_{x \ne 0} \frac{||Ax||_2}{||x||_2} = max_{||x||_2 = 1} <Ax, Ax> = max_{||x||_2 = 1} <A^tAx, x> = max{\sqrt{|\lambda |}, \lambda * EW von A^tA}$
-		
-		$A = TODO: Matrix  , A^tA = TODO: Matrix    det(\mu E_n - A^tA) = 0 \Leftrightarrow \mu_{1, 2} = {16, 1}$
-		
-		$||A||_2 = \sqrt{max(\mu_1, \mu_2)} = \sqrt{\mu_1} = \sqrt{16} = 4$
-		
-		\newpage
-		
-		\section{Spektralradius, Konditionszahl einer Matrix}
-		
-		\subsection{Spektralradius $\varphi$}
-		
-		$\varphi(A) = max:{1 \le i \le n} |\lambda_i(A)| = spr(A)$ der betragsmäßig größte Eigenwert von A
-		
-		$||A|| \ge |\lambda|$ (für jede Matrixnorm, die mit einer Vektornorm verträglich ist)
-		
-		\subsection{Konditionszahl einer Matrix A}
-		
-		$cond(A) = ||A||*||A^{-1}||$
-		
-		\subsection{Sonderfall symmetrisch, positiv definite Matrix}
-		
-		$cond(A) = \frac{ \lambda_{max}}{ \lambda_{min}}$
-		
-		\newpage
-		
-		\section{Ähnlichkeitstransformation, Invarianz der Eigenwerte}
-		
-		y = Ax
-		
-		$\conj{x} = Cx, \conj{y} = Cy \tab (det C \ne 0), C \in GL$ 
-		
-		$y = Ax \Rightarrow C^{-1} \conj{y} = AC^{-1} \conj{x} \Rightarrow \conj{y} = CAC^{-1} \conj{x} \Rightarrow \conj{y}\conj{A}\conj{x}$
-		
-		$\conj{A} = CAC^{-1} \Rightarrow \conj{A} \sim A$
-		
-		$\lambda EW, v EV zu A$
-		
-		$\Rightarrow Av = C^{-1}\conj{A}Cv = \lambda v$
-		
-		$\Rightarrow \conj{A} und A $ haben dieselben Eigenwerte, algebraisch und geometrische Vielfalten stimmen überein (Invarianz der Eigenwerte)
-		
-		\subsection{Reduktionsmethoden}
-		
-		A duch Ähnlichkeitstransformationen 
-		
-		$A = A^{(0)} = T_1^{-1} A^{-1}T_1 = Q ... = T_i^{-1}A^{(i)}T_i = ...$
-		
-		auf Form bringen, für welche EW und EV leicht zu berechnen sind (z.B. Jordan-Normalform)
-		
-		\newpage
-		
-		\section[Gleitkommazahlen]{Gleitkommazahlen, Gleitkommagitter, Maschienengenauigkeit, Rundungsfehler}
-		
-		\subsection{Gleitkommazahl (normalisiert)}
-		
-		$b \in \mathbb{N}, b \ge 2, x \in \mathbb{R}$
-		
-		$x = \pm m * b^{\pm e}$
-		
-		Mantisse: $m = m_1b^{-1} + m_2b^{-2} + ... \in \mathbb{R}$
-		
-		Exponent: $e = e_{s-1}b^{s-1} + ... + e_0b^0 \in \mathbb{N}$
-		
-		für $x \ne 0$ eindeutig
-		
-		\subsection{Gleitkommagitter}
-		
-		A = A(b\footnote{Basis}, r\footnote{Mantissenlänge}, s\footnote{Exponentenlänge}) \tab größte Darstellbare Zahl: $(1 - b^{-r})*b^{b^s-1}$
-		
-		$(b = 10): 0,314 * 10^1 = 3,14$
-		
-		$0,123 * 10^6 = 123.000$
-		
-		Beispiel: konvertiere von Basis 8 zu Basis 10:
-		
-		$x = (0,5731 * 10^5)_8 \in A(8, 5, 1)$
-		
-		$x = (5 * 8^{-1} + 7 * 8^{-2} + 3 * 8^{-3} + 1 * 8^{-4}) * 8^5$
-		
-		$x = 5 * 8^4 + 7 * 8^3 + 3 * 8^2 + 1 * 8^1 = 24.264 * 10^0$
-		
-		\subsection{Maschienengenauigkeit eps}
-		
-		$eps = \frac{1}{2}b^{-r + 1}, IEEE: eps = \frac{1}{2} * 2^{-52} \approx 10^{-16}$
-		
-		\subsection{Rundungsfehler}
-		
-		$absolut: |x - rd(x)| \le \frac{1}{2}b^{-r}b^e$
-		
-		$relativ: |\frac{x - rd(x)}{x}| \le \frac{1}{2}b^{-r+1} = eps$
-		
-		\newpage
-		
-		\section{Darstellung des Interpolationsfehlers}
-		
-		\subsection{Fehler I}
-		
-		$f \in C^{n+1}[a, b], \forall x \in [a, b] \exists \xi_x \in (\overline{x_0, ..., x_n, x})\footnote{kleinstes Intervall, das alle x_i enthällt}, s.d.$
-		
-		$f(x) - p(x) = \frac{f^{(n+1)}(\xi x)}{(n+1)!} \prod_{j = 0}^{n}(x - x_j)$
-		
-		\subsection{Fehler II}
-		
-		$f \in C^{n + 1}[a, b], \forall x \in [a, b]$ \textbackslash ${x_0, ..., x_n} gilt:$
-		
-		$f(x) - p(x) = f[x_0, ..., x_n, x] \prod_{j = 0}^{n}(x - x_j)$
-		
-		mit $f[x_i, ..., x_{i + k}] = y[x_i, ..., x_{i + k}]$
-		
-		und $f[x_0, ..., x_n, x] = \int_{0}^{1}\int_{0}^{t_1}...\int_{0}^{t_n}f^{n+1}(x_0 + t_1(x_1 - x_0) + ... + t_n(x_n-x_{n - 1} + t(x - x_n))dtdt_n...dt_1$ 
-		
-		für $x_0 = x_1 = ... = x_n: $
-		
-		$f[x_0, ..., x_n] = \frac{1}{n!}f^{(n)}(x_0)$
-		
-		$\frac{f^{(n + 1)}(\xi_x)}{(n + 1)!} \prod_{j = 0}^{n} (x-x_j) = f(x) - p(x) = f[x_0, ..., x_n, x] \prod_{j = 0}^{n}(x - x_j)$
-		
-		$\Rightarrow f[x_0, ..., x_n, x] = \frac{f^{(n + 1)}(\xi_x)}{(n + 1)!}$
-		
-		\newpage
-		
-		\section{Konditionierung einer numerischen Aufgabe, Konditionszahlen $k_{ij}$}
-		
-		\subsection{numerische Aufgabe}
-		
-		$x_j \in \mathbb{R} mit f(x_1, ..., x_m) \Rightarrow y_i = f_i(x_j)$
-		
-		fehlerhafte Eingangsgrößen $x_i + \Delta y_i$
-		
-		$|\Delta y_i|$ ist der absolute Fehler, $|\frac{\Delta y_i}{y_i}|$ ist der relative Fehler
-		
-		\subsection{Konditionszahl (relativ)}
-		
-		$k_{ij}(x) = \frac{\partial f_i}{\partial x_i}(x) \frac{\Delta x_j}{x_j}$
-		
-		$\frac{\Delta y_i}{y_i} = \sum_{j = 1}^{m}k_{ij}(x)\frac{\Delta x_j}{x_j}$
-		
-		$|k_{ij}(x)| >> 1 \Rightarrow$ schlecht konditioniert
-		
-		$|k_{ij}(x)| << 1 \Rightarrow$ gut konditioniert, ohne Fehlerverstärkung
-		
-		$|k_{ij}(x)| > 1 \Rightarrow$ Fehlerverstärkung
-		
-		$|k_{ij}(x)| < 1 \Rightarrow$ Fehlerdämpfung
-		
-		\newpage
-		
-		\section{Stabilität eines Algorithmus}
-		
-		\subsection{stabiler Algorithmus}
-		
-		akkumulierte Fehler der Rechnung (Rundungsfehler, Auswertungsfehler, etc.) übersteigen den unvermeidbaren Problemfehler der Konditionierung der Aufgabe nicht. Aka Trotz Ungenauigkeiten bei den Eingabe Variablen erhalten wir fast sehr genaue Ergebnisse.
-		
-		\newpage
-		
-		\section{Auslöschung}
-		
-		Verlust von Genauigkeit bei der Subtraktion von Zahlen mit gleichem Vorzeichen
-		
-		TODO: bei bedarf ein Beispiel
-		
-		\newpage
-		
-		\section{Horner-Schema*}
-		
-		$p(x) = a_0 + x(... + x(a_{n-1} + a_nx)...)$
-		
-		\subsection{Code}
-		
-		def horner(Ac\footnote{Vektor mit Koeffizienten}, Ax\footnote{Stützstellen}, n\footnote{Anzahl der Stützstellen}, x\footnote{Auswertungspunkt}): // \footnote{wobei Ac und Ax np Arrays sind, n ein int und x ein double}
-		
-		y = 0.0
-		
-		for i in reversed range(n):
-		
-		\tab y = y * (x - Ax[i]) + Ac[i]
-		  
-		return y
-		
-		Immer Horner-Schema zur Auswertung von Polynomen verwenden.
-		
-		\subsection{Auswertung}
-		TODO: subsection
-		
-		\newpage
-		
-		\section{Interpolation und Approximation}
-		
-		\subsection{Grundproblem}
-		
-		Darstellung und Auswertung von Funktionen
-		
-		\subsection{Aufgabenstellung}
-		
-		f(x) nur auf Diskreter Menge von Argumenten $x_0, ..., x_n$ bekannt und soll rekonstruiert werden
-		
-		analytisch gegebene Funktion soll auf Reelwerte dargestellt werden, damit jederzeit Werte zu beliebigen x berechnet werden können.
-		
-		Einfach konstruierte Funktionen in Klassen P:
-		
-		Polynome: $p(x) = a_0 + a_1x + a_2x^2 + ... + a_nx^n$
-		
-		rationale Funktion: $r(x) = \frac{a_0 + a_1x + ... + a_nx^n}{b_0 + b_1x + ... + b_mx^m}$
-		
-		trigonometrische Funktion: $t(x) = \frac{1}{2}a_0 + \sum_{k = 1}^{n}(a_kcos(kx) + b_ksin(kx))$
-		
-		Exponentialsummen: $e(x) = \sum_{k = 1}^{n}a_kexp(b_kx)$
-		
-		\subsection{Interpolation}
-		
-		Zuordnung von $g \in P$ zu f durch Fixieren von Funktionswerten
-		
-		$g(x_i) = y_i = f(x_i), i = 0, ..., n$
-		
-		\subsection{Approximation}
-		
-		$g \in P$ beste Darstellung, z.B. 
-		
-		$max_{a \le x \le b}|f(x) - g(x)| minimal$
-		
-		$(\int_{a}^{b}|f(x) - g(x)|^2dx)^{\frac{1}{2}} minimal$
-		
-		\newpage
-		
-		\section{Lagransche Interpolationsaufgabe}
-		
-		\subsection{Aufgabe}
-		
-		Finde zu n + 1 verschiedene Stützstellen/Knoten $x_0, ..., x_n \in \mathbb{R} und WErten y_0, ..., y_n \in \mathbb{R} ein Polynom p \in P_n mit p(x_i) = y_i$
-		
-		\subsection{Eindeutigkeit + Existenz}
-		
-		Die Lagransche Interpolationsaufgabe ist eindeutig lösbar
-		
-		TODO: bei bedarf Beweis rein kopieren den Ich nicht verstanden hab
-		
-		\subsection{Lagransche Basispolynome}
-		
-		$L_i^{(n)}(x) = \prod_{j = 0, j \ne i}^{n} \frac{x - x_j}{x_i - x_j} \in P_n, i = 0, ..., n$
-		
-		\subsection{Eigenschaften}
-		
-		ortogonal: es gilt $L_i^{(n)}(x_k) = d_{ik} =$ TODO: split over 2 lines    1, i = k 0, sonst
-		
-		bilden Basis von $P_n$
-		
-		haben Grad n
-		
-		\subsection{Lagransche Darstellung}
-		
-		$p(x) = \sum_{i = 0}^{n}y_iL_i^{(n)}(x) \in P_n$ mit $p(x_j) = y_j$
-		
-		Nachteil: Bei Hinzunahme von $(x_{n+1}, y_{n+1})$ ändert sich das Basispolynom komplett
-		
-		
-		TODO: Beispiel
-		
-		\newpage
-		
-		\section{Newtonsche Basispolynome, dividierte Differenzen}
-		
-		\subsection{Newton-Polynome}
-		
-		$N_0(x) = 1, N_i(x) = \prod_{j = 0}^{i - 1}(x - x_j)$ mit $p(x) = \sum_{i = 0}^{n}a_iN_i(x)$
-		
-		\subsubsection{Auswertung}
-		
-		$y_0 = p(x_0) = a_0$
-		
-		$y_1 = p(x_1) = a_0 + a_1 * (x_1 - x_0)$
-		
-		$\vdots$
-		
-		$y_n = p(x_n) = a_0 + a_1(x_1 - x_0) + ... + a_n(x_n - x_0) * ... * (x_n - x_{n - 1})$
-		
-		\subsubsection{Vorteil}
-		
-		Bei Hinzunahme von $(x_{n + 1}, y_{n + 1})$ muss nur eine neue Rechnung durchgeführt werden, und nicht das gesamte Polynom neu berechnet werden
-		
-		TODO: Beispiel
-		
-		\subsection[Newtonsche Darstellung]{Newtonsche Darstellung(stabile Variante)}
-		
-		$p(x) = \sum_{i = 0}^{n}y[x_0, ..., x_i] N_i(x)$
-		
-		\subsection{Dividierte Differenzen*}
-		
-		$y[x_i, ..., x_{k + 1}] = \frac{y[x_{i + 1}, ..., x_{k + 1}] - y[x_i, ..., x_{i + k - 1}]}{x_{i + k} - x_i}$ mit k = 1, ..., j und i = k - j
-		
-		für beliebige [?] $\sigma:{0, ..., n} \rightarrow {0, ..., n}$ gilt $y[\tilde{x_0}, ..., \tilde{x_n}] = y[x_0, ..., x_n]$
-		
-		\newpage
-		
-		\section{Nevillsche Darstellung}
-		
-		$p_{jj}(x) = y_j \tab j = 0, ..., n \tab k = 1, ..., j \tab i = k - j$
-		
-		$p_{i, i + k}(x) = p_{i, i + k - 1}(x) + (x - x_i)\frac{p_{i + 1, i + k}(x) - p_{i, i + k - 1}(x)}{x_{i + k} - x_i}$
-		
-		\subsection{Schema}
-		
-		\begin{aligant*}
-			x && k = 0 &&                 && k = 2    && {}\ldots{} && k = n - 1    && k = n    & \\
-			x_0 && y_0   && \longrightarrow && p_{0, 1} && {}\ldots{} && p_{0, n - 1} && p_{0, n} & \\
-		\end{aligant*}
+	
+	
+	\subsection{Norm}
+	Definitheit: $||x|| = 0 \Rightarrow x = 0$
+		
+	absolute Homogenität: $||\alpha x|| = |\alpha| * ||x||$
+	
+	Dreiecksungleichung: $||x + y|| \le ||x|| + ||y||$
+	
+	\subsection{Skalarprodukt}
+	<x + y, z> = <x, z> + <y, z>
+	
+	<x, y + z> = <x, y> + <x, z>
+	
+	TODO: Klammer
+	
+	$<\lambda x, y>$ = $\lambda$ <x, y>
+	
+	$<x, \lambda y>$ = $\lambda$ <x, y>
+	
+	<x, y> = <y, x>
+	
+	<x, x> $\ge$ 0
+	
+	<x, x> = 0 $\Rightarrow$ x = 0
+	
+	
+	\subsubsection{Vom Skalarprodukt induzierte Norm}
+	$||x|| = \sqrt{<x, x>}$
+	
+	\subsubsection{Cauchy-Schwarzche Ungleichung}
+	$|<x, y>| \le ||x||*||y||$
+		
+	\newpage
+	
+	\section{Symmetrische, positiv definite Matrix}
+	TODO: Matrizen
+	
+	insbesonders: Diagonalmatrizen, Einheitsmatrizen
+	
+	positiv definit: $x^t Ax > 0$ (beliebige Matrix)
+	
+	alle EW > 0 (symmetrische Matrix)
+	
+	alle Haupt[TODO: ?] > 0 (symetrische Matrix)
+	
+	TODO: Matrix 	$\Rightarrow$ 3 Hauptminoren[?] = det(a), det(TODO: Matrix), det(TODO: Matrix)
+	
+	\subsection{Cholesky-Zerlegung}
+	$A = GG^t$ G unter der Matrix, invertierbar (symmetrische Matrix)
+	
+	\subsection{[?] diagonaldominant und alle Diagonalelemente größer gleich 0}
+	(symmetrische Matrix)
+	
+	\subsection{Eigenwerte}
+	det($\lambda$ En - A) = 0
+	
+	\subsection{Eigenvektor}
+	f(v) = $\lambda$ v
+		
+	\newpage
+	
+	\section{Matrixnormen}
+	
+	\subsection{Natürliche Matrixnorm}
+	
+	$||A||_\infty := max_{x \ne 0} \frac{||Ax||_\infty}{||x||_\infty} = max_{||x|| = 1}||Ax||_\infty$
+	
+	$||A|| = 0 \Rightarrow A = 0, ||\lambda A|| = |\lambda|*||A||, ||A+B|| \le ||A|| + ||B||, ||A*B|| \le ||A|| * ||B||$
+	
+	\subsection{Verträglichkeit}
+	$||Ax|| \le ||A|| * ||x||$
+	
+	\subsection{Zeilensummennorm}
+	= natürliche Matrixnorm
+	
+	$||A||_\infty = max_{||x||_\infty = 1} ||Ax||_\infty = max_{i = 1, ..., m} \sum_{j = 1}^{n} |a_{ij}|$
+	
+	$A = TODO: Matrix  ||A||_\infty \\
+	= max{|1| + |-2| + |-3|, |2| + |3| + |-1|} \\
+	= max{6, 6} = 6$
+	
+	\subsection{Spaltensummennorm}
+	
+	$||A||_1 := max_{x \ne 0} \frac{||Ax||_1}{||x||_1} = max_{||x||_1 = 1} ||Ax||_1 = max_{j = 1, ..., n} \sum_{i = 1}^{m}|a_{ij}|$
+	
+	A = TODO: Matrix  $||A||_1$ = max{|1| + |2|, |-2| + |3|, |-3| + |-1|} = max{3, 5, 4} = 5
+	
+	$||A^t||_1 = ||A||_\infty$
+	
+	\subsection{Spektralnorm}
+	
+	Die Spektralnorm wird definiert als
+	
+	$A||_2 := max_{||x||_2 = 1} ||Ax||_2 //
+	= max_{x \ne 0} \frac{||Ax||_2}{||x||_2} //
+	= max_{||x||_2 = 1} <Ax, Ax> //
+	= max_{||x||_2 = 1} <A^tAx, x> //
+	= max{\sqrt{|\lambda |}, \lambda * EW von A^tA}$
+	
+	$A = TODO: Matrix  , A^tA = TODO: Matrix    det(\mu E_n - A^tA) = 0 \Leftrightarrow \mu_{1, 2} = {16, 1}$
+	
+	$||A||_2 = \sqrt{max(\mu_1, \mu_2)} = \sqrt{\mu_1} = \sqrt{16} = 4$
+	
+	\newpage
+	
+	\section{Spektralradius, Konditionszahl einer Matrix}
+	
+	\subsection{Spektralradius [phi]}
+	
+	$\varphi(A) = max:{1 \le i \le n} |\lambda_i(A)| = spr(A)$ der betragsmäßig größte Eigenwert von A
+	
+	$||A|| \ge |\lambda|$ (für jede Matrixnorm, die mit einer Vektornorm verträglich ist)
+	
+	\subsection{Konditionszahl einer Matrix A}
+	
+	$cond(A) = ||A||*||A^{-1}||$
+	
+	\subsection{Sonderfall symmetrisch, positiv definite Matrix}
+	
+	$cond(A) = \frac{ \lambda_{max}}{ \lambda_{min}}$
+	
+	\newpage
+	
+	\section{Ähnlichkeitstransformation, Invarianz der Eigenwerte}
+	
+	y = Ax
+	
+	$\conj{x} = Cx, \conj{y} = Cy \tab (det C \ne 0), C \in GL$ 
+	
+	$y = Ax \Rightarrow C^{-1} \conj{y} = AC^{-1} \conj{x} \Rightarrow \conj{y} = CAC^{-1} \conj{x} \Rightarrow \conj{y}\conj{A}\conj{x}$
+	
+	$\conj{A} = CAC^{-1} \Rightarrow \conj{A} \sim A$
+	
+	$\lambda EW, v EV zu A$
+	
+	$\Rightarrow Av = C^{-1}\conj{A}Cv = \lambda v$
+	
+	$\Rightarrow \conj{A} und A $ haben dieselben Eigenwerte, algebraisch und geometrische Vielfalten stimmen überein (Invarianz der Eigenwerte)
+	
+	\subsection{Reduktionsmethoden}
+	
+	A duch Ähnlichkeitstransformationen 
+	
+	$A = A^{(0)} = T_1^{-1} A^{-1}T_1 = Q ... = T_i^{-1}A^{(i)}T_i = ...$
+	
+	auf Form bringen, für welche EW und EV leicht zu berechnen sind (z.B. Jordan-Normalform)
+	
+	\newpage
+	
+	\section{Gleitkommazahlen, ...}
+	
+	\subsection{Gleitkommazahl (normalisiert)}
+	
+	$b \in \mathbb{N}, b \ge 2, x \in \mathbb{R}$
+	
+	$x = \pm m * b^{\pm e}$
+	
+	Mantisse: $m = m_1b^{-1} + m_2b^{-2} + ... \in \mathbb{R}$
+	
+	Exponent: $e = e_{s-1}b^{s-1} + ... + e_0b^0 \in \mathbb{N}$
+	
+	für $x \ne 0$ eindeutig
+	
+	\subsection{Gleitkommagitter}
+	
+	$A = A(b, r, s)$ größte Darstellbare Zahl: $(1 - b^{-r})*b^{b^s-1}$
+	
+	mit b als Basis, r als Mantissenlänge, s als Exponentenlänge
+	
+	$(b = 10): 0,314 * 10^1 = 3,14$
+	
+	$0,123 * 10^6 = 123.000$
+	
+	Beispiel: konvertiere von Basis 8 zu Basis 10:
+	
+	$x = (0,5731 * 10^5)_8 \in A(8, 5, 1)$
+	
+	$x = (5 * 8^{-1} + 7 * 8^{-2} + 3 * 8^{-3} + 1 * 8^{-4}) * 8^5$
+	
+	$x = 5 * 8^4 + 7 * 8^3 + 3 * 8^2 + 1 * 8^1 = 24.264 * 10^0$
+	
+	\subsection{Maschienengenauigkeit eps}
+	
+	$eps = \frac{1}{2}b^{-r + 1}, IEEE: eps = \frac{1}{2} * 2^{-52} \approx 10^{-16}$
+	
+	\subsection{Rundungsfehler}
+	
+	$absolut: |x - rd(x)| \le \frac{1}{2}b^{-r}b^e$
+	
+	$relativ: |\frac{x - rd(x)}{x}| \le \frac{1}{2}b^{-r+1} = eps$
+	
+	\newpage
+	
+	\section{Darstellung des Interpolationsfehlers}
+	
+	\subsection{Fehler I}
+	
+	f$ \in C^{n+1}$[a, b], $\forall$ x $\in$ [a, b] $\exists \xi_x \in$ ($\overline{x_0, ..., x_n, x}$), wobei das Intervall das kleinst mögliche Intervall, das alle $x_i$ enthällt, s.d.
+	
+	$f(x) - p(x) = \frac{f^{(n+1)}(\xi x)}{(n+1)!} \prod_{j = 0}^{n}(x - x_j)$
+	
+	\subsection{Fehler II}
+	
+	$f \in C^{n + 1}[a, b], \forall x \in [a, b]$ \textbackslash ${x_0, ..., x_n} gilt:$
+	
+	$f(x) - p(x) = f[x_0, ..., x_n, x] \prod_{j = 0}^{n}(x - x_j)$
+	
+	mit $f[x_i, ..., x_{i + k}] = y[x_i, ..., x_{i + k}]$
+	
+	und $f[x_0, ..., x_n, x] = \int_{0}^{1}\int_{0}^{t_1}...\int_{0}^{t_n}f^{n+1}(x_0 + t_1(x_1 - x_0) + ... + t_n(x_n-x_{n - 1} + t(x - x_n))dtdt_n...dt_1$ 
+	
+	für $x_0 = x_1 = ... = x_n: $
+	
+	$f[x_0, ..., x_n] = \frac{1}{n!}f^{(n)}(x_0)$
+	
+	$\frac{f^{(n + 1)}(\xi_x)}{(n + 1)!} \prod_{j = 0}^{n} (x-x_j) = f(x) - p(x) = f[x_0, ..., x_n, x] \prod_{j = 0}^{n}(x - x_j)$
+	
+	$\Rightarrow f[x_0, ..., x_n, x] = \frac{f^{(n + 1)}(\xi_x)}{(n + 1)!}$
+	
+	\newpage
+	
+	\section{Konditionierung einer numerischen Aufgabe, Konditionszahlen}
+	
+	\subsection{numerische Aufgabe}
+	
+	$x_j \in \mathbb{R} mit f(x_1, ..., x_m) \Rightarrow y_i = f_i(x_j)$
+	
+	fehlerhafte Eingangsgrößen $x_i + \Delta y_i$
+	
+	$|\Delta y_i|$ ist der absolute Fehler, $|\frac{\Delta y_i}{y_i}|$ ist der relative Fehler
+	
+	\subsection{Konditionszahl (relativ)}
+	
+	$k_{ij}(x) = \frac{\partial f_i}{\partial x_i}(x) \frac{\Delta x_j}{x_j}$
+	
+	$\frac{\Delta y_i}{y_i} = \sum_{j = 1}^{m}k_{ij}(x)\frac{\Delta x_j}{x_j}$
+	
+	$|k_{ij}(x)| >> 1 \Rightarrow$ schlecht konditioniert
+	
+	$|k_{ij}(x)| << 1 \Rightarrow$ gut konditioniert, ohne Fehlerverstärkung
+	
+	$|k_{ij}(x)| > 1 \Rightarrow$ Fehlerverstärkung
+	
+	$|k_{ij}(x)| < 1 \Rightarrow$ Fehlerdämpfung
+	
+	\newpage
+	
+	\section{Stabilität eines Algorithmus}
+	
+	\subsection{stabiler Algorithmus}
+	
+	akkumulierte Fehler der Rechnung (Rundungsfehler, Auswertungsfehler, etc.) übersteigen den unvermeidbaren Problemfehler der Konditionierung der Aufgabe nicht. Aka Trotz Ungenauigkeiten bei den Eingabe Variablen erhalten wir fast sehr genaue Ergebnisse.
+	
+	\newpage
+	
+	\section{Auslöschung}
+	
+	Verlust von Genauigkeit bei der Subtraktion von Zahlen mit gleichem Vorzeichen
+	
+	TODO: bei bedarf ein Beispiel
+	
+	\newpage
+	
+	\section{Horner-Schema*}
+	
+	$p(x) = a_0 + x(... + x(a_{n-1} + a_nx)...)$
+	
+	\subsection{Code}
+	
+	def horner(Ac, Ax, n, x): 
+	
+	y = 0.0
+	
+	for i in reversed range(n):
+	
+	\tab y = y * (x - Ax[i]) + Ac[i]
+ 
+	return y
+	
+	Ac: Vektor mit Koeffizienten, ist ein np Array
+	
+	Ax: Stützstellen, ist ein np Array
+	
+	n: Anzahl der Stützstellen, ist ein int
+	
+	x: Auswertungspunkt, ist ein double
+	
+	Immer Horner-Schema zur Auswertung von Polynomen verwenden.
+	
+	\subsection{Auswertung}
+	TODO: subsection
+	
+	\newpage
+	
+	\section{Interpolation und Approximation}
+	
+	\subsection{Grundproblem}
+	
+	Darstellung und Auswertung von Funktionen
+	
+	\subsection{Aufgabenstellung}
+	
+	f(x) nur auf Diskreter Menge von Argumenten $x_0, ..., x_n$ bekannt und soll rekonstruiert werden
+	
+	analytisch gegebene Funktion soll auf Reelwerte dargestellt werden, damit jederzeit Werte zu beliebigen x berechnet werden können.
+	
+	Einfach konstruierte Funktionen in Klassen P:
+	
+	Polynome: $p(x) = a_0 + a_1x + a_2x^2 + ... + a_nx^n$
+	
+	rationale Funktion: $r(x) = \frac{a_0 + a_1x + ... + a_nx^n}{b_0 + b_1x + ... + b_mx^m}$
+	
+	trigonometrische Funktion: $t(x) = \frac{1}{2}a_0 + \sum_{k = 1}^{n}(a_kcos(kx) + b_ksin(kx))$
+	
+	Exponentialsummen: $e(x) = \sum_{k = 1}^{n}a_kexp(b_kx)$
+	
+	\subsection{Interpolation}
+	
+	Zuordnung von $g \in P$ zu f durch Fixieren von Funktionswerten
+	
+	$g(x_i) = y_i = f(x_i), i = 0, ..., n$
+	
+	\subsection{Approximation}
+	
+	$g \in P$ beste Darstellung, z.B. 
+	
+	$max_{a \le x \le b}|f(x) - g(x)| minimal$
+	
+	$(\int_{a}^{b}|f(x) - g(x)|^2dx)^{\frac{1}{2}} minimal$
+	
+	\newpage
+	
+	\section{Lagransche Interpolationsaufgabe}
+	
+	\subsection{Aufgabe}
+	
+	Finde zu n + 1 verschiedene Stützstellen/Knoten $x_0, ..., x_n \in \mathbb{R}$ und Werten $y_0, ..., y_n \in \mathbb{R}$ ein Polynom p $\in P_n mit p(x_i) = y_i$
+	
+	\subsection{Eindeutigkeit + Existenz}
+	
+	Die Lagransche Interpolationsaufgabe ist eindeutig lösbar
+	
+	TODO: bei bedarf Beweis rein kopieren den Ich nicht verstanden hab
+	
+	\subsection{Lagransche Basispolynome}
+	
+	$L_i^{(n)}(x) = \prod_{j = 0, j \ne i}^{n} \frac{x - x_j}{x_i - x_j} \in P_n, i = 0, ..., n$
+	
+	\subsection{Eigenschaften}
+	
+	ortogonal: es gilt $L_i^{(n)}(x_k) = d_{ik} =$ TODO: split over 2 lines    1, i = k 0, sonst
+	
+	bilden Basis von $P_n$
+	
+	haben Grad n
+	
+	\subsection{Lagransche Darstellung}
+	
+	$p(x) = \sum_{i = 0}^{n}y_iL_i^{(n)}(x) \in P_n$ mit $p(x_j) = y_j$
+	
+	Nachteil: Bei Hinzunahme von $(x_{n+1}, y_{n+1})$ ändert sich das Basispolynom komplett
+	
+	
+	TODO: Beispiel
+	
+	\newpage
+	
+	\section{Newtonsche Basispolynome...}
+	
+	\subsection{Newton-Polynome}
+	
+	$N_0(x) = 1, N_i(x) = \prod_{j = 0}^{i - 1}(x - x_j)$ mit $p(x) = \sum_{i = 0}^{n}a_iN_i(x)$
+	
+	\subsubsection{Auswertung}
+	
+	$y_0 = p(x_0) = a_0$
+	
+	$y_1 = p(x_1) = a_0 + a_1 * (x_1 - x_0)$
+	
+	$\vdots$
+	
+	$y_n = p(x_n) = a_0 + a_1(x_1 - x_0) + ... + a_n(x_n - x_0) * ... * (x_n - x_{n - 1})$
+	
+	\subsubsection{Vorteil}
+	
+	Bei Hinzunahme von $(x_{n + 1}, y_{n + 1})$ muss nur eine neue Rechnung durchgeführt werden, und nicht das gesamte Polynom neu berechnet werden
+	
+	TODO: Beispiel
+	
+	\subsection[Newtonsche Darstellung]{Newtonsche Darstellung(stabile Variante)}
+	
+	$p(x) = \sum_{i = 0}^{n}y[x_0, ..., x_i] N_i(x)$
+	
+	\subsection{Dividierte Differenzen*}
+	
+	$y[x_i, ..., x_{k + 1}] = \frac{y[x_{i + 1}, ..., x_{k + 1}] - y[x_i, ..., x_{i + k - 1}]}{x_{i + k} - x_i}$ mit k = 1, ..., j und i = k - j
+	
+	für beliebige [?] $\sigma:{0, ..., n} \rightarrow {0, ..., n}$ gilt $y[\tilde{x_0}, ..., \tilde{x_n}] = y[x_0, ..., x_n]$
+	
+	\newpage
+	
+	\section{Nevillsche Darstellung}
+	
+	$p_{jj}(x) = y_j \tab j = 0, ..., n \tab k = 1, ..., j \tab i = k - j$
+	
+	$p_{i, i + k}(x) = p_{i, i + k - 1}(x) + (x - x_i)\frac{p_{i + 1, i + k}(x) - p_{i, i + k - 1}(x)}{x_{i + k} - x_i}$
+	
+	\subsection{Schema}
+	
+	\begin{align*}
+		x && k = 0 && && k = 2 && {}\ldots{} && k = n - 1 && k = n & \\
+		x_0 && y_0 && \longrightarrow && p_{0, 1} && {}\ldots{} && p_{0, n - 1} && p_{0, n} & \\
+		x_1 && y_1 && \longrightarrow && p_{1, 2} && {}\ldots{} && p_{1, n} & \\
+		\vdots && \vdots && \vdots && \iddots & \\
+		x_{n - 1} && y_{n - 1} && \longrightarrow && p_{n - 1, n} & \\
+		x_n && y_n
+	\end{align*}
+	TODO: add the diagonal arrows
+	
+	Hinzunahme von $(x_{n + 1}, y_{n + 1})$ ist problemlos
+	
+	Auswertung von $p_{0, n}(x)$ in $\xi \ne x_i$ ohne vorherige Bestimmung der Koeffizienden der Newton-Darstellung ist einfach und Numerisch stabil möglich
+	
+	\subsection{Code}
+	
+	def divDiffs(xi, yi, x):
+	
+	n = len(xi)
+	
+	p = n * [0]
+	
+	for k in range(n):
+	
+	\tab for i in range(n - k):
+	
+	\tab \tab if k == 0:
+
+	\tab \tab \tab p[i] = yi[i]
+	
+	\tab \tab else:
+	
+	\tab \tab \tab p[i] = ((x - xi[i + k]) * p[i] + (xi[i] - x) * p[i + 1]) / (xi[i] - xi[i + k])
+	
+	return p[0]	
+	
+	\newpage
+	
+	\section{Hermite-Interpolation}
+	
+	\subsection{Aufgabe}
+	
+	Gegeben: $x_i$ \tab \space i = 0, ..., m \tab paarweise verschieden
+	
+	\tab \space $y_i^{(k)}$ \tab i = 0, ..., m \tab k = 0, ..., $\mu_i (\mu_i \ge 0)$
+	
+	Gesucht: $p \in P_n$, n = m + $\sum_{i = 0}^{m}\mu_i$ : $p^{(k)}(x_i) = y_i^{(k)}$
+	
+	$x_i$ sind ($\mu_i$ + 1)-fache Stützstellen
+	
+	$x_0 = -1$, $x_1 = 1$, $m = 1$, $y_0^{(0)} = 0$, $y_1^{(0)}$, $y_1^{([l?])} = 2$
+	
+	$\Rightarrow \mu_0 = 0$, $\mu_1 = 1$
+	
+	$\Rightarrow$ n = 1 + 0 + 1 = 2
+	
+	$\Rightarrow$ p(x) = $x^2$
+	
+	\subsection{Existenz + Eindeutig}
+	
+	analog zur Lagrange-Interpolation
+	
+	\subsection{Fehler}
+	
+	$f \in C^{n + 1}[a, b]: \forall x \in [a, b] \exists \xi_x \in (\overline{x_0, ..., x_m, x})$, s.d.
+	
+	$f(x) - p(x) = f[x_0, ..., x_0, ..., x_m, ..., x_m, x]\prod_{i = 0}^{m}(x - x_i)^{\mu_i + 1} \\
+	 = \frac{1}{(n + 1)!}f^{(n + 1)}(\xi_x)\prod_{i = 0}^{m}(x - x_i)^{\mu_i + 1}$
+	
+	\newpage
+	
+	\section[Extrapolation]{Extrapolation zum Limes + Fehler}
+	
+	\subsection{Richardson-Extrapolation}
+	
+	nicht direkt berechenbare Größe
+	
+	$a(0) = lim_{k\rightarrow 0}a(k)$, \tab $k \in \mathbb{R}_+$
+	
+	berechne a($k_i$) für gewisse $k_i$, i = 0, ..., n und [?] $p_n(0)$ des Interpolations Polynoms zu $(h_i, a(h_i))$ als Schätzung für a(0)
+	
+	a(0) := $lim_{x\rightarrow 0^+}\frac{cos(x) - 1}{sin(x)}$ \tab (= 0)
+	
+	a(x) := $\frac{(cos(x) - 1)}{sin(x)}$
+	
+	Interpolation a(x) an Stützstellen $k_i$ nahe bei 0:
+	
+	$k_0 = \frac{1}{8}$ \tab $a(k_0) = -6,258151 * 10^{-2}$
+	
+	$k_1 = \frac{1}{16}$ \tab $a(k_1) = -3,126018 * 10^{-2}$
+	
+	$k_2 = \frac{1}{32}$ \tab $a(k_2) = -1,562627 * 10^{-2}$
+	
+	\subsection{Lagrange}
+	
+	$p_2(x) = a(k_0) \frac{(x - \frac{1}{16})(x - \frac{1}{32})}{(\frac{1}{8} - \frac{1}{16})(\frac{1}{8} - \frac{1}{32})} + a(k_1)\frac{(x - \frac{1}{8})(x - \frac{1}{32})}{(\frac{1}{16} - \frac{1}{8})(\frac{1}{16} - \frac{1}{32})} + a(k_2) \frac{(x - \frac{1}{8})(x - \frac{1}{16})}{(\frac{1}{32} - \frac{1}{8})(\frac{1}{32} - \frac{1}{16})}$
+	
+	$\Rightarrow a(0) \sim p_2(0) = -1,02 * 10^{-5}$
+	
+	\subsection{Neville}
+	
+	$p_{i, i + k}(0) = p_{i, i + k - 1}(0) + \frac{p_{i, i + k - 1}(0) - p_{i + 1, i + k}(0)}{\frac{x_{i + k}}{x_i - 1}}$, k = 1, 2
+	
+	\begin{tabular}{ c | c | c | c | c }
+		i & $x_i$ & $p_{i, i}(0) = a(k_i)$ & $p_{i, i + 1}(0)$ & $p_{i, i + 2}(0)$ \\ \hline
+		0 & $x_0 = \frac{1}{8}$ & $-6,258151 * 10^{-2}$ & $6,115 * 10^{-5}$ & $-1,02 * 10^{-5}$ \\
+		1 & $x_1 = \frac{1}{16}$ & $-3,126018 * 10^{-2}$ & $7,64 * 10^{-6}$ & \\
+		2 & $x_2 = \frac{1}{32}$ & $-1,562627 * 10^{-2}$ & & 
+	\end{tabular}
+
+	\subsection{Extrapolationsfehler}
+	
+	a(n) habe die Entwickling:
+	
+	$a(h) = a_0 + \sum_{j = 1}^{n}a_jh^{jq} + a_{n + 1}(h)h^{(n+1)q}$ \tab mit q > 0,
+	 Koeffizienten $a_j$ 
+	 
+	und $a_{n + 1}(h) = a_{n + 1} + a(1[?????])$
+	
+	$(h_k)_{k \in \mathbb{N}}$ erfülle:
+	
+	$0 \le \frac{h_{k + 1}}{h_k} \le p < 1$ ($\Rightarrow h_k$ positiv monoton fallend)
+	
+	Dann gilt für $p_1^{(k)} \in P_n$ (in $h^q$) durch ($h_k^q, a(h_k)$), ..., ($h_{k +n}^q, a(h_{k + 1})$)
+	
+	$a(0) - p_n^{(k)}(0) = O(h_k^{(n + 1)q})$ \tab ($k \rightarrow \infty$)
+	
+	\newpage
+	
+	\section{Spline-Interpolation}
+	
+	\subsection{Interpolationsnachteil}
+	
+	Starke Oszillation von Polynomen höheren Grades
+	
+	\subsection{Abhilfe}
+	
+	Spline-Interpolation, d.h. stückweise polynomielle Interpolation mit (n - 1)-mal stetig diff.baren Knoten
+	
+	\subsection{Lineare Spline}
+	
+	alle Abschnitt-Splines sind lineare Funktionen
+	
+	\subsection{Kubischer Spline}
+	
+	$s_n: [a, b] \rightarrow \mathbb{R}$ kubischer Spline bezüglich $a = x_0 < x_1 < ... < x_n = b$, wenn gillt
+	
+	1. $s_n \in C^2[a, b]$
+	
+	2. $S_n|_{I_i} \in P_3$, i = 1, ..., n
+	
+	natürlicher Spline:
+	
+	3. $s_n''(a) = s_n''(b) = 0$
+	
+	\subsection{Existenz}
+	
+	Der interpolierende kubische Spline existiert und ist eindeutig bestimmt durch zusammen Vorgabe von $s_n''(a), s_n''(b)$
+	
+	für natürlichen Spline $s_n$ durch $x_0, ..., x_n$, $y_0, ..., y_n$ gilt:
+	
+	\tab $\int_{a}^{b}|s'(x)|^2dx \le \int_{a}^{b}|g''(x)|^2dx$
+	
+	bezüglich g $\in C^2[a, b]$ mit g($x_i$) = $y_i$, i = 1, ..., n
+	
+	\subsection{Approximationsfehler}
+	
+	$f \in C^4[a, b]$, $s_1''(a) = f''(a) \wedge s_n''(b) - f''(b)$:
+	
+	$max_{x \in [a, b]}|f(x) - s:n(x)| \le \frac{1}{2}h^4 max_{x \in [a, b]}|f^{(4)}(x)$
+	
+	\newpage
+	
+	\section{Gauß-Approximation}
+	
+	$<f, g>:= \int_{a}^{b}f(t)\conj{g(t)}dt$ \tab $||f|| = \sqrt{<f, f>}$
+	
+	H Prähilbertraum, $\delta \subset H$ endlich Dimensional
+	
+	$\exists f \in H$ eindeutig bestimmte "beste Approximation" $g \in S$
+	
+	\tab $||f - g|| = min_{\varphi \in S}||f - \varphi||$
+	
+	bes. einfache Lösung, wenn \{$\varphi_1, ..., \varphi_n$\} eine ONB ist, d.h.
+	
+	$(\varphi_i, \varphi_j) = \delta_{i, j} \Rightarrow \alpha_i = <f, \varphi_i>$ \tab i = 1, ..., n
+	
+	\tab $\Rightarrow g = \sum_{i = 1}^{n}<f, \varphi_i>\varphi_i$ ist beste Approximation
+	
+	\newpage
+	
+	\section{Gram-Schmidt-Algorithmus}
+	
+	$w_1 := \frac{v_1}{||v_1||}$ \space $\tilde{w_k}:=v_k - \sum_{i = 1}^{k - 1}\gamma<v_k, w_i>w_i$, \space $w_k := \frac{\tilde{w_k}}{||\tilde{w_k}||}$
+	
+	\subsection{Code}
+	
+	n = size(v, 1)
+	
+	k = size(v, 2)
+	
+	u = np.zeros(n, k)
+	
+	u[:, 1] = v[:, 1]/sqrt(v[:, 1] * v[:, 1])
+	
+	for i in range(2, k):
+	
+	\tab u[:, i] = v[:, i]
+	
+	\tab for j in range(1, i - 1):
+	
+	\tab \tab u[:, i] = u[:, i] - (u[:, i] * u[:, j]) / (u[:, j] * u[:, j]) * u[:, j]
+	
+	\tab u[:, i] = u[:, i] / sqrt(u[:, i] * u[:, i])
+	
+	\newpage
+	
+	\section{Interpolatorische Quadraturformeln}
+	
+	
+	
 \end{document}
