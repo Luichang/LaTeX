@@ -13,10 +13,14 @@
 
 \usepackage{amssymb} % package for Natural Number sign etc
 
+\usepackage[makeroom]{cancel}
+
 %added commands:
 \newcommand*\conj[1]{\overline{#1}}
 \newcommand*\mean[1]{\bar{#1}}
 \newcommand*\tab[1][1cm]{\hspace*{#1}}
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}} % Diagonal slash fraction
+
 
 \begin{document}
 	\tableofcontents % creats a table of contents, ensured already that it is clickable
@@ -32,21 +36,30 @@
 	Dreiecksungleichung: $||x + y|| \le ||x|| + ||y||$
 	
 	\subsection{Skalarprodukt}
-	<x + y, z> = <x, z> + <y, z>
 	
-	<x, y + z> = <x, y> + <x, z>
+	\[
+		\left.
+			\begin{array}{l}
+				<x + y, z> = <x, z> + <y, z> \\
+				<x, y + z> = <x, y> + <x, z> \\
+				<\lambda x, y> = \lambda <x, y> \\
+				<x, \lambda y> = \lambda <x, y>
+			\end{array}
+		\right \} \textnormal{Linearität}
+	\]
 	
-	TODO: Klammer
+	\begin{math}
+		<x, y> = <y, x>
+	\end{math}
 	
-	$<\lambda x, y>$ = $\lambda$ <x, y>
-	
-	$<x, \lambda y>$ = $\lambda$ <x, y>
-	
-	<x, y> = <y, x>
-	
-	<x, x> $\ge$ 0
-	
-	<x, x> = 0 $\Rightarrow$ x = 0
+	\[
+		\left.
+			\begin{array}{l}
+				<x, x> \ge 0 \\
+				<x, x> = 0 \Rightarrow x = 0
+			\end{array}
+		\right \} positiv Definitheit
+	\]
 	
 	
 	\subsubsection{Vom Skalarprodukt induzierte Norm}
@@ -58,7 +71,26 @@
 	\newpage
 	
 	\section{Symmetrische, positiv definite Matrix}
-	TODO: Matrizen
+	
+	\begin{equation*}
+		\begin{pmatrix}
+			a & b \\
+			b & c 
+		\end{pmatrix}
+		\begin{pmatrix}
+			a & b & c \\
+			b & d & e \\
+			c & e & f
+		\end{pmatrix}
+		\begin{pmatrix}
+			a & b & c & d \\
+			b & e & f & g \\
+			c & f & h & i \\
+			d & g & i & j
+		\end{pmatrix}
+	\end{equation*}
+	Symmetrische Matrix
+	
 	
 	insbesonders: Diagonalmatrizen, Einheitsmatrizen
 	
@@ -68,7 +100,22 @@
 	
 	alle Haupt[TODO: ?] > 0 (symetrische Matrix)
 	
-	TODO: Matrix 	$\Rightarrow$ 3 Hauptminoren[?] = det(a), det(TODO: Matrix), det(TODO: Matrix)
+	$\begin{pmatrix}
+		a & b & c \\
+		b & d & e \\
+		c & e & f
+	\end{pmatrix}$
+ 	$\Rightarrow$ 3 Hauptminoren[?] = det(a), det
+ 	$\begin{pmatrix}
+	 	a & b \\
+	 	b & d 
+ 	\end{pmatrix}$
+ 	, det
+ 	$\begin{pmatrix}
+ 	a & b & c \\
+ 	b & d & e \\
+ 	c & e & f
+ 	\end{pmatrix}$
 	
 	\subsection{Cholesky-Zerlegung}
 	$A = GG^t$ G unter der Matrix, invertierbar (symmetrische Matrix)
@@ -88,9 +135,16 @@
 	
 	\subsection{Natürliche Matrixnorm}
 	
-	$||A||_\infty := max_{x \ne 0} \frac{||Ax||_\infty}{||x||_\infty} = max_{||x|| = 1}||Ax||_\infty$
+	$||A||_\infty := \max\limits_{x \ne 0} \frac{||Ax||_\infty}{||x||_\infty} = \max\limits_{||x|| = 1}||Ax||_\infty$
 	
-	$||A|| = 0 \Rightarrow A = 0, ||\lambda A|| = |\lambda|*||A||, ||A+B|| \le ||A|| + ||B||, ||A*B|| \le ||A|| * ||B||$
+	$||A|| = 0 \Rightarrow A = 0 $
+	
+	$||\lambda A|| = |\lambda|*||A|| $
+	
+	$||A+B|| \le ||A|| + ||B||$
+	
+	$||A*B|| \le ||A|| * ||B||$
+
 	
 	\subsection{Verträglichkeit}
 	$||Ax|| \le ||A|| * ||x||$
@@ -98,17 +152,37 @@
 	\subsection{Zeilensummennorm}
 	= natürliche Matrixnorm
 	
-	$||A||_\infty = max_{||x||_\infty = 1} ||Ax||_\infty = max_{i = 1, ..., m} \sum_{j = 1}^{n} |a_{ij}|$
+	$||A||_\infty = \max\limits_{||x||_\infty = 1} ||Ax||_\infty = \max\limits_{i = 1, ..., m} \sum\limits_{j = 1}^{n} |a_{ij}|$
 	
-	$A = TODO: Matrix  ||A||_\infty \\
-	= max{|1| + |-2| + |-3|, |2| + |3| + |-1|} \\
-	= max{6, 6} = 6$
+	A = 
+	$\begin{pmatrix}
+		1 & -2 & -3 \\
+		2 & 3 & -1
+	\end{pmatrix}$
+	
+	\begin{equation*}
+		\begin{split}		
+			||A||_\infty & = max\{|1| + |-2| + |-3|, |2| + |3| + |-1|\} \\
+			& = max\{6, 6\} = 6
+		\end{split}
+	\end{equation*}
 	
 	\subsection{Spaltensummennorm}
 	
-	$||A||_1 := max_{x \ne 0} \frac{||Ax||_1}{||x||_1} = max_{||x||_1 = 1} ||Ax||_1 = max_{j = 1, ..., n} \sum_{i = 1}^{m}|a_{ij}|$
+	$||A||_1 := \max\limits_{x \ne 0} \frac{||Ax||_1}{||x||_1} = \max\limits_{||x||_1 = 1} ||Ax||_1 = \max\limits_{j = 1, ..., n} \sum\limits_{i = 1}^{m}|a_{ij}|$
 	
-	A = TODO: Matrix  $||A||_1$ = max{|1| + |2|, |-2| + |3|, |-3| + |-1|} = max{3, 5, 4} = 5
+	A = 
+	$\begin{pmatrix}
+		1 & -2 & -3 \\
+		2 & 3 & -1
+	\end{pmatrix}$
+	
+	\begin{equation*}
+		\begin{split}		
+			||A||_1 & = \max\{|1| + |2|, |-2| + |3|, |-3| + |-1|\}  \\
+			& = \max\{3, 5, 4\} = 5
+		\end{split}
+	\end{equation*}
 	
 	$||A^t||_1 = ||A||_\infty$
 	
@@ -116,13 +190,31 @@
 	
 	Die Spektralnorm wird definiert als
 	
-	$A||_2 := max_{||x||_2 = 1} ||Ax||_2 //
-	= max_{x \ne 0} \frac{||Ax||_2}{||x||_2} //
-	= max_{||x||_2 = 1} <Ax, Ax> //
-	= max_{||x||_2 = 1} <A^tAx, x> //
-	= max{\sqrt{|\lambda |}, \lambda * EW von A^tA}$
+	\begin{equation*}
+		\begin{split}
+			A||_2 &:= \max\limits_{||x||_2 = 1} ||Ax||_2 \\
+			&= \max\limits_{x \ne 0} \frac{||Ax||_2}{||x||_2} \\
+			&= \max\limits_{||x||_2 = 1} <Ax, Ax> \\
+			&= \max\limits_{||x||_2 = 1} <A^tAx, x> \\
+			&= max{\sqrt{|\lambda |}, \lambda * EW von A^tA}
+		\end{split}
+	\end{equation*}
 	
-	$A = TODO: Matrix  , A^tA = TODO: Matrix    det(\mu E_n - A^tA) = 0 \Leftrightarrow \mu_{1, 2} = {16, 1}$
+	A = 
+	\begin{equation*}
+		\begin{pmatrix}
+			3 & 2 \\
+			-2 & 0 
+		\end{pmatrix}
+	\end{equation*}
+	, $A^tA$ = 
+	\begin{equation*}
+		\begin{pmatrix}
+			13 & 6 \\
+			6 & 4 
+		\end{pmatrix}
+	\end{equation*}
+	det($\mu E_n - A^tA$) = 0 $\Leftrightarrow \mu_{1, 2}$ = {16, 1}
 	
 	$||A||_2 = \sqrt{max(\mu_1, \mu_2)} = \sqrt{\mu_1} = \sqrt{16} = 4$
 	
@@ -222,23 +314,23 @@
 	
 	f$ \in C^{n+1}$[a, b], $\forall$ x $\in$ [a, b] $\exists \xi_x \in$ ($\overline{x_0, ..., x_n, x}$), wobei das Intervall das kleinst mögliche Intervall, das alle $x_i$ enthällt, s.d.
 	
-	$f(x) - p(x) = \frac{f^{(n+1)}(\xi x)}{(n+1)!} \prod_{j = 0}^{n}(x - x_j)$
+	$f(x) - p(x) = \frac{f^{(n+1)}(\xi x)}{(n+1)!} \prod\limits_{j = 0}^{n}(x - x_j)$
 	
 	\subsection{Fehler II}
 	
 	$f \in C^{n + 1}[a, b], \forall x \in [a, b]$ \textbackslash ${x_0, ..., x_n} gilt:$
 	
-	$f(x) - p(x) = f[x_0, ..., x_n, x] \prod_{j = 0}^{n}(x - x_j)$
+	$f(x) - p(x) = f[x_0, ..., x_n, x] \prod\limits_{j = 0}^{n}(x - x_j)$
 	
 	mit $f[x_i, ..., x_{i + k}] = y[x_i, ..., x_{i + k}]$
 	
-	und $f[x_0, ..., x_n, x] = \int_{0}^{1}\int_{0}^{t_1}...\int_{0}^{t_n}f^{n+1}(x_0 + t_1(x_1 - x_0) + ... + t_n(x_n-x_{n - 1} + t(x - x_n))dtdt_n...dt_1$ 
+	und $f[x_0, ..., x_n, x] = \int\limits_{0}^{1}\int\limits_{0}^{t_1}...\int\limits_{0}^{t_n}f^{n+1}(x_0 + t_1(x_1 - x_0) + ... + t_n(x_n-x_{n - 1} + t(x - x_n))dtdt_n...dt_1$ 
 	
 	für $x_0 = x_1 = ... = x_n: $
 	
 	$f[x_0, ..., x_n] = \frac{1}{n!}f^{(n)}(x_0)$
 	
-	$\frac{f^{(n + 1)}(\xi_x)}{(n + 1)!} \prod_{j = 0}^{n} (x-x_j) = f(x) - p(x) = f[x_0, ..., x_n, x] \prod_{j = 0}^{n}(x - x_j)$
+	$\frac{f^{(n + 1)}(\xi_x)}{(n + 1)!} \prod\limits_{j = 0}^{n} (x-x_j) = f(x) - p(x) = f[x_0, ..., x_n, x] \prod\limits_{j = 0}^{n}(x - x_j)$
 	
 	$\Rightarrow f[x_0, ..., x_n, x] = \frac{f^{(n + 1)}(\xi_x)}{(n + 1)!}$
 	
@@ -258,7 +350,7 @@
 	
 	$k_{ij}(x) = \frac{\partial f_i}{\partial x_i}(x) \frac{\Delta x_j}{x_j}$
 	
-	$\frac{\Delta y_i}{y_i} = \sum_{j = 1}^{m}k_{ij}(x)\frac{\Delta x_j}{x_j}$
+	$\frac{\Delta y_i}{y_i} = \sum\limits_{j = 1}^{m}k_{ij}(x)\frac{\Delta x_j}{x_j}$
 	
 	$|k_{ij}(x)| >> 1 \Rightarrow$ schlecht konditioniert
 	
@@ -335,9 +427,9 @@
 	
 	rationale Funktion: $r(x) = \frac{a_0 + a_1x + ... + a_nx^n}{b_0 + b_1x + ... + b_mx^m}$
 	
-	trigonometrische Funktion: $t(x) = \frac{1}{2}a_0 + \sum_{k = 1}^{n}(a_kcos(kx) + b_ksin(kx))$
+	trigonometrische Funktion: $t(x) = \frac{1}{2}a_0 + \sum\limits_{k = 1}^{n}(a_kcos(kx) + b_ksin(kx))$
 	
-	Exponentialsummen: $e(x) = \sum_{k = 1}^{n}a_kexp(b_kx)$
+	Exponentialsummen: $e(x) = \sum\limits_{k = 1}^{n}a_kexp(b_kx)$
 	
 	\subsection{Interpolation}
 	
@@ -349,9 +441,9 @@
 	
 	$g \in P$ beste Darstellung, z.B. 
 	
-	$max_{a \le x \le b}|f(x) - g(x)| minimal$
+	$\max\limits_{a \le x \le b}|f(x) - g(x)| minimal$
 	
-	$(\int_{a}^{b}|f(x) - g(x)|^2dx)^{\frac{1}{2}} minimal$
+	$(\int\limits_{a}^{b}|f(x) - g(x)|^2dx)^{\frac{1}{2}} minimal$
 	
 	\newpage
 	
@@ -369,11 +461,19 @@
 	
 	\subsection{Lagransche Basispolynome}
 	
-	$L_i^{(n)}(x) = \prod_{j = 0, j \ne i}^{n} \frac{x - x_j}{x_i - x_j} \in P_n, i = 0, ..., n$
+	$L_i^{(n)}(x) = \prod\limits_{j = 0, j \ne i}^{n} \frac{x - x_j}{x_i - x_j} \in P_n, i = 0, ..., n$
 	
 	\subsection{Eigenschaften}
 	
-	ortogonal: es gilt $L_i^{(n)}(x_k) = d_{ik} =$ TODO: split over 2 lines    1, i = k 0, sonst
+	ortogonal: es gilt $L_i^{(n)}(x_k) = d_{ik} =$ 
+	\[
+		\left\{
+			\begin{array}{ll}
+				1 & i = k \\
+				0 & sonst
+			\end{array}
+		\right.
+	\]
 	
 	bilden Basis von $P_n$
 	
@@ -381,7 +481,7 @@
 	
 	\subsection{Lagransche Darstellung}
 	
-	$p(x) = \sum_{i = 0}^{n}y_iL_i^{(n)}(x) \in P_n$ mit $p(x_j) = y_j$
+	$p(x) = \sum\limits_{i = 0}^{n}y_iL_i^{(n)}(x) \in P_n$ mit $p(x_j) = y_j$
 	
 	Nachteil: Bei Hinzunahme von $(x_{n+1}, y_{n+1})$ ändert sich das Basispolynom komplett
 	
@@ -394,7 +494,7 @@
 	
 	\subsection{Newton-Polynome}
 	
-	$N_0(x) = 1, N_i(x) = \prod_{j = 0}^{i - 1}(x - x_j)$ mit $p(x) = \sum_{i = 0}^{n}a_iN_i(x)$
+	$N_0(x) = 1, N_i(x) = \prod\limits_{j = 0}^{i - 1}(x - x_j)$ mit $p(x) = \sum\limits_{i = 0}^{n}a_iN_i(x)$
 	
 	\subsubsection{Auswertung}
 	
@@ -414,7 +514,7 @@
 	
 	\subsection[Newtonsche Darstellung]{Newtonsche Darstellung(stabile Variante)}
 	
-	$p(x) = \sum_{i = 0}^{n}y[x_0, ..., x_i] N_i(x)$
+	$p(x) = \sum\limits_{i = 0}^{n}y[x_0, ..., x_i] N_i(x)$
 	
 	\subsection{Dividierte Differenzen*}
 	
@@ -478,7 +578,7 @@
 	
 	\tab \space $y_i^{(k)}$ \tab i = 0, ..., m \tab k = 0, ..., $\mu_i (\mu_i \ge 0)$
 	
-	Gesucht: $p \in P_n$, n = m + $\sum_{i = 0}^{m}\mu_i$ : $p^{(k)}(x_i) = y_i^{(k)}$
+	Gesucht: $p \in P_n$, n = m + $\sum\limits_{i = 0}^{m}\mu_i$ : $p^{(k)}(x_i) = y_i^{(k)}$
 	
 	$x_i$ sind ($\mu_i$ + 1)-fache Stützstellen
 	
@@ -498,8 +598,8 @@
 	
 	$f \in C^{n + 1}[a, b]: \forall x \in [a, b] \exists \xi_x \in (\overline{x_0, ..., x_m, x})$, s.d.
 	
-	$f(x) - p(x) = f[x_0, ..., x_0, ..., x_m, ..., x_m, x]\prod_{i = 0}^{m}(x - x_i)^{\mu_i + 1} \\
-	 = \frac{1}{(n + 1)!}f^{(n + 1)}(\xi_x)\prod_{i = 0}^{m}(x - x_i)^{\mu_i + 1}$
+	$f(x) - p(x) = f[x_0, ..., x_0, ..., x_m, ..., x_m, x]\prod\limits_{i = 0}^{m}(x - x_i)^{\mu_i + 1} \\
+	 = \frac{1}{(n + 1)!}f^{(n + 1)}(\xi_x)\prod\limits_{i = 0}^{m}(x - x_i)^{\mu_i + 1}$
 	
 	\newpage
 	
@@ -509,11 +609,11 @@
 	
 	nicht direkt berechenbare Größe
 	
-	$a(0) = lim_{k\rightarrow 0}a(k)$, \tab $k \in \mathbb{R}_+$
+	$a(0) = \lim\limits_{k\rightarrow 0}a(k)$, \tab $k \in \mathbb{R}_+$
 	
 	berechne a($k_i$) für gewisse $k_i$, i = 0, ..., n und [?] $p_n(0)$ des Interpolations Polynoms zu $(h_i, a(h_i))$ als Schätzung für a(0)
 	
-	a(0) := $lim_{x\rightarrow 0^+}\frac{cos(x) - 1}{sin(x)}$ \tab (= 0)
+	a(0) := $\lim\limits_{x\rightarrow 0^+} \frac{cos(x) - 1}{sin(x)}$ \tab (= 0)
 	
 	a(x) := $\frac{(cos(x) - 1)}{sin(x)}$
 	
@@ -546,7 +646,7 @@
 	
 	a(n) habe die Entwickling:
 	
-	$a(h) = a_0 + \sum_{j = 1}^{n}a_jh^{jq} + a_{n + 1}(h)h^{(n+1)q}$ \tab mit q > 0,
+	$a(h) = a_0 + \sum\limits_{j = 1}^{n}a_jh^{jq} + a_{n + 1}(h)h^{(n+1)q}$ \tab mit q > 0,
 	 Koeffizienten $a_j$ 
 	 
 	und $a_{n + 1}(h) = a_{n + 1} + a(1[?????])$
@@ -593,7 +693,7 @@
 	
 	für natürlichen Spline $s_n$ durch $x_0, ..., x_n$, $y_0, ..., y_n$ gilt:
 	
-	\tab $\int_{a}^{b}|s'(x)|^2dx \le \int_{a}^{b}|g''(x)|^2dx$
+	\tab $\int\limits_{a}^{b}|s'(x)|^2dx \le \int\limits_{a}^{b}|g''(x)|^2dx$
 	
 	bezüglich g $\in C^2[a, b]$ mit g($x_i$) = $y_i$, i = 1, ..., n
 	
@@ -601,13 +701,13 @@
 	
 	$f \in C^4[a, b]$, $s_1''(a) = f''(a) \wedge s_n''(b) - f''(b)$:
 	
-	$max_{x \in [a, b]}|f(x) - s:n(x)| \le \frac{1}{2}h^4 max_{x \in [a, b]}|f^{(4)}(x)$
+	$\max\limits_{x \in [a, b]}|f(x) - s:n(x)| \le \frac{1}{2}h^4 \max\limits_{x \in [a, b]}|f^{(4)}(x)$
 	
 	\newpage
 	
 	\section{Gauß-Approximation}
 	
-	$<f, g>:= \int_{a}^{b}f(t)\conj{g(t)}dt$ \tab $||f|| = \sqrt{<f, f>}$
+	$<f, g>:= \int\limits_{a}^{b}f(t)\conj{g(t)}dt$ \tab $||f|| = \sqrt{<f, f>}$
 	
 	H Prähilbertraum, $\delta \subset H$ endlich Dimensional
 	
@@ -619,13 +719,13 @@
 	
 	$(\varphi_i, \varphi_j) = \delta_{i, j} \Rightarrow \alpha_i = <f, \varphi_i>$ \tab i = 1, ..., n
 	
-	\tab $\Rightarrow g = \sum_{i = 1}^{n}<f, \varphi_i>\varphi_i$ ist beste Approximation
+	\tab $\Rightarrow g = \sum\limits_{i = 1}^{n}<f, \varphi_i>\varphi_i$ ist beste Approximation
 	
 	\newpage
 	
 	\section{Gram-Schmidt-Algorithmus}
 	
-	$w_1 := \frac{v_1}{||v_1||}$ \space $\tilde{w_k}:=v_k - \sum_{i = 1}^{k - 1}\gamma<v_k, w_i>w_i$, \space $w_k := \frac{\tilde{w_k}}{||\tilde{w_k}||}$
+	$w_1 := \frac{v_1}{||v_1||}$ \space $\tilde{w_k}:=v_k - \sum\limits_{i = 1}^{k - 1}\gamma<v_k, w_i>w_i$, \space $w_k := \frac{\tilde{w_k}}{||\tilde{w_k}||}$
 	
 	\subsection{Code}
 	
@@ -651,6 +751,386 @@
 	
 	\section{Interpolatorische Quadraturformeln}
 	
+	$I(f) = \int\limits_{a}^{b}f(x)dx \approx I^{(n)}(f) = \sum\limits_{i = 1}^{n}\alpha_if(x_i)$
 	
+	Stützstellen a $\le a_0 < x_1 < ... < x_n \le b$ und Gewichte $\alpha_i \in \mathbb{R}$
+	
+	\subsection{Interpolatorische Quadratur Formel}
+	
+	$I^{(n)}(f) = \int\limits_{a}^{b}p_n(x)dx = \sum\limits_{i = 0}^nf(x_i)\int\limits_a^bL_i^{(n)}(x)dx$\footnote{$\alpha_i$}
+	
+	Lagrange:
+	
+	$I(f) - I^{(n)}(f) = \int\limits_a^bf[x_0, ..., x_n, x] \prod\limits_{i = 0}^n(x - x_i)dx$
+	
+	$\int\limits_a^bf(x)dx \approx \int\limits_a^bp_0(x)dx = (b - a) * \sum\limits_{i = 0}^nw_if(x_i)$
+	
+	$w_i = \frac{1}{(b - a)} \int\limits_a^bL_i(x)dx$
+	
+	\subsection{Ordnung}
+	
+	$I^{(n)}von der Ordnung m \Leftrightarrow \forall p \in P_{m - 1}$
+	
+	$\int\limits_a^bp(x)dx = I^{(n)}(p)$ \tab exakt
+	
+	$\Rightarrow$ Interpolatorische Quadraturformel zu (n + 1)-Stützstellen sind mindestens von der Ordnung n + 1
+	
+	$\Rightarrow$ höchstens Ordnung 2n + 2, mindestens n + 1
+	
+	\subsection{Newton-Cotes-Formel*}
+	
+	äquidistante Stützstellen
+	
+	\subsection{Abgeschlossene Formeln}
+	
+	$H = \frac{b - a}{n}, x_i = a + iH, a = x_0, b = x_n$
+	
+	Trapezregel: $I^{(1)}(f) = \frac{b - a}{2}[f(a) + f(b)]$
+	
+	Simpsonregel: $I^{(2)}(f) = \frac{b - a}{6}[f(a) + 4f(\frac{a + b}{2}) + f(b)]$
+	
+	$\rfrac{3}{8}-Regel: I^{(3)}(f) = \frac{b - a}{8}[f(a) + 3f(a + H) + 3f(b - h) + f(b)]$
+	
+	\subsection{Offene Formeln}
+	
+	($H = \frac{b - a}{n + 2}, x_i = a + (i + 1)H, a < x_0, x_n < b$)
+	
+	$I^{(0)}(f) = (b - a)f(\frac{a + b}{2})$ \tab Mittelpunktregel
+	
+	$I^{(1)}(f) = \frac{(b - a)}{2}(f(a + H) + f(b - H))$
+	
+	$I^{(2)}(f) = \frac{(b-  a)}{3}(2f(a + H) - f(\frac{a + b}{2}) + 2f(b - H))$
+	
+	\subsection{Code}
+	
+	\subsection{Problem}
+	
+	negative Gewichte $\alpha_i \Rightarrow$ Auslöschungsgefah
+	
+	Oszilationen des Lagrange Interpolanten (Runge-Phänomen) 
+	
+	$\Rightarrow I^{(n)}(f)\cancel{\xrightarrow{n \rightarrow\infty}}I(f) $
+	
+	\subsection{Abhilfe: Summierte Quadraturformeln *}
+	
+	$I-n^{(n)}(f) = \sum\limits_{i = 1}^{N - 1}I_{[x_i, x_i + 1]}^{(n)}(f)$ \tab $h = \frac{b - a}{N}, x_i = a + iH$
+	
+	\subsubsection{Fehlerdarstellung}
+	
+	$I_{[x_i, x_{i + 1}]}(f) - I_{[x_i, x_{i + 1}]}^{(n)}(f) = w_nh^{n + 2}f^{(m + 1)}(\xi_i)$, \tab $\xi_i \in [a, b]$
+	
+	$m \ge n: I(f) - I_n^{(n)}(f) = w_nh^{(m + 1)}(b - a)f^{(m + 1)}(\xi)$
+	
+	\newpage
+	
+	\section{Gaußsche Quadraturformeln *}
+	
+	\subsection{Gewichtetes Skalarprodukt}
+	
+	$<f, g>_\omega = \int\limits_a^bf(x)g(x)\omega(x)dx$, \tab $\omega(x)\ge 0, x \in (a, b)$
+	
+	\subsection{Gauß-Quadratur}
+	
+	head
+	
+	$\exists!$ interpolierte Quadraturformel [?] (n + 1) paarweise verschiedene Stützstellen auf [-1, b] mit Ordnung 2n + 2. Stützstellen = Nullstellen
+	
+	$\alpha_i = \int\limits_{-1}^1\prod\limits_{j = 0, j \ne i}(\frac{x - \lambda_j}{\lambda_i - \lambda_j})^2 dx > 0$\footnote{Positivität der Gewichte}, \tab i = 0, ..., n
+	
+	$f\in C^{2n + 2}([-1, 1]) Restglied:$
+		
+	$R^{(n)} = \frac{f^{(2n + 2)}(\xi)}{(2n + 2)!}\int\limits_{-1}^1\prod\limits_{j = 0}^n(x - \lambda_j)^2dx$, \tab $\xi \in (-1 , 1)$
+		
+	\subsection{Wahl der Stützstellen}
+	
+	Nullstellen $\lambda_0, ..., \lambda_n \in(-1, 1)$ des (n + 1)-sten Legendre-Polynomes $L_{n + 1} \in P_{n + 1}$
+	
+	
+	\subsection{Kongergenz der Gauß-Quadraturen}
+	
+	Sei $I^{(n)}(f)$ die (n + 1) punktige [?] Gauß-Formel zu $I(f) = \int\limits_{-1}^1f(x)dx \forall f \in C[-1, 1]: I^{(n)}(f) \xrightarrow{n \rightarrow \infty} I(f)$
+	
+	\subsection{Code}
+	
+	\newpage
+	
+	\section{Störungssattz...}
+	
+	\subsection{Störungssatz}
+	
+	$A \in \mathbb{K}^{n x n}$ regulär mit $||\delta A|| \le \frac{1}{||A^{-1}||}$, dann gilt für die
+	
+	\subsection{gestörte Matrix}
+	
+	$\tilde{A} = A + \delta A$ ist regulär
+	
+	Für den relativen Fehler der Lösung gilt mit Konditionszahl von A:
+	
+	\tab $cond(A) = ||A|| * ||A^{-1}||$
+	
+	die Ungleichung:
+	
+	\tab $\frac{||\delta_x||}{||x||} \le \frac{cond(A)}{1 - cond(A) \frac{||\delta A||}{||A||}}\left[ \frac{||\delta b||}{||b||} + \frac{||\delta A||}{||A||}\right] $
+	
+	\newpage
+	
+	\section{Lösung von Dreieckssystemen+Aufwand*}
+	
+	\subsection{Rückwärtseinsetzen}
+	
+	\[
+		x_j=\left\{
+			\begin{array}{ll}
+				\frac{b_n}{a_{nn}} & j = n\\
+				\frac{1}{a_{jj}}(b_j - \sum\limits_{k= j + 1}^na_{jk}x_k) & j = n - 1, ..., 1
+			\end{array}
+		\right.
+	\]
+	
+	\subsection{Vorwärtseinsetzen}
+	
+	\[
+		x_j=\left\{
+			\begin{array}{ll}
+				\frac{b_n}{a_{nn}} & j = n\\
+				\frac{1}{a_{jj}}(b_j - \sum\limits_{k= j + 1}^na_{jk}x_k) & j = 1, ..., n - 1
+			\end{array}
+		\right.
+	\]
+	
+	\subsection{Aufwend}
+	
+	$\sum\limits_{j = 1}^nj = \frac{(n + 1)n}{2} = \frac{n^2}{2} + O(n)$
+	
+	\newpage
+	
+	\section{Gaußsches Eliminationsverfahren...}
+	
+	\subsection{Gauß-Elimination}
+	
+	Umformen von Ax = b auf Rx = c, R ist eine rechte obere Dreieck Matrix
+	
+	\subsection{Spaltenpivotisierung}
+	
+	$|a_{r_{k, k}}^{(k - 1)}| = \max\limits_{j = k, ..., n}|a_{jk}^{(k - 1)}|$
+	
+	\subsection{LR - Zerlegung}
+	
+	Ax = b
+	
+	$\begin{pmatrix}
+		2 & 1 & 7 \\
+		8 & 8 & 33 \\
+		-4 & 10 & 4
+	\end{pmatrix}$
+	x =
+	$\begin{pmatrix}
+		15 \\
+		73 \\
+		12
+	\end{pmatrix}$
+	$\bordermatrix{ ~ & & & \cr
+		 & 8 & 8 & 33 \cr
+		(-4) * & 2 & 1 & 7 \cr
+		2 * & -4 & 10 & 4
+	}$
+	$P_1 = \begin{pmatrix}
+		0 & 1 & 0 \\
+		1 & 0 & 0 \\
+		0 & 0 & 1
+	\end{pmatrix}$
+	
+	Eliminierung
+	
+	$\begin{pmatrix}
+		8 & 8 & 33 \\
+		2 & 1 & 7 \\
+		-4 & 10 & 4
+	\end{pmatrix}
+	L_1 = \begin{pmatrix}
+		1 & 0 & 0 \\
+		\frac{1}{4} & 1 & 0 \\
+		-\frac{1}{2} & 0 & 1
+	\end{pmatrix}
+	\rightsquigarrow
+	\begin{pmatrix}
+		8 & 8 & 33 \\
+		0 & 4 & 5 \\
+		0 & 28 & 41
+	\end{pmatrix}
+	P_2 = \begin{pmatrix}
+		1 & 0 & 0 \\
+		0 & 0 & 1 \\
+		0 & 1 & 0
+	\end{pmatrix}$
+	
+	$\bordermatrix{ ~ & & & \cr
+		& 8 & 8 & 33 \cr
+		& 0 & 28 & 41 \cr
+		(-7) * & 0 & 4 & 5
+	}
+	L_2 = \begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & \frac{1}{7} & 1
+	\end{pmatrix}
+	\rightsquigarrow
+	\begin{pmatrix}
+		8 & 8 & 33 \\
+		0 & 28 & 41 \\
+		0 & 0 & 6
+	\end{pmatrix}
+	 = R$
+	
+	$PA = LR \Rightarrow L_2L_1 P_2P_1 A = F \Rightarrow P_2P_1A = L_1^{-1}L_2^{-1}R, P_2P_1 = P$
+	
+	$\begin{pmatrix}
+		1 & 0 & 0 \\
+		0 & 0 & 1 \\
+		0 & 1 & 0
+	\end{pmatrix}
+	\begin{pmatrix}
+		0 & 1 & 0 \\
+		1 & 0 & 0 \\
+		0 & 0 & 1
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		0 & 0 & 1 \\
+		1 & 0 & 0 \\
+		0 & 1 & 0
+	\end{pmatrix}$
+	
+	$L_2L_1 = (\ddots), (L_2L_1)^{-1} = L = ([linke untere dreiecks matrix])$
+	
+	$Ax = b \Rightarrow LRx = Pb, Pb = \tilde{b}$
+	
+	$\Rightarrow Ly = \tilde{b}, Rx = y$
+	
+	A regulär + diagonaldominant $\Rightarrow$ A = LR kann ohne Pivot bezeichnet werden
+	
+	\subsection{Code}
+	
+	\newpage
+	
+	\section{Symmetrisch positiv definite Systeme}
+	
+	\subsection{Cholesky-Zerlegung}
+	
+	Jede symmetrische positiv definite Matrix A hat eine sogenannte Cholesky - Zerlegung:
+	
+	$A = LDL^t = \tilde{L}\tilde{L}^t$, $\tilde{L} := LD^{\frac{1}{2}}$
+	
+	$\begin{pmatrix}
+		\tilde{l}_{1,1} & \dots & 0 \\
+		\vdots & \ddots & \vdots \\
+		\tilde{l}_{n,1} & \dots & \tilde{l}_{n,n}
+	\end{pmatrix}$
+	$\begin{pmatrix}
+		\tilde{l}_{1,1} & \dots & \tilde{l}_{n,1} \\
+		\vdots & \ddots & \vdots \\
+		0 & \dots & \tilde{l}_{n,n}
+	\end{pmatrix}$
+	=
+	$\begin{pmatrix}
+		a_{1,1} & \dots & a_{1, n} \\
+		\vdots & \ddots & \vdots \\
+		a_{n, 1} & \dots & a_{n, n}
+	\end{pmatrix}$
+	
+	$i \ge j: a_{i, j} = \sum\limits_{k = 1}^j\tilde{l}_{i, k}\tilde{l}_{j, k} = \sum\limits_{k = 1}^{j - 1}\tilde{l}_{i, k}\tilde{j, k} + \tilde{l}_{i, j}\tilde{l}_{j, j}$
+	
+	i = 1, ..., n \tab $\tilde{l}_{i, i} = \sqrt{a_{i, i} - \sum\limits_{k = 1}^{i - 1}\tilde{l}_{i, k}^2}$
+	
+	j = i + 1, ..., n \tab $ \tilde{l}_{i, j} = \frac{1}{\tilde{l}_{i, i}}(a_{i, j} - \sum\limits_{k = 1}^{i - 1}\tilde{l}_{i, k}\tilde{l}_{j, k})$
+	
+	Dandmatrizen: Nullen nicht speichern/berechnen Diagonal-Dominante: keine Pivotisierung notwendig symmetrisch positiv definite: keine Pivotisierung notwending
+	
+	\subsection{Aufwand}
+	
+	$N_{Cholesky}(n) = \frac{n^3}{6} + O(n^2)$ \tab (billiger als A = LR)
+	
+	\subsection{Code}
+	
+	\newpage
+	
+	\section{Least-Squares-Lösungen, Normalgleichung}
+	
+	$A \in \mathbb{R}^{m \times n} Ax = b$
+	
+	keine Lösung, $b \notin im(A)$
+	
+	unendlich viele Lösungen $\bar{x} + \delta x \Leftrightarrow A\bar{x}= b$, $\delta x \in ker(A) \ne \{0\}$
+	
+	\subsection{Least-Squares-Lösung}
+	
+	Es existiert immer eine "Lösung" $\bar{x} \in \mathbb{R}^n$ mit kleinsten Fehlerquadraten
+	
+	\subsection{Eindeutigkeit}
+	
+	R(A) = n $\Leftrightarrow \bar{x}$ eindeutig, jede weitere Lösung: $\bar{x} + y, y \in ker(A)$
+	
+	Gerade: b = C + Dt 
+	$\begin{pmatrix}
+		x_1 \\
+		y_1
+	\end{pmatrix}
+	\begin{pmatrix}
+	x_2 \\
+	y_2
+	\end{pmatrix}
+	\begin{pmatrix}
+	x_3 \\
+	y_3
+	\end{pmatrix}$
+	
+	$\begin{matrix}
+		\Rightarrow & C + x_1D = y_1 \\
+		& C + x_2D = y_2 \\
+		& C + x_3D = y_3 
+	\end{matrix}$
+	
+	$\Rightarrow A = \begin{bmatrix}
+		1 & x_1 \\
+		1 & x_2 \\
+		1 & x_3 
+	\end{bmatrix}
+	x = 
+	\begin{bmatrix}
+		C \\
+		D
+	\end{bmatrix}
+	b = 
+	\begin{bmatrix}
+		y_1 \\
+		y_2 \\
+		y_3
+	\end{bmatrix}$
+	
+	1. C = $A^tA$ = [ ], b' = $A^tb$ = [ ]
+	
+	2. Cholesky Zerlegung: $G^tG$ = C $\Rightarrow$ G = [ ]
+	
+	3. $G^ty = b' \Rightarrow y = [ ], Gx = y \Rightarrow x = \begin{bmatrix}
+		a_1 \\
+		a_2
+	\end{bmatrix}$
+	
+	$\Rightarrow Gerade: b = a_1 + a_2t$
+	
+	Alternativ: $Q^tA = R = \begin{bmatrix}
+		a_1 \\
+		a_2
+	\end{bmatrix}
+	, Gx = y \Rightarrow x = \begin{bmatrix}
+	a_1 \\
+	a_2
+	\end{bmatrix}$
+	
+	$R_1x = \tilde{b}_1 \Rightarrow D = a_1, C = A_2$
+	
+	\newpage
+	
+	\section{QR-Zerlegung}
 	
 \end{document}
