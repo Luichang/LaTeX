@@ -96,9 +96,9 @@
 	
 	positiv definit: $x^t Ax > 0$ (beliebige Matrix)
 	
-	alle EW > 0 (symmetrische Matrix)
+	alle EW $>$ 0 (symmetrische Matrix)
 	
-	alle Haupt[TODO: ?] > 0 (symetrische Matrix)
+	alle Haupt[TODO: ?] $>$ 0 (symetrische Matrix)
 	
 	$\begin{pmatrix}
 		a & b & c \\
@@ -127,7 +127,7 @@
 	det($\lambda$ En - A) = 0
 	
 	\subsection{Eigenvektor}
-	f(v) = $\lambda$ v
+	f(v) = $\lambda$v
 		
 	\newpage
 	
@@ -187,9 +187,7 @@
 	$||A^t||_1 = ||A||_\infty$
 	
 	\subsection{Spektralnorm}
-	
-	Die Spektralnorm wird definiert als
-	
+
 	\begin{equation*}
 		\begin{split}
 			A||_2 &:= \max\limits_{||x||_2 = 1} ||Ax||_2 \\
@@ -201,19 +199,15 @@
 	\end{equation*}
 	
 	A = 
-	\begin{equation*}
-		\begin{pmatrix}
-			3 & 2 \\
-			-2 & 0 
-		\end{pmatrix}
-	\end{equation*}
+	$\begin{pmatrix}
+		3 & 2 \\
+		-2 & 0 
+	\end{pmatrix}$
 	, $A^tA$ = 
-	\begin{equation*}
-		\begin{pmatrix}
-			13 & 6 \\
-			6 & 4 
-		\end{pmatrix}
-	\end{equation*}
+	$\begin{pmatrix}
+		13 & 6 \\
+		6 & 4 
+	\end{pmatrix}$
 	det($\mu E_n - A^tA$) = 0 $\Leftrightarrow \mu_{1, 2}$ = {16, 1}
 	
 	$||A||_2 = \sqrt{max(\mu_1, \mu_2)} = \sqrt{\mu_1} = \sqrt{16} = 4$
@@ -242,17 +236,20 @@
 	
 	y = Ax
 	
-	$\conj{x} = Cx, \conj{y} = Cy \tab (det C \ne 0), C \in GL$ 
+	\begin{align*}
+		\conj{x} = Cx, \conj{y} = Cy && (\text{det C} \ne 0), C \in GL
+	\end{align*}
+	
 	
 	$y = Ax \Rightarrow C^{-1} \conj{y} = AC^{-1} \conj{x} \Rightarrow \conj{y} = CAC^{-1} \conj{x} \Rightarrow \conj{y}\conj{A}\conj{x}$
 	
 	$\conj{A} = CAC^{-1} \Rightarrow \conj{A} \sim A$
 	
-	$\lambda EW, v EV zu A$
+	$\lambda$ EW, v EV zu A
 	
 	$\Rightarrow Av = C^{-1}\conj{A}Cv = \lambda v$
 	
-	$\Rightarrow \conj{A} und A $ haben dieselben Eigenwerte, algebraisch und geometrische Vielfalten stimmen überein (Invarianz der Eigenwerte)
+	$\Rightarrow \conj{A}$ und A haben dieselben Eigenwerte, algebraisch und geometrische Vielfalten stimmen überein (Invarianz der Eigenwerte)
 	
 	\subsection{Reduktionsmethoden}
 	
@@ -340,7 +337,7 @@
 	
 	\subsection{numerische Aufgabe}
 	
-	$x_j \in \mathbb{R} mit f(x_1, ..., x_m) \Rightarrow y_i = f_i(x_j)$
+	$x_j \in \mathbb{R} \text{ mit }f(x_1, ..., x_m) \Rightarrow y_i = f_i(x_j)$
 	
 	fehlerhafte Eingangsgrößen $x_i + \Delta y_i$
 	
@@ -465,9 +462,8 @@
 	
 	\subsection{Eigenschaften}
 	
-	ortogonal: es gilt $L_i^{(n)}(x_k) = d_{ik} =$ 
 	\[
-		\left\{
+		\textnormal{ortogonal: es gilt $L_i^{(n)}(x_k) = d_{ik} =$} \left\{
 			\begin{array}{ll}
 				1 & i = k \\
 				0 & sonst
@@ -526,7 +522,10 @@
 	
 	\section{Nevillsche Darstellung}
 	
-	$p_{jj}(x) = y_j \tab j = 0, ..., n \tab k = 1, ..., j \tab i = k - j$
+	\begin{align*}
+		p_{jj}(x) = y_j && j = 0, ..., n && k = 1, ..., j && i = k - j
+	\end{align*}
+	
 	
 	$p_{i, i + k}(x) = p_{i, i + k - 1}(x) + (x - x_i)\frac{p_{i + 1, i + k}(x) - p_{i, i + k - 1}(x)}{x_{i + k} - x_i}$
 	
@@ -540,6 +539,7 @@
 		x_{n - 1} && y_{n - 1} && \longrightarrow && p_{n - 1, n} & \\
 		x_n && y_n
 	\end{align*}
+	
 	TODO: add the diagonal arrows
 	
 	Hinzunahme von $(x_{n + 1}, y_{n + 1})$ ist problemlos
@@ -574,9 +574,10 @@
 	
 	\subsection{Aufgabe}
 	
-	Gegeben: $x_i$ \tab \space i = 0, ..., m \tab paarweise verschieden
-	
-	\tab \space $y_i^{(k)}$ \tab i = 0, ..., m \tab k = 0, ..., $\mu_i (\mu_i \ge 0)$
+	\begin{align*}
+		Gegeben: && x_i && i = 0, ..., m && paarweise verschieden & \\
+		&& y_i^{(k)} && i = 0, ..., m && k = 0, ..., \mu_i (\mu_i \ge 0)
+	\end{align*}
 	
 	Gesucht: $p \in P_n$, n = m + $\sum\limits_{i = 0}^{m}\mu_i$ : $p^{(k)}(x_i) = y_i^{(k)}$
 	
@@ -609,21 +610,25 @@
 	
 	nicht direkt berechenbare Größe
 	
-	$a(0) = \lim\limits_{k\rightarrow 0}a(k)$, \tab $k \in \mathbb{R}_+$
+	\begin{align*}
+		a(0) = \lim\limits_{k\rightarrow 0}a(k), && k \in \mathbb{R}_+
+	\end{align*}
 	
 	berechne a($k_i$) für gewisse $k_i$, i = 0, ..., n und [?] $p_n(0)$ des Interpolations Polynoms zu $(h_i, a(h_i))$ als Schätzung für a(0)
+		
+	\begin{tabular}{l l}
+		$a(0) := \lim\limits_{x\rightarrow 0^+} \frac{cos(x) - 1}{sin(x)}$ & (= 0)
+	\end{tabular}
+
+	$a(x) := \frac{(cos(x) - 1)}{sin(x)}$
 	
-	a(0) := $\lim\limits_{x\rightarrow 0^+} \frac{cos(x) - 1}{sin(x)}$ \tab (= 0)
+	Interpolation a(x) an Stützstellen $k_i$ nahe bei 0: 
 	
-	a(x) := $\frac{(cos(x) - 1)}{sin(x)}$
-	
-	Interpolation a(x) an Stützstellen $k_i$ nahe bei 0:
-	
-	$k_0 = \frac{1}{8}$ \tab $a(k_0) = -6,258151 * 10^{-2}$
-	
-	$k_1 = \frac{1}{16}$ \tab $a(k_1) = -3,126018 * 10^{-2}$
-	
-	$k_2 = \frac{1}{32}$ \tab $a(k_2) = -1,562627 * 10^{-2}$
+	\begin{tabular}{l l}
+		$k_0 = \frac{1}{8}$ & $a(k_0) = -6,258151 * 10^{-2}$ \\
+		$k_1 = \frac{1}{16}$ & $a(k_1) = -3,126018 * 10^{-2}$ \\
+		$k_2 = \frac{1}{32}$ & $a(k_2) = -1,562627 * 10^{-2}$
+	\end{tabular}
 	
 	\subsection{Lagrange}
 	
@@ -646,7 +651,7 @@
 	
 	a(n) habe die Entwickling:
 	
-	$a(h) = a_0 + \sum\limits_{j = 1}^{n}a_jh^{jq} + a_{n + 1}(h)h^{(n+1)q}$ \tab mit q > 0,
+	$a(h) = a_0 + \sum\limits_{j = 1}^{n}a_jh^{jq} + a_{n + 1}(h)h^{(n+1)q}$ \tab mit q $>$ 0,
 	 Koeffizienten $a_j$ 
 	 
 	und $a_{n + 1}(h) = a_{n + 1} + a(1[?????])$
@@ -713,7 +718,7 @@
 	
 	$\exists f \in H$ eindeutig bestimmte "beste Approximation" $g \in S$
 	
-	\tab $||f - g|| = min_{\varphi \in S}||f - \varphi||$
+	\tab $||f - g|| = \min\limits_{\varphi \in S}||f - \varphi||$
 	
 	bes. einfache Lösung, wenn \{$\varphi_1, ..., \varphi_n$\} eine ONB ist, d.h.
 	
@@ -830,8 +835,6 @@
 	$<f, g>_\omega = \int\limits_a^bf(x)g(x)\omega(x)dx$, \tab $\omega(x)\ge 0, x \in (a, b)$
 	
 	\subsection{Gauß-Quadratur}
-	
-	head
 	
 	$\exists!$ interpolierte Quadraturformel [?] (n + 1) paarweise verschiedene Stützstellen auf [-1, b] mit Ordnung 2n + 2. Stützstellen = Nullstellen
 	
@@ -1131,6 +1134,61 @@
 	
 	\newpage
 	
-	\section{QR-Zerlegung}
+	\section{QR-Zerlegung, ...}
+	
+	\subsection{QR-Zerlegung}
+	
+	$A \in \mathbb{K}^{m \times n}, Rang(A) = n \le m$ 
+	
+	$\exists \text{eindeutig bestimmte Matrix Q} \in \mathbb{K}^{m \times n}$
+	\begin{tabular}{l l}
+		& $Q^tQ = En (\text{für }\mathbb{K} = \mathbb{R})$  \\
+		& $\conj{Q}^t Q = En (\text{für }\mathbb{K} = \mathbb{C})$
+	\end{tabular}
+	
+	und eindeutig bestimmte obere Dreiecks Matrix $R \in \mathbb{K}^{n \times n} r_{i, i} < 0$ reell, s.d.
+	
+	A = QR \tab Q orthonormale Matrix (m = n unitär) $Q^t = Q^{-1}$
+	
+	u := v + $\mathfrak{S} ||v|| * e_n$
+	
+	$\mathfrak{S}$
+	\[
+		\left \{
+			\begin{array}{l l}
+				-1 & v_1 < 0 \\
+				1 & v_1 \ge 0
+			\end{array}
+		\right. \text{Householder Matrix }H = E_n - 2 \frac{uu^t}{u^tu}
+	\]
+	
+	\subsection{Least-Squares mit Vollrang}
+	
+	\begin{tabular}{l l l }
+		$A = Q_1R = (Q_1|Q_2)$ &
+		$\begin{pmatrix}
+			R \\
+			0
+		\end{pmatrix}$ &
+		, $Q = (Q_1|Q_2) \in \mathbb{R}^{m \times n}$ \\
+		$Rx = Q^tb$ & & R = 
+		$\begin{pmatrix}
+			R \\
+			0
+		\end{pmatrix}$
+		$\in \mathbb{R}^{m \times n}$ \\
+		& & Rang(A) = n
+	\end{tabular}
+	
+	$||Ax - b||_2^2 = ||Rx - Q_1^tb||_2^2 + ||Q_2^tb||_2^2 \text{ minimal für } x = R^{-1}Q_1^tb$
+	
+	\subsection{Aufwand}
+	
+	Doppelter Aufwand für QR wie für LR
+	
+	$N_{QR}(n) = \frac{2}{3}n^3 + O(n^2)$
+	
+	\subsection{Code}
+	
 	
 \end{document}

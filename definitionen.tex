@@ -1,0 +1,172 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{datetime}
+
+%\usepackage{breqn} % this package is one option for math lines
+\usepackage{mathtools} % this package contains math functions and a kind of table generator (align)
+\usepackage{mathdots}
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\hypersetup{linktoc=all}
+
+\usepackage{amssymb} % package for Natural Number sign etc
+
+\usepackage[makeroom]{cancel}
+
+%added commands:
+\newcommand*\conj[1]{\overline{#1}}
+\newcommand*\mean[1]{\bar{#1}}
+\newcommand*\tab[1][1cm]{\hspace*{#1}}
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}} % Diagonal slash fraction
+
+%added commands:
+%\newcommand*\conj[1]{\overline{#1}}
+%\newcommand*\mean[1]{\bar{#1}}
+%\newcommand*\tab[1][1cm]{\hspace*{#1}}
+%\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}} % Diagonal slash fraction
+
+\begin{document}
+	\subsection{Norm}
+		Definitheit: $||x|| = 0 \Rightarrow x = 0$
+		
+		absolute Homogenität: $||\alpha x|| = |\alpha| * ||x||$
+		
+		Dreiecksungleichung: $||x + y|| \le ||x|| + ||y||$
+	
+	\subsection{Skalarprodukt}
+	
+		\[
+			\left.
+				\begin{array}{l}
+					<x + y, z> = <x, z> + <y, z> \\
+					<x, y + z> = <x, y> + <x, z> \\
+					<\lambda x, y> = \lambda <x, y> \\
+					<x, \lambda y> = \lambda <x, y>
+				\end{array}
+			\right \} \textnormal{Linearität}
+		\]
+		
+		\begin{math}
+			<x, y> = <y, x>
+		\end{math}
+		
+		\[
+			\left.
+				\begin{array}{l}
+					<x, x> \ge 0 \\
+					<x, x> = 0 \Rightarrow x = 0
+				\end{array}
+			\right \} positiv Definitheit
+		\]
+	
+	\section{Symmetrische, positiv definite Matrix}
+	
+	positiv definit: $x^t Ax > 0$ (beliebige Matrix)
+	
+	alle EW $>$ 0 (symmetrische Matrix)
+	
+	\subsection{Natürliche Matrixnorm}
+	
+	$||A||_\infty := \max\limits_{x \ne 0} \frac{||Ax||_\infty}{||x||_\infty} = \max\limits_{||x|| = 1}||Ax||_\infty$
+	
+	$||A|| = 0 \Rightarrow A = 0 $
+	
+	$||\lambda A|| = |\lambda|*||A|| $
+	
+	$||A+B|| \le ||A|| + ||B||$
+	
+	$||A*B|| \le ||A|| * ||B||$
+	
+	\subsection{Zeilensummennorm}
+	= natürliche Matrixnorm
+	
+	$||A||_\infty = \max\limits_{||x||_\infty = 1} ||Ax||_\infty = \max\limits_{i = 1, ..., m} \sum\limits_{j = 1}^{n} |a_{ij}|$
+	
+	\subsection{Spaltensummennorm}
+	
+	$||A||_1 := \max\limits_{x \ne 0} \frac{||Ax||_1}{||x||_1} = \max\limits_{||x||_1 = 1} ||Ax||_1 = \max\limits_{j = 1, ..., n} \sum\limits_{i = 1}^{m}|a_{ij}|$
+	
+	\subsection{Spektralnorm}
+	
+	\begin{equation*}
+	\begin{split}
+	A||_2 &:= \max\limits_{||x||_2 = 1} ||Ax||_2 \\
+	&= \max\limits_{x \ne 0} \frac{||Ax||_2}{||x||_2} \\
+	&= \max\limits_{||x||_2 = 1} <Ax, Ax> \\
+	&= \max\limits_{||x||_2 = 1} <A^tAx, x> \\
+	&= max{\sqrt{|\lambda |}, \lambda * EW von A^tA}
+	\end{split}
+	\end{equation*}
+	
+	\subsection{Konditionszahl einer Matrix A}
+	
+	$cond(A) = ||A||*||A^{-1}||$
+	
+	\subsection{Sonderfall symmetrisch, positiv definite Matrix}
+	
+	$cond(A) = \frac{ \lambda_{max}}{ \lambda_{min}}$
+	
+	\subsection{Maschienengenauigkeit eps}
+	
+	$eps = \frac{1}{2}b^{-r + 1}, IEEE: eps = \frac{1}{2} * 2^{-52} \approx 10^{-16}$
+	
+	\subsection{Rundungsfehler}
+	
+	$absolut: |x - rd(x)| \le \frac{1}{2}b^{-r}b^e$
+	
+	$relativ: |\frac{x - rd(x)}{x}| \le \frac{1}{2}b^{-r+1} = eps$
+	
+	\subsection{Fehler I}
+	
+	f$ \in C^{n+1}$[a, b], $\forall$ x $\in$ [a, b] $\exists \xi_x \in$ ($\overline{x_0, ..., x_n, x}$), wobei das Intervall das kleinst mögliche Intervall, das alle $x_i$ enthällt, s.d.
+	
+	$f(x) - p(x) = \frac{f^{(n+1)}(\xi x)}{(n+1)!} \prod\limits_{j = 0}^{n}(x - x_j)$
+	
+	\subsection{Konditionszahl (relativ)}
+	
+	$k_{ij}(x) = \frac{\partial f_i}{\partial x_i}(x) \frac{\Delta x_j}{x_j}$
+	
+	$\frac{\Delta y_i}{y_i} = \sum\limits_{j = 1}^{m}k_{ij}(x)\frac{\Delta x_j}{x_j}$
+	
+	$|k_{ij}(x)| >> 1 \Rightarrow$ schlecht konditioniert
+	
+	$|k_{ij}(x)| << 1 \Rightarrow$ gut konditioniert, ohne Fehlerverstärkung
+	
+	$|k_{ij}(x)| > 1 \Rightarrow$ Fehlerverstärkung
+	
+	$|k_{ij}(x)| < 1 \Rightarrow$ Fehlerdämpfung
+	
+	\subsection{Interpolation}
+	
+	Zuordnung von $g \in P$ zu f durch Fixieren von Funktionswerten
+	
+	$g(x_i) = y_i = f(x_i), i = 0, ..., n$
+	
+	\subsection{Approximation}
+	
+	$g \in P$ beste Darstellung, z.B. 
+	
+	$\max\limits_{a \le x \le b}|f(x) - g(x)| minimal$
+	
+	$(\int\limits_{a}^{b}|f(x) - g(x)|^2dx)^{\frac{1}{2}} minimal$
+	
+	\subsection{Lagransche Darstellung}
+	
+	$p(x) = \sum\limits_{i = 0}^{n}y_iL_i^{(n)}(x) \in P_n$ mit $p(x_j) = y_j$
+	
+	Nachteil: Bei Hinzunahme von $(x_{n+1}, y_{n+1})$ ändert sich das Basispolynom komplett
+	
+	\subsubsection{Newton-Polynome}
+	
+	Bei Hinzunahme von $(x_{n + 1}, y_{n + 1})$ muss nur eine neue Rechnung durchgeführt werden, und nicht das gesamte Polynom neu berechnet werden
+	
+	\subsection{Dividierte Differenzen*}
+	
+	$y[x_i, ..., x_{k + 1}] = \frac{y[x_{i + 1}, ..., x_{k + 1}] - y[x_i, ..., x_{i + k - 1}]}{x_{i + k} - x_i}$ mit k = 1, ..., j und i = k - j
+	
+	für beliebige [?] $\sigma:{0, ..., n} \rightarrow {0, ..., n}$ gilt $y[\tilde{x_0}, ..., \tilde{x_n}] = y[x_0, ..., x_n]$
+	
+	
+\end{document}
