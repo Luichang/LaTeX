@@ -190,11 +190,11 @@
 
 	\begin{equation*}
 		\begin{split}
-			A||_2 &:= \max\limits_{||x||_2 = 1} ||Ax||_2 \\
-			&= \max\limits_{x \ne 0} \frac{||Ax||_2}{||x||_2} \\
-			&= \max\limits_{||x||_2 = 1} <Ax, Ax> \\
-			&= \max\limits_{||x||_2 = 1} <A^tAx, x> \\
-			&= max{\sqrt{|\lambda |}, \lambda * EW von A^tA}
+			||A||_2 &:= \max\limits_{||x||_2 = 1} ||Ax||_2 \\
+			& = \max\limits_{x \ne 0} \frac{||Ax||_2}{||x||_2} \\
+			& = \max\limits_{||x||_2 = 1} <Ax, Ax> \\
+			& = \max\limits_{||x||_2 = 1} <A^tAx, x> \\
+			& = max{\sqrt{|\lambda |}, \lambda * EW von A^tA}
 		\end{split}
 	\end{equation*}
 	
@@ -216,7 +216,7 @@
 	
 	\section{Spektralradius, Konditionszahl einer Matrix}
 	
-	\subsection{Spektralradius [phi]}
+	\subsection{Spektralradius \texorpdfstring{$\rho$}{rho}}
 	
 	$\varphi(A) = max:{1 \le i \le n} |\lambda_i(A)| = spr(A)$ der betragsmäßig größte Eigenwert von A
 	
@@ -333,7 +333,7 @@
 	
 	\newpage
 	
-	\section{Konditionierung einer numerischen Aufgabe, Konditionszahlen}
+	\section{Konditionierung einer numerischen Aufgabe, Konditionszahlen \texorpdfstring{$k_{i, j}$}{k i, j}}
 	
 	\subsection{numerische Aufgabe}
 	
@@ -376,6 +376,13 @@
 	\newpage
 	
 	\section{Horner-Schema*}
+	
+	Das sogenannte "Horner-Schema"
+	
+	\begin{tabular}{l l l}
+		$b_n = a_n$ &, k = n - 1, ..., 0 & $b_k = a_k + \xi b_{k + 1} $
+	\end{tabular}
+	liefert den Funktionswert $p(\xi) = b_0$ des Polynoms
 	
 	$p(x) = a_0 + x(... + x(a_{n-1} + a_nx)...)$
 	
@@ -1190,5 +1197,349 @@
 	
 	\subsection{Code}
 	
+	\newpage
+	
+	\section{Householder-Transformation, ...}
+	
+	\subsection{Householder Transformation}
+	
+	$v \in \mathbb{K}$, $||v||_2 = 1$
+	
+	$H = E_n - 2 \frac{vv^t}{v^tv}$
+	
+	Spiegelung eines Vektors an einer Hyperebene durch Null im euklidischen Raum $H_{\overrightarrow{x}} = x - 2vv^tx$
+	
+	\begin{equation*}
+		v\conj{v}^t =
+		\begin{pmatrix}
+			v_1\conj{v}_1 & \dotsc & v_1\conj{v}_n \\
+			\vdots & \ddots & \vdots \\
+			v_n\conj{v}_1 & \dotsc & v_n\conj{v}_n
+		\end{pmatrix}
+	\end{equation*}
+	
+	TODO: skizze
+	
+	\subsection{Eigenschaften von Householder}
+	
+	Symmetrisch: $H = H^t$
+	
+	Orthogonal: $H^tH = E_n$
+	
+	Involutorisch: $h^2 = E_n$
+	
+	EW: -1 einfach, 1 (n - 1)-fach
+	
+	Mantisse-Vektor-Multiplikationen mit Householder sind schnell berechenbar
+	
+	\subsection{Householder-Verfahren}
+	
+	Gruppe numerischer Verfahren zur Bestimmung von Nullstellen einer skalaren, reellen Funktion
+	
+	Zur Berechnung der QR-Zerlegung
+	
+	$S_tA^{(t - 1)} = A^{(t)}$, $S_t$ ist Householder-Transformation
+	
+	\subsection{Ergebnis}
+	
+	QR-Zerlegung von A (aber \underline{nicht}eindeutig!)
+	
+	\newpage
+	
+	\section{Intervallschachtelung/Bisektionsverfahren}
+	
+	\subsection{Intervallschachtelung/Bisektionsverfahren}
+	
+	n = 1
+	
+	Erzeugen einen konvergenten Folge von Intervallschachtelungen
+	
+	$a_0, b_0 \in [a, b]$ mit $f(a_0)f(b_0) < 0$
+	
+	Konvergenz: $a_k \le a_{k + 1} \le b_{k + 1} \le b_k$
+	
+	$b_{k + 1} - a_{k + 1}| = \frac{1}{2}|b_k - a_k| = 2^{-k - 1}|b_0 - a_0|$
+	
+	\subsection{Eigenschaften}
+	
+	sehr stabil, langsam, Erweiterung für $x \in \mathbb{R}^n \vee x \in \mathbb{C}$ $\underline{nicht}$ möglich
+	
+	\subsection{Code}
+	
+	for k = 0, 1, ... do:
+	
+	\tab x[k] = 0.5(a[k] + b[k])
+	
+	\tab if f(a[k])f(x[k]) < 0:
+	
+	\tab \tab a[k + 1] = a[k]
+	
+	\tab \tab b[k + 1] = x[k]
+	
+	\tab else:
+	
+	\tab \tab a[k + 1] = x[k]
+	
+	\tab \tab b[k + 1] = b[k]
+	
+	\tab if abs(b[k + 1] - a[k + 1]) < TOL abs(a[k + 1]):
+	
+	\tab \tab Ende Lösung: 0.5(b[k + 1] + a[k + 1])
+	
+	\newpage
+	
+	\section{Konvergenz interativer Methoden}
+	
+	\subsection{Konvergenzordnung}
+	
+	$\alpha > 1$
+	
+	$|x_{k + 1} - x_*| \le C|x_k - x_*|^\alpha$ \tab k = 0, 1, ...
+	
+	\subsection{Lineare Konvergenz}
+	
+	$\alpha = 1 \Rightarrow C lineare Kontraktionsrate$
+	
+	\subsection{Superlineare Konvergenz}
+	
+	$|x_{k + 1} - x_k| \le C_k |x_k - x_*|$ \tab mit $c_k \rightarrow 0$
+	
+	\subsection{Quadratische Konvergenz}
+	
+	$|x_{k + 1} - x_*| \le C |x_k - x_*|$ \tab also $\alpha = 2$
+	
+	Konvergenz der Ordnung $\alpha$ (quadratische Konvergenz, kubische, etc.) $\Rightarrow$ superlineare Konvergenz $\Rightarrow$ lineare Konvergenz
+	
+	\newpage
+	
+	\section{Newton Verfahren im \texorpdfstring{$\mathbb{R}^n$}{R pow(n)}}
+	
+	$x_{k + 1} = x_k - j_f(x_k)^{-1}f(x_k)$
+	
+	$j_f(x_k)^{-1} = \frac{1}{det(j_f)} * j_f^*$, 
+	$j_f^* = 
+	\begin{pmatrix}
+		a_{2, 2} & -a_{1, 2} \\
+		-a_{2, 1} & a_{1, 1}
+	\end{pmatrix}$
+	
+	\begin{tabular}{l l}
+		guter Startwert: & superlineare Konvergenz \\		
+		schlechter Startwert\footnote{Abstand Startwert zur Nullstelle}: & lineare Konvergenz
+	\end{tabular}
+	
+	\subsection{Code}
+	
+	\newpage
+	
+	\section{Newton-Kantorisch}
+	
+	\subsection{Voraussetzungen}
+	
+	$f: x \subset \mathbb{R}^n \rightarrow \mathbb{R}^n$ mit f' L-stetig, d.h.
+	
+	1. $|| j_f(x) - j_f(y)|| \le L||x - y||$
+	
+	2. $||j_f^{-1}(x)|| \le \beta$
+	
+	3. $x_0 \in D_f(x)$
+	
+	4. $q := \frac{1}{2} \alpha \beta L$ mit $\alpha = ||j_f^{-1}(x_0)f(x_0)||$ auf der Nieveaumenge $D(x) = {y \in D | ||f(x) || \le ||x||}$
+	
+	$\Rightarrow$ Dann konvergiert $(x_k)$ quadratisch gegen Nullstelle $z \in D$ von f
+	
+	\subsection{Fehlerabschätzung}
+	
+	$||x_k - x_*|| \le \frac{\alpha}{1 - q}q^{(2^k - 1)}$ \tab , $k \ge 1$
+	
+	\newpage
+	
+	\section{Sukzessive Approximation *}
+	
+	$x_{t + 1} = x_t + C^{-1} f(x_t)$ \tab C reguläre Matrix $\in \mathbb{R}^{n \times n}$
+	
+	$x_t \xrightarrow[t \rightarrow \infty] z \Rightarrow z = z + C^{-1}f(z)$ bzw $f(z) = 0 \Rightarrow$ z Fixpunkt der Abbildung $g(x) := x + C^{-1}f(x)$
+	
+	\subsection{Konvergenz}
+	
+	$g: G \rightarrow G[?]$ Kontraktion, $\exists$ Fixpunkt $z \in G von g x_t \rightarrow z$, q Kontraktionskonstante
+	
+	$||x_t - z|| \le \frac{q}{1 - q} ||x_t - x_{t - 1} \le \frac{q_t}{1 - q} ||x_1 - x_0||$
+	
+	\subsection{Code}
+	
+	\newpage
+	
+	\section{Newton-Verfahren für affin - lineares f(x) = Ax - b}
+	
+	\subsection{Problem}
+	
+	Direkte Methoden $\rightarrow$ großen Speicheraufwand für große n
+	
+	\newpage
+	
+	\section{Fixpunktiteration *, Konvergenzaussage}
+	
+	\subsection{Problem}
+	
+	für sehr große n ist Gauß-Elimination zu speicherintensiv
+	
+	$Ax = b \Leftrightarrow a_{j, j} * x_j + \sum\limits_{k = 1}^na_{j, k}x_k = b_j$
+	
+	\subsection{Aufspaltung}
+	
+	A = D + L + R
+	
+	D = 
+	$\begin{pmatrix}
+		a_{1, 1} & & 0 \\
+		& \ddots & \\
+		0 & & a_{n, n}
+	\end{pmatrix}$
+	L = 
+	$\begin{pmatrix}
+		0 & \dotsc & \dotsc & 0 \\
+		a_{2, 1} & \ddots & \dotsc & \vdots \\
+		\vdots & \ddots & \dotsc & \vdots \\
+		a_{n, 1} & \dotsc & a_{n, n - 1} & 0
+	\end{pmatrix}$
+	R = 
+	$\begin{pmatrix}
+		0 & a_{1, 2} & \dotsc & a_{1, n} \\
+		\vdots & \ddots & \dotsc & \vdots \\
+		\vdots & \ddots & \dotsc & a_{n - 1, n} \\
+		0 & \dotsc & \dotsc & 0
+	\end{pmatrix}$
+	
+	$x_t = Bx_{t - 1} + c$, B Iterationsmatrix
+	
+	\subsection{Konvergenz}
+	
+	$x_t \xrightarrow[t \rightarrow \infty] x \Rightarrow x = Bx + c$
+	
+	$x_t \rightarrow x \Leftrightarrow spr(B) = max{|\lambda| | \lambda EW von B} < 1$
+	
+	Asymptotisches Konvergenzverhalten:
+	
+	$\sup\limits_{x_0 \in \mathbb{R}^n} \limsup\limits_{t \rightarrow \infty}(\frac{||x_t - x||}{x_0 - x})^{\frac{1}{t}} = spr(B)$
+	
+	\subsection{Code}
+	
+	\newpage
+	
+	\section{Jacobi *, Gauß-Seidel *, SOR *}
+	
+	\subsection{Jacobi-Verfahren}
+	
+	$B = J = -D^{-1}(L + R)$ mit A = D + L + R
+	
+	\subsection{Gauß-Seidel}
+	
+	$B = H_1 = -(D + L)^{-1}R$
+	
+	\subsection{SOR}
+	
+	$H_w = (D + wL)^{-1}((1 - w)D - wR)$
+	
+	(für w = 1: Gauß-Seidel)
+	
+	\subsection{Konvergenz}
+	
+	für positiv definiti symetrische Matrizen:
+	
+	(I) starke/strikte Diagonaldominanz $\Rightarrow$ J/G-S konvergiert
+	
+	(II) diagonaldominanz + ireduzibel\footnote{Knotenmodell} $\Rightarrow$ J/G-S konvergiert
+	
+	\begin{tabular}{l l l}
+		(III) Beachte EW von: & $J = -D^{-1}(L + R)$ & J konvergiert für $spr(J) < 1$ \\
+		& $H = -(D + L)^{-1}R$ & G-S konvergiert für $spr(H) < 1$
+	\end{tabular}
+	
+	\subsection{Fehler verringern}
+	
+	Wie viele Iterationsschritte t bis Fehler um $10^k$ verbessert ist?
+	
+	$t \ge -\frac{k}{\log_{10}f}$ \tab f = spr(B)
+	
+	\newpage
+	
+	\section{Allgemeines Abstiegsverfahren}
+	
+	\subsection{Voraussetzung}
+	
+	A symmetrisch positiv definiert
+	
+	$\Rightarrow <Ax, y> = <x, Ay>, <Ax, x> > 0$
+	
+	\subsection{A-Skalarprodukt, A-Norm}
+	
+	$<x, y>_A = <x, Ay>$, $||x||_A = \sqrt{<Ax, y>}$
+	
+	A hat nur reelle EW
+	
+	$\lambda_{min} := \lambda_1 \le ... \le \lambda_n =: \lambda_{max} \Rightarrow spr(A) = \lambda_{max}, cond_2(A) \frac{\lambda_{max}}{\lambda_{min}}$
+	
+	\subsection{Abstiegsverfahren}
+	
+	Iteratives Verfahren, um lokales Minimum einer Funktion zu finden.
+	
+	In jedem Schritt entlang einer bestimmten Richtung minimieren
+	
+	\subsection{Gradient}
+	
+	$g_t = Ax_t - b$, Abstiegsrichtung $r_t$
+	
+	\subsection{Schrittweite}
+	
+	$\alpha_t = -\frac{<g_t, r_t>}{<Ar_t, r_t>}$
+	
+	\subsection{Iteration}
+	
+	$x_{t + 1} = x_t + \alpha_lr_t$
+	
+	$\Rightarrow$ Minimierung von Q minimiert 
+	
+	Defektnorm $||A_y - b||_{A^{-1}}$ und Fehlernorm $||y - x||_A$
+	
+	\subsection{Code}
+	
+	\newpage
+	
+	\section{Gradientenverfahren}
+	
+	Richtung des steilsten Abstiegs
+	
+	$r_t$ = -grad $Q(x_t) = -g_t$
+	
+	\subsection{Iteration}
+	
+	$x_0 \in \mathbb{R}^n, g_0 = Ax_0 - b, t \ge 0$
+	
+	$\alpha_t = \frac{||g_t||^2}{<Ag_t, g_t>}$
+	
+	$x_{t + 1} = x_t - \alpha_t g_t$
+	
+	$g_{t + 1} = g_t - \alpha_t Ag_t$
+	
+	$<Ag_t, g_t> = 0 \Rightarrow g_t = 0 \Rightarrow Ax_t = b$
+	
+	\subsection{Konvergenz}
+	
+	A positiv definit symmetrisch $\Rightarrow$ Gradientenverfahren konvergiert $\forall x_0$ gegen Ax = b
+	
+	\subsection{Lemma von Kantorich}
+	
+	$ 4 \frac{\lambda_{min} \lambda_{max}}{(\lambda_{min} + \lambda_{max})^2} \le \frac{||<^4||}{<y, Ay><y, A^-1y>}$
+	
+	\subsection{Fehlerabschätzung}
+	
+	$||x_t - x||_A \le (\frac{1 - K^{-1}}{1 + K^{-1}})^t ||x_0 - x||_a$ \tab , $t \in \mathbb{N}$
+	
+	$\Rightarrow$ Lagransche Konvergenz für $cond_2(A) >> 1$
+	
+	\newpage
+	
+	\section{CG-Verfahren}
 	
 \end{document}
