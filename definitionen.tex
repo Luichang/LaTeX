@@ -389,4 +389,277 @@
 	
 	\tab $\frac{||\delta_x||}{||x||} \le \frac{cond(A)}{1 - cond(A) \frac{||\delta A||}{||A||}}\left[ \frac{||\delta b||}{||b||} + \frac{||\delta A||}{||A||}\right] $
 	
+	\subsection{Gewichtetes Skalarprodukt}
+	
+	$<f, g>_\omega = \int\limits_a^bf(x)g(x)\omega(x)dx$, \tab $\omega(x)\ge 0, x \in (a, b)$
+	
+	\subsection{Kongergenz der Gauß-Quadraturen}
+	
+	Sei $I^{(n)}(f)$ die (n + 1) punktige [?] Gauß-Formel zu $I(f) = \int\limits_{-1}^1f(x)dx \forall f \in C[-1, 1]: I^{(n)}(f) \xrightarrow{n \rightarrow \infty} I(f)$
+	
+	\subsection{Störungssatz}
+	
+	$\frac{||\delta_x||}{||x||} \le \frac{cond(A)}{1 - cond(A) \frac{||\delta A||}{||A||}}\left[ \frac{||\delta b||}{||b||} + \frac{||\delta A||}{||A||}\right] $
+	
+	\subsection{Aufwend Vorwärts/Rückwärts einsetzen}
+	
+	$\sum\limits_{j = 1}^nj = \frac{(n + 1)n}{2} = \frac{n^2}{2} + O(n)$
+	
+	\subsection{Cholesky-Zerlegung}
+	
+	Jede symmetrische positiv definite Matrix A hat eine sogenannte Cholesky - Zerlegung:
+	
+	$A = LDL^t = \tilde{L}\tilde{L}^t$, $\tilde{L} := LD^{\frac{1}{2}}$
+	
+	\subsection{Aufwand der Cholesky-Zerlegung}
+	
+	$N_{Cholesky}(n) = \frac{n^3}{6} + O(n^2)$ \tab (billiger als A = LR)
+	
+	\subsection{Least-Squares-Lösung}
+	
+	Es existiert immer eine "Lösung" $\bar{x} \in \mathbb{R}^n$ mit kleinsten Fehlerquadraten
+	[Editor Note: Least Squares hat den Namen, dass man das A von $A \in \mathbb{R}^{m \times n} Ax = b$ quadriert, um ein $\tilde{A} = AA^t$ hat, von dem man eine Lösung $\tilde{x}$ bestimmen kann]
+	
+	\subsection{Aufwand QR-Zerlegung}
+	
+	Doppelter Aufwand für QR wie für LR
+	
+	$N_{QR}(n) = \frac{2}{3}n^3 + O(n^2)$
+	
+	\subsection{Householder Transformation}
+	
+	$v \in \mathbb{K}$, $||v||_2 = 1$
+	
+	$H = E_n - 2 \frac{vv^t}{v^tv}$
+	
+	Spiegelung eines Vektors an einer Hyperebene durch Null im euklidischen Raum $H_{\overrightarrow{x}} = x - 2vv^tx$
+	
+	\begin{equation*}
+		v\conj{v}^t =
+		\begin{pmatrix}
+			v_1\conj{v}_1 & \dotsc & v_1\conj{v}_n \\
+			\vdots & \ddots & \vdots \\
+			v_n\conj{v}_1 & \dotsc & v_n\conj{v}_n
+		\end{pmatrix}
+	\end{equation*}
+	
+	\subsection{Eigenschaften von Householder}
+	
+	Symmetrisch: $H = H^t$
+	
+	Orthogonal: $H^tH = E_n$
+	
+	Involutorisch: $h^2 = E_n$
+	
+	EW: -1 einfach, 1 (n - 1)-fach
+	
+	Mantisse-Vektor-Multiplikationen mit Householder sind schnell berechenbar
+	
+	\subsection{Householder-Verfahren}
+	
+	Gruppe numerischer Verfahren zur Bestimmung von Nullstellen einer skalaren, reellen Funktion
+	
+	Zur Berechnung der QR-Zerlegung
+	
+	$S_tA^{(t - 1)} = A^{(t)}$, $S_t$ ist Householder-Transformation
+	
+	\subsection{Ergebnis}
+	
+	QR-Zerlegung von A (aber \underline{nicht}eindeutig!)
+	
+	\subsection{Code Intervallschachtelung/Bisektionsverfahren}
+	
+	for k = 0, 1, ... do:
+	
+	\tab x[k] = 0.5(a[k] + b[k])
+	
+	\tab if f(a[k])f(x[k]) < 0:
+	
+	\tab \tab a[k + 1] = a[k]
+	
+	\tab \tab b[k + 1] = x[k]
+	
+	\tab else:
+	
+	\tab \tab a[k + 1] = x[k]
+	
+	\tab \tab b[k + 1] = b[k]
+	
+	\tab if abs(b[k + 1] - a[k + 1]) \textless TOL abs(a[k + 1]):
+	
+	\tab \tab Ende Lösung: 0.5(b[k + 1] + a[k + 1])
+	
+	\section{Konvergenz interativer Methoden}
+	
+	\subsection{Konvergenzordnung}
+	
+	$\alpha > 1$
+	
+	$|x_{k + 1} - x_*| \le C|x_k - x_*|^\alpha$ \tab k = 0, 1, ...
+	
+	\subsection{Lineare Konvergenz}
+	
+	$\alpha = 1 \Rightarrow C lineare Kontraktionsrate$
+	
+	\subsection{Superlineare Konvergenz}
+	
+	$|x_{k + 1} - x_k| \le C_k |x_k - x_*|$ \tab mit $c_k \rightarrow 0$
+	
+	\subsection{Quadratische Konvergenz}
+	
+	$|x_{k + 1} - x_*| \le C |x_k - x_*|$ \tab also $\alpha = 2$
+	
+	Konvergenz der Ordnung $\alpha$ (quadratische Konvergenz, kubische, etc.) $\Rightarrow$ superlineare Konvergenz $\Rightarrow$ lineare Konvergenz
+	
+	\section{Newton Verfahren im \texorpdfstring{$\mathbb{R}^n$}{R pow(n)}}
+	
+	TODO
+	
+	\section{Newton-Kantorisch}
+	
+	\subsection{Voraussetzungen}
+	
+	$f: x \subset \mathbb{R}^n \rightarrow \mathbb{R}^n$ mit f' L-stetig, d.h.
+	
+	1. $|| j_f(x) - j_f(y)|| \le L||x - y||$
+	
+	2. $||j_f^{-1}(x)|| \le \beta$
+	
+	3. $x_0 \in D_f(x)$
+	
+	4. $q := \frac{1}{2} \alpha \beta L$ mit $\alpha = ||j_f^{-1}(x_0)f(x_0)||$ auf der Nieveaumenge $D(x) = {y \in D | ||f(x) || \le ||x||}$
+	
+	$\Rightarrow$ Dann konvergiert $(x_k)$ quadratisch gegen Nullstelle $z \in D$ von f
+	
+	\subsection{Fehlerabschätzung}
+	
+	$||x_k - x_*|| \le \frac{\alpha}{1 - q}q^{(2^k - 1)}$ \tab , $k \ge 1$
+	
+	\section{Sukzessive Approximation *}
+	
+	$x_{t + 1} = x_t + C^{-1} f(x_t)$ \tab C reguläre Matrix $\in \mathbb{R}^{n \times n}$
+	
+	$x_t \xrightarrow[t \rightarrow \infty]{} z \Rightarrow z = z + C^{-1}f(z)$ bzw $f(z) = 0 \Rightarrow$ z Fixpunkt der Abbildung $g(x) := x + C^{-1}f(x)$
+	
+	\subsection{Fixpunktiteration}
+	
+	für sehr große n ist Gauß-Elimination zu speicherintensiv
+	
+	$Ax = b \Leftrightarrow a_{j, j} * x_j + \sum\limits_{k = 1}^na_{j, k}x_k = b_j$
+	
+	\section{Jacobi *, Gauß-Seidel *, SOR *}
+	
+	\subsection{Jacobi-Verfahren}
+	
+	$B = J = -D^{-1}(L + R)$ mit A = D + L + R
+	
+	\subsection{Gauß-Seidel}
+	
+	$B = H_1 = -(D + L)^{-1}R$
+	
+	\subsection{SOR}
+	
+	$H_w = (D + wL)^{-1}((1 - w)D - wR)$
+	
+	(für w = 1: Gauß-Seidel)
+	
+	\subsection{Konvergenz}
+	
+	für positiv definiti symetrische Matrizen:
+	
+	(I) starke/strikte Diagonaldominanz $\Rightarrow$ J/G-S konvergiert
+	
+	(II) diagonaldominanz + ireduzibel\footnote{Knotenmodell} $\Rightarrow$ J/G-S konvergiert
+	
+	\begin{tabular}{l l l}
+		(III) Beachte EW von: & $J = -D^{-1}(L + R)$ & J konvergiert für $spr(J) < 1$ \\
+		& $H = -(D + L)^{-1}R$ & G-S konvergiert für $spr(H) < 1$
+	\end{tabular}
+	
+	\subsection{Fehler verringern}
+	
+	Wie viele Iterationsschritte t bis Fehler um $10^k$ verbessert ist?
+	
+	$t \ge -\frac{k}{\log_{10}f}$ \tab f = spr(B)\section{Jacobi *, Gauß-Seidel *, SOR *}
+	
+	\subsection{Jacobi-Verfahren}
+	
+	$B = J = -D^{-1}(L + R)$ mit A = D + L + R
+	
+	\subsection{Gauß-Seidel}
+	
+	$B = H_1 = -(D + L)^{-1}R$
+	
+	\subsection{SOR}
+	
+	$H_w = (D + wL)^{-1}((1 - w)D - wR)$
+	
+	(für w = 1: Gauß-Seidel)
+	
+	\subsection{Konvergenz}
+	
+	für positiv definiti symetrische Matrizen:
+	
+	(I) starke/strikte Diagonaldominanz $\Rightarrow$ J/G-S konvergiert
+	
+	(II) diagonaldominanz + ireduzibel $\Rightarrow$ J/G-S konvergiert
+	
+	\begin{tabular}{l l l}
+		(III) Beachte EW von: & $J = -D^{-1}(L + R)$ & J konvergiert für $spr(J) < 1$ \\
+		& $H = -(D + L)^{-1}R$ & G-S konvergiert für $spr(H) < 1$
+	\end{tabular}
+	
+	\subsection{Fehler verringern}
+	
+	Wie viele Iterationsschritte t bis Fehler um $10^k$ verbessert ist?
+	
+	$t \ge -\frac{k}{\log_{10}f}$ \tab f = spr(B)
+	
+	\section{Allgemeines Abstiegsverfahren}
+	
+	TODO
+	
+	\section{Gradientenverfahren}
+	
+	TODO
+	
+	\section{CG-Verfahren}
+	
+	TODO
+	
+	\section{Vorkonditionierung}
+	
+	TODO
+	
+	\section{Satz von Gerschgorin}
+	
+	Alle EW von $A \ in \mathbb{K}^{n \times n}$ liegen in den Vereinigung der sogenannten Gerschgorin-Kreise
+	
+	$k_j = {\zeta \in \mathbb{C} | |\zeta * a_{j, j}| \le \sum\limits_{k = 1, k \ne j}^n|a_jk|}$
+	
+	$U = \bigcup\limits_{i = 1}^mk_{j, i}$, $V = \bigcup\limits_{j = 1}^nk_j \text{\textbackslash} U$
+	
+	Sind $U \cup V = \emptyset \Rightarrow$ m EW in U, n - m in V
+	
+	\section{Stabilitätsatz}
+	
+	$A \in \mathbb{K}^{n \times n}$ mit n linear unabhängig EV, $B \in \mathbb{K}^{n \times n}$
+	
+	$\Rightarrow \forall \lambda_B$ EW von B $\exists \lambda_A$ EW von A:
+	
+	$|\lambda_A - \lambda_B| \le cond_2(W) ||A - B||_2$
+	
+	$W = (w_1, ..., w_n) \in \mathbb{K}^{n \times n}$ EV von A
+	
+	\section{Potenzmethode *, inverse Iteration *}
+	
+	TODO
+	
+	\section{Hessenberg-Normalform}
+	
+	TODO
+	
+	\section{QR-Verfahren}
+	
+	TODO
 \end{document}

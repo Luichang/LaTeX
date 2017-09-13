@@ -868,7 +868,7 @@
 	
 	\subsection{Störungssatz}
 	
-	$A \in \mathbb{K}^{n x n}$ regulär mit $||\delta A|| \le \frac{1}{||A^{-1}||}$, dann gilt für die
+	$A \in \mathbb{K}^{n \times n}$ regulär mit $||\delta A|| \le \frac{1}{||A^{-1}||}$, dann gilt für die
 	
 	\subsection{gestörte Matrix}
 	
@@ -1054,7 +1054,7 @@
 	
 	j = i + 1, ..., n \tab $ \tilde{l}_{i, j} = \frac{1}{\tilde{l}_{i, i}}(a_{i, j} - \sum\limits_{k = 1}^{i - 1}\tilde{l}_{i, k}\tilde{l}_{j, k})$
 	
-	Dandmatrizen: Nullen nicht speichern/berechnen Diagonal-Dominante: keine Pivotisierung notwendig symmetrisch positiv definite: keine Pivotisierung notwending
+	Bandmatrizen: Nullen nicht speichern/berechnen Diagonal-Dominante: keine Pivotisierung notwendig symmetrisch positiv definite: keine Pivotisierung notwending
 	
 	\subsection{Aufwand}
 	
@@ -1064,7 +1064,7 @@
 	
 	\newpage
 	
-	\section{Least-Squares-Lösungen, Normalgleichung}
+	\section{Least-Squares-Lösungen}
 	
 	$A \in \mathbb{R}^{m \times n} Ax = b$
 	
@@ -1258,7 +1258,7 @@
 	
 	Konvergenz: $a_k \le a_{k + 1} \le b_{k + 1} \le b_k$
 	
-	$b_{k + 1} - a_{k + 1}| = \frac{1}{2}|b_k - a_k| = 2^{-k - 1}|b_0 - a_0|$
+	$|b_{k + 1} - a_{k + 1}| = \frac{1}{2}|b_k - a_k| = 2^{-k - 1}|b_0 - a_0|$
 	
 	\subsection{Eigenschaften}
 	
@@ -1282,7 +1282,7 @@
 	
 	\tab \tab b[k + 1] = b[k]
 	
-	\tab if abs(b[k + 1] - a[k + 1]) < TOL abs(a[k + 1]):
+	\tab if abs(b[k + 1] - a[k + 1]) \textless TOL abs(a[k + 1]):
 	
 	\tab \tab Ende Lösung: 0.5(b[k + 1] + a[k + 1])
 	
@@ -1358,7 +1358,7 @@
 	
 	$x_{t + 1} = x_t + C^{-1} f(x_t)$ \tab C reguläre Matrix $\in \mathbb{R}^{n \times n}$
 	
-	$x_t \xrightarrow[t \rightarrow \infty] z \Rightarrow z = z + C^{-1}f(z)$ bzw $f(z) = 0 \Rightarrow$ z Fixpunkt der Abbildung $g(x) := x + C^{-1}f(x)$
+	$x_t \xrightarrow[t \rightarrow \infty]{} z \Rightarrow z = z + C^{-1}f(z)$ bzw $f(z) = 0 \Rightarrow$ z Fixpunkt der Abbildung $g(x) := x + C^{-1}f(x)$
 	
 	\subsection{Konvergenz}
 	
@@ -1415,7 +1415,7 @@
 	
 	\subsection{Konvergenz}
 	
-	$x_t \xrightarrow[t \rightarrow \infty] x \Rightarrow x = Bx + c$
+	$x_t \xrightarrow[t \rightarrow \infty]{} x \Rightarrow x = Bx + c$
 	
 	$x_t \rightarrow x \Leftrightarrow spr(B) = max{|\lambda| | \lambda EW von B} < 1$
 	
@@ -1470,7 +1470,7 @@
 	
 	A symmetrisch positiv definiert
 	
-	$\Rightarrow <Ax, y> = <x, Ay>, <Ax, x> > 0$
+	$\Rightarrow <Ax, y> = <x, Ay>, <Ax, x>$ $> 0$
 	
 	\subsection{A-Skalarprodukt, A-Norm}
 	
