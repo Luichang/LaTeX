@@ -1542,4 +1542,153 @@
 	
 	\section{CG-Verfahren}
 	
+	Effiziente numerische Methode zur Lösung großen LGS mit symmetrisch positiv definitem A
+	
+	Liefert nach spätestens m Schritten die exakte Lösung für $A \in \mathbb{R}^{m \times m}$ für exakte Arithmetik)
+	
+	Fehler fällt monoton
+	
+	Wähle Abstiegsrichtung $d_t$ mit $<_i, d_j> = 0 \forall i \ne j$
+	
+	$x_t = x_0 + \sum\limits_{i = 0}^{t - 1}\alpha_i d_i \alpha x_0 + B_t$
+	
+	$\Rightarrow x_{t + 1} = x_t + \alpha_t d_t$
+	
+	$\alpha_t = \frac{||g_t||^2}{<d_t, Ad_t>}$ \tab $\beta_t = \frac{||g_t + 1||^2}{||g_t||^2}$
+	
+	$x_{t + 1} = x_t + \alpha_t d_t$
+	
+	$g_{t + 1} = g_t + \alpha_t Ad_t$
+	
+	$d_{t + 1} = -g_{t + 1} + \beta_t d_t$
+	
+	$d_0 = g_0 = b - Ax_0$
+	
+	\subsection{Fehlerabschätzung}
+	
+	$||x_t - x||_A \le 2 (\frac{1 - \frac{1}{\sqrt{K}}}{1 + \frac{1}{\sqrt{K}}})^t ||x_0 - x||_A$ \tab $t \in \mathbb{N}$
+	
+	$K = cond_2(A) = \frac{\lambda_{max}}{\lambda_{min}}$
+	
+	Reduzierung des Anfangsfehlers: $max t(\epsilon) \le \frac{1}{2} \sqrt{K} \ln(\frac{2}{\epsilon}) + 1 Schritte$
+	
+	$\Rightarrow$ CG konvergiert schneller als Gradientenverfahren
+	
+	schneller, je näher $cond_2(A)$ bei 1 liegt, da $cond_2(A) = \frac{\lambda_{max}}{\lambda_{min}}$
+	
+	aber, falls $\lambda_{max} >> \lambda_{min} \Rightarrow$ CG verfahren langsam
+	
+	Lösung: \underline{Vorkonditionierung}
+	
+	\newpage
+	
+	\section{Vorkonditionierung}
+	
+	Ax = b umformen in $\tilde{A}\tilde{x} = \tilde{b}$ mit besser konditioniertem $\tilde{A}$C symmetrisch positiv definit, K regulär: $C = KK^t$
+	
+	$Ax = b \Leftrightarrow K^{-1}A(K^t)^{-1}$\footnote{$\tilde{A}$}$K^tx$\footnote{$\tilde{x}$}$ = K^{-1}b$\footnote{$\tilde{b}$}
+	
+	Dann CG anwenden auf $\tilde{A}\tilde{x} = \tilde{b}$
+	
+	Wähle C so, dass $cond_2(\tilde{A}) << cond_2(A)$
+	
+	\begin{tabular}{l l l}
+		Startwerte: & $\tilde{x}_0 \in \mathbb{R}^n$ & $\tilde{d}_0 = -\tilde{g}_0 = \tilde{b} - \tilde{A}\tilde{x}_0$ \\
+		$g_0 = A_x0 - b$ & & \\
+		$C_{\rho_{t + 1}} = g_{t + 1}$ & $C_{\rho_0} = g_0$ & $d_0 = - \rho_0$
+	\end{tabular}
+	
+	\newpage
+	
+	\section{Satz von Gerschgorin}
+	
+	Alle EW von $A \ in \mathbb{K}^{n \times n}$ liegen in den Vereinigung der sogenannten Gerschgorin-Kreise
+	
+	$k_j = {\zeta \in \mathbb{C} | |\zeta * a_{j, j}| \le \sum\limits_{k = 1, k \ne j}^n|a_jk|}$
+	
+	$U = \bigcup\limits_{i = 1}^mk_{j, i}$, $V = \bigcup\limits_{j = 1}^nk_j \text{\textbackslash} U$
+	
+	Sind $U \cup V = \emptyset \Rightarrow$ m EW in U, n - m in V
+	
+	\newpage
+	
+	\section{Stabilitätsatz}
+	
+	$A \in \mathbb{K}^{n \times n}$ mit n linear unabhängig EV, $B \in \mathbb{K}^{n \times n}$
+	
+	$\Rightarrow \forall \lambda_B$ EW von B $\exists \lambda_A$ EW von A:
+	
+	$|\lambda_A - \lambda_B| \le cond_2(W) ||A - B||_2$
+	
+	$W = (w_1, ..., w_n) \in \mathbb{K}^{n \times n}$ EV von A
+	
+	\newpage
+	
+	\section{Potenzmethode *, inverse Iteration *}
+	
+	Verfahren, um einen (nicht alle) EW zu finden
+	
+	\subsection{Potenzmethode}
+	\begin{tabular}{l l l l}
+		$\zeta \in \mathbb{C}^n$ & $||\zeta_0|| = 0$ & $t \ge 1$ & \\
+		$\tilde{\zeta}_t = A_{\zeta_{t_1}}$ & $\zeta_t = \frac{\tilde{\zeta}_t}{||\tilde{\zeta}||_t}$ & $\lambda_t := \frac{\tilde{\zeta}_k^t}{\zeta_k^t}$ & $\zeta_\zeta^t \ne 0$
+	\end{tabular}
+	
+	\subsection{Rayleigh-Quotient}
+	
+	A diagonalisierbar mit $|\lambda_n| > |\lambda_i|$
+	
+	$\lambda_t = \frac{<\zeta_t, A\zeta_t>_2}{<\zeta_t, \zeta_t}_2$
+	
+	\subsection{Inverse Iteration}
+	
+	A quadratisch $x_0 \in \mathbb{R}^{n}$, $\theta \in \mathbb{R}$ s.d.:
+	
+	1. $q_k = \frac{x_{k - 1}}{||x_{k - 1}||}$
+	
+	2. Löse $(A - \theta En)x_k = q_k$ \tab $(A - \theta En)$ regulär
+	
+	EW ergibt sich mit Rayleigh-Quadratur: $\lambda_k = \frac{x_k^t Ax_k}{x_k^t x_k}$
+	
+	\newpage
+	
+	\section{Hessenberg-Normalform}
+	
+	$\forall A \in \mathbb{R}^{n \times n} \exists$ Folge $T_i$ von Householder-Matrizen, so dass:
+	
+	i = 1, ..., n - 2
+	
+	$TAT^t$ Hessenberg-Matrix ist
+	
+	\subsection{Hessengerg-Matrix}
+	
+	$H \in \mathbb{C}^{n \times n}$ mit $h_{i, j} = 0 \forall i > j + 1$
+	
+	H =
+	$\begin{pmatrix}
+		h_{1, 1} & \dotsc & \dotsc & \dotsc & h_{1, n} \\
+		h_{2, 1} & \ddots & \ddots & \ddots & \vdots   \\
+		0        & \ddots & \ddots & \ddots & \vdots   \\
+		\vdots   & \ddots & \ddots & \ddots & \vdots   \\
+		0        & \dotsc & 0      & h_{n, n - 1} & h_{n, n}
+	\end{pmatrix}$
+	
+	alle Einträge unterhalb der ersten Nebendiagonalen sind 0 (obere H-Matrix) analog definiert man untere H-Matrix
+	
+	sowohl obere als auch untere H-Matrix
+	
+	$\Rightarrow$ Tridiagonalmatrix
+	
+	\newpage
+	
+	\section{QR-Verfahren}
+	
+	Berechnung aller EW einer quadratischen Matrix $A_1 = A \in \mathbb{K}^{n \times n}$
+	
+	$A_t = Q_tR_t \rightarrow A_{t + 1} = R_t * Q_t = Q_{t + 1} * R_{t + 1} \rightarrow \dots \rightarrow A_{t + n}$ Diagonalmatrix
+	
+	für die im QR-Verfahren erzeugten Matrix $A_t$ gilt:
+	
+	$\{\lim\limits_{t \rightarrow \infty} a_{j, j}^{(t)} | j = 1, ..., n\} = \{\lambda_1, ..., \lambda_n\}$
+	
 \end{document}
