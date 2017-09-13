@@ -108,6 +108,24 @@
 	
 	$cond(A) = \frac{ \lambda_{max}}{ \lambda_{min}}$
 	
+	\subsection{Gleitkommazahl (normalisiert)}
+	
+	$b \in \mathbb{N}, b \ge 2, x \in \mathbb{R}$
+	
+	$x = \pm m * b^{\pm e}$
+	
+	Mantisse: $m = m_1b^{-1} + m_2b^{-2} + ... \in \mathbb{R}$
+	
+	Exponent: $e = e_{s-1}b^{s-1} + ... + e_0b^0 \in \mathbb{N}$
+	
+	für $x \ne 0$ eindeutig
+	
+	\subsection{Gleitkommagitter}
+	
+	$A = A(b, r, s)$ größte Darstellbare Zahl: $(1 - b^{-r})*b^{b^s-1}$
+	
+	mit b als Basis, r als Mantissenlänge, s als Exponentenlänge
+	
 	\subsection{Maschienengenauigkeit eps}
 	
 	$eps = \frac{1}{2}b^{-r + 1}, IEEE: eps = \frac{1}{2} * 2^{-52} \approx 10^{-16}$
@@ -124,6 +142,14 @@
 	
 	$f(x) - p(x) = \frac{f^{(n+1)}(\xi x)}{(n+1)!} \prod\limits_{j = 0}^{n}(x - x_j)$
 	
+	\subsection{numerische Aufgabe}
+	
+	$x_j \in \mathbb{R} \text{ mit }f(x_1, ..., x_m) \Rightarrow y_i = f_i(x_j)$
+	
+	fehlerhafte Eingangsgrößen $x_i + \Delta y_i$
+	
+	$|\Delta y_i|$ ist der absolute Fehler, $|\frac{\Delta y_i}{y_i}|$ ist der relative Fehler
+	
 	\subsection{Konditionszahl (relativ)}
 	
 	$k_{ij}(x) = \frac{\partial f_i}{\partial x_i}(x) \frac{\Delta x_j}{x_j}$
@@ -137,6 +163,47 @@
 	$|k_{ij}(x)| > 1 \Rightarrow$ Fehlerverstärkung
 	
 	$|k_{ij}(x)| < 1 \Rightarrow$ Fehlerdämpfung
+	
+	\subsection{stabiler Algorithmus}
+	
+	akkumulierte Fehler der Rechnung (Rundungsfehler, Auswertungsfehler, etc.) übersteigen den unvermeidbaren Problemfehler der Konditionierung der Aufgabe nicht. Aka Trotz Ungenauigkeiten bei den Eingabe Variablen erhalten wir fast sehr genaue Ergebnisse.
+	
+	\section{Auslöschung}
+	
+	Verlust von Genauigkeit bei der Subtraktion von Zahlen mit gleichem Vorzeichen
+	
+	\section{Horner-Schema*}
+	
+	Das sogenannte "Horner-Schema"
+	
+	\begin{tabular}{l l l}
+		$b_n = a_n$ &, k = n - 1, ..., 0 & $b_k = a_k + \xi b_{k + 1} $
+	\end{tabular}
+	liefert den Funktionswert $p(\xi) = b_0$ des Polynoms
+			
+	$p(x) = a_0 + x(... + x(a_{n-1} + a_nx)...)$
+	
+	\subsection{Code}
+	
+	def horner(Ac, Ax, n, x): 
+	
+	y = 0.0
+	
+	for i in reversed range(n):
+	
+	\tab y = y * (x - Ax[i]) + Ac[i]
+	
+	return y
+	
+	Ac: Vektor mit Koeffizienten, ist ein np Array
+	
+	Ax: Stützstellen, ist ein np Array
+	
+	n: Anzahl der Stützstellen, ist ein int
+	
+	x: Auswertungspunkt, ist ein double
+	
+	Immer Horner-Schema zur Auswertung von Polynomen verwenden.
 	
 	\subsection{Interpolation}
 	
@@ -168,5 +235,158 @@
 	
 	für beliebige [?] $\sigma:{0, ..., n} \rightarrow {0, ..., n}$ gilt $y[\tilde{x_0}, ..., \tilde{x_n}] = y[x_0, ..., x_n]$
 	
+	\subsection{Extrapolationsfehler}
+	
+	a(n) habe die Entwickling:
+	
+	$a(h) = a_0 + \sum\limits_{j = 1}^{n}a_jh^{jq} + a_{n + 1}(h)h^{(n+1)q}$ \tab mit q $>$ 0,
+	Koeffizienten $a_j$ 
+	
+	und $a_{n + 1}(h) = a_{n + 1} + a(1[?????])$
+	
+	$(h_k)_{k \in \mathbb{N}}$ erfülle:
+	
+	$0 \le \frac{h_{k + 1}}{h_k} \le p < 1$ ($\Rightarrow h_k$ positiv monoton fallend)
+	
+	Dann gilt für $p_1^{(k)} \in P_n$ (in $h^q$) durch ($h_k^q, a(h_k)$), ..., ($h_{k +n}^q, a(h_{k + 1})$)
+	
+	$a(0) - p_n^{(k)}(0) = O(h_k^{(n + 1)q})$ \tab ($k \rightarrow \infty$)
+	
+	\subsection{Kubischer Spline}
+	
+	$s_n: [a, b] \rightarrow \mathbb{R}$ kubischer Spline bezüglich $a = x_0 < x_1 < ... < x_n = b$, wenn gillt
+	
+	1. $s_n \in C^2[a, b]$
+	
+	2. $S_n|_{I_i} \in P_3$, i = 1, ..., n
+	
+	natürlicher Spline:
+	
+	3. $s_n''(a) = s_n''(b) = 0$
+	
+	\section{Gauß-Approximation}
+	
+	$<f, g>:= \int\limits_{a}^{b}f(t)\conj{g(t)}dt$ \tab $||f|| = \sqrt{<f, f>}$
+	
+	H Prähilbertraum, $\delta \subset H$ endlich Dimensional
+	
+	$\exists f \in H$ eindeutig bestimmte "beste Approximation" $g \in S$
+	
+	\tab $||f - g|| = \min\limits_{\varphi \in S}||f - \varphi||$
+	
+	bes. einfache Lösung, wenn \{$\varphi_1, ..., \varphi_n$\} eine ONB ist, d.h.
+	
+	$(\varphi_i, \varphi_j) = \delta_{i, j} \Rightarrow \alpha_i = <f, \varphi_i>$ \tab i = 1, ..., n
+	
+	\tab $\Rightarrow g = \sum\limits_{i = 1}^{n}<f, \varphi_i>\varphi_i$ ist beste Approximation
+	
+	\section{Gram-Schmidt-Algorithmus}
+	
+	$w_1 := \frac{v_1}{||v_1||}$ \space $\tilde{w_k}:=v_k - \sum\limits_{i = 1}^{k - 1}\gamma<v_k, w_i>w_i$, \space $w_k := \frac{\tilde{w_k}}{||\tilde{w_k}||}$
+	
+	\subsection{Code}
+	
+	n = size(v, 1)
+	
+	k = size(v, 2)
+	
+	u = np.zeros(n, k)
+	
+	u[:, 1] = v[:, 1]/sqrt(v[:, 1] * v[:, 1])
+	
+	for i in range(2, k):
+	
+	\tab u[:, i] = v[:, i]
+	
+	\tab for j in range(1, i - 1):
+	
+	\tab \tab u[:, i] = u[:, i] - (u[:, i] * u[:, j]) / (u[:, j] * u[:, j]) * u[:, j]
+	
+	\tab u[:, i] = u[:, i] / sqrt(u[:, i] * u[:, i])
+	
+	\subsection{Darstellung des Interpolationsfehler}
+	
+	Sei $f \in C^{n + 1}[a, b]$. Dann gibt es zu jedem $x \in [a, b]$ ein $\xi_x \in(x_0, ..., x_n, x)$, so dass gilt:
+	
+	$f(x) - p(x) = \frac{f^{(n + 1)}(\xi_x)}{(n + 1)!}\prod\limits_{j = 0}^n(x - x_j)$ 
+	
+	\section{Interpolatorische Quadraturformeln}
+	
+	$I(f) = \int\limits_{a}^{b}f(x)dx \approx I^{(n)}(f) = \sum\limits_{i = 1}^{n}\alpha_if(x_i)$
+	
+	Stützstellen a $\le a_0 < x_1 < ... < x_n \le b$ und Gewichte $\alpha_i \in \mathbb{R}$
+	
+	\subsection{Newton-Cotes-Formel*}
+	
+	äquidistante Stützstellen
+	
+	\subsection{Abgeschlossene Formeln}
+	
+	$H = \frac{b - a}{n}, x_i = a + iH, a = x_0, b = x_n$
+	
+	Trapezregel: $I^{(1)}(f) = \frac{b - a}{2}[f(a) + f(b)]$
+	
+	Simpsonregel: $I^{(2)}(f) = \frac{b - a}{6}[f(a) + 4f(\frac{a + b}{2}) + f(b)]$
+	
+	$\rfrac{3}{8}-Regel: I^{(3)}(f) = \frac{b - a}{8}[f(a) + 3f(a + H) + 3f(b - h) + f(b)]$
+	
+	\subsection{Offene Formeln}
+	
+	($H = \frac{b - a}{n + 2}, x_i = a + (i + 1)H, a < x_0, x_n < b$)
+	
+	$I^{(0)}(f) = (b - a)f(\frac{a + b}{2})$ \tab Mittelpunktregel
+	
+	$I^{(1)}(f) = \frac{(b - a)}{2}(f(a + H) + f(b - H))$
+	
+	$I^{(2)}(f) = \frac{(b-  a)}{3}(2f(a + H) - f(\frac{a + b}{2}) + 2f(b - H))$
+	
+	\subsection{Code}
+	
+	\subsection{Abhilfe: Summierte Quadraturformeln *}
+	
+	$I-n^{(n)}(f) = \sum\limits_{i = 1}^{N - 1}I_{[x_i, x_i + 1]}^{(n)}(f)$ \tab $h = \frac{b - a}{N}, x_i = a + iH$
+	
+	\subsection{Gauß-Quadratur}
+	
+	$\exists!$ interpolierte Quadraturformel [?] (n + 1) paarweise verschiedene Stützstellen auf [-1, b] mit Ordnung 2n + 2. Stützstellen = Nullstellen
+	
+	$\alpha_i = \int\limits_{-1}^1\prod\limits_{j = 0, j \ne i}(\frac{x - \lambda_j}{\lambda_i - \lambda_j})^2 dx > 0$\footnote{Positivität der Gewichte}, \tab i = 0, ..., n
+	
+	$f\in C^{2n + 2}([-1, 1]) Restglied:$
+	
+	$R^{(n)} = \frac{f^{(2n + 2)}(\xi)}{(2n + 2)!}\int\limits_{-1}^1\prod\limits_{j = 0}^n(x - \lambda_j)^2dx$, \tab $\xi \in (-1 , 1)$
+	
+	\subsection{Kongergenz der Gauß-Quadraturen}
+	
+	Sei $I^{(n)}(f)$ die (n + 1) punktige [?] Gauß-Formel zu $I(f) = \int\limits_{-1}^1f(x)dx \forall f \in C[-1, 1]: I^{(n)}(f) \xrightarrow{n \rightarrow \infty} I(f)$
+	
+	\section{Legendre Polynome *}
+	
+	Die Legendre Polynome $L_n \in P_n$ bzw, ihre Vielfachen $p_n$ lassen sich auf $[-1, 1]$ in der Form $p_n(x) = \frac{n!}{(2n)!}\frac{d^n}{dx^n}(x^2 - 1)^n$ schreiben und genügen der rekursiven Bezeichnung
+	
+	$p_0(x) \equiv 1$, $p_1(x) \equiv x$
+	
+	$p_{n + 1}(x) = xp_n(x) - \frac{n^2}{4n^2 - 1}p_{n - 1}(x)$ für $n \ge 1$
+	
+	\section{Ordnung von Quadraturformeln *}
+	
+	Eine Quadraturformel $I^{(n)}(\cdot)$ wird "(mindestens) von der Ordnung m" genannt, wenn durch sie wenigstens alle Polynome aus $p_{m - 1}$ exakt integriert werden
+	Die interpolatorische Quadraturformel $I^{(n)}(\cdot)$ zu n + 1-Stützstellen sind also mindestens von der Ordnung n + 1
+	
+	\subsection{Störungssatz}
+	
+	$A \in \mathbb{K}^{n x n}$ regulär mit $||\delta A|| \le \frac{1}{||A^{-1}||}$, dann gilt für die
+	
+	\subsection{gestörte Matrix}
+	
+	$\tilde{A} = A + \delta A$ ist regulär
+	
+	Für den relativen Fehler der Lösung gilt mit Konditionszahl von A:
+	
+	\tab $cond(A) = ||A|| * ||A^{-1}||$
+	
+	die Ungleichung:
+	
+	\tab $\frac{||\delta_x||}{||x||} \le \frac{cond(A)}{1 - cond(A) \frac{||\delta A||}{||A||}}\left[ \frac{||\delta b||}{||b||} + \frac{||\delta A||}{||A||}\right] $
 	
 \end{document}
