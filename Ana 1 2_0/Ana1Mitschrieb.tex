@@ -1,0 +1,119 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{datetime}
+
+\usepackage{breqn} % this package is one option for math lines
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\usepackage{amssymb} % package for Natural Number sign etc
+\hypersetup{linktoc=all}
+
+\newdateformat{gerDate}{\THEDAY \space \monthname[\THEMONTH], \THEYEAR} % german date format
+
+\begin{document}
+	\begin{titlepage} % good tital page template, only needs the class X notes part to be changed for each new class
+	\centering
+	\includegraphics[width=0.40\textwidth]{UniLogo}\par\vspace{1cm}
+		{\scshape\LARGE Universität Heidelberg \par}
+		\vspace{1cm}
+		{\Huge\bfseries Analysis 1 \par}
+		\vspace{1cm}
+		{\LARGE\bfseries Prof. Dr. Peter Albers \par}
+		\vspace{1cm}
+		{\huge Wintersemester 17/18 \par}
+		\vspace{2cm}
+		{\Large\itshape by Charles Barbret \par}
+		
+		\vfill
+
+		% Bottom of the page
+		{\large \gerDate\today\par}
+	\end{titlepage}
+
+\tableofcontents % creats a table of contents, ensured already that it is clickable
+\newpage % starts the actual document on a new page so there is no weird colision of text and toc
+
+
+\section{Ablauf der Vorlesung}
+\subsection{Moodle}
+Modle passwort: Ableitung
+\subsection{Übungsbetrieb}
+Donnerstags kommen die neuen Zettel \newline
+Zettel sollen in Zweiergruppen abgegeben werden \footnote{ist ja knuffig} \newline
+Abgabeschluss ist Donnerstags 09:15 im Mathematikon bei den Briefkästen \newline
+Das erste Blatt wird spätestenz am 19.10.2017 veröffentlicht 
+
+\subsection{Plenarübung}
+Donnerstags 16:00 bis 18:00 im KIP HS1 \newline
+Erste Plenarübung findet bereits am 19.10.2017
+
+\subsection{Klausur}
+50\% der Gesamtpunkte der Aufgabenblätter und einmal vorgerechnet haben.
+
+Klausurtermine: 23.02.2018 09:00 bis 13:00 Uhr und 9.4.2018 09:00 bis 13:00 Uhr
+
+Nicht erscheinen bei der ersten Klausur ohne Abmeldung gilt als 5.0, man kann dann aber immer noch in die Nachklausur.
+
+\section{Grundlagen}
+\subsection{Mengen und Aussagen}
+Definition \footnote{Cantor 1895}\newline
+Eine \underline{Menge} ist eine Zusammenfassung von wohldefinierten und wohl unterschiedenen Objekten zu einem Ganzen. Die Objekte heißen \underline{Elemente} der Menge. \newline
+\underline{wohlbestimmt}: Von jedem Objekt steht fest, ob es Element der Menge ist oder nicht \newline
+\underline{wohl unterschieden}: Jedes Objekt kommt höchstens einmal in der Menge vor \newline
+\begin{tabular}{l l}
+Beschreibung der Menge & a) Durch Aufzählung $\mathbb{N}: = \{1, 2, 3, ...\} $\\
+& \parbox[t]{8cm}{b) Durch Angabe einer charakteristischen Eigenschaft in Form einer Aussage, d.h. eines Satzes, von dem eindeutig feststeht, ob er wahr oder falsch ist. Der Wahrheitsgehalt muss zum gegebenen Zeitpunkt nicht bekannt sein.
+	Bsp A(u):= u ist eine Primzahl (D.h. $u \ge 2$)} \\
+& c) Durch Beschreibung der Elemente 
+\end{tabular}
+\newline
+\underline{Definition} Es sein M und N Mengen
+[...]
+\newline
+\underline{Bemerkung}
+"oder" bedeutet das einschließliche oder, also nicht "{}entweder \dots oder \dots" $\rightarrow$ Wahrheitstabellen \newline
+Seien A und B Aussagen. Wir leiten ab \footnote{w = wahr, f = falsch}
+
+\begin{tabular}{c | c | c | c | c}
+	A & B & A und B & A oder B & "{}Entweder A oder B" \\ \hline
+	w & w & w & w & f \\
+	w & f & f & w & w \\
+	f & w & f & w & w \\
+	f & f & f & f & f
+\end{tabular}
+
+\underline{Implikation} zwischen Aussagen
+
+\begin{tabular}{l l}
+	A $\Rightarrow$ B & steht für: A impliziert B \\
+	 & Falls A gilt, dann gilt auch B \\
+	 & A ist \underline{hinreichende} Bedingung für B \\
+	 & B ist \underline{notwendige} Bedingung für A
+\end{tabular}
+
+Formal definieren wir A $\Rightarrow$ B ist wahr, falls $\neg$ A oder B
+
+D.h.
+\begin{tabular}{c | c | c}
+	A & B & A $\Rightarrow$ B \\ \hline
+	w & w & w \\
+	w & f & f \\
+	f & w & w \\
+	f & f & w
+\end{tabular}
+
+Außerdem kürzen wir ab:
+
+A $\Leftrightarrow$ B steht für A $\Rightarrow$ B $\land$ A $\Leftarrow$ B
+
+Beispiel:
+
+[\dots]
+
+\underline{Bemerkung}:\newline
+Für alle Mengen M gilt $\emptyset \subset M$ \newline
+$\forall M: \emptyset \subset M$.
+
+\end{document}
