@@ -1,0 +1,111 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{datetime}
+
+\usepackage{breqn} % this package is one option for math lines
+\usepackage{amssymb} % package for Natural Number sign etc
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\hypersetup{linktoc=all}
+
+\newdateformat{gerDate}{\THEDAY \space \monthname[\THEMONTH], \THEYEAR} % german date format
+
+\begin{document}
+	\begin{titlepage} % good tital page template, only needs the class X notes part to be changed for each new class
+	\centering
+	\includegraphics[width=0.40\textwidth]{UniLogo}\par\vspace{1cm}
+		{\scshape\LARGE Universität Heidelberg \par}
+		\vspace{1cm}
+		{\huge\bfseries Mathematische Logik \par}
+		\vspace{1cm}
+		{\Huge\bfseries Prof. Dr. Klaus Ambos-Spies}
+		\vspace{1cm}
+		{\Large Winter Semester 17/18 \par}
+		\vspace{2cm}
+		{\Large\itshape von Charles Barbret \par}
+		
+		\vfill
+
+		% Bottom of the page
+		{\large \gerDate\today\par}
+	\end{titlepage}
+
+\tableofcontents % creats a table of contents, ensured already that it is clickable
+\newpage % starts the actual document on a new page so there is no weird colision of text and toc
+
+
+\section{Orientierung}
+Home Page der Vorlesung:
+http://www.math.uni-heidelberg.de/logic/ws17/mathlogik\_ws17.html
+
+\subsection{Übungsgruppen}
+Anwesenheitspflicht, bis zu 2 mal kann gefehlt werden
+
+Fangen am Dienstag den 24.10.2017 an
+
+Das erste Blatt erscheint in der zweiten Woche
+
+Abgabe: Donnerstags vor der Vorlesung.
+\subsection{Klausur}
+Kommt sicherlich nochmal
+
+Zu beginn und ende der Vorlesungsfreien Zeit
+
+\section{Einführung}
+
+\subsection{Was ist Logik}
+[Insert Goethe's Faust Zitate hier] \newline
+[Wikipedias Definition von Logik] \newline
+
+\subsection{Was ist klassische Logik}
+
+In der klassischen Logik geht man davon aus, dass: \newline
+1. Jede Aussage Entweder \underline{wahr} oder \underline{falsch} ist. (Prinzip des ausgeschlossenen Dritten ("tertium nun datur"), Zweiwertige Logik) \newline
+Beispiel dass er genannt hatte: Dass der Wahrheitswert von der Zeit abhängt, wie ob es regnet, sollte es im moment regnen sagt man generell schon, dass es regnet da es in diesem Moment bei einem regnet. Doch generell kann man dem zustand ob es regnet keinen Wahrheitswert zuweisen. \newline
+2. Der Wahrheitswert einer zusammengesetzten Aussage eindeutig durch die Wahrheitswerte ihrer Teilaussagen und die Art, wie diese zusammengesetzt sind, bestimmt ist. (Extensionalitätsprinzip)\newline
+
+In der (mathematischen) Logik werden auch nichtkalssische Logiken untersucht (Mehrwertige Logiken, Modallogiken, Temporallogiken, Probabilischischen Logiken, "fuzzy logic", Intuitionischtischen Logik) Diese basieren auf der klassischen Logik oder können doch zumindest entsprechend der klassischen Logik entwickelt werden. \newline
+In dieser Vorlesung wird nur die klassische Logik betrachtet.
+
+Wenn man eine Logik anwenden kann, kann man gut sich an andere setzen und in andere einsteigen und diese verwenden.
+
+\subsection{Ziele der Vorlesung}
+Wir werden uns mit der (klassischen) mathematischen Logik befassen, wobei die mathematische Logik einmal die Logik ist, welche wir in der Mathe gut verwenden können zum anderen 
+
+\subsection{Prädikatenlogik}
+Die Prädikatenlogik steht im Zentrum der Vorlesung
+
+Eine mathematische Struktur ist dabei z.B. die Struktur
+
+[Funny N] = ($ \mathbb{N} $, +[funny n], * [funny n], 0[funny n], 1[funny n])
+
+In der Logik werden wir Grund Objekte definieren (+, *, 0, 1) mit denen wir alle Objekte die wir erreichen wollen beschreiben können, auch wenn wir es nicht direkt Definiert haben.
+
+Wir werden Grundbereiche ( aka Universen, dessen Elemente wir als Individuen bezeichnen) erstellen (So wie die Natürlichen Zahlen etc)
+
+\subsubsection{Sprache und Sätze}
+Wir werden (Individuen-)Variablen mit Junktoren verknüpfen können um neue Aussagen treffen zu können.
+
+der Satz $\forall x\exists y(x = y + 1)$ ist in den Natürlichen Zahlen Falsch, jedoch in den Ganzen Zahlen wahr. (Als ein Beispiel direkt aus der Mathematik)
+
+\subsubsection{Logische Wahrheit}
+Ein Satz ist dann logisch wahr(allgemein gültig), wenn er in allen Strukturen gilt, also bei jeder möglichen Interpretation wahr ist.
+
+Zusätzlich gibt es erfüllbare Sätze, die nicht immer wahr sein müssen und Widersprüchliche Sätze, welche nie wahr sein können.
+
+\subsubsection{Logischer Folgerungsbegriff}
+Ein Satz $\sigma$ folgt (logisch d.h. zwingend) aus einer Menge T von Sätzen, wenn in jeder Struktur in der alle Sätze aus T gelten, (in der Mathe auch Axiome) auch der Satz $\sigma$ gilt (also jedes Modell von T auch Modell von $\sigma$ ist).
+
+\subsubsection{Wahrheit vs Beweisbarkeit}
+Man definiert sogenannte Kalküle [funny K]. Solch ein Kalkül verfügt über eine Menge von ausgezeichneten Sätzen, den (logischen) Axiomen, sowie einer Menge ausgezeichneter endlicher Folgen von Sätzen $\phi_1, ..., \phi_n, \phi$, den Regeln, wobei die Sätze  $\phi_1, ..., \phi_n$ als die Prämissen und der Satz $\phi$ als die Konklusion der Regel bezeichnet wird.
+
+Ein Beweis eines Satzes $\sigma$ besteht dann aus einer endlichen Folge von Sätzen $\psi_1..., \psi_m$, wobei der letzte Satz $\psi_m$ der zu beweisende Satz $\sigma$ ist und jeder Satz $\psi_i$ ein Axiom oder die Konklusion des Satzes ist.
+
+\subsection{Logische Wahrheit vs Wahrheit in der Mathematik}
+[meh]
+
+
+
+\end{document}
