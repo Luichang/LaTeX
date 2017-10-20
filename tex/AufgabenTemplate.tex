@@ -1,0 +1,38 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{datetime}
+
+\usepackage{breqn} % this package is one option for math lines
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\hypersetup{linktoc=all}
+
+\begin{document}
+	\begin{titlepage} % good tital page template, only needs the class X notes part to be changed for each new class
+		\centering
+		{\huge\bfseries Fach \par}
+		\vspace{1cm}
+		{\Large\bfseries Tutor \par}
+		\vspace{1cm}
+		{\huge Zettel Nummer \par}
+		\vspace{2cm}
+		{\Large\itshape von Charles Barbret und Partner \par}
+		\vspace{5cm}
+		\begin{tabular}{|l | l | l | l | l | l |}
+			\hline
+			Aufgabe 1 & Aufgabe 2 & Aufgabe 3 & Aufgabe 4 & Aufgabe 5 & $\Sigma$ \\ \hline
+			{} & {} & {} & {} & {} & {}\\	\hline
+		\end{tabular}
+	\end{titlepage}
+\section*{Aufgabe 1}
+
+\section*{Aufgabe 2}
+
+\section*{Aufgabe 3}
+
+\section*{Aufgabe 4}
+
+\section*{Aufgabe 5}
+\end{document}
