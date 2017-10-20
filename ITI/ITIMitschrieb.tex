@@ -1,0 +1,65 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{datetime}
+
+\usepackage{breqn} % this package is one option for math lines
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\hypersetup{linktoc=all}
+
+\newdateformat{gerDate}{\THEDAY \space \monthname[\THEMONTH], \THEYEAR} % german date format
+
+\begin{document}
+	\begin{titlepage} % good tital page template, only needs the class X notes part to be changed for each new class
+	\centering
+	\includegraphics[width=0.40\textwidth]{UniLogo}\par\vspace{1cm}
+		{\scshape\LARGE Universität Heidelberg \par}
+		\vspace{1cm}
+		{\huge\bfseries Einführung in die Technische Informatik \par}
+		\vspace{1cm}
+		{\Large\bfseries Prof. Dr. Ulrich Brüning \par}
+		\vspace{1cm}
+		{\huge Wintersemester 17/18 \par}
+		\vspace{2cm}
+		{\Large\itshape von Charles Barbret \par}
+		
+		\vfill
+
+		% Bottom of the page
+		{\large \gerDate\today\par}
+	\end{titlepage}
+
+\tableofcontents % creats a table of contents, ensured already that it is clickable
+\newpage % starts the actual document on a new page so there is no weird colision of text and toc
+
+
+\section{Organisatorisches}
+\subsection{Moodle}
+Passwort: EinfTI17
+
+\subsection{Wo wir hin wollen}
+Wie ein Conputer aufgebaut ist, von der Hardware.
+
+Das Skript wird im Moodle zur Verfügung gestellt werden
+
+\subsection{Übungsgruppen}
+Die Ersten 3 Wochen findet keine Übungsgruppe statt, die ersten zwei Wochen werden Zettel zur Bearbeitung freigegeben werden. 
+
+Um zur Klausur zugelassen werden muss man mehr als 50\% der Punkte erreicht werden, wobei man maximal 2 mal bei der Übungsgruppe fehlen darf. Es müssen ebenfalls 80\% der Zettel abgegeben werden. 
+
+\subsection{Klausur}
+Erste Klausur ist 2 Wochen nach der letzten Vorlesung. (Mittwoch 21.2.2018)
+
+\newpage
+\section{Vorlesung 2}
+\subsection{Information und ihre Übertragung}
+Eine Nachricht ist eine Zeichenfolge, wobei ein Zeichen aus einer endlichen Menge von unterscheidbaren Elementen stammt. 
+
+Um zu vermitteln, dass nichts gesendet wird, wird etwas versendet, was mitteilt, dass nichts gesendet wird.
+
+
+
+
+\end{document}
