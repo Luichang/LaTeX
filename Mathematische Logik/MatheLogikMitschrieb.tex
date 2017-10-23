@@ -79,7 +79,7 @@ Die Prädikatenlogik steht im Zentrum der Vorlesung
 
 Eine mathematische Struktur ist dabei z.B. die Struktur
 
-[Funny N] = ($ \mathbb{N} $, +[funny n], * [funny n], 0[funny n], 1[funny n])
+$\mathcal{N} = ( \mathbb{N} , +\mathcal{N}, * \mathcal{N}, 0\mathcal{N}, 1\mathcal{N})$
 
 In der Logik werden wir Grund Objekte definieren (+, *, 0, 1) mit denen wir alle Objekte die wir erreichen wollen beschreiben können, auch wenn wir es nicht direkt Definiert haben.
 
@@ -99,12 +99,154 @@ Zusätzlich gibt es erfüllbare Sätze, die nicht immer wahr sein müssen und Wi
 Ein Satz $\sigma$ folgt (logisch d.h. zwingend) aus einer Menge T von Sätzen, wenn in jeder Struktur in der alle Sätze aus T gelten, (in der Mathe auch Axiome) auch der Satz $\sigma$ gilt (also jedes Modell von T auch Modell von $\sigma$ ist).
 
 \subsubsection{Wahrheit vs Beweisbarkeit}
-Man definiert sogenannte Kalküle [funny K]. Solch ein Kalkül verfügt über eine Menge von ausgezeichneten Sätzen, den (logischen) Axiomen, sowie einer Menge ausgezeichneter endlicher Folgen von Sätzen $\phi_1, ..., \phi_n, \phi$, den Regeln, wobei die Sätze  $\phi_1, ..., \phi_n$ als die Prämissen und der Satz $\phi$ als die Konklusion der Regel bezeichnet wird.
+Man definiert sogenannte Kalküle $\mathcal{K}$. Solch ein Kalkül verfügt über eine Menge von ausgezeichneten Sätzen, den (logischen) Axiomen, sowie einer Menge ausgezeichneter endlicher Folgen von Sätzen $\phi_1, ..., \phi_n, \phi$, den Regeln, wobei die Sätze  $\phi_1, ..., \phi_n$ als die Prämissen und der Satz $\phi$ als die Konklusion der Regel bezeichnet wird.
 
 Ein Beweis eines Satzes $\sigma$ besteht dann aus einer endlichen Folge von Sätzen $\psi_1..., \psi_m$, wobei der letzte Satz $\psi_m$ der zu beweisende Satz $\sigma$ ist und jeder Satz $\psi_i$ ein Axiom oder die Konklusion des Satzes ist.
 
 \subsection{Logische Wahrheit vs Wahrheit in der Mathematik}
 [meh]
+
+\section{Aussagenlogik}
+
+\subsection{Comming soon in a PDF near you}
+\bfseries{Teil 1: Syntax der Aussagenlogik} \newline
+* Junktoren und Wahrheitsfunktionen\newline
+* Syntax der Aussagenlogik \newline
+* Semantik der Aussagenlogik \newline
+* Boolesche Funktionen, aussagenlogische Formeln und Normalformen \newline
+* Exkurs: Entscheidbarkeit der Komplexität \newline
+\bfseries{Teil 2: Ein Kalkül der Aussagenlogik} \newline
+[meh]
+
+\subsection{Verknüpfung von Aussagen}
+Um Aussagen zu verknüpfen verwenden wir Junktoren, die wir aus der Umgangssprache kennen:
+\begin{tabular}{l l}
+	& nicht (Negation, $\neg$) \\
+	& und (Konjunktion $\wedge$) \\
+	& oder (Disjunktion, $\vee$) \\
+	& wenn - dann (Implikation $\rightarrow$) \\
+	& Genau dann wenn (? $\leftrightarrow$)
+\end{tabular}
+
+Für Boolesche Funktionen kürzen wir ab: \newline
+WAHR = W = 1 und FALSCH = F = 0
+
+Eine n-stellige Wahrheitsfunktion f ist eine Abbildung
+
+f: $\{F, W\}^n \rightarrow \{F, W\}$
+
+Eine n-stellige Boolschefunktion f ist eine Abbildung
+
+f: $\{1, 0\}^n \rightarrow \{1, 0\}$
+
+Bei Verknüpfung zwei oder mehrere Aussagen, wird der Wahrheitswert durch den Wahrheitswert der Teilaussagen bestimmt.
+
+Negation:\newline
+\begin{tabular}{c | c}
+	$X_0$ & $f_{\neg}(x_0)$ \\ \hline
+	0 & 1 \\
+	1 & 0
+\end{tabular}
+
+In der (Mathematischen-/) Logik verwendet man das inklusive oder: \newline
+\begin{tabular}{c | c | c}
+	$x_0$ & $x_1$ & $f_{\vee}(x_0, x_1)$ \\ \hline
+	0 & 0 & 1 \\
+	0 & 1 & 1 \\
+	1 & 0 & 1 \\
+	1 & 1 & 1
+\end{tabular}
+
+Es gilt also gerade $f_{\vee}(x_0, x_1) = max(x_0, x_1)$
+
+Konjunktion (und):\newline
+\begin{tabular}{c | c | c}
+	$x_0$ & $x_1$ & $f_{\wedge}(x_0, x_1)$ \\ \hline
+	0 & 0 & 0 \\
+	0 & 1 & 0 \\
+	1 & 0 & 0 \\
+	1 & 1 & 1
+\end{tabular}
+
+Man darf auch unsinnige Aussagen treffen wie: "Wenn es regnet ist 3 eine Primzahl"
+
+Implikation:\newline
+\begin{tabular}{c | c | c}
+	$x_0$ & $x_1$ & $f_{\rightarrow}(x_0, x_1)$ \\ \hline
+	0 & 0 & 1 \\
+	0 & 1 & 1 \\
+	1 & 0 & 0 \\
+	1 & 1 & 1
+\end{tabular}
+
+Äquivalenz:\newline
+\begin{tabular}{c | c | c}
+	$x_0$ & $x_1$ & $f_{\leftrightarrow}(x_0, x_1)$ \\ \hline
+	0 & 0 & 1 \\
+	0 & 1 & 0 \\
+	1 & 0 & 0 \\
+	1 & 1 & 1
+\end{tabular}
+
+Es gibt $2^{2^n}$ verschiedene n-stellige Boolesche Funktionen.
+
+\subsubsection{Beispiel}
+Die 3-stellige Schwellenfunktion $s_2^3:\{0, 1\}^3 \rightarrow \{0, 1\}$
+
+\begin{tabular}{c | c | c | c}
+	$x_0$ & $x_1$ & $x_2$ & $f_{\leftrightarrow}(x_0, x_1)$ \\ \hline
+	0 & 0 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 1 & 1 & 0 \\
+	1 & 0 & 0 & 1 \\
+	1 & 0 & 1 & 1 \\
+	1 & 1 & 0 & 1 \\
+	1 & 1 & 1 & 1 \\
+\end{tabular}
+{} \newline
+{} \newline
+{} \newline
+$f_{\vee}(f_{\vee}(f_{\wedge}(x_0, x_1), f_{\wedge}(x_0, x_2)), f_{\wedge}(x_1, x_2))$
+
+\subsection{Syntax der Aussagenlogik}
+Die Grundzeichen (Symbole) der Sprache der Aussagenlogik (AL) sind: \newline
+Die Aussagenvariablen (AV): $A_0, A_1, ...$ \newline
+Die Junktoren: 
+
+\begin{tabular}{l l}
+	1-stellig: & $\neg$ \\
+	2-stellig: & $\wedge, \vee, \rightarrow, \leftrightarrow$
+\end{tabular}
+
+Die Klammersymbole: ( und )
+
+Man will zu jedem "Wort" ein sinniges erstellen, und "unlogische" terme vermeiden wie: $A_0 \neg ) \vee$
+
+Die aussagenlogischen (al.) Formeln sind induktiv definiert durch:
+
+\begin{tabular}{l l}
+	(F1) & Jede Aussagenvariable $A_n$ (n $\ge$ 0) ist eine al. Formel \\
+	(F2) & ist $\varphi$ eine al. Formel, so ist auch $\neg\varphi$ eine al. Formel \\
+	(F3) & Sind $\phi_1$ und $\phi_2$ al. Formeln, so sind auch $(\varphi_1 \wedge \varphi_2), (\varphi_1 \vee \varphi_2), (\varphi_1 \rightarrow \varphi_2)$ und $(\varphi_1 \leftrightarrow \varphi_2)$ al. Formeln
+\end{tabular}
+
+\begin{tabular}{l l l}
+	NOTATION: & A, B, C, ... & stehen für Aussagenvariablen \\
+	& $\varphi, \psi,$ ... & stehen für [meh]
+\end{tabular}
+
+\subsubsection{Definition}
+$l(\varphi)$ = Anzahl der Zeichen in $\varphi$ \newline
+$lz(\varphi)$ = Anzahl der Junktoren in $\varphi$
+
+[MER meh]
+
+\begin{tabular}{l l}
+	K1 & Äußere Klammern dürfen weggelassen werden. \\
+	K2 & $\vee und \wedge$ binden stärker als $\rightarrow und \leftrightarrow$ \\
+	K3 & 
+\end{tabular}
 
 
 
