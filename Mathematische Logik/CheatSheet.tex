@@ -7,7 +7,7 @@
 \usepackage{datetime}
 
 \usepackage{amsmath} % this package is one option for math lines
-\usepackage{tasks}
+\usepackage{enumerate}
 
 \usepackage{hyperref} % these two lines are so that the table of content is clickable
 \usepackage{amssymb} % package for Natural Number sign etc
@@ -38,10 +38,7 @@
 		\item[Der Shoenfield-Kalkül für PL]:
 		\begin{itemize}
 			\item Korrektheitssatz: Beweisidee und Folgerungen (Konsistenzlemma)
-			\item Vollständigkeitssatz: was versteht man unter einer zulässigen Regel bzw.
-			einem zulässigen Axiom?, was besagt das Deduktionstheorem?, Erfüllbarkeitslemma (EL),
-			wie folgt der Vollständigkeitssatz aus dem EL?, Beweisidee des EL (was ist eine
-			Termstruktur?, Lemma und Satz über Termstrukturen, was ist eine Henkin-Theorie?, Aussage der Sätze von Lindenbaum und über Henkin-Erweiterungen)
+			\item Vollständigkeitssatz: was versteht man unter einer zulässigen \hyperref[Kalkul]{Regel} bzw. einem zulässigen Axiom?, was besagt das Deduktionstheorem?, Erfüllbarkeitslemma (EL), wie folgt der Vollständigkeitssatz aus dem EL?, Beweisidee des EL (was ist eine Termstruktur?, Lemma und Satz über Termstrukturen, was ist eine Henkin-Theorie?, Aussage der Sätze von Lindenbaum und über Henkin-Erweiterungen)
 			\item Kompaktheitssatz (für Folgerungsbegriff und für die Erfüllbarkeit - mit Beweis).
 		\end{itemize}
 		\item[Definierbarkeit in PL1]:
@@ -63,28 +60,41 @@
 	\newpage
 	
 	\section{Aussagenlogik}
-	\subsection{*Sprache der Aussagenlogik}
-	\label{ALSprache}
-	Besteht aus 3 Bausteinen:
+	\subsection{*Sprache (der Aussagenlogik)}
+	\label{Sprache}
+	Besteht aus 3, 5 oder mehr (je nachdem welche Sprache betrachtet wird) Bausteinen:
 	
-	\begin{tabular}{l l}
-		1) & Aussagenvariablen: $A_0, A_1, ...$ \\
-		2) & \begin{tabular}{l l}
+	\begin{enumerate}
+		\item Aussagenvariablen: $A_0, A_1, ...$
+		\item \begin{tabular}{l l}
 			1-Stellig: & $\neg$ \\
 			2-Stellig: & $\land, \lor, \rightarrow \leftrightarrow$
-		\end{tabular} \\
-		3) & Klammern
-	\end{tabular}
-
-	Das Alphabet $A_{AL}$ ist die Menge der Symbole
-	
+		\end{tabular}
+		\item Klammern und Komma
+	\end{enumerate}
+	Bei der Prädikatenlogik kommen dann noch dazu:
+	\begin{enumerate}
+		\addtocounter{enumi}{3}
+		\item Existenzquantor
+		\item Gleichzeichen
+	\end{enumerate}
+	In den $\mathcal{L}$-Sprachen kommen noch dazu:
+	\begin{enumerate}
+		\addtocounter{enumi}{5}
+		\item Relationszeichen
+		\item Funktionszeichen
+		\item Konstantensymbol(e)
+	\end{enumerate}
+	Das Alphabet $A_{AL}$ ist die Menge der Symbole \newline
 	$A^*$ ist die Menge der Wörter (wobei jedes Wort endlich viele Symbole hat) und das leere Wort $\lambda$
 	
 	\subsection{*Formeln}
 	\label{Formel}
-	(F1) Alle $A_{n_{> 0}}$ sind Formeln \newline
-	(F2) $\varphi$ al. Formel $\Rightarrow \neg \varphi$ al. Formel \newline
-	(F3) $\varphi_1, \varphi_2$ al. Formeln $\Rightarrow (\varphi_1 \bigodot \varphi_2)$ mit $\bigodot \in \{\land, \lor, \rightarrow\leftrightarrow\}$ al. Formel
+	\begin{description}
+		\item[(F1)] Alle $A_{n_{> 0}}$ sind Formeln
+		\item[(F2)] $\varphi$ al. Formel $\Rightarrow \neg \varphi$ al. Formel
+		\item[(F3)] $\varphi_1, \varphi_2$ al. Formeln $\Rightarrow (\varphi_1 \bigodot \varphi_2)$ mit $\bigodot \in \{\land, \lor, \rightarrow\leftrightarrow\}$ al. Formel
+	\end{description}	
 	
 	\begin{tabular}{l p{10cm}}
 		Länge von $\varphi$: & $l(\varphi)$ := Anzahl der Zeichen \\
@@ -92,18 +102,18 @@
 		Anderes zu $\varphi$ & $\rho(\varphi)$ := Schachtelungstiefe der Junktoren \\
 		& $V(\varphi)$ := Anzahl der Aussagenvariablen \\
 		& $TF(\varphi)$ := Anzahl der Teilformeln \\
-		& F(V) := $\{\varphi: V(\varphi)\subseteq V\}$ Menge der al. Formeln, die Variablen aus V enthalten
+		& F(V) := $\{\varphi: V(\varphi) \subseteq V\}$ Menge der al. Formeln, die Variablen aus V enthalten
 	\end{tabular}
 	
 	\subsection{*Prinzip der syntaktischen Induktion}
-	\begin{tabular}{l l}
-		(i) & E Eigenschaft trifft auf jede Aussagenvariable A zu \\
-		& Heißt wir Zeigen es gilt für Aussagenvariablen \\
-		(ii) & Trifft E auf al. \hyperref[Formel]{Formel} $\varphi$ zu $\Rightarrow$ E trifft auf $\neg \varphi$ zu \\
-		& E gilt für die \hyperref[Formel]{Formel} und dessen Negation \\
-		(iii) & E trifft auf $\varphi_1, \varphi_2$ zu $\Rightarrow$ E trifft auf $(\varphi_1 \bigodot \varphi_2)$ mit $\bigodot \in \{\land, \lor, \rightarrow\leftrightarrow\}$ zu \\
-		& Gilt E für $\varphi_1, \varphi_2$ so gilt es auch für deren Verknüpfungen
-	\end{tabular}
+	\begin{enumerate}[(i)]
+		\item E Eigenschaft trifft auf jede Aussagenvariable A zu \newline
+		Heißt wir Zeigen es gilt für Aussagenvariablen
+		\item Trifft E auf al. \hyperref[Formel]{Formel} $\varphi$ zu $\Rightarrow$ E trifft auf $\neg \varphi$ zu \newline 
+		E gilt für die \hyperref[Formel]{Formel} und dessen Negation
+		\item E trifft auf $\varphi_1, \varphi_2$ zu $\Rightarrow$ E trifft auf $(\varphi_1 \bigodot \varphi_2)$ mit $\bigodot \in \{\land, \lor, \rightarrow\leftrightarrow\}$ zu \newline 
+		Gilt E für $\varphi_1, \varphi_2$ so gilt es auch für deren Verknüpfungen
+	\end{enumerate}
 	
 	\subsection{*!Belegung}
 	\label{Belegung}
@@ -116,20 +126,26 @@
 	\subsection{*Bewertung}
 	Die zur Belegung $B: V \rightarrow \{0, 1\}$ gehörende Bewertung $\widehat{B}$ 
 	
-	1. $\varphi \equiv A : \widehat{B}(A) := B(A)$ \newline
-	2. $\varphi \equiv \neg \psi : \widehat{B}(\neg \psi):= f_{\neg}(\widehat{B}(\psi))$ \newline
-	3. $\varphi \equiv (\varphi_1 \bigodot \varphi_2) := f_{\widehat{B}}(\widehat{B}(\varphi_1), \widehat{B}(\varphi_2))$
+	\begin{enumerate}
+		\item $\varphi \equiv A : \widehat{B}(A) := B(A)$
+		\item $\varphi \equiv \neg \psi : \widehat{B}(\neg \psi) := f_{\neg}(\widehat{B}(\psi))$
+		\item $\varphi \equiv (\varphi_1 \bigodot \varphi_2) := f_{\widehat{B}}(\widehat{B}(\varphi_1), \widehat{B}(\varphi_2))$
+	\end{enumerate}
 	
 	\subsection{*!Koinzidenzlemma}
-	Seien $B_i : V_i \rightarrow \{0, 1\}, i = 0, 1$, \hyperref[Belegung]{Belegung}, sei $\varphi$ eine al. \hyperref[Formel]{Formel} deren Aussagenvariable in $V_0$ und $V_1$ liegen und stimmen $B_0$ und $B_1$ auf den in $\varphi$ vorkommenden Variablen überein (Was soviel heißt wie jede Variable aus $V_0$ wird durch $B_0$ einen Wert zugewiesen, und jede Variable aus $V_1$ wird durch $B_1$ einen Wert zugewiesen. Jetzt müssen die Variablen in $\varphi$ vorkommen in $V_0$ und $V_1$ vorkommen und deren \hyperref[Belegung]{Belegungen} müssen gleich sein.)
-	
-	$\Rightarrow \widehat{B}_0(\varphi) = \widehat{B}_1(\varphi)$
+	\begin{itemize}
+		\item Seien $B_i : V_i \rightarrow \{0, 1\}, i = 0, 1$, \hyperref[Belegung]{Belegung}, sei $\varphi$ eine al. \hyperref[Formel]{Formel} deren Aussagenvariable in $V_0$ und $V_1$ liegen und stimmen $B_0$ und $B_1$ auf den in $\varphi$ vorkommenden Variablen überein (Was soviel heißt wie jede Variable aus $V_0$ wird durch $B_0$ einen Wert zugewiesen, und jede Variable aus $V_1$ wird durch $B_1$ einen Wert zugewiesen. Jetzt müssen die Variablen in $\varphi$ vorkommen in $V_0$ und $V_1$ vorkommen und deren \hyperref[Belegung]{Belegungen} müssen gleich sein.) \newline 
+		$\Rightarrow \widehat{B}_0(\varphi) = \widehat{B}_1(\varphi)$
+		\item \hyperref[Struktur]{$\mathcal{A} \mathcal{L}$-Struktur}, t $\mathcal{L}$-Term, $V = \{x_1, ..., x_n\}, V' = \{x_1', ..., x_n'\}$ Variablenmenge mit $V(t)\subseteq V, V'$ und B, B' \hyperref[Belegung]{Belegungen} in $\mathcal{A}$ sodass $B \upharpoonright V(t) = B' \upharpoonright V(t) \Rightarrow t_B^{\mathcal{A}} = t_{B'}^{\mathcal{A}}$
+		\item (Für Formeln) \newline
+		\hyperref[Struktur]{$\mathcal{A}$ eine $\mathcal{L}$-Struktur}, $\varphi \mathcal{L}$-\hyperref[Formel]{Formel}, $V = \{x_1, ..., x_m\}, V' = \{x_1', ..., x_m'\}$ Variablenmengen mit $FV(\varphi) \subseteq V, V'$ und B, B' \hyperref[Belegung]{Belegungen} in $\mathcal{A}$ s.d. $B \upharpoonright FV(\varphi) = B' \upharpoonleft FV(\varphi) \Rightarrow W_B^{\mathcal{A}}(\varphi) = W_{B'}^{\mathcal{A}}(\varphi)$ 
+	\end{itemize}
 	
 	\subsection{*Zentrale semantische Begriffe}
-	\begin{tabular}{l l}
-		$\varphi$ allgemeingültig/$ag[\varphi]$ & $\Leftrightarrow \forall$ \hyperref[Belegung]{Belegungen} B: $V(\varphi) \rightarrow \{0, 1\}$ gilt $B(\varphi) = 1$ \\
-		$\varphi$ erfüllbar/$erfb[\varphi]$ & $\Leftrightarrow \exists$ \hyperref[Belegung]{Belegungen} B: $V(\varphi) \rightarrow \{0, 1\}$ mit $B(\varphi) = 1$ \\
-		$\varphi$ kontradiktorisch/$kd[\varphi]$ & $\Leftrightarrow \forall$ \hyperref[Belegung]{Belegungen} B: $V(\varphi) \rightarrow \{0, 1\}$ gilt $B(\varphi) = 0$ 
+	\begin{tabular}{r l}
+		$\varphi$ allgemeingültig/ag$[\varphi]$ & $\Leftrightarrow \forall$ \hyperref[Belegung]{Belegungen} B: $V(\varphi) \rightarrow \{0, 1\}$ gilt $B(\varphi) = 1$ \\
+		$\varphi$ erfüllbar/erfb$[\varphi]$ & $\Leftrightarrow \exists$ \hyperref[Belegung]{Belegungen} B: $V(\varphi) \rightarrow \{0, 1\}$ mit $B(\varphi) = 1$ \\
+		$\varphi$ kontradiktorisch/kd$[\varphi]$ & $\Leftrightarrow \forall$ \hyperref[Belegung]{Belegungen} B: $V(\varphi) \rightarrow \{0, 1\}$ gilt $B(\varphi) = 0$ 
 	\end{tabular}
 	
 	\subsection{*Boolesche Gesetze}
@@ -166,36 +182,37 @@
 	\label{Erfullbar}
 	$T \ne \emptyset$ nicht leere Menge al. \hyperref[Formel]{Formeln} mit Variablenmenge V(T)
 	
-	(i) \hyperref[Belegung]{Belegung} B: $V(T) \rightarrow\{0, 1\}$ macht T wahr ($B \vDash T$), falls B alle $\varphi \in T$ wahr macht, d.h. $\forall \varphi \in T: B(\varphi) = 1$
-	
-	(ii) T erfüllbar $(erfb[T]) \Leftrightarrow \exists B$ von V(T), T wahrmacht \newline
-	$\Rightarrow erfb[T] \Leftrightarrow \exists B \in B(V(T)): B \vDash T$ \newline
-	$\Leftrightarrow \exists B \in B(V(T)) \forall \varphi \in T: B(\varphi) = 1$ \newline
-	$\Leftrightarrow T = \{\varphi_1, ..., \varphi_n\}: erfb[T] \Leftrightarrow erfb[\varphi_1 \land ... \land \varphi_n]$
+	\begin{enumerate}[(i)]
+		\item \hyperref[Belegung]{Belegung} B: $V(T) \rightarrow\{0, 1\}$ macht T wahr ($B \vDash T$), falls B alle $\varphi \in T$ wahr macht, d.h. $\forall \varphi \in T: B(\varphi) = 1$
+		\item T erfüllbar (erfb[T]) $\Leftrightarrow \exists B$ von V(T), T wahrmacht \newline
+		$\Rightarrow$ erfb[T] $\Leftrightarrow \exists B \in B(V(T)): B \vDash T$ \newline
+		$\Leftrightarrow \exists B \in B(V(T)) \forall \varphi \in T: B(\varphi) = 1$ \newline
+		$\Leftrightarrow T = \{\varphi_1, ..., \varphi_n\}:$ erfb[T] $\Leftrightarrow$ erfb$[\varphi_1 \land ... \land \varphi_n]$
+	\end{enumerate}
 	
 	\subsection{*!Semantischer Folgerungsbegriff}
 	Eine al. \hyperref[Formel]{Formel} $\varphi$ folgt aus einer Menge T von al. \hyperref[Formel]{Formeln} $(T \hyperref[Erfullbar]{\vDash} \varphi) \Leftrightarrow$ jede \hyperref[Belegung]{Belegung} $B \in V(T) \cup V(\varphi)$, die T wahr macht, macht auch $\varphi$ wahr, d.h. $\forall B \in B(V(T) \cup V(\varphi) [B \hyperref[Erfullbar]{\vDash} T \Rightarrow B \hyperref[Erfullbar]{\vDash} \varphi]$ 
 	
-	\subsection{Find A Stupid Name}
-	$T = \{\varphi\}$ Einelementig: $\{\varphi\} \hyperref[Erfullbar]{\vDash} \psi \Leftrightarrow \varphi$ impl. $\psi$ \newline
+	Für Einelementige T gilt:$\{\varphi\} \hyperref[Erfullbar]{\vDash} \psi \Leftrightarrow \varphi$ impl. $\psi$ \newline
 	$\{\varphi_1, ..., \varphi_n\} \hyperref[Erfullbar]{\vDash} \psi$ kürzer geschrieben: \newline $\varphi_1, ..., \varphi_n \hyperref[Erfullbar]{\vDash} \psi: \varphi_1, ..., \varphi_n \hyperref[Erfullbar]{\vDash} \psi \Leftrightarrow \varphi_1 \land ... \land \varphi_n$ impl. $\psi$
 	
-	\subsection[Monotonie]{Monotonie weil keine Besseren Namen}
-	Der semantische Folgerungsbegriff ist monoton, d.h. \newline
+	Hierbei gilt, der semantische Folgerungsbegriff ist monoton, d.h. \newline
 	$T \subseteq T'\text{ und } T \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow T' \hyperref[Erfullbar]{\vDash} \varphi$
 	
 	\subsection{*!Folgerung vs Erfüllbarkeit}
-	(i) $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow$ nicht $erfb[T \cup \{\neg \varphi\}]$ \newline
-	(ii) $T \nvDash \varphi \Leftrightarrow erfb[T \cup \{\neg \varphi\}]$
-	
+	\begin{enumerate}[(i)]
+		\item $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow$ nicht erfb$[T \cup \{\neg \varphi\}]$ \newline
+		\item $T \nvDash \varphi \Leftrightarrow$ erfb$[T \cup \{\neg \varphi\}]$
+	\end{enumerate}
+
 	\subsection{*Erfüllbarkeit vs. Semantische Folgerung}
 	Für $T \ne \emptyset$ sind äquivalent:
 	
-	\begin{tabular}{l l}
-		(i) & $erfb[T]$ \\
-		(ii) & $\nexists \varphi[T \hyperref[Erfullbar]{\vDash} \varphi \text{ und } T \hyperref[Erfullbar]{\vDash} \neg \varphi]$ \\
-		(iii) & $\exists \varphi [T \nvDash \varphi]$
-	\end{tabular}
+	\begin{enumerate}[(i)]
+		\item erfb[T]
+		\item $\nexists \varphi[T \hyperref[Erfullbar]{\vDash} \varphi \text{ und } T \hyperref[Erfullbar]{\vDash} \neg \varphi]$
+		\item $\exists \varphi [T \nvDash \varphi]$
+	\end{enumerate}
 
 	\subsection{get Fucked}
 	$\varphi$ al. \hyperref[Formel]{Formel} mit $V(\varphi) \subseteq \{A_0, ..., A_{n - 1}\}$
@@ -244,34 +261,35 @@
 	
 	\subsection{2. Basissatz}
 	Folgende Mengen sind Basen der Booleschen Funktionen: \newline
-	\begin{tabular}{l l}
-		i) & $\{\neg, \lor\}$ \\
-		ii) & $\{\neg, \land\}$ \\
-		iii) & \{NOR\} \\
-		iv) & \{NAND\}
-	\end{tabular}
+	\begin{enumerate}[(i)]
+		\item $\{\neg, \lor\}$
+		\item $\{\neg, \land\}$
+		\item \{NOR\}
+		\item \{NAND\}
+	\end{enumerate}
 	
 	\subsection{Normalformsatz}
 	Zu jeder al. \hyperref[Formel]{Formel} $\varphi$ kann man eine äquivalente \hyperref[Formel]{Formel} $\varphi_{DNF}$ in \hyperref[DNF]{DNF} , sodass: $V(\varphi) = V(\varphi_{DNF})$
 	
 	\subsection{*Kalkül $\mathcal{K}$}
+	\label{Kalkul}
 	\begin{itemize}
-		\item \hyperref[ALSprache]{Sprache} von $\mathcal{K}$, vom Alphabet von festgelegt 
-		\item Menge der \hyperref[Formel]{Formeln} von $\mathcal{K}$, Teilmenge der Wörter über Alphabet von$\mathcal{K}$
+		\item \hyperref[Sprache]{Sprache} von $\mathcal{K}$, vom Alphabet von festgelegt 
+		\item Menge der \hyperref[Formel]{Formeln} von $\mathcal{K}$, Teilmenge der Wörter über Alphabet von $\mathcal{K}$
 		\item Menge der Axiome von $\mathcal{K}$, Teilmenge der Menge der \hyperref[Formel]{Formeln} von $\mathcal{K}$
-		\item Menge der Regeln der Gestalt \newline
-		(R) $\frac{\varphi_1, ..., \varphi_n}{\varphi} n \ge 1, \varphi_1, ..., \varphi_n$ \hyperref[Formel]{Formeln} von $\mathcal{K}$\newline
+		\item Menge der \hyperref[Kalkul]{Regeln} der Gestalt \newline
+		(R) $\frac{\varphi_1, ..., \varphi_n}{\varphi} n \ge 1, \varphi_1, ..., \varphi_n$ \hyperref[Formel]{Formeln} von $\mathcal{K}$ \newline
 		$\varphi_1, ..., \varphi_n$ Prämissen, $\varphi$ Konklusion
 	\end{itemize}
 
 	\subsection{*Beweise und Beweisbarkeit}
-	Sei $\mathcal{K}$ ein Kalkül aus T Menge von ($\mathcal{K}$-)\hyperref[Formel]{Formeln} ein ($\mathcal{K}$-)Beweis der ($\mathcal{K}$-)\hyperref[Formel]{Formel} $\varphi$ aus T ist endliche Folge $\psi_1, ..., \psi_n$ von ($\mathcal{K}$-)\hyperref[Formel]{Formeln}, sodass gilt:
+	Sei \hyperref[Kalkul]{$\mathcal{K}$ ein Kalkül} aus T Menge von ($\mathcal{K}$-) \hyperref[Formel]{Formeln} ein ($\mathcal{K}$-) Beweis der ($\mathcal{K}$-) \hyperref[Formel]{Formel} $\varphi$ aus T ist endliche Folge $\psi_1, ..., \psi_n$ von ($\mathcal{K}$-) \hyperref[Formel]{Formeln}, sodass gilt:
 	\begin{itemize}
 		\item $\varphi \equiv \psi_n$
 		\item $\forall \psi_m, 1 \le m \le n:$ \begin{itemize}
-		\item ist ($\mathcal{K}$-)Axiom oder
+		\item ist ($\mathcal{K}$-) Axiom oder
 		\item Eine \hyperref[Formel]{Formel} aus der Formelmenge T oder
-		\item Konklusion einer ($\mathcal{K}$-)Regel R, deren Prämissen in $\{\psi_1, ..., \psi_{m - 1}\}$ liegen
+		\item Konklusion einer \hyperref[Kalkul]{($\mathcal{K}$-) Regel R}, deren Prämissen in $\{\psi_1, ..., \psi_{m - 1}\}$ liegen
 		\end{itemize}
 		\item n ist die Länge des Beweises $\psi_1, ..., \psi_n$
 	\end{itemize}
@@ -294,19 +312,21 @@
 
 	\subsection{*Konsistent}
 	\label{ALKonsistent}
-	Kalkül $\mathcal{K}$ ist Konsistent, falls es eine $\mathcal{K}$-\hyperref[Formel]{Formel} $\psi \text{ mit } \nvdash \psi$ gibt
+	\hyperref[Kalkul]{Kalkül $\mathcal{K}$} ist Konsistent, falls es eine $\mathcal{K}$-\hyperref[Formel]{Formel} $\psi \text{ mit } \nvdash \psi$ gibt
 	
 	\subsection{*Kalkül der Aussagenlogik}
 	\begin{itemize}
-		\item \hyperref[ALSprache]{Sprache} basiert auf Alphabet $\mathcal{A} = \{A_0, A_1, ..., j_1, ..., j_k, (, )\}$ Junktoren $j_1, .., j_k$ Basis der Booleschen Funktionen
-		\item (F1) Aussagenvariable $A_i (i \ge 0)$ ist eine \hyperref[Formel]{Formel} \newline
-		(F2) * 1-Stelliger Junktor, $\varphi$ \hyperref[Formel]{Formel} $\Rightarrow *\varphi$ ist eine \hyperref[Formel]{Formel} \newline
-		(F3) * 2-Stelliger Junktor, $\varphi_1, \varphi_2$ \hyperref[Formel]{Formeln} $\Rightarrow (\varphi_1 * \varphi_2)$ ist eine \hyperref[Formel]{Formel}
+		\item \hyperref[Sprache]{Sprache} basiert auf Alphabet $\mathcal{A} = \{A_0, A_1, ..., j_1, ..., j_k, (, )\}$ Junktoren $j_1, .., j_k$ Basis der Booleschen Funktionen
+		\item \begin{description}
+			\item[(F1)] Aussagenvariable $A_i (i \ge 0)$ ist eine \hyperref[Formel]{Formel} 
+			\item[(F2)] * 1-Stelliger Junktor, $\varphi$ \hyperref[Formel]{Formel} $\Rightarrow *\varphi$ ist eine \hyperref[Formel]{Formel}
+			\item[(F3)] * 2-Stelliger Junktor, $\varphi_1, \varphi_2$ \hyperref[Formel]{Formeln} $\Rightarrow (\varphi_1 * \varphi_2)$ ist eine \hyperref[Formel]{Formel}
+		\end{description}
 	\end{itemize}
 
 	\subsection{*Korrekt und Vollständig}
 	\label{ALVollstandig}
-	$\mathcal{K}$ Kalkül der Aussagenlogik
+	\hyperref[Kalkul]{$\mathcal{K}$ Kalkül} der Aussagenlogik
 	\begin{itemize}
 		\item $\mathcal{K}$ ist korrekt bezüglich der Allgemeingültigkeit, falls jede $\mathcal{K}$-beweisbare \hyperref[Formel]{Formel} $\varphi$ allgemeingültig ist, d.h. $\hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Rightarrow \hyperref[Erfullbar]{\vDash} \varphi \forall \mathcal{K}$-\hyperref[Formel]{Formeln} $\varphi$ 
 		\item $\mathcal{K}$ ist korrekt bezüglich Folgerungen, falls $T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Rightarrow T \hyperref[Erfullbar]{\vDash} \varphi$ für alle $\mathcal{K}$-Formelmengen T und $\mathcal{K}$-\hyperref[Formel]{Formeln} $\varphi$
@@ -316,10 +336,10 @@
 	\end{itemize}
 
 	\subsection{*Korrektheitslemma}
-	Sei $\mathcal{K}$ ein Kalkül der Aussagenlogik, dessen Axiome allgemeingültig sind und dessen Regeln korrekt bezüglich Folgerungen sind $\Rightarrow \mathcal{K}$ Korrekt bezüglich Folgerungen
+	Sei \hyperref[Kalkul]{$\mathcal{K}$ ein Kalkül} der Aussagenlogik, dessen Axiome allgemeingültig sind und dessen \hyperref[Kalkul]{Regeln} korrekt bezüglich Folgerungen sind $\Rightarrow \mathcal{K}$ Korrekt bezüglich Folgerungen
 	
 	\subsection{Ein/Ersetzungsregel}
-	Sei R korrekt bezüglich Folgerungen $\Rightarrow$ R korrekt bezüglich Allgemeingültigkeit
+	Sei \hyperref[Kalkul]{Regel R} korrekt bezüglich Folgerungen $\Rightarrow$ R korrekt bezüglich Allgemeingültigkeit
 	
 	\begin{tabular}{l l}
 		Einsetzungsregel: & (EIN) $\frac{\varphi}{\varphi[\psi/x]}$ \\
@@ -327,16 +347,16 @@
 	\end{tabular}
 
 	\subsection{*Shoenfield}
-	Shoenfield Kalkül S
+	Shoenfield \hyperref[Kalkul]{Kalkül} S
 	\begin{itemize}
 		\item Basis: $\{\neg, \lor\}$, $\mathcal{A} = \{A_0, A_1, ..., \neg, \lor, (, )\}$
-		\item Identitäten: \begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-			\task $(\varphi \land \psi) :\equiv \neg (\neg \varphi \lor \neg \psi)$ 
-			\task $(\varphi \rightarrow \psi) :\equiv (\neg \varphi \lor \psi)$
-			\task $(\varphi \leftrightarrow \psi) :\equiv ((\varphi \rightarrow \psi) \land (\psi \rightarrow \varphi))$
-		\end{tasks}
+		\item Identitäten: \begin{enumerate}[(i)]
+			\item $(\varphi \land \psi) :\equiv \neg (\neg \varphi \lor \neg \psi)$ 
+			\item $(\varphi \rightarrow \psi) :\equiv (\neg \varphi \lor \psi)$
+			\item $(\varphi \leftrightarrow \psi) :\equiv ((\varphi \rightarrow \psi) \land (\psi \rightarrow \varphi))$
+		\end{enumerate}
 		\item Axiom: (Ax) $\neg \varphi \lor \varphi (\equiv \varphi \rightarrow \varphi)$
-		\item Regeln: \begin{description}
+		\item \hyperref[Kalkul]{Regeln}: \begin{description}
 			\item[Expansion (E)] $\frac{\psi}{\varphi \lor \psi}$
 			\item[Assoziativität (A)] $\frac{\varphi \lor (\psi \lor \delta)}{(\varphi \lor \psi) \lor \delta}$
 			\item [Kürzung (Kü)] $\frac{\varphi \lor \varphi}{\varphi}$
@@ -345,31 +365,25 @@
 	\end{itemize}
 	
 	\subsection{*Korrektheitssatz}
-	Shoenfield-Kalkül S ist korrekt (bezüglich Folgerungen): $T \hyperref[Beweisbar]{\vdash_S} \varphi \Rightarrow T \hyperref[Erfullbar]{\vDash} \varphi$
+	Shoenfield-\hyperref[Kalkul]{Kalkül} S ist korrekt (bezüglich Folgerungen): $T \hyperref[Beweisbar]{\vdash_S} \varphi \Rightarrow T \hyperref[Erfullbar]{\vDash} \varphi$
 	
-	\subsection{*Vollständigkeitssatz}
-	Shoenfield-Kalkül S ist \hyperref[ALVollstandig]{vollständig} (bezüglich Folgerungen): $T \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow T \hyperref[Beweisbar]{\vdash_S} \varphi$
+	\subsection{*Vollständigkeitssätze}
+	\label{TheorieVollstandig}
+	\begin{itemize}
+		\item Shoenfield-\hyperref[Kalkul]{Kalkül} S ist \hyperref[ALVollstandig]{vollständig} (bezüglich Folgerungen): $T \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow T \hyperref[Beweisbar]{\vdash_S} \varphi$
+		\item Für endliche T gilt: $T \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow T \hyperref[Beweisbar]{\vdash} \varphi$
+		\item Eine \hyperref[Theorie]{Theorie} ist Vollständig wenn gilt: $T \hyperref[Erfullbar]{\vDash} \sigma \Rightarrow T \hyperref[Beweisbar]{\vdash} \sigma$
+	\end{itemize}
 	
 	\subsection{*Zulässige Regeln}
 	\label{Zulassig}
-	$\mathcal{K}$, $\mathcal{K}$' Kalküle mit identischen Formelmengen, $\mathcal{K}$' heißt Erweiterung von $\mathcal{K}$ ($\mathcal{K} \subseteq \mathcal{K}$', wenn alle Axiome und Regeln von $\mathcal{K}$ Axiome und Regeln von $\mathcal{K}$' sind \newline
+	\hyperref[Kalkul]{$\mathcal{K}$, $\mathcal{K}$' Kalküle} mit identischen Formelmengen, $\mathcal{K}$' heißt Erweiterung von $\mathcal{K}$ ($\mathcal{K} \subseteq \mathcal{K}$', wenn alle Axiome und \hyperref[Kalkul]{Regeln von $\mathcal{K}$} Axiome und \hyperref[Kalkul]{Regeln von $\mathcal{K}$'} sind) \newline
 	Eine Erweiterung $\mathcal{K}$' ist konservativ $\Leftrightarrow \forall T \hyperref[Beweisbar]{\vdash_{\mathcal{K}'}} \varphi \Rightarrow T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$
 	
 	Für $\mathcal{K} \subseteq \mathcal{K}': T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Rightarrow T \hyperref[Beweisbar]{\vdash_{\mathcal{K}'}} \varphi$
 	
 	Für $\mathcal{K} \subseteq_{\text{konservativ}} \mathcal{K}': T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Leftrightarrow T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$
-	
-	\subsection{Regel Erweiterung}
-	Eine Regel R $\frac{\varphi_1, ..., \varphi_n}{\varphi}$ ist \hyperref[Zulassig]{zulässig} in dem Kalkül $\mathcal{K}$ (ableitbar in $\mathcal{K}$), falls $\varphi_1, ..., \varphi_n \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$ \newline
-	Eine \hyperref[Formel]{Formel} $\varphi$ ist ein \hyperref[Zulassig]{zulässiges Axiom} von $\mathcal{K}$ falls $\hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$
-	
-	\subsection{Zulässige Erweiterung}
-	Eine Erweiterung $\mathcal{K}$' von $\mathcal{K}$ ist eine zulässige Erweiterung, von $\mathcal{K}$ wenn jedes Axiom und jede Regel von $\mathcal{K}$' in $\mathcal{K}$ \hyperref[Zulassig]{zulässig} ist
-	
-	\subsection{Satz über zulässige Erweiterungen}
-	$\mathcal{K}$' zulässige Erweiterung von $\mathcal{K} \Rightarrow \mathcal{K}$' ist eine konservative Erweiterung d.h. für jede Formelmenge T und \hyperref[Formel]{Formel} $\varphi: T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Leftrightarrow \varphi: T \hyperref[Beweisbar]{\vdash_{\mathcal{K}'}} \varphi$
-	
-	\subsection{Zulässige Regeln}
+
 	\begin{description}
 		\item[Kommutativität (Ko)] $\frac{\varphi \lor \psi}{\varphi \lor \psi}$
 		\item[Modus Ponens (M)] $\frac{\varphi, \varphi \rightarrow \psi}{\psi}$
@@ -381,11 +395,27 @@
 		\end{description}
 	\end{description}
 	
-	\subsection{Tautologiesatz}
-	$\hyperref[Erfullbar]{\vDash} \varphi \Rightarrow \hyperref[Beweisbar]{\vdash} \varphi$
+	\subsection{Regel Erweiterung}
+	Eine \hyperref[Kalkul]{Regel R} $\frac{\varphi_1, ..., \varphi_n}{\varphi}$ ist \hyperref[Zulassig]{zulässig} in dem \hyperref[Kalkul]{Kalkül $\mathcal{K}$} (ableitbar in $\mathcal{K}$), falls $\varphi_1, ..., \varphi_n \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$ \newline
+	Eine \hyperref[Formel]{Formel} $\varphi$ ist ein \hyperref[Zulassig]{zulässiges Axiom} von $\mathcal{K}$ falls $\hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$
 	
-	\subsection{*Vollständigkeitssatz für endlich T}
-	Für endliche T gilt: $T \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow T \hyperref[Beweisbar]{\vdash} \varphi$
+	\subsection{Zulässige Erweiterung}
+	Eine Erweiterung $\mathcal{K}$' von $\mathcal{K}$ ist eine zulässige Erweiterung, von $\mathcal{K}$ wenn jedes Axiom und jede \hyperref[Kalkul]{Regel} von $\mathcal{K}$' in $\mathcal{K}$ \hyperref[Zulassig]{zulässig} ist
+	
+	\subsection{Satz über zulässige Erweiterungen}
+	$\mathcal{K}$' zulässige Erweiterung von $\mathcal{K} \Rightarrow \mathcal{K}$' ist eine konservative Erweiterung d.h. für jede Formelmenge T und \hyperref[Formel]{Formel} $\varphi: T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Leftrightarrow \varphi: T \hyperref[Beweisbar]{\vdash_{\mathcal{K}'}} \varphi$
+	
+	\subsection{Tautologiesatz}
+	\begin{itemize}
+		\item $\hyperref[Erfullbar]{\vDash} \varphi \Rightarrow \hyperref[Beweisbar]{\vdash} \varphi$
+		\item \begin{enumerate}[(a)]
+			\item $\vDash_{AL} \varphi \Rightarrow \hyperref[Beweisbar]{\vdash} \varphi$ 
+			\item $\varphi_1, ..., \varphi_n \vDash_{AL} \varphi \Rightarrow \varphi_1, ..., \varphi_n \hyperref[Beweisbar]{\vdash} \varphi$
+		\end{enumerate}
+		\item \hyperref[Formel]{Formel} $\varphi$ ist eine Tautologie (aussagenlogisch gültig, $\hyperref[Erfullbar]{\vDash_{AL}} \varphi$), falls $B(\varphi) = 1$ für alle al. \hyperref[Belegung]{Belegungen B}
+		
+		Jede Tautologie ist allgemeingültig: $\hyperref[Erfullbar]{\vDash_{AL}} \varphi \rightarrow \hyperref[Erfullbar]{\vDash} \varphi$
+	\end{itemize}
 	
 	\subsection{Deductionstheorem}
 	$T \hyperref[Beweisbar]{\vdash} \varphi \rightarrow \psi \Leftrightarrow T \cup \varphi \hyperref[Beweisbar]{\vdash} \psi$
@@ -407,21 +437,37 @@
 	
 	\subsection{*Konsistenzlemma}
 	Jede \hyperref[Erfullbar]{erfüllbare} Formelmenge T ist \hyperref[ALKonsistent]{konsistent}
+
+	\subsection{*Erfüllbarkeitslemma (Modellexistenzsatz, EL)}
+	\begin{itemize}
+		\item Jede \hyperref[ALKonsistent]{konsistente} Formelmenge T ist \hyperref[Erfullbar]{erfüllbar}
+		\item Jede \hyperref[PLKonsistent]{konsistente} \hyperref[Theorie]{Theorie T} ist erfüllbar (d.h. besitzt ein Modell) \newline
+		Außerdem gilt: T \hyperref[Erfullbar]{erfüllbar} $\Leftrightarrow$ T \hyperref[PLKonsistent]{konsistent} \newline
+		Sollte T zusätzlich vollständig sein gilt: $\Rightarrow \exists$ \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} mit $T = Th(\mathcal{A}) = \{\sigma : \mathcal{A} \hyperref[Erfullbar]{\vDash} \sigma\}$
+	\end{itemize}
 	
-	\subsection{*Erfüllbarkeitslemma}
-	Jede \hyperref[ALKonsistent]{konsistente} Formelmenge T ist \hyperref[Erfullbar]{erfüllbare}
+	\subsection{Adäquatheitssätze}
+	\begin{description}
+		\item[Folgerungsbegriff] Für jede Formelmenge T und jede \hyperref[Formel]{Formel} $\varphi$ gilt: $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \varphi$
+		\item[Erfüllbarkeitsbegriff] Für jede Formelmenge T gilt: T \hyperref[Erfullbar]{erfüllbar} $\Leftrightarrow$ T \hyperref[ALKonsistent]{konsistent}
+		\item[?] $T = (\mathcal{L}, \Sigma) \hyperref[Erfullbar]{\vDash} \sigma \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \sigma$
+	\end{description} 
 	
-	\subsection{Adäquatheitssatz für den Folgerungsbegriff}
-	Für jede Formelmenge T und jede \hyperref[Formel]{Formel} $\varphi$ gilt: $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \varphi$
-	
-	\subsection{Adäquatheitssatz für den Erfüllbarkeitsbegriff}
-	Für jede Formelmenge T gilt: T \hyperref[Erfullbar]{erfüllbar} $\Leftrightarrow$ T \hyperref[ALKonsistent]{konsistent} 
-	
-	\subsection{*Kompaktheitssatz/Endlichkeitssatz für den Folgerungsbegriff}
-	Eine \hyperref[Formel]{Formel} $\varphi$ folgt genau dann aus einer Formelmenge T, wenn es eine endliche Teilmenge $T_0$ von T gibt, aus der $\varphi$ folgt: $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow$ Es gibt $T_0 \subseteq T$ endlich: $T_0 \hyperref[Erfullbar]{\vDash} \varphi$
-	
-	\subsection{*Kompaktheitssatz/Endlichkeitssatz für den Erfüllbarkeitsbegriff}
-	erfb[T] $\Leftrightarrow$ Für alle $T_0 \subseteq T$ endlich: erfb[$T_0$]
+	\subsection{*Kompaktheitssatz/Endlichkeitssatz}
+	\begin{description}
+		\item[Folgerungsbegriff] Eine \hyperref[Formel]{Formel} $\varphi$ folgt genau dann aus einer Formelmenge T, wenn es eine endliche Teilmenge $T_0$ von T gibt, aus der $\varphi$ folgt: $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow$ Es gibt $T_0 \subseteq T$ endlich: $T_0 \hyperref[Erfullbar]{\vDash} \varphi$
+		\item[Erfüllbarkeitsbegriff] erfb[T] $\Leftrightarrow$ Für alle $T_0 \subseteq T$ endlich: erfb[$T_0$]
+		\item[?] \begin{enumerate}[(i)]
+			\item \hyperref[Theorie]{Theorie T} erfüllbar $\Leftrightarrow$ Jede endliche Teilmenge $T_0$ erfüllbar 
+			\item Satz $\sigma$ folgt aus T $\Leftrightarrow \exists$ endliches $T_0$ aus der $\sigma$ folgt
+		\end{enumerate}
+		\item[PL1] \begin{description}
+			\item[(a) Kompaktheitssatz für Folgerungsbegriff] T $\mathcal{L}$-Theorie, $\sigma$ $\mathcal{L}$-Satz mit $T \vDash \sigma$, dann existiert endliche Teiltheorie $T_0 \subseteq T$ mit $T_0 \vDash \sigma$ 
+			\item[(b) Kompaktheitssatz für Erfüllbarkeitsbegriff] Jede endliche Teiltheorie $T_0 \subseteq T$ mit $T_0 \vDash \sigma$ 
+		\end{description}
+		
+		Klasse $\kappa$ von $\mathcal{L}$-Strukturen ist elementar $\Leftrightarrow$ Klasse $\kappa$ und Komplement $\overline{\kappa} \Delta$-elementar 
+	\end{description}
 	
 	\newpage
 	\section{Prädikatenlogik}
@@ -442,25 +488,45 @@
 	falls $R_i^{\mathcal{A}}$ $n_i$-stellig, $f_j^{\mathcal{A}}$ $m_j$-stellig\newline 
 	Sofern die \hyperref[Struktur]{Struktur} keine Relation/Funktion hat, kennzeichnet man das in der Signatur mit einem -
 	
-	\subsection{*Sprache}
-	\label{PLSprache}
-	Eine Sprache besteht aus Zeichen die man verwenden kann/muss wie: 1)
-	Aussagenvariablen 2) Junktoren (wie $\neg, \lor$) 3) Existenzquantor 4) Gleichzeichen 5) Komma und Klammersymbole.
-	
-	\subsection{*Terme: Syntax}
-	Sei $\mathcal{L} = \mathcal{L}(\sigma)$ mit $\sigma = ((n_i | i \in I); (m_j | j \in J); K)$. Menge der ($\mathcal{L}$-)Therme ist Induktiv definiert durch:
+	\subsection{*Syntax}
 	\begin{description}
-		\item[(T1)] Jede Variable $v_n$, jede Konstante $c_k$ ist ein Term
-		\item[(T2)] $t_1, ..., t_m \Rightarrow f_j(t_1, ..., t_m)$ ist ein Term
+		\item[Terme] Sei $\mathcal{L} = \mathcal{L}(\sigma)$ mit $\sigma = ((n_i | i \in I); (m_j | j \in J); K)$. Menge der ($\mathcal{L}$-)Therme ist Induktiv definiert durch:
+		\begin{description}
+			\item[(T1)] Jede Variable $v_n$, jede Konstante $c_k$ ist ein Term
+			\item[(T2)] $t_1, ..., t_m \Rightarrow f_j(t_1, ..., t_m)$ ist ein Term
+		\end{description}
+		\item[Formeln und Sätze]
+		Die Menge der ($\mathcal{L}$-)\hyperref[Formel]{Formeln} ist definiert durch:
+		
+		\begin{description}
+			\item[(F1)] (Gleichheitsformel) \begin{enumerate}[(a)]
+				\item $t_1, t_2$ Terme $\Rightarrow t_1 = t_2$ ist eine \hyperref[Formel]{Formel}
+				\item $t_1, ..., t_{n_i}$ Terme $\Rightarrow R_i(t_1, ..., t_{n_i})$ ist eine \hyperref[Formel]{Formel}
+			\end{enumerate}
+			\item[(F2)] (Negationsformel) $\varphi$ \hyperref[Formel]{Formel} $\Rightarrow \neg \varphi$ \hyperref[Formel]{Formel}
+			\item[(F3)] (Disjunktionen) $\varphi_1, \varphi_2$ \hyperref[Formel]{Formeln} $\Rightarrow (\varphi_1 \lor \varphi_2)$ \hyperref[Formel]{Formel} \\
+			\item[(F4)] (Existenzformel) $\varphi$ \hyperref[Formel]{Formel}, x Variable $\Rightarrow \exists x \varphi$ \hyperref[Formel]{Formel}
+		\end{description}
+	\end{description}
+
+	\subsection{*Semantik}
+	\begin{description}
+		\item[Terme] Für konstanten $\mathcal{L}$-Term t ist $t^{\mathcal{A}} \in A$ durch Ind(t) definiert:
+		\begin{enumerate}
+			\item $(c_k)^{\mathcal{A}} := c_k^{\mathcal{A}}$
+			\item $(f_j(t_1, ..., t_{m_j}))^{\mathcal{A}} := f_j(t_1, ..., t_{m_j})^{\mathcal{A}}$
+		\end{enumerate}
+		\item[Formeln und Sätze] \hyperref[Struktur]{$\mathcal{A} \mathcal{L}$-Struktur}, $\varphi \equiv \varphi(x_1, ..., x_n) \mathcal{L}$-\hyperref[Formel]{Formel} mit $FV(\varphi) \subseteq \{x_1, ..., x_n\}$, B \hyperref[Belegung]{Belegung} von $\{x_1, ..., x_n\}$ \newline
+		$\Rightarrow$ Wahrheitswert $W_B^{\mathcal{A}}(\varphi) \in \{0, 1\}$ von $\varphi$ in $\mathcal{A}$ bezüglich B durch $Ind(\varphi)$ definiert:
+		\begin{enumerate}
+			\item $W_B^{\mathcal{A}}(t_1 = t_2) = 1$ gdw $(t_1)_B^{\mathcal{A}} = (t_2)_B^{\mathcal{A}}$
+			\item $W_B^{\mathcal{A}}(R_i(t_1, ..., t_{n_i})) = 1$ gdw $((t_1)_B^{\mathcal{A}}, ..., (t_{n_i})_B^{\mathcal{A}}) \in R_i^{\mathcal{A}}$
+			\item $W_B^{\mathcal{A}}(\neg \psi) = 1 \Leftrightarrow W_B^{\mathcal{A}}(\psi) = 0$
+			\item $W_B^{\mathcal{A}}(\varphi_1 \lor \varphi_2) = 1$ gdw $W_B^{\mathcal{A}}(\varphi_1) = 1$ oder $W_B^{\mathcal{A}}(\varphi_2) = 1$
+			\item $W_B^{\mathcal{A}}(\exists y \psi) = 1$ gdw $\exists B'$ von $\{x_1, ..., x_n, y\}$, die mit B auf $\{x_1, ..., x_n\} \backslash \{y\}$ übereinstimmt und $W_B^{\mathcal{A}}(\psi) = 1$
+		\end{enumerate}
 	\end{description}
 	
-	\subsection{*Terme: Semantik}
-	Für konstanten $\mathcal{L}$-Term t ist $t^{\mathcal{A}} \in A$ durch Ind(t) definiert:
-	\begin{enumerate}
-		\item $(c_k)^{\mathcal{A}} := c_k^{\mathcal{A}}$
-		\item $(f_j(t_1, ..., t_{m_j}))^{\mathcal{A}} := f_j(t_1, ..., t_{m_j})^{\mathcal{A}}$
-	\end{enumerate}
-
 	\subsection{(Variablen-)Belegung in $\mathcal{A}$}
 	Sei $V = \{x_1, ..., x_n\}$ Menge von Variablen und $\mathcal{A}$ \hyperref[Struktur]{$\mathcal{L}$-Struktur}. \newline
 	Eine (Variablen-)\hyperref[Belegung]{Belegung} B von V in $\mathcal{A}$ ist eine Abbildung $B: V \rightarrow \mathcal{A}$ 
@@ -472,39 +538,9 @@
 		\item $(f_j(t_1, ..., t_{m_j}))_B^{\mathcal{A}} := f_j^{\mathcal{A}}((t_1)_B^{\mathcal{A}}, ..., (t_{m_j})_B^{\mathcal{A}})$
 	\end{enumerate}
 
-	\subsection{*Koinzidenzlemma}
-	\hyperref[Struktur]{$\mathcal{A} \mathcal{L}$-Struktur}, t $\mathcal{L}$-Term, $V = \{x_1, ..., x_n\}, V' = \{x_1', ..., x_n'\}$ Variablenmenge mit $V(t)\subseteq V, V'$ und B, B' \hyperref[Belegung]{Belegungen} in $\mathcal{A}$ sodass $B \upharpoonright V(t) = B' \upharpoonright V(t) \Rightarrow t_B^{\mathcal{A}} = t_{B'}^{\mathcal{A}}$
-	
-	\subsection{*Formeln und Sätze: Syntax}
-	Die Menge der ($\mathcal{L}$-)\hyperref[Formel]{Formeln} ist definiert durch:
-	
-	\begin{tabular}{l l}
-		(F1) (Gleichheitsformel) & \begin{tabular}{l l}
-			a) & $t_1, t_2$ Terme $\Rightarrow t_1 = t_2$ ist eine \hyperref[Formel]{Formel} \\
-			b) & $t_1, ..., t_{n_i}$ Terme $\Rightarrow R_i(t_1, ..., t_{n_i})$ ist eine \hyperref[Formel]{Formel}
-		\end{tabular} \\
-		(F2) (Negationsformel) & $\varphi$ \hyperref[Formel]{Formel} $\Rightarrow \neg \varphi$ \hyperref[Formel]{Formel} \\
-		(F3) (Disjunktionen) & $\varphi_1, \varphi_2$ \hyperref[Formel]{Formeln} $\Rightarrow (\varphi_1 \lor \varphi_2)$ \hyperref[Formel]{Formel} \\
-		(F4) (Existenzformel) & $\varphi$ \hyperref[Formel]{Formel}, x Variable $\Rightarrow \exists x \varphi$ \hyperref[Formel]{Formel}
-	\end{tabular}
-
 	\subsection{($\mathcal{L}$-)Satz}
 	\label{LSatz}
-	Kommt in ($\mathcal{L}$-)\hyperref[Formel]{Formel} keine Variable frei vor ($FV(\varphi) = \emptyset$), dann ist $\varphi$ ein ($\mathcal{L}$-)Satz
-	
-	\subsection{*Formeln und Sätze: Semantik}
-	\hyperref[Struktur]{$\mathcal{A} \mathcal{L}$-Struktur}, $\varphi \equiv \varphi(x_1, ..., x_n) \mathcal{L}$-\hyperref[Formel]{Formel} mit $FV(\varphi) \subseteq \{x_1, ..., x_n\}$, B \hyperref[Belegung]{Belegung} von $\{x_1, ..., x_n\}$ \newline
-	$\Rightarrow$ Wahrheitswert $W_B^{\mathcal{A}}(\varphi) \in \{0, 1\}$ von $\varphi$ in $\mathcal{A}$ bezüglich B durch $Ind(\varphi)$ definiert:
-	\begin{enumerate}
-		\item $W_B^{\mathcal{A}}(t_1 = t_2) = 1$ gdw $(t_1)_B^{\mathcal{A}} = (t_2)_B^{\mathcal{A}}$
-		\item $W_B^{\mathcal{A}}(R_i(t_1, ..., t_{n_i})) = 1$ gdw $((t_1)_B^{\mathcal{A}}, ..., (t_{n_i})_B^{\mathcal{A}}) \in R_i^{\mathcal{A}}$
-		\item $W_B^{\mathcal{A}}(\neg \psi) = 1 \Leftrightarrow W_B^{\mathcal{A}}(\psi) = 0$
-		\item $W_B^{\mathcal{A}}(\varphi_1 \lor \varphi_2) = 1$ gdw $W_B^{\mathcal{A}}(\varphi_1) = 1$ oder $W_B^{\mathcal{A}}(\varphi_2) = 1$
-		\item $W_B^{\mathcal{A}}(\exists y \psi) = 1$ gdw $\exists B'$ von $\{x_1, ..., x_n, y\}$, die mit B auf $\{x_1, ..., x_n\} \backslash \{y\}$ übereinstimmt und $W_B^{\mathcal{A}}(\psi) = 1$
-	\end{enumerate}
-
-	\subsection{*Koinzidenzlemma (für Formeln)}
-	\hyperref[Struktur]{$\mathcal{A}$ eine $\mathcal{L}$-Struktur}, $\varphi \mathcal{L}$-\hyperref[Formel]{Formel}, $V = \{x_1, ..., x_m\}, V' = \{x_1', ..., x_m'\}$ Variablenmengen mit $FV(\varphi) \subseteq V, V'$ und B, B' \hyperref[Belegung]{Belegungen} in $\mathcal{A}$ s.d. $B \upharpoonright FV(\varphi) = B' \upharpoonleft FV(\varphi) \Rightarrow W_B^{\mathcal{A}}(\varphi) = W_{B'}^{\mathcal{A}}(\varphi)$ 
+	Kommt in ($\mathcal{L}$-) \hyperref[Formel]{Formel} keine Variable frei vor ($FV(\varphi) = \emptyset$), dann ist $\varphi$ ein ($\mathcal{L}$-) Satz
 	
 	\subsection{*Satz ist in Struktur wahr}
 	\hyperref[LSatz]{$\mathcal{L}$-Satz} $\sigma$ ist in \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} wahr, wenn $W_B^{\mathcal{A}}(\sigma) = 1$ für die leere Variablenmenge gilt.
@@ -522,28 +558,24 @@
 	\subsection{*Relation mit Formeln}
 	$\varphi \equiv \varphi(x_1, ..., x_n) \mathcal{L}$-\hyperref[Formel]{Formel} mit $FV(\varphi) \subseteq \{x_1, ..., x_n\}$. Die von $\varphi$ auf \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} definierte n-stellige Relation $R_{\varphi}^{\mathcal{A}}$ ist bestimmt durch: $(a_1, ..., a_n) \in R_{\varphi}^{\mathcal{A}} \Leftrightarrow \mathcal{A} \hyperref[Erfullbar]{\vDash} \varphi[a_1, ..., a_n]$
 	
-	\subsection{*Zentrale semantische Konzepte: Allgemeingültigkeit}
-	$\mathcal{L}$-\hyperref[Formel]{Formel} $\varphi$ ist (logisch) wahr oder allgemeingültig, wenn alle \hyperref[Struktur]{$\mathcal{L}$-Strukturen} Modell von $\varphi$ sind: Für alle \hyperref[Struktur]{$\mathcal{L}$-Strukturen $\mathcal{A}$}
-	
-	\subsection{*Zentrale semantische Konzepte: Erfüllbarkeit}
-	\begin{tasks}
-		\task ($\mathcal{L}$-)\hyperref[Formel]{Formel} $\varphi$ ist \hyperref[Erfullbar]{erfüllbar}, wenn $\varphi$ ein Modell besitzt: Es gibt eine \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} mit $\mathcal{A} \hyperref[Erfullbar]{\vDash} \varphi$. Andernfalls ist $\varphi$ unerfüllbar.
-		\task Menge $\Phi$ von $\mathcal{L}$-\hyperref[Formel]{Formeln} ist \hyperref[Erfullbar]{erfüllbar}, wenn es eine \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} gibt, die Modell aller \hyperref[Formel]{Formeln} in $\Phi$ ist
-	\end{tasks}
-
-	\subsection{*Zentrale semantische Konzepte: Folgerungsbegriff}
-	$\mathcal{L}$-\hyperref[Formel]{Formel} $\varphi$ folgt aus $\mathcal{L}$-\hyperref[Formel]{Formel} $\psi (\psi \hyperref[Erfullbar]{\vDash} \varphi)$, wenn jedes Modell von $\psi$ auch Modell von $\varphi$ ist.
+	\subsection{*Zentrale semantische Konzepte}
+	\begin{description}
+		\item[Allgemeingültigkeit] \hfill \\ $\mathcal{L}$-\hyperref[Formel]{Formel} $\varphi$ ist (logisch) wahr oder allgemeingültig, wenn alle \hyperref[Struktur]{$\mathcal{L}$-Strukturen} Modell von $\varphi$ sind: Für alle \hyperref[Struktur]{$\mathcal{L}$-Strukturen $\mathcal{A}$}
+		\item[Erfüllbarkeit] \hfill \begin{enumerate}[(a)]
+			\item ($\mathcal{L}$-) \hyperref[Formel]{Formel} $\varphi$ ist \hyperref[Erfullbar]{erfüllbar}, wenn $\varphi$ ein Modell besitzt: Es gibt eine \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} mit $\mathcal{A} \hyperref[Erfullbar]{\vDash} \varphi$. Andernfalls ist $\varphi$ unerfüllbar.
+			\item Menge $\Phi$ von $\mathcal{L}$-\hyperref[Formel]{Formeln} ist \hyperref[Erfullbar]{erfüllbar}, wenn es eine \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} gibt, die Modell aller \hyperref[Formel]{Formeln} in $\Phi$ ist
+		\end{enumerate}
+	\item[Folgerungsbegriff] \hfill \\ $\mathcal{L}$-\hyperref[Formel]{Formel} $\varphi$ folgt aus $\mathcal{L}$-\hyperref[Formel]{Formel} $\psi (\psi \hyperref[Erfullbar]{\vDash} \varphi)$, wenn jedes Modell von $\psi$ auch Modell von $\varphi$ ist.
 	
 	Für alle \hyperref[Struktur]{$\mathcal{L}$-Strukturen $\mathcal{A}$}: $\mathcal{A} \psi \Rightarrow \mathcal{A} \hyperref[Erfullbar]{\vDash} \varphi$
 	
 	$\varphi$ und $\psi$ sind äquivalent ($\varphi$ äq $\psi$), wenn $\varphi$ und $\psi$ die selben Modelle haben
+	\end{description}
 	
 	\subsection{Formel folgt aus Menge}
-	$\mathcal{L}$-\hyperref[Formel]{Formel} $\varphi$ folgt aus Menge $\Phi$ von ($\mathcal{L}$-)\hyperref[Formel]{Formeln} ($\Phi \hyperref[Erfullbar]{\vDash} \varphi$), wenn jedes Modell von $\Phi$ auch Modell von $\varphi$ ist:
-	
-	Für alle \hyperref[Struktur]{$\mathcal{L}$-Strukturen $\mathcal{A}$}: $\mathcal{A} \hyperref[Erfullbar]{\vDash} \Phi \Rightarrow \mathcal{A} \hyperref[Erfullbar]{\vDash} \varphi$ 
-	
-	\subsection{Monotonie des Folgerungsbegriffs}
+	$\mathcal{L}$-\hyperref[Formel]{Formel} $\varphi$ folgt aus Menge $\Phi$ von ($\mathcal{L}$-) \hyperref[Formel]{Formeln} ($\Phi \hyperref[Erfullbar]{\vDash} \varphi$), wenn jedes Modell von $\Phi$ auch Modell von $\varphi$ ist: \newline
+	Für alle \hyperref[Struktur]{$\mathcal{L}$-Strukturen $\mathcal{A}$}: $\mathcal{A} \hyperref[Erfullbar]{\vDash} \Phi \Rightarrow \mathcal{A} \hyperref[Erfullbar]{\vDash} \varphi$ \newline
+	Die Monotonie gilt auch hier: \newline
 	$\Phi \subseteq \Psi$ und $\Phi \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow \Psi \hyperref[Erfullbar]{\vDash} \varphi$
 	
 	\subsection{Verträglichkeit von $\vDash$ und $\rightarrow$}
@@ -557,11 +589,6 @@
 	
 	\subsection{Zusammenhang zwischen Folgerungs- und Erfüllbarkeitsbegriff}
 	Für jede $\mathcal{L}$-Formelmenge $\Phi$ und jeden \hyperref[LSatz]{$\mathcal{L}$-Satz} $\sigma$ gilt: $\Phi \hyperref[Erfullbar]{\vDash} \sigma \Leftrightarrow \Phi \cup \{\neg \sigma\}$ unerfüllbar
-	
-	\subsection{*Tautologie}
-	\hyperref[Formel]{Formel} $\varphi$ ist eine Tautologie (aussagenlogisch gültig, $\hyperref[Erfullbar]{\vDash_{AL}} \varphi$), falls $B(\varphi) = 1$ für alle al. \hyperref[Belegung]{Belegungen} B
-	
-	Jede Tautologie ist allgemeingültig: $\hyperref[Erfullbar]{\vDash_{AL}} \varphi \rightarrow \hyperref[Erfullbar]{\vDash} \varphi$
 	
 	\subsection{Aussagenlogische Folgerung}
 	Formen $\varphi$ ist aussagenlogische Folgerung aus \hyperref[Formel]{Formeln} \newline 
@@ -603,15 +630,9 @@
 	($\exists$1) $\frac{\varphi \rightarrow \psi}{\exists x \varphi \rightarrow \psi}$ 
 	
 	Falls x in $\psi$ nicht frei vorkommt. 
-	
-	\subsection{Tautologiesatz}
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $\vDash_{AL} \varphi \Rightarrow \hyperref[Beweisbar]{\vdash} \varphi$ 
-		\task $\varphi_1, ..., \varphi_n \vDash_{AL} \varphi \Rightarrow \varphi_1, ..., \varphi_n \hyperref[Beweisbar]{\vdash} \varphi$
-	\end{tasks}
 
 	\subsection{Aussagenlogische Schlüsse}
-	(AL) $\psi_1, ..., \psi_n \vDash_{AL} \varphi$ ($n \ne 0$) $\Rightarrow \frac{\psi_1, ..., \psi_n}{\varphi}$ in $S_{PL}$ für n = 0 ist (AL) das Axiomenschema (Hierdurch bestimmt man die Regel $\varphi$)\newline
+	(AL) $\psi_1, ..., \psi_n \vDash_{AL} \varphi$ ($n \ne 0$) $\Rightarrow \frac{\psi_1, ..., \psi_n}{\varphi}$ in $S_{PL}$ für n = 0 ist (AL) das Axiomenschema (Hierdurch bestimmt man die \hyperref[Kalkul]{Regel} $\varphi$)\newline
 	(AL) $\varphi$ (falls $\vDash_{AL} \varphi$) (Hierdurch bestimmt man das Axiom $\varphi$)
 	
 	\subsection{Generalisierung und Distribution}
@@ -663,9 +684,9 @@
 	
 	\subsection{Theorie}
 	\label{Theorie}
-	Eine ($\mathcal{L}$-)Theorie T ist ein Paar T = ($\mathcal{L}, \Sigma$), wobei:
+	Eine ($\mathcal{L}$-) Theorie T ist ein Paar T = ($\mathcal{L}, \Sigma$), wobei:
 	\begin{itemize}
-		\item $\mathcal{L}$ eine \hyperref[PLSprache]{Sprache} der Prädikatenlogik: Sprache der Theorie T
+		\item $\mathcal{L}$ eine \hyperref[Sprache]{Sprache} der Prädikatenlogik: \hyperref[Sprache]{Sprache} der Theorie T
 		\item $\Sigma$ eine Menge von $\mathcal{L}$-Sätzen ist: Axiom von T
 	\end{itemize}
 	T endlich $\Leftrightarrow \Sigma$ endlich
@@ -690,11 +711,11 @@
 	\subsection{Erweiterung und Konservative Erweiterung}
 	\label{Erweiterung}
 	\hyperref[Theorie]{$\mathcal{L}$'-Theorien $T' = (\mathcal{L}', \Sigma')$} ist eine Erweiterung der \hyperref[Theorie]{$\mathcal{L}$-Theorie $T = (\mathcal{L}, \Sigma) (T \subseteq T')$} falls:
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $\mathcal{L}$' Erweiterung von $\mathcal{L}$
-		\task für jede $\mathcal{L}$-Formel $\varphi$ gilt: $T \hyperref[Beweisbar]{\vdash} \varphi \Rightarrow T' \hyperref[Beweisbar]{\vdash} \varphi$ \newline
+	\begin{enumerate}[(i)]
+		\item $\mathcal{L}$' Erweiterung von $\mathcal{L}$
+		\item für jede $\mathcal{L}$-Formel $\varphi$ gilt: $T \hyperref[Beweisbar]{\vdash} \varphi \Rightarrow T' \hyperref[Beweisbar]{\vdash} \varphi$ \newline
 		Gilt außerdem für jede $\mathcal{L}$-Formel $\varphi$: $T \hyperref[Beweisbar]{\vdash} \varphi \Leftrightarrow T' \hyperref[Beweisbar]{\vdash} \varphi$ so heißt T' eine konservative Erweiterung
-	\end{tasks}
+	\end{enumerate}
 
 	\subsection{Sprachliche Erweiterung}
 	\label{SprachlicheErweiterung}
@@ -720,18 +741,11 @@
 	\hyperref[Theorie]{Theorie $T = (\mathcal{L}, \Sigma)$} ist \hyperref[PLKonsistent]{konsistent} $\Leftrightarrow \nexists$ \hyperref[LSatz]{$\mathcal{L}$-Satz} $\sigma : T \hyperref[Beweisbar]{\vdash} \sigma$ und $T \hyperref[Beweisbar]{\vdash} \neg \sigma$
 	
 	\subsection{Lemma über Zusammenhang zwischen Beweisbarkeit und Konsistenz (LBK)}
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $T \hyperref[Beweisbar]{\vdash} \varphi \Leftrightarrow T \cup \{\neg \forall \varphi\}$ \hyperref[PLKonsistent]{inkonsistent}
-		\task $T \nvdash \varphi \Leftrightarrow T \cup \{\neg \forall \varphi\}$ \hyperref[PLKonsistent]{konsistent}
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $T \hyperref[Beweisbar]{\vdash} \varphi \Leftrightarrow T \cup \{\neg \forall \varphi\}$ \hyperref[PLKonsistent]{inkonsistent}
+		\item $T \nvdash \varphi \Leftrightarrow T \cup \{\neg \forall \varphi\}$ \hyperref[PLKonsistent]{konsistent}
+	\end{enumerate}
 	für Satz $\sigma$ ist Allabschluss $\forall \sigma = \sigma \Rightarrow$ für Sätze gilt: $T \hyperref[Beweisbar]{\vdash} \sigma \Leftrightarrow T \cup \{\neg \sigma\}$ \hyperref[PLKonsistent]{inkonsistent}
-	
-	\subsection{*Erfüllbarkeitslemma (Modellexistenzsatz, EL)}
-	Jede \hyperref[PLKonsistent]{konsistente} \hyperref[Theorie]{Theorie T} ist erfüllbar (d.h. besitzt ein Modell)
-	
-	\subsection{*Vollständigkeitssatz (VS)}
-	\label{TheorieVollstandig}
-	Eine \hyperref[Theorie]{Theorie} ist Vollständig wenn gilt: $T \hyperref[Erfullbar]{\vDash} \sigma \Rightarrow T \hyperref[Beweisbar]{\vdash} \sigma$
 	
 	\subsection{Relation \textasciitilde}
 	Relation \textasciitilde $\subseteq K_{\mathcal{L}} * K_{\mathcal{L}}$ ist gegeben durch: $ t \sim t' \Leftrightarrow T \hyperref[Beweisbar]{\vdash} t = t'$ \newline
@@ -787,11 +801,11 @@
 	Sei $T = (\mathcal{L}, \Sigma)$ \hyperref[Theorie]{Theorie} über abzählbarer Sprache $\mathcal{L}$. Es gibt eine Erweiterung $T_H = (\mathcal{L}_H, \Sigma_H)$ von T mit folgenden. \newline 
 	Eigenschaften:
 	
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $T_H$ ist eine \hyperref[Henkin]{Henkin-Theorie}
-		\task $T_H$ ist eine \hyperref[Erweiterung]{konservative Erweiterung} von T
-		\task $\mathcal{L}_H$ ist abzählbar
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $T_H$ ist eine \hyperref[Henkin]{Henkin-Theorie}
+		\item $T_H$ ist eine \hyperref[Erweiterung]{konservative Erweiterung} von T
+		\item $\mathcal{L}_H$ ist abzählbar
+	\end{enumerate}
 
 	\subsection{Henkin-Erweiterung T-H}
 	1-Schritt der \hyperref[HenkinErweiterung]{Henkin-Erweiterung} $T^* = (\mathcal{L}^*, \Sigma^*)$ ist definiert durch
@@ -806,25 +820,9 @@
 		$\Rightarrow T_H$ & $= (\mathcal{L}_H, \Sigma_H)$ mit $\mathcal{L}_H := \bigcup\limits_{n \ge 0} \mathcal{L}_n$ und $\Sigma_H := \bigcup\limits_{n \ge 0} \Sigma_n$
 	\end{tabular}
 	
-	\subsection{Adäquatheitssatz}
-	$T \hyperref[Erfullbar]{\vDash} \sigma \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \sigma$
-	
-	\subsection{Satz über Konsistenz und Erfüllbarkeit}
-	T erfüllbar $\Leftrightarrow$ T \hyperref[PLKonsistent]{konsistent}
-	
-	\subsection{*Kompaktheitssatz(Endlichkeitssatz)}
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task \hyperref[Theorie]{Theorie T} erfüllbar $\Leftrightarrow$ Jede endliche Teilmenge $T_0$ erfüllbar 
-		\task Satz $\sigma$ folgt aus T $\Leftrightarrow \exists$ endliches $T_0$ aus der $\sigma$ folgt
-	\end{tasks}
-
 	\subsection{Satz von Löwenheim}
 	$T = (\mathcal{L}, \Sigma)$ erfüllbare \hyperref[Theorie]{Theorie}, $\mathcal{L}$ abzählbar \newline
 	$\Leftrightarrow$ T besitzt ein abzählbares Modell
-	
-	\subsection{Satz über vollständig erfüllbare Theorien}
-	T vollständige erfüllbare \hyperref[Theorie]{Theorie} \newline 
-	$\Rightarrow \exists$ \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} mit $T = Th(\mathcal{A}) = \{\sigma : \mathcal{A} \hyperref[Erfullbar]{\vDash} \sigma\}$
 	
 	\subsection{Satz für endliche Sprachen}
 	$\mathcal{L}$ endliche Sprache $\Rightarrow$ Menge allgemeingültiger $\mathcal{L}$-Formeln auf zählbar 
@@ -840,11 +838,11 @@
 	
 	\subsection{Eigenschaften über C(T)}
 	\hyperref[Theorie]{$T = (\mathcal{L}, \Sigma) \mathcal{L}$-Theorie}. Dann gilt: 
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $\Sigma \subseteq C(T)$
-		\task C(C(T)) = C(T) (deduktiver Abschluss ist deduktiv abgeschlossen)
-		\task Mod(T) = Mod(C(T))
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $\Sigma \subseteq C(T)$
+		\item C(C(T)) = C(T) (deduktiver Abschluss ist deduktiv abgeschlossen)
+		\item Mod(T) = Mod(C(T))
+	\end{enumerate}
 
 	\subsection{Äquivalente Theorien}
 	2 \hyperref[Theorie]{$\mathcal{L}$-Theorien T und T'} sind gleich/äquivalent ($T \sim T'$) $\Leftrightarrow$ C(T) = C(T') $\Leftrightarrow (\Sigma' \subseteq C(\Sigma) \text{ und } \Sigma \subseteq C(\Sigma')) \Leftrightarrow$ Mod(T) = Mod(T')
@@ -870,11 +868,11 @@
 	
 	\subsection{*Elementare Eigenschaften}
 	Familie \hyperref[Elementar]{elementarer Klassen} von \hyperref[Struktur]{$\mathcal{L}$-Strukturen} abgeschlossen gegen:
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task Vereinigung
-		\task Durchschnitt
-		\task Komplement
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item Vereinigung
+		\item Durchschnitt
+		\item Komplement
+	\end{enumerate}
 
 	\subsection{Anzahlformeln}
 	$\varphi_{\ge n} :\equiv \exists x_1, ..., \exists x_n (\bigwedge\limits_{1 \le i < j \le n} x_i \ne x_j)$ \newline
@@ -946,20 +944,20 @@
 	\end{itemize}
 	
 	\subsection{Lemma}
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $p \ge 1 \Rightarrow$ Klasse $K_p$ der Körper Charakteristik p ist elementar
-		\task Klasse $K_0$ ist $\Delta$-Elementar 
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $p \ge 1 \Rightarrow$ Klasse $K_p$ der Körper Charakteristik p ist elementar
+		\item Klasse $K_0$ ist $\Delta$-Elementar 
+	\end{enumerate}
 	
 	\subsection{Isomorphismen}
-	\begin{tasks}
-		\task ($\mathcal{L}$)-Isomorphismus f von $\mathcal{A}$ nach $\mathcal{B} (f: \mathcal{A} \cong \mathcal{B})$ ist eine bijektive Abbildung $f: A \rightarrow B$, die mit den ausgezeichneten Relationen, Funktionen und Konstanten verträglich ist: \begin{itemize}
+	\begin{enumerate}[(a)]
+		\item ($\mathcal{L}$)-Isomorphismus f von $\mathcal{A}$ nach $\mathcal{B} (f: \mathcal{A} \cong \mathcal{B})$ ist eine bijektive Abbildung $f: A \rightarrow B$, die mit den ausgezeichneten Relationen, Funktionen und Konstanten verträglich ist: \begin{itemize}
 			\item $(a_1, ..., a_{n_i}) \in \mathcal{R}_i^{\mathcal{A}} \Leftrightarrow (f(a_1), ..., f(a_{n_i}) \in \mathcal{R}_i^{\mathcal{B}}$
 			\item $f(f_i^{\mathcal{A}}(a_1, ..., a_{m_j})) = f_i^{\mathcal{B}}(f(a_1), ..., f(a_{m_j})$
 			\item $f(c_k^{\mathcal{A}}) = c_k^{\mathcal{B}}$
 		\end{itemize}
-		\task $\mathcal{A}$ und $\mathcal{B}$ isomorph $(\mathcal{A} \cong \mathcal{B}) \Leftrightarrow \exists$ Isomorphismus von $\mathcal{A}$ nach $\mathcal{B}$
-	\end{tasks}
+		\item $\mathcal{A}$ und $\mathcal{B}$ isomorph $(\mathcal{A} \cong \mathcal{B}) \Leftrightarrow \exists$ Isomorphismus von $\mathcal{A}$ nach $\mathcal{B}$
+	\end{enumerate}
 	
 	Es gilt zusätzlich: $\mathcal{A} \cong \mathcal{B} \Rightarrow \forall$ Satz $\sigma: \mathcal{A} \vDash \sigma \Leftrightarrow \mathcal{B} \vDash \sigma$ 
 	
@@ -972,36 +970,30 @@
 	$\mathcal{L}$-Strukturen $\mathcal{A}, \mathcal{B}$ elementar äquivalent $(\mathcal{A} \equiv \mathcal{B}) \Leftrightarrow Th(\mathcal{A}) = Th(\mathcal{B})$ ($\forall$-Satz: $\mathcal{A} \vDash \sigma \Leftrightarrow \mathcal{B} \vDash \sigma$)
 	
 	Für $\mathcal{L}$-Strukturen $\mathcal{A}, \mathcal{B}$ sind äquivalent
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $\mathcal{A} \equiv \mathcal{B}$
-		\task $B \vDash Th(\mathcal{A})$
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $\mathcal{A} \equiv \mathcal{B}$
+		\item $B \vDash Th(\mathcal{A})$
+	\end{enumerate}
 	
 	Klasse $\kappa$ von $\mathcal{L}$-Strukturen ($\Delta$-)elementar $\Rightarrow \kappa$ gegen elementare Äquivalenz und Isomorphie abgeschlossen 
 	
 	Für eine $\mathcal{L}$-Struktur $\mathcal{A}$ sind folgende Aussagen äquivalent:
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $\{\mathcal{B}: \mathcal{A} \cong \mathcal{B}\}$ ist $\Delta$-Elementar
-		\task Jede zu $\mathcal{A}$ äquivalente Struktur $\mathcal{B}$ ist zu $\mathcal{A}$ isomorph. D.h. Für alle $\mathcal{L}$-Strukturen $\mathcal{B}$ gilt: $\mathcal{A} \equiv \mathcal{B} \Rightarrow \mathcal{A} \cong \mathcal{B}$
-		\task Für alle $\mathcal{L}$-Strukturen $\mathcal{B}$ gilt: $\mathcal{A} \equiv \mathcal{B} \Leftrightarrow \mathcal{A} \cong \mathcal{B}$
-		\task Für alle $\mathcal{L}$-Strukturen $\mathcal{B}$ gilt: $\mathcal{A} \equiv \mathcal{B} \Leftrightarrow \mathcal{B} \vDash Th(\mathcal{A})$
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $\{\mathcal{B}: \mathcal{A} \cong \mathcal{B}\}$ ist $\Delta$-Elementar
+		\item Jede zu $\mathcal{A}$ äquivalente Struktur $\mathcal{B}$ ist zu $\mathcal{A}$ isomorph. D.h. Für alle $\mathcal{L}$-Strukturen $\mathcal{B}$ gilt: $\mathcal{A} \equiv \mathcal{B} \Rightarrow \mathcal{A} \cong \mathcal{B}$
+		\item Für alle $\mathcal{L}$-Strukturen $\mathcal{B}$ gilt: $\mathcal{A} \equiv \mathcal{B} \Leftrightarrow \mathcal{A} \cong \mathcal{B}$
+		\item Für alle $\mathcal{L}$-Strukturen $\mathcal{B}$ gilt: $\mathcal{A} \equiv \mathcal{B} \Leftrightarrow \mathcal{B} \vDash Th(\mathcal{A})$
+	\end{enumerate}
 
-	\subsection{Kompaktheitssatz der PL1}
-	\begin{description}
-		\item[a.) Kompaktheitssatz für Folgerungsbegriff] T $\mathcal{L}$-Theorie, $\sigma$ $\mathcal{L}$-Satz mit $T \vDash \sigma$, dann existiert endliche Teiltheorie $T_0 \subseteq T$ mit $T_0 \vDash \sigma$ 
-		\item[b.) Kompaktheitssatz für Erfüllbarkeitsbegriff] Jede endliche Teiltheorie $T_0 \subseteq T$ mit $T_0 \vDash \sigma$ 
-	\end{description}
-
-	Klasse $\kappa$ von $\mathcal{L}$-Strukturen ist elementar $\Leftrightarrow$ Klasse $\kappa$ und Komplement $\overline{\kappa} \Delta$-elementar 
+	
 	
 	\subsection{Satz über Existenz unendlicher Modelle}
 	$T = (\mathcal{L}, \Sigma) \mathcal{L}$-Theorie, die für jedes $n \ge 1$ ein Modell mit mindestens n Elementen besitzt. Dann besitzt T ein unendliches Modell 
 	
-	\begin{tasks}
-		\task Klasse $M_{fin}$ ist nicht $\Delta$-Elementar
-		\task Klasse $M_{inf}$ ist nicht Elementar
-	\end{tasks} 
+	\begin{enumerate}[(a)]
+		\item Klasse $M_{fin}$ ist nicht $\Delta$-Elementar
+		\item Klasse $M_{inf}$ ist nicht Elementar
+	\end{enumerate} 
 
 	\subsection{Ordnungen und Wohlordnungen}
 	Lineare Ordnung $O = (A, <)$ ist eine Wohlordnung $\Leftrightarrow$ besitzt keine unendlich absteigende Kette, d.h. keine Individuen $a_n \in A$ mit ... $a_2 < a_1 < a_0$ (Wie die Ordnung der natürlichen Zahlen)
@@ -1009,10 +1001,10 @@
 	Die Klasse der Wohlordnungen ist nicht $\Delta$-Elementar
 	
 	\subsection{!Körper und deren Charakteristik}
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task Klasse $\kappa_0$ der Körper mit der Charakteristik 0 ist nicht elementar
-		\task Klasse $\kappa_{fin}$ der Körper endlicher Charakteristik ist nicht $\Delta$-elementar
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item Klasse $\kappa_0$ der Körper mit der Charakteristik 0 ist nicht elementar
+		\item Klasse $\kappa_{fin}$ der Körper endlicher Charakteristik ist nicht $\Delta$-elementar
+	\end{enumerate}
 
 	\subsection{Satz von Skolem}
 	Es gibt eine $\mathcal{L}(\le; +, *; 0, 1)$-Struktur $\mathcal{N}^*$, die zur Struktur $\mathcal{N} = (\mathbb{N}; \le; +, *; 0, 1)$ der natürlichen Zahlen elementar äquivalent ist, also $\mathcal{N} \vDash Th(\mathcal{N})$ erfüllt, aber nicht zu $\mathcal{N}$ isomorph ist.
