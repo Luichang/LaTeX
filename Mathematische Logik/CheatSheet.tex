@@ -66,7 +66,7 @@
 	
 	\begin{enumerate}
 		\item Aussagenvariablen: $A_0, A_1, ...$
-		\item \begin{tabular}{l l}
+		\item Junktoren \begin{tabular}{l l}
 			1-Stellig: & $\neg$ \\
 			2-Stellig: & $\land, \lor, \rightarrow \leftrightarrow$
 		\end{tabular}
@@ -91,7 +91,7 @@
 	\subsection{*Formeln}
 	\label{Formel}
 	\begin{description}
-		\item[(F1)] Alle $A_{n_{> 0}}$ sind Formeln
+		\item[(F1)] Alle $A_{n}(n \ge 0)$ sind Formeln
 		\item[(F2)] $\varphi$ al. Formel $\Rightarrow \neg \varphi$ al. Formel
 		\item[(F3)] $\varphi_1, \varphi_2$ al. Formeln $\Rightarrow (\varphi_1 \bigodot \varphi_2)$ mit $\bigodot \in \{\land, \lor, \rightarrow\leftrightarrow\}$ al. Formel
 	\end{description}	
@@ -133,13 +133,11 @@
 	\end{enumerate}
 	
 	\subsection{*!Koinzidenzlemma}
-	\begin{itemize}
-		\item Seien $B_i : V_i \rightarrow \{0, 1\}, i = 0, 1$, \hyperref[Belegung]{Belegung}, sei $\varphi$ eine al. \hyperref[Formel]{Formel} deren Aussagenvariable in $V_0$ und $V_1$ liegen und stimmen $B_0$ und $B_1$ auf den in $\varphi$ vorkommenden Variablen überein (Was soviel heißt wie jede Variable aus $V_0$ wird durch $B_0$ einen Wert zugewiesen, und jede Variable aus $V_1$ wird durch $B_1$ einen Wert zugewiesen. Jetzt müssen die Variablen in $\varphi$ vorkommen in $V_0$ und $V_1$ vorkommen und deren \hyperref[Belegung]{Belegungen} müssen gleich sein.) \newline 
-		$\Rightarrow \widehat{B}_0(\varphi) = \widehat{B}_1(\varphi)$
-		\item \hyperref[Struktur]{$\mathcal{A} \mathcal{L}$-Struktur}, t $\mathcal{L}$-Term, $V = \{x_1, ..., x_n\}, V' = \{x_1', ..., x_n'\}$ Variablenmenge mit $V(t)\subseteq V, V'$ und B, B' \hyperref[Belegung]{Belegungen} in $\mathcal{A}$ sodass $B \upharpoonright V(t) = B' \upharpoonright V(t) \Rightarrow t_B^{\mathcal{A}} = t_{B'}^{\mathcal{A}}$
-		\item (Für Formeln) \newline
-		\hyperref[Struktur]{$\mathcal{A}$ eine $\mathcal{L}$-Struktur}, $\varphi \mathcal{L}$-\hyperref[Formel]{Formel}, $V = \{x_1, ..., x_m\}, V' = \{x_1', ..., x_m'\}$ Variablenmengen mit $FV(\varphi) \subseteq V, V'$ und B, B' \hyperref[Belegung]{Belegungen} in $\mathcal{A}$ s.d. $B \upharpoonright FV(\varphi) = B' \upharpoonleft FV(\varphi) \Rightarrow W_B^{\mathcal{A}}(\varphi) = W_{B'}^{\mathcal{A}}(\varphi)$ 
-	\end{itemize}
+	\begin{description}
+		\item[AL Formeln] Seien $B_i : V_i \rightarrow \{0, 1\}, i = 0, 1$, \hyperref[Belegung]{Belegung}, sei $\varphi$ eine al. \hyperref[Formel]{Formel} deren Aussagenvariablen in $V_0$ und $V_1$ liegen und stimmen $B_0$ und $B_1$ auf den in $\varphi$ vorkommenden Variablen überein (Was soviel heißt wie jede Variable aus $V_0$ wird durch $B_0$ einen Wert zugewiesen, und jede Variable aus $V_1$ wird durch $B_1$ einen Wert zugewiesen. Jetzt müssen die Variablen in $\varphi$ vorkommen in $V_0$ und $V_1$ vorkommen und deren \hyperref[Belegung]{Belegungen} müssen gleich sein.) $\Rightarrow \widehat{B}_0(\varphi) = \widehat{B}_1(\varphi)$
+		\item[$\mathcal{L}$-Strukturen] \hyperref[Struktur]{$\mathcal{A} \mathcal{L}$-Struktur}, t \hyperref[Term]{$\mathcal{L}$-Term}, $V = \{x_1, ..., x_n\}, V' = \{x_1', ..., x_n'\}$ Variablenmenge mit $V(t)\subseteq V, V'$ und B, B' \hyperref[Belegung]{Belegungen} in $\mathcal{A}$ sodass $B \upharpoonright V(t) = B' \upharpoonright V(t) \Rightarrow t_B^{\mathcal{A}} = t_{B'}^{\mathcal{A}}$
+		\item[$\mathcal{L}$-Formeln] \hyperref[Struktur]{$\mathcal{A}$ eine $\mathcal{L}$-Struktur}, $\varphi \mathcal{L}$-\hyperref[Formel]{Formel}, $V = \{x_1, ..., x_m\}, V' = \{x_1', ..., x_m'\}$ Variablenmengen mit $FV(\varphi) \subseteq V, V'$ und B, B' \hyperref[Belegung]{Belegungen} in $\mathcal{A}$ s.d. $B \upharpoonright FV(\varphi) = B' \upharpoonright FV(\varphi) \Rightarrow W_B^{\mathcal{A}}(\varphi) = W_{B'}^{\mathcal{A}}(\varphi)$ 
+	\end{description}
 	
 	\subsection{*Zentrale semantische Begriffe}
 	\begin{tabular}{r l}
@@ -161,12 +159,20 @@
 		& $\neg (A \lor B)$ äq $\neg A \land \neg B$ &
 	\end{tabular}
 
-	\subsection{!Einsetzungsregel}
-	Ist al. \hyperref[Formel]{Formel} $\varphi$ allgemeingültig, dann auch $\varphi[\psi/A]$, die aus $\varphi$ durch ersetzen aller vorkommenden A in $\varphi$ durch $\psi$
-	
-	\subsection{!Ersetzungsregel}
-	$\varphi \leftrightarrow \psi$ allgemeingültig $\Rightarrow \chi \leftrightarrow \chi (\psi/\varphi)$ allgemeingültig
-	
+	\subsection{Ein/Ersetzungsregel}
+	\begin{description}
+		\item[Formel Einsetzungsregel] Ist al. \hyperref[Formel]{Formel} $\varphi$ allgemeingültig, dann auch $\varphi[\psi/A]$, die aus $\varphi$ durch ersetzen aller vorkommenden A in $\varphi$ durch $\psi$ entsteht
+		
+		Wir haben eine Formel $\varphi$, welche allgemeingültig ist und die Aussagenvariable A enthält. Jetzt können wir jedes in $\varphi$ vorkommende A durch eine neue Formel $\psi$ ersetzen 
+		\item[Formel Ersetzungsregel] $\varphi \leftrightarrow \psi$ allgemeingültig $\Rightarrow \chi \leftrightarrow \chi 1(\psi/\varphi)$ allgemeingültig
+		\item[Regeln] Sei \hyperref[Kalkul]{Regel R} korrekt bezüglich Folgerungen $\Rightarrow$ R korrekt bezüglich Allgemeingültigkeit
+		
+		\begin{tabular}{l l}
+			Einsetzungsregel: & (EIN) $\frac{\varphi}{\varphi[\psi/x]}$ \\
+			Ersetzungsregel: & (ERS) $\frac{\chi}{\chi[\varphi/\psi]}$ falls $\varphi$ äq $\psi$
+		\end{tabular}
+	\end{description}
+		
 	\subsection{Substitutionsregel}
 	$sub(\chi, \varphi, \psi)$ Menge aller Varianten $\chi(\psi/\varphi)$
 	
@@ -199,22 +205,21 @@
 	Hierbei gilt, der semantische Folgerungsbegriff ist monoton, d.h. \newline
 	$T \subseteq T'\text{ und } T \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow T' \hyperref[Erfullbar]{\vDash} \varphi$
 	
-	\subsection{*!Folgerung vs Erfüllbarkeit}
-	\begin{enumerate}[(i)]
-		\item $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow$ nicht erfb$[T \cup \{\neg \varphi\}]$ \newline
-		\item $T \nvDash \varphi \Leftrightarrow$ erfb$[T \cup \{\neg \varphi\}]$
-	\end{enumerate}
-
-	\subsection{*Erfüllbarkeit vs. Semantische Folgerung}
-	Für $T \ne \emptyset$ sind äquivalent:
+	\subsection{Erfüllbarkeit vs die Welt}
+	\begin{description}
+		\item[vs Folgerung] \begin{enumerate}[(i)]
+			\item $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow$ nicht erfb$[T \cup \{\neg \varphi\}]$ \newline
+			\item $T \nvDash \varphi \Leftrightarrow$ erfb$[T \cup \{\neg \varphi\}]$
+		\end{enumerate}
+		\item[Semantische Folgerung] Für $T \ne \emptyset$ sind äquivalent:
+		\begin{enumerate}[(i)]
+			\item erfb[T]
+			\item $\nexists \varphi[T \hyperref[Erfullbar]{\vDash} \varphi \text{ und } T \hyperref[Erfullbar]{\vDash} \neg \varphi]$
+			\item $\exists \varphi [T \nvDash \varphi]$
+		\end{enumerate}
+	\end{description}
 	
-	\begin{enumerate}[(i)]
-		\item erfb[T]
-		\item $\nexists \varphi[T \hyperref[Erfullbar]{\vDash} \varphi \text{ und } T \hyperref[Erfullbar]{\vDash} \neg \varphi]$
-		\item $\exists \varphi [T \nvDash \varphi]$
-	\end{enumerate}
-
-	\subsection{get Fucked}
+	\subsection{AL Formel als Funktion}
 	$\varphi$ al. \hyperref[Formel]{Formel} mit $V(\varphi) \subseteq \{A_0, ..., A_{n - 1}\}$
 	
 	Die von $\varphi$ dargestellte n-Stellige Boolesche Funktion $f_{\varphi, n}$ ist definiert durch $f_{\varphi, n}(i_0, ..., i_{n-1}) = \widehat{B}_{i_0, ..., i_{n - 1}}(\varphi)$
@@ -283,6 +288,7 @@
 	\end{itemize}
 
 	\subsection{*Beweise und Beweisbarkeit}
+	\label{Beweisbar}
 	Sei \hyperref[Kalkul]{$\mathcal{K}$ ein Kalkül} aus T Menge von ($\mathcal{K}$-) \hyperref[Formel]{Formeln} ein ($\mathcal{K}$-) Beweis der ($\mathcal{K}$-) \hyperref[Formel]{Formel} $\varphi$ aus T ist endliche Folge $\psi_1, ..., \psi_n$ von ($\mathcal{K}$-) \hyperref[Formel]{Formeln}, sodass gilt:
 	\begin{itemize}
 		\item $\varphi \equiv \psi_n$
@@ -293,9 +299,7 @@
 		\end{itemize}
 		\item n ist die Länge des Beweises $\psi_1, ..., \psi_n$
 	\end{itemize}
-
-	\subsection{*Beweisbar}
-	\label{Beweisbar}
+	
 	Eine ($\mathcal{K}$-) \hyperref[Formel]{Formel} $\varphi$ is ($\mathcal{K}$-) beweisbar aus T, wenn es einen ($\mathcal{K}$-) Beweis von $\varphi$ aus T gibt.
 	
 	NB: Jede \hyperref[Formel]{Formel} $\varphi \in T$ ist ein ($\mathcal{K}$-) Beweis (der Länge 1) aus T und damit
@@ -338,14 +342,6 @@
 	\subsection{*Korrektheitslemma}
 	Sei \hyperref[Kalkul]{$\mathcal{K}$ ein Kalkül} der Aussagenlogik, dessen Axiome allgemeingültig sind und dessen \hyperref[Kalkul]{Regeln} korrekt bezüglich Folgerungen sind $\Rightarrow \mathcal{K}$ Korrekt bezüglich Folgerungen
 	
-	\subsection{Ein/Ersetzungsregel}
-	Sei \hyperref[Kalkul]{Regel R} korrekt bezüglich Folgerungen $\Rightarrow$ R korrekt bezüglich Allgemeingültigkeit
-	
-	\begin{tabular}{l l}
-		Einsetzungsregel: & (EIN) $\frac{\varphi}{\varphi[\psi/x]}$ \\
-		Ersetzungsregel: & (ERS) $\frac{\chi}{\chi[\varphi/\psi]}$ falls $\varphi$ äq $\psi$
-	\end{tabular}
-
 	\subsection{*Shoenfield}
 	Shoenfield \hyperref[Kalkul]{Kalkül} S
 	\begin{itemize}
@@ -489,8 +485,9 @@
 	Sofern die \hyperref[Struktur]{Struktur} keine Relation/Funktion hat, kennzeichnet man das in der Signatur mit einem -
 	
 	\subsection{*Syntax}
+	\label{Term}
 	\begin{description}
-		\item[Terme] Sei $\mathcal{L} = \mathcal{L}(\sigma)$ mit $\sigma = ((n_i | i \in I); (m_j | j \in J); K)$. Menge der ($\mathcal{L}$-)Therme ist Induktiv definiert durch:
+		\item[Terme] Sei $\mathcal{L} = \mathcal{L}(\sigma)$ mit $\sigma = ((n_i | i \in I); (m_j | j \in J); K)$. Menge der ($\mathcal{L}$-)Terme ist Induktiv definiert durch:
 		\begin{description}
 			\item[(T1)] Jede Variable $v_n$, jede Konstante $c_k$ ist ein Term
 			\item[(T2)] $t_1, ..., t_m \Rightarrow f_j(t_1, ..., t_m)$ ist ein Term
@@ -532,7 +529,7 @@
 	Eine (Variablen-)\hyperref[Belegung]{Belegung} B von V in $\mathcal{A}$ ist eine Abbildung $B: V \rightarrow \mathcal{A}$ 
 	
 	\subsection{Wert von t}
-	Sei $t \equiv t(\overrightarrow{x}) \equiv t(x_1, ..., x_n) \mathcal{L}$-Term, in dem höchstens Variablen $x_1, ..., x_n$ vorkommen, $B: \{x_1, ..., x_n\} \rightarrow \mathcal{A}$ \hyperref[Belegung]{Belegung} der Variablen in \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$}, Wert $t_B^{\mathcal{A}} \in A$ von t in $\mathcal{A}$ bezüglich \hyperref[Belegung]{Belegung} B ist durch Ind(t) definiert: 
+	Sei $t \equiv t(\overrightarrow{x}) \equiv t(x_1, ..., x_n) \hyperref[Term]{\mathcal{L}}$-Term, in dem höchstens Variablen $x_1, ..., x_n$ vorkommen, $B: \{x_1, ..., x_n\} \rightarrow \mathcal{A}$ \hyperref[Belegung]{Belegung} der Variablen in \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$}, Wert $t_B^{\mathcal{A}} \in A$ von t in $\mathcal{A}$ bezüglich \hyperref[Belegung]{Belegung} B ist durch Ind(t) definiert: 
 	\begin{enumerate}
 		\item $(x_i)_B^{\mathcal{A}} := B(x_i), (c_k)_B^{\mathcal{A}} := {c_k}^{\mathcal{A}}$
 		\item $(f_j(t_1, ..., t_{m_j}))_B^{\mathcal{A}} := f_j^{\mathcal{A}}((t_1)_B^{\mathcal{A}}, ..., (t_{m_j})_B^{\mathcal{A}})$
@@ -602,12 +599,10 @@
 	\label{Substituierbar}
 	$\varphi[t/x]$: alle freien vorkommen von x durch Term t ersetzen
 	
-	\subsection{!Substituirbarkeitsbedingung}
-	Term t heißt in \hyperref[Formel]{Formel} $\varphi$ für Variable x \hyperref[Substituierbar]{substituierbar}, wenn keine in t vorkommende Variable $y \ne x$ in $\varphi$ gebunden vorkommt
+	Die Bedingung, dass man t in $\varphi$ für Variable x substituieren kann lautet: \newline 
+	Term t heißt in \hyperref[Formel]{Formel} $\varphi$ für Variable x substituierbar, wenn keine in t vorkommende Variable $y \ne x$ in $\varphi$ gebunden vorkommt
 	
-	\subsection{Substitutionslemma}
-	Sei Term t für Variable x in \hyperref[Formel]{Formel} $\varphi$ \hyperref[Substituierbar]{substituierbar} 
-	
+	Zusätzlich gilt noch: Sei Term t für Variable x in \hyperref[Formel]{Formel} $\varphi$ substituierbar \newline 
 	$\Rightarrow \varphi[t/x] \rightarrow \exists x \varphi$ allgemeingültig
 	
 	\section{Ein Adäquater Kalkül der Prädikatenlogik}
@@ -646,7 +641,7 @@
 	\subsection{Ersetzung und Substitution I}
 	\begin{description}
 		\item[(E)] $\frac{\psi_1 \leftrightarrow \psi_1', ..., \psi_n \leftrightarrow \psi_n'}{\varphi \leftrightarrow \varphi'}$ falls $\varphi'$ aus $\varphi$ durch Ersetzen einzelner Vorkommen der Teilformeln $\psi_i$ durch $\psi_i'$ entsteht (wobei die ersetzten Teilformeln nicht ineinander liegen)
-		\item[(S2)] $\frac{\varphi}{\varphi[t_1/x_1, ..., t_n/x_n]}$ falls t für $x_i$ Substituirbar in p(S)
+		\item[(S2)] $\frac{\varphi}{\varphi[t_1/x_1, ..., t_n/x_n]}$ falls t für $x_i$ \hyperref[Substituierbar]{Substituirbar} in p(S)
 	\end{description}
 
 	\subsection{Umbenennung Gebundener Variablen}
@@ -667,9 +662,9 @@
 	\begin{description}
 		\item[(G5)] s = t $\rightarrow$ t = s
 		\item[(G6)] $t_1 = t_1' \land ... \land t_n = t_n' \rightarrow s = s'$ \newline
-		falls s' aus s durch Ersetzen einiger (oder auch aller) Vorkommenden der Terme $t_i$ durch entsprechende Terme $t_i'$ entsteht
+		falls s' aus s durch Ersetzen einiger (oder auch aller) Vorkommenden der \hyperref[Term]{Terme $t_i$} durch entsprechende \hyperref[Term]{Terme $t_i'$} entsteht
 		\item[(G7)] $t_1 = t_1' \land ... \land t_n = t_n' \rightarrow (\varphi[t_1/x_1, ..., t_n/x_n] \leftrightarrow \varphi[t_1'/x_1, ..., t_n'/x_n])$ \newline 
-		falls die Terme $t_i$ und $t_i'$ für $x_i$ in $\varphi$ Substituirbar sind
+		falls die \hyperref[Term]{Terme $t_i$} und $t_i'$ für $x_i$ in $\varphi$ \hyperref[Substituierbar]{Substituierbar} sind
 	\end{description}
 
 	\subsection{*Deduktionstheorem}
@@ -749,7 +744,7 @@
 	
 	\subsection{Relation \textasciitilde}
 	Relation \textasciitilde $\subseteq K_{\mathcal{L}} * K_{\mathcal{L}}$ ist gegeben durch: $ t \sim t' \Leftrightarrow T \hyperref[Beweisbar]{\vdash} t = t'$ \newline
-	$K_{\mathcal{L}}$ = Menge aller konstanten $\mathcal{L}$-Terme 
+	$K_{\mathcal{L}}$ = Menge aller konstanten \hyperref[Term]{$\mathcal{L}$-Terme}
 	
 	\subsection{*!Termstruktur (Termmodell)}
 	Die Termstruktur (Termmodell) $\mathcal{A}_T = (A_T; (R_i^{\mathcal{A}_T}: i \in I); (f_j^{\mathcal{A}_T}: j \in J); (c_k^{\mathcal{A}_T}: k \in K))$ von T ist gegeben durch: 
@@ -775,7 +770,7 @@
 
 	\subsection{*Henkin-Theorie}
 	\label{Henkin}
-	\hyperref[Theorie]{$\mathcal{L}$-Theorie $T = (\mathcal{L}, \Sigma)$} ist eine Henkin-Theorie, falls es für jeden $\mathcal{L}$-Existenzsatz $\exists x \varphi$ einen konstanten $\mathcal{L}$-Term t gibt mit: $T \hyperref[Beweisbar]{\vdash} \exists x \varphi \rightarrow \varphi[t/x]$
+	\hyperref[Theorie]{$\mathcal{L}$-Theorie $T = (\mathcal{L}, \Sigma)$} ist eine Henkin-Theorie, falls es für jeden $\mathcal{L}$-Existenzsatz $\exists x \varphi$ einen konstanten \hyperref[Term]{$\mathcal{L}$-Term t} gibt mit: $T \hyperref[Beweisbar]{\vdash} \exists x \varphi \rightarrow \varphi[t/x]$
 	
 	\subsection{Satz über Termmodelle}
 	Sei $T = (\mathcal{L}, \Sigma)$ \hyperref[PLKonsistent]{konsistent}, vollständig und eine \hyperref[Henkin]{Henkin-Theorie}. Dann gilt für alle $\mathcal{L}$-Sätze $\sigma$: $\mathcal{A}_T \hyperref[Erfullbar]{\vDash} \sigma \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \sigma$ Insbesondere $\mathcal{A}_T$ ist Modell von T
@@ -961,7 +956,7 @@
 	
 	Es gilt zusätzlich: $\mathcal{A} \cong \mathcal{B} \Rightarrow \forall$ Satz $\sigma: \mathcal{A} \vDash \sigma \Leftrightarrow \mathcal{B} \vDash \sigma$ 
 	
-	Weiterhin: $\mathcal{A}, \mathcal{B} \mathcal{L}$-Strukturen, $f: A \rightarrow B$ Isomorphismus, $\tilde{B}: \{x_0, ..., x_n\} \rightarrow A$ Belegung. Dann gilt für jeden $\mathcal{L}$-Term $t \equiv t(x_0, ..., x_n)$, jede $\mathcal{L}$-Formel $\varphi \equiv \varphi(x_0, ..., x_n)$: \begin{itemize}
+	Weiterhin: $\mathcal{A}, \mathcal{B} \mathcal{L}$-Strukturen, $f: A \rightarrow B$ Isomorphismus, $\tilde{B}: \{x_0, ..., x_n\} \rightarrow A$ Belegung. Dann gilt für jeden \hyperref[Term]{$\mathcal{L}$-Term t} $\equiv t(x_0, ..., x_n)$, jede $\mathcal{L}$-Formel $\varphi \equiv \varphi(x_0, ..., x_n)$: \begin{itemize}
 		\item $f(t_{\tilde{\mathcal{B}}}^{\mathcal{A}}) = t_{f(\tilde{\mathcal{B}})}^{\mathcal{B}}$
 		\item $W_{\tilde{\mathcal{B}}}^{\mathcal{A}}(\varphi) = W_{f(\tilde{\mathcal{B}})}^{\mathcal{B}}(\varphi)$
 	\end{itemize}
