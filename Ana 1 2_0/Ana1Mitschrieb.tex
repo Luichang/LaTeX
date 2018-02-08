@@ -8,7 +8,7 @@
 
 \usepackage{amsmath} % this package is one option for math lines
 \usepackage{amssymb} % package for Natural Number sign etc
-\usepackage{tasks}
+\usepackage{enumerate}
 
 \usepackage{hyperref} % these two lines are so that the table of content is clickable
 \setcounter{tocdepth}{3}
@@ -188,17 +188,17 @@
 	
 	\Lemma[Über Konvergente Folgen]
 	\label{lem:BeschrankteFolgen}
-	\begin{tasks}
-		\task Der \hyperref[def:Konvergenz]{Grenzwert} einer \hyperref[def:Konvergenz]{konvergenten} \hyperref[def:Folge]{Folge} ist eindeutig bestimmt.
-		\task Jede \hyperref[def:Konvergenz]{konvergente} \hyperref[def:Folge]{Folge} ist beschränkt: $\exists s \in \mathbb{R} \forall n \in \mathbb{N}: |a_n| \le s$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item Der \hyperref[def:Konvergenz]{Grenzwert} einer \hyperref[def:Konvergenz]{konvergenten} \hyperref[def:Folge]{Folge} ist eindeutig bestimmt.
+		\item Jede \hyperref[def:Konvergenz]{konvergente} \hyperref[def:Folge]{Folge} ist beschränkt: $\exists s \in \mathbb{R} \forall n \in \mathbb{N}: |a_n| \le s$
+	\end{enumerate}
 	
 	
 	\Satz[Regeln für n-te Wurzel]
-	\begin{tasks}
-		\task Für $a \in \mathbb{R}^+$ gilt: $\lim\limits_{n \rightarrow \infty} \sqrt[n]{a} = 1$.
-		\task $\lim\limits_{n \rightarrow \infty} \sqrt[n]{n} = 1$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item Für $a \in \mathbb{R}^+$ gilt: $\lim\limits_{n \rightarrow \infty} \sqrt[n]{a} = 1$.
+		\item $\lim\limits_{n \rightarrow \infty} \sqrt[n]{n} = 1$
+	\end{enumerate}
 	
 	\subsection{Rechenregeln für Grenzwerte}
 	\Lemma
@@ -215,18 +215,20 @@
 	
 	\Lemma[Sandwich-Lemma]
 	Es seien $(a_n), (b_n), (c_n)$ reelle \hyperref[def:Folge]{Folgen} mit:
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $(a_n)$ und $(c_n)$ sind konvergent mit: $\lim a_n = \lim c_n$
-		\task Für alle bis auf endlich viele $n \in \mathbb{N}$ gilt: $a_n \le b_n \le c_n$
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $(a_n)$ und $(c_n)$ sind konvergent mit: $\lim a_n = \lim c_n$
+		\item Für alle bis auf endlich viele $n \in \mathbb{N}$ gilt: $a_n \le b_n \le c_n$
+	\end{enumerate}
+
 	Dann ist $(b_n)$ konvergent mit: $\lim a_n = \lim b_n = \lim c_n$ \newline
 	Wenn wir eine Minorante und Majorante finden können, mit dem gleichen \hyperref[def:Konvergenz]{Grenzwert}, so \hyperref[def:Konvergenz]{konvergiert} die \hyperref[def:Folge]{Folge} gegen den selben \hyperref[def:Konvergenz]{Grenzwert}
 	
 	\subsection{Häufungspunkt, Cauchy-Folge, Teilfolgen}
-	\Definition
-	Eine \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ reeller Zahlen heißt \underline{\hyperref[def:Monoton]{monoton wachsend}}, falls gilt: \newline
-	$\forall n \in \mathbb{N}: a_{n + 1} \ge a_n$ \newline
-	\hyperref[def:Monoton]{Monoton Fallend} analog.
+	\Definition[Monotonie]
+	Eine \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ reeller Zahlen heißt \underline{monoton wachsend}, falls gilt: \newline
+	$\forall n \in \mathbb{N}: a_{n + 1} \ge a_n$
+	
+	Monoton Fallend analog.
 	
 	\Satz[Monotoniekriterium]
 	Jede \hyperref[lem:BeschrankteFolgen]{beschränkte} \hyperref[def:Monoton]{monotone} \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ ist \hyperref[def:Konvergenz]{konvergent} mit
@@ -289,7 +291,7 @@
 	
 	Außerdem gilt: $\forall n \in \mathbb{N}: b_n \le B_n; |b_n|, |B_n| \le s$
 	
-	Also \hyperref[def:Konvergenz]{konvergieren} $(b_n)$ und $(B_N)$ mit \(\lim\limits_{n \rightarrow \infty} b_n \le \lim\limits_{n \rightarrow \infty} B_n\)
+	Also \hyperref[def:Konvergenz]{konvergieren} $(b_n)$ und $(B_n)$ mit \(\lim\limits_{n \rightarrow \infty} b_n \le \lim\limits_{n \rightarrow \infty} B_n\)
 	
 	\Definition[lim sup und lim inf]
 	Wir definieren: 
@@ -313,10 +315,10 @@
 	
 	\Satz
 	Die \hyperref[def:Folge]{Folge} $(a_n)$ sei \hyperref[def:BesDivergent]{bestimmt divergent} gegen $\pm \infty$ Dann gilt:
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $a_n \ne 0$ für alle bis auf endlich viele $n \in \mathbb{N}$
-		\task $\lim\limits_{n \rightarrow \infty} \frac{1}{a_n} = 0$
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $a_n \ne 0$ für alle bis auf endlich viele $n \in \mathbb{N}$
+		\item $\lim\limits_{n \rightarrow \infty} \frac{1}{a_n} = 0$
+	\end{enumerate}
 	
 	\Satz
 	Es sei $(a_n)_{n \in \mathbb{N}}$ eine Nullfolge mit $a_n > 0$ für alle bis auf endlich viele $n \in \mathbb{N}$. Dann divergiert die \hyperref[def:Folge]{Folge} $(\frac{1}{a_n})$ bestimmt gegen $+\infty$. 
@@ -328,17 +330,19 @@
 	
 	\begin{enumerate}
 		\item Es gilt $\limsup a_n = a \in \mathbb{R}$ genau dann, wenn für alle $\varepsilon > 0$ gilt
-		\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-			\task $a_n < a + \varepsilon$ für alle bis auf endlich viele $n \in \mathbb{N}$
-			\task $a_n > a - \varepsilon$ für unendlich viele $n \in \mathbb{N}$
-		\end{tasks} 
+		\begin{enumerate}[(i)]
+			\item $a_n < a + \varepsilon$ für alle bis auf endlich viele $n \in \mathbb{N}$
+			\item $a_n > a - \varepsilon$ für unendlich viele $n \in \mathbb{N}$
+		\end{enumerate} 
 		Heißt das Supremum $a_n$ ist nur dann kleiner als der \hyperref[def:Konvergenz]{Grenzwert}, wenn man etwas unendlich kleines an den \hyperref[def:Konvergenz]{Grenzwert} addiert. Es ist größer als der \hyperref[def:Konvergenz]{Grenzwert} sobald man etwas vom \hyperref[def:Konvergenz]{Grenzwert} abzieht.
 		\item Es gilt $\liminf a_n = a \in \mathbb{R}$ genau dann, wenn für alle $\varepsilon < 0$ gilt:
-		\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-			\task $a_n > a - \varepsilon$ für alle bis auf endlich viele $n \in \mathbb{N}$
-			\task $a_n < a + \varepsilon$ für unendlich viele $n \in \mathbb{N}$
-		\end{tasks} 
+		\begin{enumerate}[(i)]
+			\item $a_n > a - \varepsilon$ für alle bis auf endlich viele $n \in \mathbb{N}$
+			\item $a_n < a + \varepsilon$ für unendlich viele $n \in \mathbb{N}$
+		\end{enumerate} 
 		Ähnliche Erklärung wie oben auch.
+		
+		Dieser Beweis war als Hausaufgabe zu zeigen. (Vorlesung 13)
 		\item $(a_n)$ ist genau dann \hyperref[def:Konvergenz]{Konvergent}, wenn $\liminf\limits_{n \rightarrow \infty} a_n = \limsup\limits_{n \rightarrow \infty} a_n \in \mathbb{R}$. In diesem Fall gilt $\lim\limits_{n \rightarrow \infty} a_n = \liminf\limits_{n \rightarrow \infty} a_n = \limsup\limits_{n \rightarrow \infty} a_n$
 	\end{enumerate}
 	\newpage
@@ -372,14 +376,14 @@
 	Heißt soviel wie für jeden Abstand den 2 Folgeglieder [f(x) nach f(y)] von einander haben muss es einen Abstand zwischen x und y geben. Was nicht erfüllt werden kann, wenn die Funktion an $x_0$ bzw einer Stelle springt.
 	
 	\Satz[Folgenkriterium]
-	$f: D \rightarrow \mathbb{C}$ ist genau dann stetig in $x^* \in D$, wenn für jede \hyperref[def:Folge]{Folge} $(x_n)_{n \in \mathbb{N}} \in D$ mit $\lim\limits_{n \rightarrow \infty} x_n = x^*$ gilt $\lim\limits_{n \rightarrow \infty} f(x_n) = f(x^*)$
+	$f: D \rightarrow \mathbb{C}$ ist genau dann \hyperref[def:Stetig]{stetig} in $x^* \in D$, wenn für jede \hyperref[def:Folge]{Folge} $(x_n)_{n \in \mathbb{N}} \in D$ mit $\lim\limits_{n \rightarrow \infty} x_n = x^*$ gilt $\lim\limits_{n \rightarrow \infty} f(x_n) = f(x^*)$
 	$\Leftrightarrow \lim\limits_{n \rightarrow \infty} f(x_n) = f(\lim\limits_{n \rightarrow \infty} x_n)$ 
 	
 	\Satz[Stetige Funktionen verknüpft sind Stetig]
-	Es seien $f, g \in D \rightarrow \mathbb{C}$ stetig in $x^* \in D$ Dann sind $f \pm g, f * g$ und falls $g(x) \ne 0 \forall x \in D \frac{f}{g}$ stetig in $x^*$.
+	Es seien $f, g \in D \rightarrow \mathbb{C}$ \hyperref[def:Stetig]{stetig} in $x^* \in D$ Dann sind $f \pm g, f * g$ und falls $g(x) \ne 0 \forall x \in D \frac{f}{g}$ \hyperref[def:Stetig]{stetig} in $x^*$.
 	
 	\Satz[Komposition stetiger Funktionen sind Stetig]
-	Es sei $f: D \rightarrow \mathbb{C}$ und $g: E \rightarrow \mathbb{C}$ mit $f(D) \subset E$ gegeben. Ist f stetig in $x^* \in D$ und g stetig in $y^* := f(x^*) \in E$, so ist auch $g \circ f$ stetig in $x^*$ 
+	Es sei $f: D \rightarrow \mathbb{C}$ und $g: E \rightarrow \mathbb{C}$ mit $f(D) \subset E$ gegeben. Ist f \hyperref[def:Stetig]{stetig} in $x^* \in D$ und g \hyperref[def:Stetig]{stetig} in $y^* := f(x^*) \in E$, so ist auch $g \circ f$ \hyperref[def:Stetig]{stetig} in $x^*$ 
 	
 	\begin{tabular}{l l l}
 		$D$ & $\xrightarrow{f} f(D) \in E$ & $\xrightarrow{g} \mathbb{C}$ \\
@@ -404,10 +408,11 @@
 	
 	\Definition[Offene Mengen]
 	\label{def:Offen}
-	\begin{tasks}
-		\task Eine Teilmenge $M \subset \mathbb{R}^n$ heißt offen, falls $M \cap \delta M = \emptyset$ gilt.
-		\task M heißt abgeschlossen, falls $\delta M \subset M$ gilt.
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item Eine Teilmenge $M \subset \mathbb{R}^n$ heißt offen, falls $M \cap \delta M = \emptyset$ gilt.
+		\item M heißt abgeschlossen, falls $\delta M \subset M$ gilt.
+	\end{enumerate}
+
 	Wobei $\delta M$ den \hyperref[def:Rand]{Rand} von M beschreibt $\Rightarrow$ Eine Menge ist offen, wenn M vereinigt mit dem \hyperref[def:Rand]{Rand} leer ist und abgeschlossen, falls der \hyperref[def:Rand]{Rand} eine Teilmenge von M ist
 	
 	\Lemma[Offen]
@@ -426,22 +431,22 @@
 	Heißt, die Menge ist abgeschlossen wenn es keine \hyperref[def:Folge]{Folge} gibt, dessen \hyperref[def:Konvergenz]{Grenzwert} außerhalb der Menge liegt
 	
 	\Satz
-	\begin{tasks}
-		\task Beliebige Vereinigungen \hyperref[def:Offen]{offener} Mengen sind \hyperref[def:Offen]{offen}. \newline
+	\begin{enumerate}[(a)]
+		\item Beliebige Vereinigungen \hyperref[def:Offen]{offener} Mengen sind \hyperref[def:Offen]{offen}. \newline
 		\begin{tabular}{l p{10cm}}
 			\underline{Formulierung 1:} & Es sei $\mathcal{U} \subset P(\mathbb{R}^n)$ mit $\forall U \in \mathcal{U}: U$ ist \hyperref[def:Offen]{offen} \newline
 			$\Rightarrow \bigcup \mathcal{U} := \{x \in \mathbb{R}^n | \exists U \in \mathcal{U}: x \in U\} \subset \mathbb{R}^n$ ist \hyperref[def:Offen]{offen} \\
 			\underline{Formulierung 2:} & Es sei I eine (Index-)Menge $\forall i \in I$ sei $U_i \subset \mathbb{R}^n$ \hyperref[def:Offen]{offen} \newline
 			$\Rightarrow \bigcup\limits_{i \in I} U_i \subset \mathbb{R}^n$ ist \hyperref[def:Offen]{offen}
 		\end{tabular}
-		\task Belibige Durchschnitte abgeschlossener Mengen sind abgeschlossen \newline
+		\item Belibige Durchschnitte abgeschlossener Mengen sind abgeschlossen \newline
 		\begin{tabular}{l p{10cm}}
 			\underline{Formulierung 1:} & Es sei $\mathcal{A} \subset P(\mathbb{R}^n): \forall A \in \mathcal{A}: A$ ist abgeschlossen \newline
 			$\Rightarrow \bigcap \mathcal{A} := \{x \in \mathbb{R}^n | \forall A \in \mathcal{A}: x \in A\}$ ist abgeschlossen \\
 			\underline{Formulierung 2:} & Es sei I eine (Index-)Menge $\forall i \in I$ sei $A_i \subset \mathbb{R}^n$ abgeschlossen \newline
 			$\Rightarrow \bigcap\limits_{i \in I} A_i \subset \mathbb{R}^n$ ist abgeschlossen.
 		\end{tabular}
-	\end{tasks}
+	\end{enumerate}
 	
 	\Definition[Innen und Abschluss einer Menge]
 	Das Innere $\mathring{M}$ einer Menge $M \subset \mathbb{R}^n$ ist $\mathring{M} := M \backslash \delta M$.\newline
@@ -460,10 +465,10 @@
 	
 	\Korollar
 	Es sei M eine Menge. Dann gilt: 
-	\begin{tasks}
-		\task M \hyperref[def:Offen]{offen} $\Leftrightarrow M = \mathring{M}$
-		\task M abgeschlossen $\Leftrightarrow M = \overline{M}$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item M \hyperref[def:Offen]{offen} $\Leftrightarrow M = \mathring{M}$
+		\item M abgeschlossen $\Leftrightarrow M = \overline{M}$
+	\end{enumerate}
 	
 	\Definition[Topologie des $\mathbb{R}^n$]
 	Die Topologie des $\mathbb{R}^n$ ist das Mengensystem \newline 
@@ -501,11 +506,11 @@
 	\label{def:Zusammenhangend}
 	Eine Menge $M \subset \mathbb{R}^n$ heißt zusammenhängend, falls es keine \hyperref[def:Offen]{offenen} Mengen $U_1, U_2 \subset \mathbb{R}^n$ gibt mit:
 	
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $M \cap U_1 \ne \emptyset \ne M \cap U_2$
-		\task $M = (M \cap U_1) \cup (M \cap U_2)$
-		\task $(M \cap U_1) \cap (M \cap U_2) \ne \emptyset$
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $M \cap U_1 \ne \emptyset \ne M \cap U_2$
+		\item $M = (M \cap U_1) \cup (M \cap U_2)$
+		\item $(M \cap U_1) \cap (M \cap U_2) \ne \emptyset$
+	\end{enumerate}
 	
 	\Definition[!Wegzusammenhängend]
 	Eine Teilmenge $W \subset \mathbb{R}^n$ heißt wegzusammenhängend, falls es für alle $x, y \in W$ eine \hyperref[def:Stetig]{stetige}	Abbildung $\gamma : [0, 1] \rightarrow \mathbb{R}^n$ gibt mit $\gamma([0, 1]) \subset W$ und $\gamma(0) = x$ sowie $\gamma(1) = y$. Die Abbildung $\gamma$ nennt man in dieser Situation einen Weg von x nach y in W.
@@ -597,10 +602,10 @@
 	
 	\Lemma
 	$f: I \rightarrow \mathbb{R}$ ist genau dann \hyperref[def:Differenzierbar]{Differenzierbar} in $x_0 \in I$, falls es eine Funktion $\Delta: I \rightarrow \mathbb{R}$ gibt mit
-	\begin{tasks}
-		\task $\Delta \text{ \hyperref[def:Stetig]{stetig} in } x_0$
-		\task $f(x) = f(x_0) + (x - x_0) * \Delta(x)$ $\forall x \in I$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item $\Delta \text{ \hyperref[def:Stetig]{stetig} in } x_0$
+		\item $f(x) = f(x_0) + (x - x_0) * \Delta(x)$ $\forall x \in I$
+	\end{enumerate}
 	
 	\Satz[Differenzierbar $\Rightarrow$ stetig]
 	Es sei $f: I \rightarrow \mathbb{R}$ \hyperref[def:Differenzierbar]{Differenzierbar} in $x_0 \in I$, dann ist f \hyperref[def:Stetig]{stetig} in $x_0$
@@ -637,14 +642,14 @@
 	$I \subset \mathbb{R}$ Intervall 
 	\begin{align*}
 	\rightsquigarrow & C^0(I) := \{f: I \rightarrow \mathbb{R} | f \text{ \hyperref[def:Stetig]{stetig}}\} \\
-	& C^1(I) := \{f: I \rightarrow \mathbb{R} | f \text{ ist \hyperref[def:Stetig]{stetig} Differenzierbar}\}
+	& C^1(I) := \{f: I \rightarrow \mathbb{R} | f \text{ ist \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{Differenzierbar}}\}
 	\end{align*}
 	Dabei heißt f \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{Differenzierbar}, falls f \hyperref[def:Differenzierbar]{Differenzierbar} und $f': I \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} ist. \newline
 	falls f' \hyperref[def:Differenzierbar]{Differenzierbar}, so heißt f 2-fach \hyperref[def:Differenzierbar]{Differenzierbar}. \newline
 	Wir schreiben $f^{(2)}(x) := f''(x) := (f')'(x)$ 2-te Ableitung. \newline
 	Analog: $f^{(k + 1)}(x) := (f^{(k)})'(x)$ falls diese Ableitung existiert. \newline
 	f heißt k-fach \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{Differenzierbar}, falls $f^{(k)}: I \rightarrow \mathbb{R}$ existiert und \hyperref[def:Stetig]{stetig} ist. \newline
-	$\rightsquigarrow C^k(I) := \{f: I \rightarrow \mathbb{R} | f \text{ k-fach \hyperref[def:Stetig]{stetig} Differenzierbar}\}$
+	$\rightsquigarrow C^k(I) := \{f: I \rightarrow \mathbb{R} | f \text{ k-fach \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{Differenzierbar}}\}$
 	
 	\Definition[Lokales Maximum/Minimum]
 	Eine Funktion $f: I \rightarrow \mathbb{R}$ hat in $x_0 \in I$ ein lokales Minimum/Maximum, falls gilt: $\exists \varepsilon > 0 \forall x \in B_{\varepsilon}(x_0)\cap I: f(x) \le f(x_0)$ bzw $f(x) \ge f(x_0)$
@@ -660,12 +665,12 @@
 	
 	\Korollar
 	Es sei $f: I \rightarrow \mathbb{R}$ diff'bar.
-	\begin{tasks}
-		\task Aus $m \le f'(x) \le M$ $\forall x \in I$ folgt: $\forall a, b \in I$ mit $a < b$ gilt: $m(b - a) \le f(b) - f(a) \le M(b - a)$ 
-		\task f' = 0 $\Rightarrow$ f Konstant
-		\task Aus $f'(x) > 0 \forall x \in I$ folgt, dass f \hyperref[def:Monoton]{streng monoton wachsend} ist \newline
+	\begin{enumerate}[(a)]
+		\item Aus $m \le f'(x) \le M$ $\forall x \in I$ folgt: $\forall a, b \in I$ mit $a < b$ gilt: $m(b - a) \le f(b) - f(a) \le M(b - a)$ 
+		\item f' = 0 $\Rightarrow$ f Konstant
+		\item Aus $f'(x) > 0 \forall x \in I$ folgt, dass f \hyperref[def:Monoton]{streng monoton wachsend} ist \newline
 		Analog für $f'(x) < 0$ \hyperref[def:Monoton]{streng monoton fallend}
-	\end{tasks}
+	\end{enumerate}
 
 	\Satz[Hinreichendes Kriterium für Extrema]
 	Es sei $f \in C^2(I)$ und $a \in I$ mit $f'(a) = 0$ und $f''(a) > 0 (\text{ bzw. < 0})$. Dann hat f in a ein lokales Minimum (bzw. Maximum)
@@ -732,11 +737,11 @@
 	
 	\Satz
 	Es sei $\sum a_k$ \hyperref[def:Konvergenz]{konvergent}, aber nicht \hyperref[def:AbsKonvergenz]{absolut konvergent}
-	\begin{tasks}
-		\task $\forall c \in \mathbb{R} \exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ Bijektion mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}} = c$
-		\task $\exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ Bijektion mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}} = + \infty (oder - \infty)$ (\hyperref[def:BesDivergent]{divergiert bestimmt})
-		\task $\exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}}$ ist \hyperref[def:Konvergenz]{divergent} (und nicht \hyperref[def:BesDivergent]{bestimmt divergent})
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item $\forall c \in \mathbb{R} \exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ Bijektion mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}} = c$
+		\item $\exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ Bijektion mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}} = + \infty (oder - \infty)$ (\hyperref[def:BesDivergent]{divergiert bestimmt})
+		\item $\exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}}$ ist \hyperref[def:Konvergenz]{divergent} (und nicht \hyperref[def:BesDivergent]{bestimmt divergent})
+	\end{enumerate}
 	
 	\subsection{Die Exponentialreihe}
 	\Definition[Exponentialreihe]
@@ -755,10 +760,194 @@
 	$\forall z, w \in \mathbb{C}$ gilt: $\exp(z + w) = \exp(z) * \exp(w) \Leftrightarrow e^{z + w} = e^z * e^w$
 	
 	\Korollar
-	\begin{tasks}
-		\task $\exp(z) \ne 0 \forall z \in \mathbb{C}$ mit $\exp(-z) = \frac{1}{\exp(z)}; e^{-z} = \frac{1}{e^z}$
-		\task $x \in \mathbb{R} \Rightarrow e^x \in \mathbb{R}_+ = (0, \infty)$
-		\task $\forall n \in \mathbb{N}_0: e^n = \exp(n)$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item $\exp(z) \ne 0 \forall z \in \mathbb{C}$ mit $\exp(-z) = \frac{1}{\exp(z)}; e^{-z} = \frac{1}{e^z}$
+		\item $x \in \mathbb{R} \Rightarrow e^x \in \mathbb{R}_+ = (0, \infty)$
+		\item $\forall n \in \mathbb{N}_0: e^n = \exp(n)$
+	\end{enumerate}
 	
+	\Satz[exp Funktion im Komplexen]
+	$\exp(\overline{z}) = \overline{\exp(z)} \forall z \in \mathbb{C}$
+	
+	\Satz[Stetigkeit von exp]
+	$\exp: \mathbb{C} \rightarrow \mathbb{C}$ ist \hyperref[def:Stetig]{stetig} ($\mathbb{C} \rightarrow \mathbb{C}$ ebenso)
+	
+	\subsection{Trigometrische Funktion}
+	\Definition[Sinus und Kosinus]
+	Für $x \in \mathbb{R}$ setzen wir:\newline
+	$\cos x := \Re(e^{ix}) \in \mathbb{R}$ \newline
+	$\sin x := \Im(e^{ix}) \in \mathbb{R}$
+	
+	$\rightsquigarrow$ Euler Formel $e^{ix} = \cos x + i \sin x \forall x \in \mathbb{R}$
+	
+	\Satz
+	Es gilt für $x \in \mathbb{R}$
+	\begin{enumerate}[(a)]
+		\item $\cos x = \frac{1}{2} (e^{ix} + e^{-ix})$ \newline
+		$\sin x = \frac{1}{2i} (e^{ix} - e^{-ix})$
+		\item $\cos(-x) = cos(x)$ \newline
+		$\sin(-x) = -sin(x)$
+		\item $\cos^2(x) + \sin^2(x) = 1 [\cos^2(x) = (\cos(x))^2]$
+	\end{enumerate}
+	
+	\Satz
+	$\cos, \sin: \mathbb{R} \rightarrow \mathbb{R}$ sind \hyperref[def:Stetig]{stetig}
+	
+	\Satz[Additionstheorem]
+	\begin{tabular}{l l}
+		$\forall x, y \in \mathbb{R}$ & $\cos(x + y) = \cos x \cos y - \sin x \sin y$ \\
+		& $\sin(x + y) = \sin x \cos y + \cos x \sin y$
+	\end{tabular}
+	
+	\Satz
+	Für $x \in \mathbb{R}$ gilt: \newline
+	$\cos x = \sum_{k = 0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} \mp ...$ \newline
+	$\sin x = \sum_{k = 0}^{\infty} (-1)^k \frac{x^{2k + 1}}{(2k + 1)!} = 1 - \frac{x^2}{3!} + \frac{x^4}{5!} \mp ...$
+	
+	Diese Reihen konvergieren absolut
+	
+	\Satz[Restgliedabschätzung]
+	$\cos x = \sum_{k = 0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!} + r_{2n + 2}(x), n \ge 0$ \newline
+	$\sin x = \sum_{k = 0}^{\infty} (-1)^k \frac{x^{2k + 1}}{(2k + 1)!} + r_{2n + 3}(x), n \ge 0$
+	
+	\begin{tabular}{r l l}
+		Es gilt: & $|r_{2n + 2}(x)| \le \frac{|x|^{2n + 2}}{(2n + 2)!}$ & , falls $|x| \le 2n + 3$ \\ 
+		und & $|r_{2n + 3}(x)| \le \frac{|x|^{2n + 3}}{(2n + 3)!}$ & , falls $|x| \le 2n + 4$ 
+	\end{tabular}
+
+	\subsection*{Die Zahl $\pi$}
+	\addcontentsline{toc}{subsection}{Die Zahl $\pi$}
+	
+	\Satz
+	Die Funktion $\cos$ hat auf (0, 2) genau eine Nullstelle
+	
+	\Definition[$\pi$]
+	Es sei $\pi$ die eindeutig bestimmte reelle Zahl mit $\frac{\pi}{2} \in (0, 2)$ und $\cos(\frac{\pi}{2}) = 0$ 
+	
+	\Satz[Komplexer Einheitskreis mit e]
+	$e^{\frac{i\pi}{2}} = i$
+	$e^{i\frac{2\pi}{2}} = -i$
+	$e^{i\pi} = -1$
+	$e^{2\pi i} = 1$
+	
+	\Korollar
+	$\sin$ und $\cos$ sind $2\pi$-periodisch, d.h.:
+	
+	\begin{tabular}{l l}
+		$\sin(x + 2\pi)$ & $= \sin x$ \\
+		$\cos(x + 2\pi)$ & $= \cos x$
+	\end{tabular}
+	$\forall x \in \mathbb{R}$
+	
+	\subsection{Logarithmus und allgemeine Potenzen}
+	\Satz[Exponentialfunktion]
+	Die Exponentialfunktion $\exp$ bildet $\mathbb{R}$ bijektiv auf $\mathbb{R}_+$ ab, $\exp: \mathbb{R} \xrightarrow{\cong} \mathbb{R}_+, (0, \infty)$ und ist streng monoton steigend.
+	
+	\Definition[(natürlicher) Logarithmus]
+	Die Umkehrfunktion von exp heißt (natürlicher) Logarithmus mit $\log: \mathbb{R}_+ \xrightarrow{\cong} \mathbb{R}$
+	
+	\Korollar
+	Es gilt:
+	\begin{enumerate}[i)]
+		\item $\log$ ist streng monoton steigend und $\lim\limits_{x \searrow 0} \log x = -\infty$ und $\lim\limits_{x \rightarrow +\infty} \log x = +\infty$
+		\item $\log(1) = 0$
+		\item Funktionalgleichung $\log(x * y) = \log(x) + \log(y) \forall x, y \in \mathbb{R}_+$
+	\end{enumerate}
+
+	\Definition
+	Für $a > 0$ definieren wir: $a^x := \exp(x * \log(a)) = e^{x * \log(a)} \forall x \in \mathbb{R}$
+	
+	\Satz
+	\begin{enumerate}[a)]
+		\item $a^x: \mathbb{R} \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} 
+		\item $a^{x + y} = a^x * a^y \forall x, y \in \mathbb{R}$
+		\item $a^{\frac{p}{q}} = \sqrt[q]{a^p} \forall q \in \mathbb{N}, p \in \mathbb{Z}$
+		\item $(a^x)^y = a^{x * y} \forall x, y \in \mathbb{R}$
+		\item $a^{-x} = \frac{1}{a^x} \forall x \in \mathbb{R}$
+		\item $a^x * b^x = (a * b)^x \forall x \in \mathbb{R}, a, b > 0$
+	\end{enumerate}
+
+	Dessen Beweis wurde als Hausaufgabe aufgegeben, VL 25.
+	
+	\Satz
+	Für $k \in \mathbb{N}$ gilt: $\lim\limits_{x \rightarrow \infty} \frac{e^x}{x^k} = +\infty$ 
+	
+	\subsection{Ableitungen}
+	\Satz[exp ist Differenzierbar]
+	Die Exponentialfunktion $\exp: \mathbb{R} \rightarrow \mathbb{R}_+$ ist \hyperref[def:Differenzierbar]{differenzierbar} mit $\exp'(x) = \exp(x) \forall x \in \mathbb{R}$
+	
+	\Satz[sin und cos sind Differenzierbar]
+	$\sin, \cos: \mathbb{R} \rightarrow \mathbb{R}$ sind \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{differenzierbar} mit: $\sin'(x) = \cos(x)$ und $\cos'(x) = -\sin(x)$
+	
+	\Satz[log ist Differenzierbar]
+	Der Logarithmus $\log: \mathring{R}_+ \rightarrow \mathbb{R}$ ist \hyperref[def:Differenzierbar]{differenzierbar} mit $\log'(x) = \frac{1}{x}$
+	
+	\Korollar
+	$\lim\limits_{n \rightarrow \infty} (1 + \frac{1}{n})^n = e$
+	
+	\newpage
+	\section{Integralrechnung}
+	\subsection{Riemann Integral}
+	Es sei $f: [a, b] \rightarrow \mathbb{R}$ im folgenden eine beschränkte Funktion. D.h. $\exists m, M \in \mathbb{R}$ mit $m \le f(x) \le M \forall x \in [a, b]$
+	
+	\subsubsection{Ziel}
+	(effektive) Fläche unter dem Graphen. Eine Zerlegung Z von $[a, b]$ ist ein Tupel $(x_0, ..., x_n)$ mit $x_0 = a < x_1 < ... < x_n = b$ Die Riemann Ober-/Untersumme ist: \newline
+	$U(Z, f) := \sum_{i = 1}^{n}(x_i - x_{i - 1}) * \inf(f|_{x_{i - 1}, x_i})$  \newline
+	$O(Z, f) := \sum_{i = 1}^{n}(x_i - x_{i - 1}) * \sup(f|_{x_{i - 1}, x_i})$
+	
+	\Definition[Riemann Integrierbar]
+	\label{def:Intbar}
+	Falls $\sup U(Z, f) = \inf O(Z, f)$ so heißt, f Riemann Integrierbar: $\int\limits_{a}^{b} f(x) dx := \sup U(Z, f) = \inf O(Z, f)$
+	
+	\Satz[Eigenschaften Integrierbarer Funktionen]
+	Es seien $f, g: [a, b] \rightarrow \mathbb{R}$ \hyperref[def:Intbar]{integrierbar}. Dann gilt:
+	\begin{enumerate}[a)]
+		\item $\int\limits_a^b \lambda f(x) dx = \lambda \int\limits_a^b f(x) dx \forall \lambda \in \mathbb{R}$
+		\item $\int\limits_a^b (f + g)(x) dx = \int\limits_a^b f(x) dx +\int\limits_a^b g(x) dx$
+		\item Für $a \le c \le b$ gilt: $\int\limits_a^b f(x) dx = \int\limits_a^c f(x) dx + \int\limits_c^b f(x) dx$
+		\item $|\int\limits_a^b f(x) dx| \le \int\limits_a^b |f(x)| dx$
+		\item $f \le g \Rightarrow \int\limits_a^b f(x) dx \le \int\limits_a^b g(x) dx$
+	\end{enumerate}
+
+	\Definition
+	$\int\limits_b^a f(x) dx = - \int\limits_a^b f(x) dx$
+	
+	\subsection{Gleichmäßige Stetigkeit und Existenz des Integrals}
+	\label{def:GlStetig}
+	\Definition[Gleichmäßig Stetig]
+	Eine Funktion $f: D \rightarrow \mathbb{R}, D \subset \mathbb{R}^n$, heißt gleichmäßig Stetig, falls gilt: $\forall \epsilon > 0 \exists \delta > 0 \forall x, y \in D: |x - y| < \delta \Rightarrow |f(x) - f(y)| < \epsilon$
+	
+	\Satz[Gleichmäßig Stetig]
+	Es sei $K \subset \mathbb{R}^n$ \hyperref[def:Kompakt]{kompakt} und $f: K \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig}. Dann ist f \hyperref[def:GlStetig]{gleichmäßig stetig}.
+	
+	\hyperref[def:Stetig]{Stetige} Funktionen auf \hyperref[def:Kompakt]{Kompaktem Intervall} sind \hyperref[def:GlStetig]{gleichmäßig stetig}.
+	
+	\Satz
+	Jede \hyperref[def:Stetig]{stetige} Funktion $f: [a, b] \rightarrow \mathbb{R}$ ist Riemann \hyperref[def:Intbar]{integrierbar}
+	
+	\subsection{Hauptsatz der Differenzial und Integralrechnung}
+	\Satz[Hauptsatz]
+	Sei $I \subset \mathbb{R}$ ein Intervall und $a \in I$:
+	\begin{enumerate}[a)]
+		\item Sei $f \in C^0(I)$. Dann gilt für $F(x) := \int\limits_{a}^{x}f(t) dt$ \newline
+		$F \in C^1(I)$ mit $F'(x) = f(x)$
+		\item Es gilt für alle $F \in C^1(I): F(x) = F(a) + \int\limits_{a}^x F'(t) dt, x \in I$
+	\end{enumerate}
+	
+	\Definition[Stammfunktion]
+	Eine Funktion $I \rightarrow \mathbb{R}$ heißt Stammfunktion von $f: I \rightarrow \mathbb{R}$, falls gilt: F \hyperref[def:Differenzierbar]{differenzierbar} mit $F'(x) = f(x) \forall x \in I$
+	
+	\subsection{Integrationstechniken}
+	\Satz[Partielle Integration]
+	Es seien $f, g: [a, b] \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{differenzierbar}. Es gilt: \newline
+	$\int\limits_a^b f * g' dx = \left.f * g\right\vert_a^b - \int\limits_a^b f' * g dx$ wobei $\left.h\right\vert_a^b := [h]_a^b := h(b) - h(a)$ für eine beliebige Funktion $h: [a, b] \rightarrow \mathbb{R}$	
+	
+	\Satz[Substitutionsregel]
+	Es sei $f: I \rightarrow \mathbb{R}, I \subset \mathbb{R}$ Intervall, \hyperref[def:Stetig]{stetig} und $g: [a, b] \rightarrow I$ \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{differenzierbar}. Dann gilt: $\int\limits_{g(a)}^{g(b)} f(y) dy = \int\limits_a^b f(g(x)) * g'(x) dx$
+	
+	\subsection{Uneigentliche Integrale}
+	\Definition
+	Sei $I := [a, b)$ mit $b \in \mathbb{R} \cup \{+\infty\}, a \in \mathbb{R}$ Dann heißt $f: I \rightarrow \mathbb{R}$ \hyperref[def:Intbar]{integrierbar} auf I, falls f auf jedem \hyperref[def:Kompakt]{kompakten Intervall} von I \hyperref[def:Intbar]{integrierbar} ist und: $\lim\limits_{s \nearrow b} \int\limits_a^s f(t) dt$ als Limes in $\mathbb{R}$ existiert. Diesen Limes bezeichnen wir mit $\int\limits_a^b f(t) dt$ \newline
+	Analog für \hyperref[def:Intbar]{integrierbar} auf $(a, b], a \in \mathbb{R} \cup \{-\infty\}, b \in \mathbb{R}$. \newline
+	Im Fall $(a, b), a \in \mathbb{R} \cup \{-\infty\}, b \in \mathbb{R} \cup \{+\infty\}$ wähle $c \in (a, b)$ und betrachte $\int\limits_a^c f(t) dt$ und $\int\limits_c^b f(t) dt$ einzeln.
 \end{document}
