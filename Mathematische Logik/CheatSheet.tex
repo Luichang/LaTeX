@@ -164,7 +164,7 @@
 		\item[Formel Einsetzungsregel] Ist al. \hyperref[Formel]{Formel} $\varphi$ allgemeingültig, dann auch $\varphi[\psi/A]$, die aus $\varphi$ durch ersetzen aller vorkommenden A in $\varphi$ durch $\psi$ entsteht
 		
 		Wir haben eine Formel $\varphi$, welche allgemeingültig ist und die Aussagenvariable A enthält. Jetzt können wir jedes in $\varphi$ vorkommende A durch eine neue Formel $\psi$ ersetzen 
-		\item[Formel Ersetzungsregel] $\varphi \leftrightarrow \psi$ allgemeingültig $\Rightarrow \chi \leftrightarrow \chi 1(\psi/\varphi)$ allgemeingültig
+		\item[Formel Ersetzungsregel] $\varphi \leftrightarrow \psi$ allgemeingültig $\Rightarrow \chi \leftrightarrow \chi (\psi/\varphi)$ allgemeingültig
 		\item[Regeln] Sei \hyperref[Kalkul]{Regel R} korrekt bezüglich Folgerungen $\Rightarrow$ R korrekt bezüglich Allgemeingültigkeit
 		
 		\begin{tabular}{l l}
@@ -205,13 +205,13 @@
 	Hierbei gilt, der semantische Folgerungsbegriff ist monoton, d.h. \newline
 	$T \subseteq T'\text{ und } T \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow T' \hyperref[Erfullbar]{\vDash} \varphi$
 	
-	\subsection{Erfüllbarkeit vs die Welt}
+	\subsection{*Erfüllbarkeit vs die Welt}
 	\begin{description}
 		\item[vs Folgerung] \begin{enumerate}[(i)]
-			\item $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow$ nicht erfb$[T \cup \{\neg \varphi\}]$ \newline
+			\item $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow$ nicht erfb $[T \cup \{\neg \varphi\}]$ \newline
 			\item $T \nvDash \varphi \Leftrightarrow$ erfb$[T \cup \{\neg \varphi\}]$
 		\end{enumerate}
-		\item[Semantische Folgerung] Für $T \ne \emptyset$ sind äquivalent:
+		\item[vs Semantische Folgerung] Für $T \ne \emptyset$ sind äquivalent:
 		\begin{enumerate}[(i)]
 			\item erfb[T]
 			\item $\nexists \varphi[T \hyperref[Erfullbar]{\vDash} \varphi \text{ und } T \hyperref[Erfullbar]{\vDash} \neg \varphi]$
@@ -222,8 +222,7 @@
 	\subsection{AL Formel als Funktion}
 	$\varphi$ al. \hyperref[Formel]{Formel} mit $V(\varphi) \subseteq \{A_0, ..., A_{n - 1}\}$
 	
-	Die von $\varphi$ dargestellte n-Stellige Boolesche Funktion $f_{\varphi, n}$ ist definiert durch $f_{\varphi, n}(i_0, ..., i_{n-1}) = \widehat{B}_{i_0, ..., i_{n - 1}}(\varphi)$
-	
+	Die von $\varphi$ dargestellte n-Stellige Boolesche Funktion $f_{\varphi, n}$ ist definiert durch $f_{\varphi, n}(i_0, ..., i_{n-1}) = \widehat{B}_{i_0, ..., i_{n - 1}}(\varphi)$ \newline
 	mit $B_{i_0, ..., i_{n - 1}}: \{A_0, ..., A_{n - 1}\} \rightarrow \{0, 1\}, B_{i_0, ..., i_{n - 1}}(A_j) = i_j$ $(j = 0, ..., n - 1)$
 	
 	\subsection{*DNF}
@@ -248,7 +247,7 @@
 	
 	Im großen und ganzen nur cooles Trivia wissen, man braucht fast immer die \hyperref[DNF]{DNF}
 	
-	\subsection{*Darstellungssatz}
+	\subsection{Darstellungssatz}
 	Jede n-stellige Boolesche Funktion kann effektiv als eine \hyperref[Formel]{Formel} $\varphi$ in \hyperref[DNF]{DNF} dargestellt werden. 
 	
 	Heißt man hat eine Funktion, nachdem man die Variablen eingesetzt hat, findet man eine \hyperref[Formel]{Formel} $\varphi$ in \hyperref[DNF]{DNF} sodass $f_{\varphi, n}(i_0, ..., i_{n-1}) = \widehat{B}_{i_0, ..., i_{n - 1}}(\varphi)$
@@ -279,12 +278,11 @@
 	\subsection{*Kalkül $\mathcal{K}$}
 	\label{Kalkul}
 	\begin{itemize}
-		\item \hyperref[Sprache]{Sprache} von $\mathcal{K}$, vom Alphabet von festgelegt 
+		\item \hyperref[Sprache]{Sprache} von $\mathcal{K}$, vom Alphabet welche von $\mathcal{K}$ festgelegt ist
 		\item Menge der \hyperref[Formel]{Formeln} von $\mathcal{K}$, Teilmenge der Wörter über Alphabet von $\mathcal{K}$
 		\item Menge der Axiome von $\mathcal{K}$, Teilmenge der Menge der \hyperref[Formel]{Formeln} von $\mathcal{K}$
 		\item Menge der \hyperref[Kalkul]{Regeln} der Gestalt \newline
-		(R) $\frac{\varphi_1, ..., \varphi_n}{\varphi} n \ge 1, \varphi_1, ..., \varphi_n$ \hyperref[Formel]{Formeln} von $\mathcal{K}$ \newline
-		$\varphi_1, ..., \varphi_n$ Prämissen, $\varphi$ Konklusion
+		(R) $\frac{\varphi_1, ..., \varphi_n}{\varphi}$ \space \space $n \ge 1, \varphi_1, ..., \varphi_n$ \hyperref[Formel]{Formeln} von $\mathcal{K}$ wobei $\varphi_1, ..., \varphi_n$ die Prämissen sind und $\varphi$ die Konklusion ist
 	\end{itemize}
 
 	\subsection{*Beweise und Beweisbarkeit}
@@ -293,9 +291,9 @@
 	\begin{itemize}
 		\item $\varphi \equiv \psi_n$
 		\item $\forall \psi_m, 1 \le m \le n:$ \begin{itemize}
-		\item ist ($\mathcal{K}$-) Axiom oder
-		\item Eine \hyperref[Formel]{Formel} aus der Formelmenge T oder
-		\item Konklusion einer \hyperref[Kalkul]{($\mathcal{K}$-) Regel R}, deren Prämissen in $\{\psi_1, ..., \psi_{m - 1}\}$ liegen
+			\item ist ($\mathcal{K}$-) Axiom oder
+			\item Eine \hyperref[Formel]{Formel} aus der Formelmenge T oder
+			\item Konklusion einer \hyperref[Kalkul]{($\mathcal{K}$-) Regel R}, deren Prämissen in $\{\psi_1, ..., \psi_{m - 1}\}$ liegen
 		\end{itemize}
 		\item n ist die Länge des Beweises $\psi_1, ..., \psi_n$
 	\end{itemize}
@@ -391,11 +389,11 @@
 		\end{description}
 	\end{description}
 	
-	\subsection{Regel Erweiterung}
+	\subsection{*Regel Erweiterung}
 	Eine \hyperref[Kalkul]{Regel R} $\frac{\varphi_1, ..., \varphi_n}{\varphi}$ ist \hyperref[Zulassig]{zulässig} in dem \hyperref[Kalkul]{Kalkül $\mathcal{K}$} (ableitbar in $\mathcal{K}$), falls $\varphi_1, ..., \varphi_n \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$ \newline
 	Eine \hyperref[Formel]{Formel} $\varphi$ ist ein \hyperref[Zulassig]{zulässiges Axiom} von $\mathcal{K}$ falls $\hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$
 	
-	\subsection{Zulässige Erweiterung}
+	\subsection{*Zulässige Erweiterung}
 	Eine Erweiterung $\mathcal{K}$' von $\mathcal{K}$ ist eine zulässige Erweiterung, von $\mathcal{K}$ wenn jedes Axiom und jede \hyperref[Kalkul]{Regel} von $\mathcal{K}$' in $\mathcal{K}$ \hyperref[Zulassig]{zulässig} ist
 	
 	\subsection{Satz über zulässige Erweiterungen}
@@ -413,19 +411,19 @@
 		Jede Tautologie ist allgemeingültig: $\hyperref[Erfullbar]{\vDash_{AL}} \varphi \rightarrow \hyperref[Erfullbar]{\vDash} \varphi$
 	\end{itemize}
 	
-	\subsection{Deductionstheorem}
+	\subsection{*Deductionstheorem}
 	$T \hyperref[Beweisbar]{\vdash} \varphi \rightarrow \psi \Leftrightarrow T \cup \varphi \hyperref[Beweisbar]{\vdash} \psi$
 	
-	\subsection{Formelmenge Konsistent}
+	\subsection{*Formelmenge Konsistent}
 	Eine Formelmenge T ist \hyperref[ALKonsistent]{konsistent}, falls \hyperref[Formel]{Formel} $\varphi$ ex. mit: $T \nvdash \varphi$ Andernfalls ist T inkonsistent
 	
-	\subsection{Formelmenge Vollständig}
+	\subsection{*Formelmenge Vollständig}
 	Eine Formelmenge T ist vollständig, falls für jede \hyperref[Formel]{Formel} $\varphi$ gilt: $T \hyperref[Beweisbar]{\vdash} \varphi$ oder $T \hyperref[Beweisbar]{\vdash} \neg \varphi$
 	
 	\subsection{Charakterisierungslemma}
 	T \hyperref[ALKonsistent]{konsistent} $\Leftrightarrow$ Es gibt kein $\varphi$ mit $T \hyperref[Beweisbar]{\vdash} \varphi$ und $T \hyperref[Beweisbar]{\vdash} \neg \varphi$
 	
-	\subsection{Endlichkeitslemma für Konsistenz}
+	\subsection{*Endlichkeitslemma für Konsistenz}
 	Eine Formelmenge T ist genau dann \hyperref[ALKonsistent]{konsistent}, wenn jede endliche Teilmenge $T_0$ von T \hyperref[ALKonsistent]{konsistent} ist
 	
 	\subsection{Lemma über Beweisbarkeit und Konsistenz}
@@ -442,7 +440,7 @@
 		Sollte T zusätzlich vollständig sein gilt: $\Rightarrow \exists$ \hyperref[Struktur]{$\mathcal{L}$-Struktur $\mathcal{A}$} mit $T = Th(\mathcal{A}) = \{\sigma : \mathcal{A} \hyperref[Erfullbar]{\vDash} \sigma\}$
 	\end{itemize}
 	
-	\subsection{Adäquatheitssätze}
+	\subsection{*Adäquatheitssätze}
 	\begin{description}
 		\item[Folgerungsbegriff] Für jede Formelmenge T und jede \hyperref[Formel]{Formel} $\varphi$ gilt: $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \varphi$
 		\item[Erfüllbarkeitsbegriff] Für jede Formelmenge T gilt: T \hyperref[Erfullbar]{erfüllbar} $\Leftrightarrow$ T \hyperref[ALKonsistent]{konsistent}
@@ -535,7 +533,7 @@
 		\item $(f_j(t_1, ..., t_{m_j}))_B^{\mathcal{A}} := f_j^{\mathcal{A}}((t_1)_B^{\mathcal{A}}, ..., (t_{m_j})_B^{\mathcal{A}})$
 	\end{enumerate}
 
-	\subsection{($\mathcal{L}$-)Satz}
+	\subsection{*($\mathcal{L}$-)Satz}
 	\label{LSatz}
 	Kommt in ($\mathcal{L}$-) \hyperref[Formel]{Formel} keine Variable frei vor ($FV(\varphi) = \emptyset$), dann ist $\varphi$ ein ($\mathcal{L}$-) Satz
 	
@@ -581,10 +579,10 @@
 		& $\Leftrightarrow \hyperref[Erfullbar]{\vDash} (\varphi_1 \land ... \land \varphi_n) \rightarrow \sigma$
 	\end{tabular}
 
-	\subsection{Erfüllbare Formelmenge}
+	\subsection{*Erfüllbare Formelmenge}
 	$\mathcal{L}$-Formelmenge $\Phi$ ist \hyperref[Erfullbar]{erfüllbar} $\Leftrightarrow$ Es gibt keinen \hyperref[LSatz]{$\mathcal{L}$-Satz} $\sigma$ mit: $\Phi \hyperref[Erfullbar]{\vDash} \sigma$ und $\Phi \hyperref[Erfullbar]{\vDash} \neg \sigma$
 	
-	\subsection{Zusammenhang zwischen Folgerungs- und Erfüllbarkeitsbegriff}
+	\subsection{*Zusammenhang zwischen Folgerungs- und Erfüllbarkeitsbegriff}
 	Für jede $\mathcal{L}$-Formelmenge $\Phi$ und jeden \hyperref[LSatz]{$\mathcal{L}$-Satz} $\sigma$ gilt: $\Phi \hyperref[Erfullbar]{\vDash} \sigma \Leftrightarrow \Phi \cup \{\neg \sigma\}$ unerfüllbar
 	
 	\subsection{Aussagenlogische Folgerung}
@@ -735,7 +733,7 @@
 	\subsection{Charakterisierungslemma für Konsistenz (LCK)}
 	\hyperref[Theorie]{Theorie $T = (\mathcal{L}, \Sigma)$} ist \hyperref[PLKonsistent]{konsistent} $\Leftrightarrow \nexists$ \hyperref[LSatz]{$\mathcal{L}$-Satz} $\sigma : T \hyperref[Beweisbar]{\vdash} \sigma$ und $T \hyperref[Beweisbar]{\vdash} \neg \sigma$
 	
-	\subsection{Lemma über Zusammenhang zwischen Beweisbarkeit und Konsistenz (LBK)}
+	\subsection[LBK]{Lemma über Zusammenhang zwischen Beweisbarkeit und Konsistenz}
 	\begin{enumerate}[(i)]
 		\item $T \hyperref[Beweisbar]{\vdash} \varphi \Leftrightarrow T \cup \{\neg \forall \varphi\}$ \hyperref[PLKonsistent]{inkonsistent}
 		\item $T \nvdash \varphi \Leftrightarrow T \cup \{\neg \forall \varphi\}$ \hyperref[PLKonsistent]{konsistent}
