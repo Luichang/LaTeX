@@ -332,8 +332,10 @@
 	\begin{itemize}
 		\item $\mathcal{K}$ ist korrekt bezüglich der Allgemeingültigkeit, falls jede $\mathcal{K}$-beweisbare \hyperref[Formel]{Formel} $\varphi$ allgemeingültig ist, d.h. $\hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Rightarrow \hyperref[Erfullbar]{\vDash} \varphi \forall \mathcal{K}$-\hyperref[Formel]{Formeln} $\varphi$ 
 		\item $\mathcal{K}$ ist korrekt bezüglich Folgerungen, falls $T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Rightarrow T \hyperref[Erfullbar]{\vDash} \varphi$ für alle $\mathcal{K}$-Formelmengen T und $\mathcal{K}$-\hyperref[Formel]{Formeln} $\varphi$
+		
+		Wenn etwas Korrekt bezüglich Folgerung ist, ist es auch Korrekt bezüglich Allgemeingültigkeit, da T auch die Leer Menge sein kann. Es wird eigentlich nur bezüglich Folgerung betrachtet
 		\item $\mathcal{K}$ ist vollständig bezüglich der Allgemeingültigkeit, falls $\hyperref[Erfullbar]{\vDash} \varphi \Rightarrow \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$ für alle $\mathcal{K}$-\hyperref[Formel]{Formeln} $\varphi$
-		\item $\mathcal{K}$ ist vollständig bezüglich Folgerungen, falls $\hyperref[Erfullbar]{\vDash} \varphi \Rightarrow \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$ für alle $\mathcal{K}$-Formelmengen T und $\mathcal{K}$-\hyperref[Formel]{Formeln} $\varphi$
+		\item $\mathcal{K}$ ist vollständig bezüglich Folgerungen, falls $T \hyperref[Erfullbar]{\vDash} \varphi \Rightarrow T \hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi$ für alle $\mathcal{K}$-Formelmengen T und $\mathcal{K}$-\hyperref[Formel]{Formeln} $\varphi$
 		\item $\mathcal{K}$ ist adäquat, wenn $\mathcal{K}$ korrekt und vollständig ist, d.h. $\hyperref[Beweisbar]{\vdash_{\mathcal{K}}} \varphi \Leftrightarrow T \hyperref[Erfullbar]{\vDash} \varphi$
 	\end{itemize}
 
@@ -442,9 +444,12 @@
 	
 	\subsection{*Adäquatheitssätze}
 	\begin{description}
-		\item[Folgerungsbegriff] Für jede Formelmenge T und jede \hyperref[Formel]{Formel} $\varphi$ gilt: $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \varphi$
-		\item[Erfüllbarkeitsbegriff] Für jede Formelmenge T gilt: T \hyperref[Erfullbar]{erfüllbar} $\Leftrightarrow$ T \hyperref[ALKonsistent]{konsistent}
-		\item[?] $T = (\mathcal{L}, \Sigma) \hyperref[Erfullbar]{\vDash} \sigma \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \sigma$
+		\item[Folgerungsbegriff] Für jede Formelmenge T und jede 
+		
+		\hyperref[Formel]{Formel} $\varphi$ gilt: $T \hyperref[Erfullbar]{\vDash} \varphi \Leftrightarrow T \hyperref[Beweisbar]{\vdash} \varphi$
+		\item[Erfüllbarkeitsbegriff] Für jede Formelmenge T gilt: 
+		
+		T \hyperref[Erfullbar]{erfüllbar} $\Leftrightarrow$ T \hyperref[ALKonsistent]{konsistent}
 	\end{description} 
 	
 	\subsection{*Kompaktheitssatz/Endlichkeitssatz}
