@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{lmodern}
+\usepackage{datetime}
+
+\usepackage{amsmath} % this package is one option for math lines
+\usepackage{enumerate}
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\usepackage{amssymb} % package for Natural Number sign etc
+\hypersetup{linktoc=all}
+
+\begin{document}
+	\tableofcontents
+	
+	\newpage
+	\section{Was sind Datenbanken}
+	TODO Kapitel zuende zusammenfassen oder so, es ist echt nur einführung und wenig inhalt ist hier mit bei der wichtig sein könnte - nett zum veranschaulichen
+	\subsection{Überblick und Motivation}
+	Die Idee einer Datenbank ist, dass sie einmal Informationseinheiten logisch mit einander verknüpft, zum anderen Massen an Daten verwaltet. Unter der Verwaltung gehört unter anderem die Sicherheit vor Verlusten und dass mehr als ein Benutzer auf einmal die Daten Abfragen kann. Beispiele in unserer heutigen Welt sind Social-Media Seiten, Einkaufswebseiten wie Amazon und Navigationsseiten wie Google Maps. 
+	
+	Die meisten Softwaresysteme sind nicht darauf ausgelegt große Mengen von Daten effizient zu speichern, was dafür sorgt, dass die gesuchten Daten entweder den Speicher zu müllen oder lange brauchen gefunden zu werden. Außerdem können mehrere Benutzer nur in wenigen Fällen parallel (gut) auf den selben Daten arbeiten. 
+	
+	\subsection{Architekturen}
+	Laut einem  Ted Codd muss eine Datenbank 9 Sachen beinhalten/erfüllen, die 9 Codd'schen Regeln:
+	\begin{enumerate}
+		\item Integration: einheitliche nichtredundante Datenverwaltung
+		\item Operationen: Speichern, Suchen, Ändern
+		\item Katalog: Zugriffe auf Datenbankbeschreibungen im Data Dictionary
+		\item Benutzerschichten
+		\item Integritätssicherung: Korrektheit des Datenbankinhalts
+		\item Datenschutz: Ausschluss unautorisierter Zugriffe
+		\item Transaktionen: mehrere DB-Operationen als Funktionseinheit (Mehrere Operationen gleichzeitig durchführen)
+		\item Synchronisationen: parallele Transaktionen koordinieren
+		\item Datensicherung: Wiederherstellung von Daten nach Systemfehlern
+	\end{enumerate}
+	
+	\subsection{Einsatzgebiete}
+	
+	\subsection{Historisches}
+	
+	\newpage
+	\section{Relationale Datenbanken}
+	\subsection{Relationen für tabellarische Daten}
+	Man kann sich eine Datenbank als eine Menge von Tabellen vorstellen. Jede Tabelle besitzt ein Schlüssel, dieser ist meist in die erste Spalte der Tabelle und muss nicht unbedingt ein Integer sein. Ein Schlüssel kann auch eine Attribut Kombination sein. Das Attribut, welches als Schlüssel dient wird oft durch Unterstreichen gekennzeichnet. Eine Kopie der Schlüssel kann in anderen Tabellen vorkommen, als Möglichkeit die Zwei Tabellen mit einander zu vernetzen und nach bestimmten Eigenschaften zu suchen.
+	
+	\subsection{SQL-Datendefinition}
+	SQL kann verschiedene Datentypen einlesen. Unter anderem:
+	\begin{description}
+		\item[integer] (oder auch integer4, int)
+		\item[smallint] (oder auch integer2)
+		\item[float(p)] (oder auch kurz float)
+		\item[decimal(p, q)] und numeric(p, q) mit jewels q Nachkommastellen
+		\item[character(n)] (oder kurz char(n), bei n = 1 auch char) für Strings fester Länge n
+		\item[character varying(n)] (oder kurz varchar(n) für Strings variabler Länge bis zur Maximallänge n
+		\item[bit(n)] oder bit varying(n) analog für Bitfolgen
+		\item[date] oder time oder timestamp für Datums-, Zeit- und kombinierte Datums-Zeit-Angaben
+	\end{description}
+	
+	Man kann in SQL vorbestimmen ob Einträge bestimmte Eigenschaften erfüllen damit sie eingespeichert werden können. Ein Pflichtkriterium ist, jede Tabelle braucht ein Primary-Key. Dieser ist nie Null und muss von allen anderen Verschieden sein. Oft werden Integer verwendet, welche hoch zählen, aber es kommt auch vor, dass Strings verwendet werden. Ähnlich wie die Primari-Keys kann man eine Spalte designieren, die Primary-Keys einer anderen Tabelle mit einzuspeichern. Man kann auch zu der Art des Datentypes noch weitere Argumente angeben, wie "not null" was ebenfalls einen Fehler geben würde, wenn das Feld beim Eintragen leer gelassen werden würde. Man kann ebenfalls ein "default" Wert angeben, welcher Angenommen wird, wenn man das Feld leer lässt. Man kann eine check-Klausel verwenden, um zu sehen ob der eingegebene Wert bestimmte Eigenschaften erfüllt. Weiterhin gibt es eine "create domain" Anweisung (keine ahnung was das macht hlp pls)
+	
+	
+	
+	\subsection{Grundoperationen: Die Relationenalgebra}
+	
+	\subsection{SQL als Anfragesprache}
+	
+	\subsection{Änderungsoperationen in SQL}
+	
+	\newpage
+	\section{Entity-Relationship-Modell}
+	
+	\newpage
+	\section{Datenbankentwurf}
+	
+\end{document}
