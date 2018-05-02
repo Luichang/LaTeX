@@ -8,7 +8,7 @@
 
 \usepackage{amsmath} % this package is one option for math lines
 \usepackage{amssymb} % package for Natural Number sign etc
-\usepackage{tasks}
+\usepackage{enumerate}
 
 \usepackage{hyperref} % these two lines are so that the table of content is clickable
 \setcounter{tocdepth}{3}
@@ -150,7 +150,7 @@
 	$\forall M: \emptyset \subset M$.
 	
 	\newpage
-	\section{Reelle Zahlen [übersprungen]}
+	\section{Reelle Zahlen übersprungen}
 	\newpage
 	\section{Folgen}
 	\Definition[Folge komplexer Zahlen]
@@ -172,8 +172,8 @@
 	\Definition[Konvergente Folgen]
 	\label{def:Konvergenz}
 	\begin{enumerate}
-		\item Eine \hyperref[def:Folge]{Folge} \(a_n)_{n \in \mathbb{N}}\) heißt konvergent, falls $a \in \mathbb{C}$ mit folgender Eigenschaft existiert:
-		\[\forall \varepsilon > 0 \exists n_0 = n_0(\varepsilon) \in \mathbb{N} \forall n \ge n_0: |a_n - a| < \varepsilon\]
+		\item Eine \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ heißt konvergent, falls $a \in \mathbb{C}$ mit folgender Eigenschaft existiert: \newline
+		$\forall \varepsilon > 0 \exists n_0 = n_0(\varepsilon) \in \mathbb{N} \forall n \ge n_0: |a_n - a| < \varepsilon$ \newline
 		Dann heißt a \underline{Grenzwert} oder \underline{Limes} von $(a_n)$.
 		
 		\begin{tabular}{l l}
@@ -186,18 +186,19 @@
 	
 	\underline{WICHTIG} Die Aussagen ''für alle bis auf endlich viele Folgenglieder'' und ''für unendlich viele Folgenglieder'' sind nicht äquivalent.
 	
-	\Lemma
-	\begin{tasks}
-		\task Der \hyperref[def:Konvergenz]{Grenzwert} einer \hyperref[def:Konvergenz]{konvergenten} \hyperref[def:Folge]{Folge} ist eindeutig bestimmt.
-		\task Jede \hyperref[def:Konvergenz]{konvergente} \hyperref[def:Folge]{Folge} ist beschränkt: $\exists s \in \mathbb{R} \forall n \in \mathbb{N}: |a_n| \le s$
-	\end{tasks}
+	\Lemma[Über Konvergente Folgen]
+	\label{lem:BeschrankteFolgen}
+	\begin{enumerate}[(a)]
+		\item Der \hyperref[def:Konvergenz]{Grenzwert} einer \hyperref[def:Konvergenz]{konvergenten} \hyperref[def:Folge]{Folge} ist eindeutig bestimmt.
+		\item Jede \hyperref[def:Konvergenz]{konvergente} \hyperref[def:Folge]{Folge} ist beschränkt: $\exists s \in \mathbb{R} \forall n \in \mathbb{N}: |a_n| \le s$
+	\end{enumerate}
 	
 	
 	\Satz[Regeln für n-te Wurzel]
-	\begin{tasks}
-		\task Für $a \in \mathbb{R}^+$ gilt: $\lim\limits_{n \rightarrow \infty} \sqrt[n]{a} = 1$.
-		\task $\lim\limits_{n \rightarrow \infty} \sqrt[n]{n} = 1$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item Für $a \in \mathbb{R}^+$ gilt: $\lim\limits_{n \rightarrow \infty} \sqrt[n]{a} = 1$.
+		\item $\lim\limits_{n \rightarrow \infty} \sqrt[n]{n} = 1$
+	\end{enumerate}
 	
 	\subsection{Rechenregeln für Grenzwerte}
 	\Lemma
@@ -214,35 +215,37 @@
 	
 	\Lemma[Sandwich-Lemma]
 	Es seien $(a_n), (b_n), (c_n)$ reelle \hyperref[def:Folge]{Folgen} mit:
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $(a_n)$ und $(c_n)$ sind konvergent mit: $\lim a_n = \lim c_n$
-		\task Für alle bis auf endlich viele $n \in \mathbb{N}$ gilt: $a_n \le b_n \le c_n$
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $(a_n)$ und $(c_n)$ sind konvergent mit: $\lim a_n = \lim c_n$
+		\item Für alle bis auf endlich viele $n \in \mathbb{N}$ gilt: $a_n \le b_n \le c_n$
+	\end{enumerate}
+
 	Dann ist $(b_n)$ konvergent mit: $\lim a_n = \lim b_n = \lim c_n$ \newline
-	Wenn wir eine Minorante und Majorante finden können, mit dem gleichen \hyperref[def:Konvergenz]{Grenzwert}, so konvergiert die \hyperref[def:Folge]{Folge} gegen den selben \hyperref[def:Konvergenz]{Grenzwert}
+	Wenn wir eine Minorante und Majorante finden können, mit dem gleichen \hyperref[def:Konvergenz]{Grenzwert}, so \hyperref[def:Konvergenz]{konvergiert} die \hyperref[def:Folge]{Folge} gegen den selben \hyperref[def:Konvergenz]{Grenzwert}
 	
 	\subsection{Häufungspunkt, Cauchy-Folge, Teilfolgen}
-	\Definition
-	Eine \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ reeller Zahlen heißt \underline{\hyperref[def:Monoton]{monoton wachsend}}, falls gilt:
-	\[\forall n \in \mathbb{N}: a_{n + 1} \ge a_n\]
+	\Definition[Monotonie]
+	Eine \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ reeller Zahlen heißt \underline{monoton wachsend}, falls gilt: \newline
+	$\forall n \in \mathbb{N}: a_{n + 1} \ge a_n$
+	
 	Monoton Fallend analog.
 	
 	\Satz[Monotoniekriterium]
-	Jede beschränkte \hyperref[def:Monoton]{monotone} \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ ist konvergent mit
+	Jede \hyperref[lem:BeschrankteFolgen]{beschränkte} \hyperref[def:Monoton]{monotone} \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ ist \hyperref[def:Konvergenz]{konvergent} mit
 	
 	$\lim\limits_{n \rightarrow \infty} a_n = \left\lbrace 
 	\begin{array}{l l}
-	\sup \{a_n | n \in \mathbb{N}\} & \text{falls monoton wachsend} \\
+	\sup \{a_n | n \in \mathbb{N}\} & \text{falls \hyperref[def:Monoton]{monoton wachsend}} \\
 	\inf \{a_n | n \in \mathbb{N}\} & \text{sonst}
 	\end{array}
 	\right.$ \newline
-	Monoton + Beschränkt = Konvergent
+	\hyperref[def:Monoton]{Monoton} + \hyperref[lem:BeschrankteFolgen]{Beschränkt} = \hyperref[def:Konvergenz]{Konvergent}
 	
 	\Definition[Häufungspunkte]
 	\label{def:Haufungspunkte}
 	Sei $(a_n)$ eine \hyperref[def:Folge]{Folge}. Dann heißt $a \in \mathbb{C}$ Häufungspunkt der \hyperref[def:Folge]{Folge}, falls gilt: \newline
 	$\forall \varepsilon > 0$ gilt $|a_n - a| < \varepsilon$ \newline für unterschiedlich viele $n \in \mathbb{N}$ \newline
-	Heißt soviel wie: wenn \hyperref[def:Teilfolge]{Teilfolgen} konvergieren, sind die \hyperref[def:Konvergenz]{Grenzwerte} der \hyperref[def:Teilfolge]{Teilfolgen} die Häufungspunkte der \hyperref[def:Folge]{Folge}.
+	Heißt soviel wie: wenn \hyperref[def:Teilfolge]{Teilfolgen} \hyperref[def:Konvergenz]{konvergieren}, sind die \hyperref[def:Konvergenz]{Grenzwerte} der \hyperref[def:Teilfolge]{Teilfolgen} die Häufungspunkte der \hyperref[def:Folge]{Folge}.
 	
 	\Definition[Teilfolge]
 	\label{def:Teilfolge}
@@ -262,23 +265,23 @@
 	Heißt, bei jeder \hyperref[def:Folge]{Folge} reeller Zahlen kann man sich vereinzelnd Elemente raus suchen, welche eine \hyperref[def:Monoton]{monotone} \hyperref[def:Teilfolge]{Teilfolge} bilden.
 	
 	\Satz[Bolzano-Weierstraß für $\mathbb{R}$]
-	Jede beschränkte \hyperref[def:Folge]{Folge} reeller Zahlen besitzt eine \hyperref[def:Konvergenz]{konvergente} \hyperref[def:Teilfolge]{Teilfolge}
+	Jede \hyperref[lem:BeschrankteFolgen]{beschränkte} \hyperref[def:Folge]{Folge} reeller Zahlen besitzt eine \hyperref[def:Konvergenz]{konvergente} \hyperref[def:Teilfolge]{Teilfolge}
 	
 	Gilt natürlich auch in komplexen Zahlen.
 	
 	\Definition[Cauchy-Folge]
 	\label{def:Cauchy}
-	Eine \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ komplexer Zahlen heißt Cauchy-Folge, falls gilt:
-	\[\forall \varepsilon > 0 \exists n_0 = n_0(\varepsilon) \in \mathbb{N} \forall m, n \ge n_0: |a_m - a_n| < \varepsilon \]
+	Eine \hyperref[def:Folge]{Folge} $(a_n)_{n \in \mathbb{N}}$ komplexer Zahlen heißt Cauchy-Folge, falls gilt: \newline 
+	$\forall \varepsilon > 0 \exists n_0 = n_0(\varepsilon) \in \mathbb{N} \forall m, n \ge n_0: |a_m - a_n| < \varepsilon$
 	
 	\Satz[Cauchy Kriterium]
-	Die \hyperref[def:Folge]{Folge} $(a_n)$ ist genau dann konvergent, wenn $(a_n)$ eine \hyperref[def:Cauchy]{Cauchy-Folge} ist.\newline
-	\underline{Bemerkung} Es gibt \hyperref[def:Cauchy]{Cauchy-Folgen} $(a_n)$ mit $a_n \in \mathbb{Q} \forall n \in \mathbb{N}$ die nicht gegen eine rationale Zahl konvergieren.
+	Die \hyperref[def:Folge]{Folge} $(a_n)$ ist genau dann \hyperref[def:Konvergenz]{konvergent}, wenn $(a_n)$ eine \hyperref[def:Cauchy]{Cauchy-Folge} ist.\newline
+	\underline{Bemerkung} Es gibt \hyperref[def:Cauchy]{Cauchy-Folgen} $(a_n)$ mit $a_n \in \mathbb{Q} \forall n \in \mathbb{N}$ die nicht gegen eine rationale Zahl \hyperref[def:Konvergenz]{konvergieren}.
 	
-	Als Beispiel eine \hyperref[def:Folge]{Folge} die gegen e konvergiert, da $e \notin \mathbb{Q}$
+	Als Beispiel eine \hyperref[def:Folge]{Folge} die gegen $e$ \hyperref[def:Konvergenz]{konvergiert}, da $e \notin \mathbb{Q}$
 	
 	\subsection{Limes superior und Limes inferior}
-	Es sei $(a_n)_{n \in \mathbb{N}}$ eine beschränkte \hyperref[def:Folge]{Folge}, d.h. $\exists s \in \mathbb{R} \forall n \in \mathbb{R}: |a_n| \le s$.
+	Es sei $(a_n)_{n \in \mathbb{N}}$ eine \hyperref[lem:BeschrankteFolgen]{beschränkte} \hyperref[def:Folge]{Folge}, d.h. $\exists s \in \mathbb{R} \forall n \in \mathbb{R}: |a_n| \le s$.
 	\begin{tabular}{l l}
 		\underline{Beobachtung} Sei & $B_n := \sup\{a_k | k \ge n\}$ \\
 		& $b_n := \inf\{a_k | k \ge n\}$
@@ -288,7 +291,7 @@
 	
 	Außerdem gilt: $\forall n \in \mathbb{N}: b_n \le B_n; |b_n|, |B_n| \le s$
 	
-	Also konvergieren $(b_n)$ und $(B_N)$ mit \(\lim\limits_{n \rightarrow \infty} b_n \le \lim\limits_{n \rightarrow \infty} B_n\)
+	Also \hyperref[def:Konvergenz]{konvergieren} $(b_n)$ und $(B_n)$ mit \(\lim\limits_{n \rightarrow \infty} b_n \le \lim\limits_{n \rightarrow \infty} B_n\)
 	
 	\Definition[lim sup und lim inf]
 	Wir definieren: 
@@ -298,8 +301,8 @@
 	$\liminf\limits_{n \rightarrow \infty} a_n:= \underline{\lim\limits_{n \rightarrow \infty}} a_n:= \lim\limits_{n \rightarrow \infty} b_n \text{ limes inferior}$
 	
 	\Definition
-	Falls es eine Teilmenge $A \subset \mathbb{R}$ nicht nach oben beschränkt ist, definieren wir $\sup A:= +\infty$. \newline
-	Falls es eine Teilmenge $A \subset \mathbb{R}$ nicht nach unten beschränkt ist, definieren wir $\inf A:= -\infty$.
+	Falls es eine Teilmenge $A \subset \mathbb{R}$ nicht nach oben \hyperref[def:Beschrankt]{beschränkt} ist, definieren wir $\sup A:= +\infty$. \newline
+	Falls es eine Teilmenge $A \subset \mathbb{R}$ nicht nach unten \hyperref[def:Beschrankt]{beschränkt} ist, definieren wir $\inf A:= -\infty$.
 	
 	Außerdem setzen wie $\sup \emptyset := -\infty, \inf \emptyset := +\infty$.
 	
@@ -312,10 +315,10 @@
 	
 	\Satz
 	Die \hyperref[def:Folge]{Folge} $(a_n)$ sei \hyperref[def:BesDivergent]{bestimmt divergent} gegen $\pm \infty$ Dann gilt:
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $a_n \ne 0$ für alle bis auf endlich viele $n \in \mathbb{N}$
-		\task $\lim\limits_{n \rightarrow \infty} \frac{1}{a_n} = 0$
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $a_n \ne 0$ für alle bis auf endlich viele $n \in \mathbb{N}$
+		\item $\lim\limits_{n \rightarrow \infty} \frac{1}{a_n} = 0$
+	\end{enumerate}
 	
 	\Satz
 	Es sei $(a_n)_{n \in \mathbb{N}}$ eine Nullfolge mit $a_n > 0$ für alle bis auf endlich viele $n \in \mathbb{N}$. Dann divergiert die \hyperref[def:Folge]{Folge} $(\frac{1}{a_n})$ bestimmt gegen $+\infty$. 
@@ -327,18 +330,20 @@
 	
 	\begin{enumerate}
 		\item Es gilt $\limsup a_n = a \in \mathbb{R}$ genau dann, wenn für alle $\varepsilon > 0$ gilt
-		\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-			\task $a_n < a + \varepsilon$ für alle bis auf endlich viele $n \in \mathbb{N}$
-			\task $a_n > a - \varepsilon$ für unendlich viele $n \in \mathbb{N}$
-		\end{tasks} 
+		\begin{enumerate}[(i)]
+			\item $a_n < a + \varepsilon$ für alle bis auf endlich viele $n \in \mathbb{N}$
+			\item $a_n > a - \varepsilon$ für unendlich viele $n \in \mathbb{N}$
+		\end{enumerate} 
 		Heißt das Supremum $a_n$ ist nur dann kleiner als der \hyperref[def:Konvergenz]{Grenzwert}, wenn man etwas unendlich kleines an den \hyperref[def:Konvergenz]{Grenzwert} addiert. Es ist größer als der \hyperref[def:Konvergenz]{Grenzwert} sobald man etwas vom \hyperref[def:Konvergenz]{Grenzwert} abzieht.
 		\item Es gilt $\liminf a_n = a \in \mathbb{R}$ genau dann, wenn für alle $\varepsilon < 0$ gilt:
-		\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-			\task $a_n > a - \varepsilon$ für alle bis auf endlich viele $n \in \mathbb{N}$
-			\task $a_n < a + \varepsilon$ für unendlich viele $n \in \mathbb{N}$
-		\end{tasks} 
+		\begin{enumerate}[(i)]
+			\item $a_n > a - \varepsilon$ für alle bis auf endlich viele $n \in \mathbb{N}$
+			\item $a_n < a + \varepsilon$ für unendlich viele $n \in \mathbb{N}$
+		\end{enumerate} 
 		Ähnliche Erklärung wie oben auch.
-		\item $(a_n)$ ist genau dann Konvergent, wenn $\liminf\limits_{n \rightarrow \infty} a_n = \limsup\limits_{n \rightarrow \infty} a_n \in \mathbb{R}$. In diesem Fall gilt $\lim\limits_{n \rightarrow \infty} a_n = \liminf\limits_{n \rightarrow \infty} a_n = \limsup\limits_{n \rightarrow \infty} a_n$
+		
+		Dieser Beweis war als Hausaufgabe zu zeigen. (Vorlesung 13)
+		\item $(a_n)$ ist genau dann \hyperref[def:Konvergenz]{Konvergent}, wenn $\liminf\limits_{n \rightarrow \infty} a_n = \limsup\limits_{n \rightarrow \infty} a_n \in \mathbb{R}$. In diesem Fall gilt $\lim\limits_{n \rightarrow \infty} a_n = \liminf\limits_{n \rightarrow \infty} a_n = \limsup\limits_{n \rightarrow \infty} a_n$
 	\end{enumerate}
 	\newpage
 	\section{Stetige Funktionen und die Topologie des \(\mathbb{R}^n\)}
@@ -356,29 +361,29 @@
 	und falls gilt: $g(x) \ne 0 \forall x \in D$, $\frac{f}{g}(x) := \frac{f(x)}{g(x)}$
 	
 	\Definition[Endlicher Abstand]
-	Der endliche Abstand zweier Punkte $x = (x_1, ..., x_n)$ und $y = (y_1, ..., y_n)$ des $\mathbb{R}^n$ ist 
-	\[|x - y| := \sqrt{\sum\limits_{i = 1}^{n}(x_i - y_i)^2} = ((x_1 - y_1)^2 + (x_2 - y_2)^2 + ... + (x_n - x_n)^2)^{\frac{1}{2}}\]
+	Der endliche Abstand zweier Punkte $x = (x_1, ..., x_n)$ und $y = (y_1, ..., y_n)$ des $\mathbb{R}^n$ ist: \newline
+	$|x - y| := \sqrt{\sum_{i = 1}^{n}(x_i - y_i)^2} = ((x_1 - y_1)^2 + (x_2 - y_2)^2 + ... + (x_n - x_n)^2)^{\frac{1}{2}}$
 	
 	
 	\subsection{Stetigkeit}
 	\label{def:Stetig}
 	\Definition[$\varepsilon - \delta-$Kriterium]
-	Eine Funktion $f: D \rightarrow \mathbb{R}$ (oder $\mathbb{C}$) heißt \underline{stetig in $x_0 \in D$}, falls gilt:
-	\[\forall \varepsilon > 0 \exists \delta > 0 \forall x_0 \in D: |x - x_0| < \delta \rightarrow |f(x) - f(x_0)| < \varepsilon\] 
+	Eine Funktion $f: D \rightarrow \mathbb{R}$ (oder $\mathbb{C}$) heißt \underline{stetig in $x_0 \in D$}, falls gilt: \newline
+	$\forall \varepsilon > 0 \exists \delta > 0 \forall x_0 \in D: |x - x_0| < \delta \rightarrow |f(x) - f(x_0)| < \varepsilon$ \newline 
 	f heißt \underline{stetig} in D, falls f in jedem Punkt von D stetig ist. 
 	\newline{}
 	
 	Heißt soviel wie für jeden Abstand den 2 Folgeglieder [f(x) nach f(y)] von einander haben muss es einen Abstand zwischen x und y geben. Was nicht erfüllt werden kann, wenn die Funktion an $x_0$ bzw einer Stelle springt.
 	
 	\Satz[Folgenkriterium]
-	$f: D \rightarrow \mathbb{C}$ ist genau dann stetig in $x^* \in D$, wenn für jede \hyperref[def:Folge]{Folge} $(x_n)_{n \in \mathbb{N}} \in D$ mit $\lim\limits_{n \rightarrow \infty} x_n = x^*$ gilt $\lim\limits_{n \rightarrow \infty} f(x_n) = f(x^*)$
+	$f: D \rightarrow \mathbb{C}$ ist genau dann \hyperref[def:Stetig]{stetig} in $x^* \in D$, wenn für jede \hyperref[def:Folge]{Folge} $(x_n)_{n \in \mathbb{N}} \in D$ mit $\lim\limits_{n \rightarrow \infty} x_n = x^*$ gilt $\lim\limits_{n \rightarrow \infty} f(x_n) = f(x^*)$
 	$\Leftrightarrow \lim\limits_{n \rightarrow \infty} f(x_n) = f(\lim\limits_{n \rightarrow \infty} x_n)$ 
 	
 	\Satz[Stetige Funktionen verknüpft sind Stetig]
-	Es seien $f, g \in D \rightarrow \mathbb{C}$ stetig in $x^* \in D$ Dann sind $f \pm g, f * g$ und falls $g(x) \ne 0 \forall x \in D \frac{f}{g}$ stetig in $x^*$.
+	Es seien $f, g \in D \rightarrow \mathbb{C}$ \hyperref[def:Stetig]{stetig} in $x^* \in D$ Dann sind $f \pm g, f * g$ und falls $g(x) \ne 0 \forall x \in D \frac{f}{g}$ \hyperref[def:Stetig]{stetig} in $x^*$.
 	
 	\Satz[Komposition stetiger Funktionen sind Stetig]
-	Es sei $f: D \rightarrow \mathbb{C}$ und $g: E \rightarrow \mathbb{C}$ mit $f(D) \subset E$ gegeben. Ist f stetig in $x^* \in D$ und g stetig in $y^* := f(x^*) \in E$, so ist auch $g \circ f$ stetig in $x^*$ 
+	Es sei $f: D \rightarrow \mathbb{C}$ und $g: E \rightarrow \mathbb{C}$ mit $f(D) \subset E$ gegeben. Ist f \hyperref[def:Stetig]{stetig} in $x^* \in D$ und g \hyperref[def:Stetig]{stetig} in $y^* := f(x^*) \in E$, so ist auch $g \circ f$ \hyperref[def:Stetig]{stetig} in $x^*$ 
 	
 	\begin{tabular}{l l l}
 		$D$ & $\xrightarrow{f} f(D) \in E$ & $\xrightarrow{g} \mathbb{C}$ \\
@@ -396,28 +401,29 @@
 	
 	\Definition[Randpunkt von M]
 	\label{def:Rand}
-	Es sei $M \subset \mathbb{R}^n$ eine Menge. Ein Punkt $p \in \mathbb{R}^n$ heißt Randpunkt von M, falls gilt:
-	\[\forall r > 0: \hyperref[def:Br]{B_r}(p) \cap M \ne \emptyset \ne \hyperref[def:Br]{B_r}(p) \cap (\mathbb{R}^n \backslash  M)\]
+	Es sei $M \subset \mathbb{R}^n$ eine Menge. Ein Punkt $p \in \mathbb{R}^n$ heißt Randpunkt von M, falls gilt: \newline
+	$\forall r > 0: \hyperref[def:Br]{B_r}(p) \cap M \ne \emptyset \ne \hyperref[def:Br]{B_r}(p) \cap (\mathbb{R}^n \backslash  M)$
 	
 	Ein Punkt p heißt Randpunkt, wenn man Kreise/Bälle um den Punkt ziehen kann, dass Teil des Kreises/Balls in der Menge liegt
 	
 	\Definition[Offene Mengen]
 	\label{def:Offen}
-	\begin{tasks}
-		\task Eine Teilmenge $M \subset \mathbb{R}^n$ heißt offen, falls $M \cap \delta M = \emptyset$ gilt.
-		\task M heißt abgeschlossen, falls $\delta M \subset M$ gilt.
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item Eine Teilmenge $M \subset \mathbb{R}^n$ heißt offen, falls $M \cap \delta M = \emptyset$ gilt.
+		\item M heißt abgeschlossen, falls $\delta M \subset M$ gilt.
+	\end{enumerate}
+
 	Wobei $\delta M$ den \hyperref[def:Rand]{Rand} von M beschreibt $\Rightarrow$ Eine Menge ist offen, wenn M vereinigt mit dem \hyperref[def:Rand]{Rand} leer ist und abgeschlossen, falls der \hyperref[def:Rand]{Rand} eine Teilmenge von M ist
 	
 	\Lemma[Offen]
-	$M \subset \mathbb{R}^n$ ist genau dann \hyperref[def:Offen]{offen}, wenn gilt:
-	\[\forall p \in M \exists r > 0: \hyperref[def:Br]{B_r}(p) \subset M\]
+	$M \subset \mathbb{R}^n$ ist genau dann \hyperref[def:Offen]{offen}, wenn gilt: \newline
+	$\forall p \in M \exists r > 0: \hyperref[def:Br]{B_r}(p) \subset M$ \newline
 	Heißt M ist offen, wenn für jeden Punkt aus der Menge einen Kreis/Ball ziehen kann mit einem Radius größer 0, der ganz in der Menge ist - Ginge bei abgeschlossenen Mengen nicht, da wenn man einen Punkt am \hyperref[def:Rand]{Rand} wählt gibt es kein r für den der ganze Kreis/Ball in der Menge ist
 	
-	\Korollar[Offene Mengen bestehen aus Offenen Bällen]
-	Jede \hyperref[def:Offen]{offene} Menge $M \subset \mathbb{R}^n$ ist eine Vereinigung \hyperref[def:Offen]{offener} Bälle. 
-	\[\forall p \in M \exists r_p > 0: \mathring{B}_{r_p}(p) \subset M\]
-	\[\Rightarrow M = \bigcup\limits_{p \in M} \mathring{B}_{r_p}(p) =: RHS\]
+	\Korollar
+	Jede \hyperref[def:Offen]{offene} Menge $M \subset \mathbb{R}^n$ ist eine Vereinigung \hyperref[def:Offen]{offener} Bälle. \newline
+	$\forall p \in M \exists r_p > 0: \mathring{B}_{r_p}(p) \subset M$ \newline 
+	$\Rightarrow M = \bigcup\limits_{p \in M} \mathring{B}_{r_p}(p) =: RHS$ \newline 
 	Heißt um jeden Punkt zieht man ein Kreis dessen Radius größer 0 ist, nimmt dann alle Elemente in den Kreisen und steckt sie in die Menge M
 	
 	\Lemma[Abgeschlossen]
@@ -425,48 +431,48 @@
 	Heißt, die Menge ist abgeschlossen wenn es keine \hyperref[def:Folge]{Folge} gibt, dessen \hyperref[def:Konvergenz]{Grenzwert} außerhalb der Menge liegt
 	
 	\Satz
-	\begin{tasks}
-		\task Beliebige Vereinigungen \hyperref[def:Offen]{offener} Mengen sind \hyperref[def:Offen]{offen}. \newline
+	\begin{enumerate}[(a)]
+		\item Beliebige Vereinigungen \hyperref[def:Offen]{offener} Mengen sind \hyperref[def:Offen]{offen}. \newline
 		\begin{tabular}{l p{10cm}}
 			\underline{Formulierung 1:} & Es sei $\mathcal{U} \subset P(\mathbb{R}^n)$ mit $\forall U \in \mathcal{U}: U$ ist \hyperref[def:Offen]{offen} \newline
 			$\Rightarrow \bigcup \mathcal{U} := \{x \in \mathbb{R}^n | \exists U \in \mathcal{U}: x \in U\} \subset \mathbb{R}^n$ ist \hyperref[def:Offen]{offen} \\
 			\underline{Formulierung 2:} & Es sei I eine (Index-)Menge $\forall i \in I$ sei $U_i \subset \mathbb{R}^n$ \hyperref[def:Offen]{offen} \newline
 			$\Rightarrow \bigcup\limits_{i \in I} U_i \subset \mathbb{R}^n$ ist \hyperref[def:Offen]{offen}
 		\end{tabular}
-		\task Belibige Durchschnitte abgeschlossener Mengen sind abgeschlossen \newline
+		\item Belibige Durchschnitte abgeschlossener Mengen sind abgeschlossen \newline
 		\begin{tabular}{l p{10cm}}
 			\underline{Formulierung 1:} & Es sei $\mathcal{A} \subset P(\mathbb{R}^n): \forall A \in \mathcal{A}: A$ ist abgeschlossen \newline
 			$\Rightarrow \bigcap \mathcal{A} := \{x \in \mathbb{R}^n | \forall A \in \mathcal{A}: x \in A\}$ ist abgeschlossen \\
 			\underline{Formulierung 2:} & Es sei I eine (Index-)Menge $\forall i \in I$ sei $A_i \subset \mathbb{R}^n$ abgeschlossen \newline
 			$\Rightarrow \bigcap\limits_{i \in I} A_i \subset \mathbb{R}^n$ ist abgeschlossen.
 		\end{tabular}
-	\end{tasks}
+	\end{enumerate}
 	
-	\Definition[Innen und Abschluss]
+	\Definition[Innen und Abschluss einer Menge]
 	Das Innere $\mathring{M}$ einer Menge $M \subset \mathbb{R}^n$ ist $\mathring{M} := M \backslash \delta M$.\newline
 	Der Abschluss $\overline{M} \text{ ist } \overline{M} := M \cup \delta M$. \newline
 	Heißt das Innere einer Menge M wird beschrieben als M ohne dem \hyperref[def:Rand]{Rand}. Der Abschluss einer Menge ist M vereinigt mit dem \hyperref[def:Rand]{Rand}
 	
 	\Lemma
 	\begin{enumerate}
-		\item $\mathring{M}$ ist die größte \hyperref[def:Offen]{offene} Teilmenge, die in M enthalten ist. 
-		\[M \backslash \delta M = \mathring{M} = \bigcup \{U | U \subset M \text{ und U offen}\}\]
-		Dadurch, dass $\mathring{M}$ die Menge M ohne dem \hyperref[def:Rand]{Rand} ist, ist es die größte offene Teilmenge von M
-		\item $\overline{M}$ ist die kleinste abgeschlossene Teilmenge, die M enthält.
-		\[M \cup \delta M = \overline{M} = \bigcap \{A | A \supset M \text{ und A abgeschlossen}\}\]
-		Dadurch, dass $\overline{M}$ die Menge M mit dem \hyperref[def:Rand]{Rand} ist, ist es die kleinste abgeschlossene Teilmenge von M
+		\item $\mathring{M}$ ist die größte \hyperref[def:Offen]{offene} Teilmenge, die in M enthalten ist. \newline
+		$M \backslash \delta M = \mathring{M} = \bigcup \{U | U \subset M \text{ und U offen}\}$ \newline
+		Dadurch, dass $\mathring{M}$ die Menge M ohne dem \hyperref[def:Rand]{Rand} ist, muss es die größte offene Teilmenge von M sein
+		\item $\overline{M}$ ist die kleinste abgeschlossene Teilmenge, die M enthält. \newline
+		$M \cup \delta M = \overline{M} = \bigcap \{A | A \supset M \text{ und A abgeschlossen}\}$ \newline
+		Dadurch, dass $\overline{M}$ die Menge M mit dem \hyperref[def:Rand]{Rand} ist, muss es die kleinste abgeschlossene Teilmenge sein die M enthält
 	\end{enumerate}
 	
 	\Korollar
 	Es sei M eine Menge. Dann gilt: 
-	\begin{tasks}
-		\task M \hyperref[def:Offen]{offen} $\Leftrightarrow M = \mathring{M}$
-		\task M abgeschlossen $\Leftrightarrow M = \overline{M}$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item M \hyperref[def:Offen]{offen} $\Leftrightarrow M = \mathring{M}$
+		\item M abgeschlossen $\Leftrightarrow M = \overline{M}$
+	\end{enumerate}
 	
 	\Definition[Topologie des $\mathbb{R}^n$]
-	Die Topologie des $\mathbb{R}^n$ ist das Mengensystem
-	\[\mathcal{T} := \{U \subset \mathbb{R}^n | \text{U offen}\}\]
+	Die Topologie des $\mathbb{R}^n$ ist das Mengensystem \newline 
+	$\mathcal{T} := \{U \subset \mathbb{R}^n | \text{U offen}\}$ \newline
 	die Menge der \hyperref[def:Offen]{offenen} Mengen
 	
 	\subsection{Kompaktheit und die Existenz von Extrema}
@@ -487,33 +493,33 @@
 	Sei $\emptyset \ne K \subset \mathbb{R}$ \hyperref[def:Kompakt]{kompakt}. Dann existiert max K und min K.
 	
 	\Satz
-	Das stetige Bild einer \hyperref[def:Kompakt]{Kompakten} Menge ist \hyperref[def:Kompakt]{kompakt} 
+	Das \hyperref[def:Stetig]{stetige} Bild einer \hyperref[def:Kompakt]{Kompakten} Menge ist \hyperref[def:Kompakt]{kompakt} 
 	
 	D.h. Es sei $f: K \rightarrow \mathbb{R} (\text{oder } \mathbb{C})$ eine \hyperref[def:Stetig]{stetige} Funktion und $K \in \mathbb{R}^n$ \hyperref[def:Kompakt]{kompakt}. Dann ist $f(K) \subset \mathbb{R} (\text{oder } \mathbb{C})$ \hyperref[def:Kompakt]{kompakt}. 
 	
-	\Korollar[Existenz von Extrema]
+	\Korollar
 	Es sei $\emptyset \ne K \subset \mathbb{R}$ \hyperref[def:Kompakt]{kompakt} und $f: K \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig}. Dann nimmt f ein Maximum und ein Minimum an. D.h \newline
 	$\exists x_{min}, x_{max} \in K: \min f := f(x_{min}) \le f(x) \le f(x_{max}) =: \max f \forall x \in K$
 	
 	\subsection{Zusammenhang und Zwischenwertsatz}
-	\Definition[Zusammenhängend]
+	\Definition[!Zusammenhängend]
 	\label{def:Zusammenhangend}
 	Eine Menge $M \subset \mathbb{R}^n$ heißt zusammenhängend, falls es keine \hyperref[def:Offen]{offenen} Mengen $U_1, U_2 \subset \mathbb{R}^n$ gibt mit:
 	
-	\begin{tasks}[counter-format=(tsk[r]), label-width=4ex]
-		\task $M \cap U_1 \ne \emptyset \ne M \cap U_2$
-		\task $M = (M \cap U_1) \cup (M \cap U_2)$
-		\task $(M \cap U_1) \cap (M \cap U_2) \ne \emptyset$
-	\end{tasks}
+	\begin{enumerate}[(i)]
+		\item $M \cap U_1 \ne \emptyset \ne M \cap U_2$
+		\item $M = (M \cap U_1) \cup (M \cap U_2)$
+		\item $(M \cap U_1) \cap (M \cap U_2) \ne \emptyset$
+	\end{enumerate}
 	
-	\Definition[Wegzusammenhängend]
-	Eine Teilmenge $W \subset \mathbb{R}^n$ heißt wegzusammenhängend, falls es für alle $x, y \in W$ eine stetige	Abbildung $\gamma : [0, 1] \rightarrow \mathbb{R}^n$ gibt mit $\gamma([0, 1]) \subset W$ und $\gamma(0) = x$ sowie $\gamma(1) = y$. Die Abbildung $\gamma$ nennt man in dieser Situation einen Weg von x nach y in W.
+	\Definition[!Wegzusammenhängend]
+	Eine Teilmenge $W \subset \mathbb{R}^n$ heißt wegzusammenhängend, falls es für alle $x, y \in W$ eine \hyperref[def:Stetig]{stetige}	Abbildung $\gamma : [0, 1] \rightarrow \mathbb{R}^n$ gibt mit $\gamma([0, 1]) \subset W$ und $\gamma(0) = x$ sowie $\gamma(1) = y$. Die Abbildung $\gamma$ nennt man in dieser Situation einen Weg von x nach y in W.
 	
 	Heißt man kann einen Weg innerhalb der Menge finden, für den man nie außerhalb die Menge muss um von jedem Punkt der Menge zu jedem Punkt der Menge zu gelangen. Außerdem gilt Zusammenhängend $\subset$ Wegzusammenhängend, und es ist meist leichter Wegzusammenhängend zu zeigen.
 	
 	\Satz
-	Es sei $\emptyset \ne M \subset \mathbb{R}^n$. Dann gilt: 
-	\[M \text{ ist ein Intervall} \Leftrightarrow \forall a, b \in M \text{ mit } a < b : [a, b] \subset M\]
+	Es sei $\emptyset \ne M \subset \mathbb{R}^n$. Dann gilt: \newline
+	$M \text{ ist ein Intervall} \Leftrightarrow \forall a, b \in M \text{ mit } a < b : [a, b] \subset M$ 
 	
 	\Satz
 	Die \hyperref[def:Zusammenhangend]{Zusammenhängenden} Teilmengen von $\mathbb{R}$ sind genau die Intervalle: \newline
@@ -525,8 +531,8 @@
 	Analog mit M ist abgeschlossen in D, falls eine abgeschlossene Menge $A \subset \mathbb{R}^n$ existiert mit $M = D \cap A$
 	
 	\Lemma
-	Die Teilmenge $M \subset D$ ist genau dann \hyperref[def:Offen]{offen} in D, wenn gilt:
-	\[\forall x \in M \exists r > 0 : \hyperref[def:Br]{B_r}(x) \cap D \subset M\]
+	Die Teilmenge $M \subset D$ ist genau dann \hyperref[def:Offen]{offen} in D, wenn gilt: \newline
+	$\forall x \in M \exists r > 0 : \hyperref[def:Br]{B_r}(x) \cap D \subset M$ \newline
 	Beweis als Hausaufgabe, kam in VL 18 vor. 
 	
 	\Lemma[stetig = Urbild offener Mengen sind offen]
@@ -551,8 +557,8 @@
 	
 	\Definition[(Streng-) Monoton Steigend]
 	\label{def:Monoton}
-	$f: [a, b] \rightarrow \mathbb{R}$ heißt (streng) monoton steigend, falls gilt: 
-	\[\forall x, y \in [a, b]: x \le y \Rightarrow f(x) \le f(y) \text{ bzw für streng } x < y \Rightarrow f(x) < f(y)\]
+	$f: [a, b] \rightarrow \mathbb{R}$ heißt (streng) monoton steigend, falls gilt: \newline
+	$\forall x, y \in [a, b]: x \le y \Rightarrow f(x) \le f(y) \text{ bzw für streng } x < y \Rightarrow f(x) < f(y)$ 
 	
 	Analog für (streng) monoton fallend
 	
@@ -564,10 +570,10 @@
 	Analog für \hyperref[def:Monoton]{streng monoton fallend}.
 	\newpage
 	\section{Differenzialrechnung}
-	Es sei $D \subset \mathbb{R}^n$ \hyperref[def:Offen]{offen} und $x_0 \in D$ für eine Funktion $f: D \backslash \{x_0\} \rightarrow \mathbb{R}$ schreiben wir: $\lim\limits_{x \rightarrow x_0} f(x) = c \in \mathbb{R}$, falls gilt 
-	\[\forall \varepsilon > 0 \exists \delta > 0 \forall x \in D \backslash \{x_0\} : |x - x_0| < \delta \Rightarrow |f(x) - c| < \varepsilon \]
-	Dies ist äquivalent zu:
-	\[\forall (x_n)_{n \in \mathbb{N}} \in D \backslash \{x_0\} : x_n \xrightarrow{n \rightarrow \infty} x_0 \Rightarrow f(x_n) \xrightarrow{n \rightarrow \infty} c\]
+	Es sei $D \subset \mathbb{R}^n$ \hyperref[def:Offen]{offen} und $x_0 \in D$ für eine Funktion $f: D \backslash \{x_0\} \rightarrow \mathbb{R}$ schreiben wir: $\lim\limits_{x \rightarrow x_0} f(x) = c \in \mathbb{R}$, falls gilt: \newline 
+	$\forall \varepsilon > 0 \exists \delta > 0 \forall x \in D \backslash \{x_0\} : |x - x_0| < \delta \Rightarrow |f(x) - c| < \varepsilon$ \newline
+	Dies ist äquivalent zu: \newline
+	$\forall (x_n)_{n \in \mathbb{N}} \in D \backslash \{x_0\} : x_n \xrightarrow{n \rightarrow \infty} x_0 \Rightarrow f(x_n) \xrightarrow{n \rightarrow \infty} c$
 	
 	\subsection{Differenzeierbarkeit}
 	\label{def:Differenzierbar}
@@ -585,7 +591,7 @@
 	Tangente an (Graphen von) f in $x_0$ ist $x \rightarrow f(x_0) + f'(x_0)(x - x_0)$
 	
 	\Definition[Rechtsseitiger und Linksseitiger Limes]
-	Für $f: T \backslash \{x_0\} \rightarrow \mathbb{R}$ definieren wir den rechtsseitigen bzw linksseitigen Limes: 
+	Für $f: T \backslash \{x_0\} \rightarrow \mathbb{R}$ definieren wir den rechtsseitigen bzw linksseitigen \hyperref[def:Konvergenz]{Limes}: 
 	
 	$\lim\limits_{x \searrow x_0} f(x) = c$ falls: $\forall \varepsilon > 0 \exists \delta > 0 \forall x \in I \backslash \{x_0\}: x \ge x_0, |x - x_0| < \delta \Rightarrow |f(x) - c| < \varepsilon$
 	
@@ -596,10 +602,10 @@
 	
 	\Lemma
 	$f: I \rightarrow \mathbb{R}$ ist genau dann \hyperref[def:Differenzierbar]{Differenzierbar} in $x_0 \in I$, falls es eine Funktion $\Delta: I \rightarrow \mathbb{R}$ gibt mit
-	\begin{tasks}
-		\task $\Delta \text{ stetig in } x_0$
-		\task $f(x) = f(x_0) + (x - x_0) * \Delta(x)$ $\forall x \in I$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item $\Delta \text{ \hyperref[def:Stetig]{stetig} in } x_0$
+		\item $f(x) = f(x_0) + (x - x_0) * \Delta(x)$ $\forall x \in I$
+	\end{enumerate}
 	
 	\Satz[Differenzierbar $\Rightarrow$ stetig]
 	Es sei $f: I \rightarrow \mathbb{R}$ \hyperref[def:Differenzierbar]{Differenzierbar} in $x_0 \in I$, dann ist f \hyperref[def:Stetig]{stetig} in $x_0$
@@ -635,15 +641,15 @@
 	\subsection{Mittelwertsatz und die Existenz von Extrema}
 	$I \subset \mathbb{R}$ Intervall 
 	\begin{align*}
-	\rightsquigarrow & C^0(I) := \{f: I \rightarrow \mathbb{R} | f \text{ stetig}\} \\
-	& C^1(I) := \{f: I \rightarrow \mathbb{R} | f \text{ ist stetig Differenzierbar}\}
+	\rightsquigarrow & C^0(I) := \{f: I \rightarrow \mathbb{R} | f \text{ \hyperref[def:Stetig]{stetig}}\} \\
+	& C^1(I) := \{f: I \rightarrow \mathbb{R} | f \text{ ist \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{Differenzierbar}}\}
 	\end{align*}
 	Dabei heißt f \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{Differenzierbar}, falls f \hyperref[def:Differenzierbar]{Differenzierbar} und $f': I \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} ist. \newline
 	falls f' \hyperref[def:Differenzierbar]{Differenzierbar}, so heißt f 2-fach \hyperref[def:Differenzierbar]{Differenzierbar}. \newline
 	Wir schreiben $f^{(2)}(x) := f''(x) := (f')'(x)$ 2-te Ableitung. \newline
 	Analog: $f^{(k + 1)}(x) := (f^{(k)})'(x)$ falls diese Ableitung existiert. \newline
 	f heißt k-fach \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{Differenzierbar}, falls $f^{(k)}: I \rightarrow \mathbb{R}$ existiert und \hyperref[def:Stetig]{stetig} ist. \newline
-	$\rightsquigarrow C^k(I) := \{f: I \rightarrow \mathbb{R} | f \text{ k-fach stetig Differenzierbar}\}$
+	$\rightsquigarrow C^k(I) := \{f: I \rightarrow \mathbb{R} | f \text{ k-fach \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{Differenzierbar}}\}$
 	
 	\Definition[Lokales Maximum/Minimum]
 	Eine Funktion $f: I \rightarrow \mathbb{R}$ hat in $x_0 \in I$ ein lokales Minimum/Maximum, falls gilt: $\exists \varepsilon > 0 \forall x \in B_{\varepsilon}(x_0)\cap I: f(x) \le f(x_0)$ bzw $f(x) \ge f(x_0)$
@@ -652,110 +658,296 @@
 	$f: I \rightarrow \mathbb{R}$ habe in $x_0 \in \mathring{I}$ ein Extremum und sei in $x_0$ diff'bar. Dann gilt $f'(x_0) = 0$
 	
 	\Satz[Satz von Rolle]
-	Es sei $f: [a, b] \rightarrow \mathbb{R}$ stetig und auf (a, b) diff'bar. Es gilt f(a) = f(b). Dann existiert $x_0 \in (a, b)$ mit $f'(x_0) = 0$
+	Es sei $f: [a, b] \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} und auf (a, b) diff'bar. Es gilt f(a) = f(b). Dann existiert $x_0 \in (a, b)$ mit $f'(x_0) = 0$
 	
 	\Satz[Mittelwertsatz]
-	Es sei $f: [a, b] \rightarrow \mathbb{R}$ stetig und auf (a, b) diff'bar. Es gilt f(a) = f(b). Dann existiert $x_0 \in (a, b)$ mit $f'(x_0) = \frac{f(b) - f(a)}{b - a}$
+	Es sei $f: [a, b] \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} und auf (a, b) diff'bar. Es gilt f(a) = f(b). Dann existiert $x_0 \in (a, b)$ mit $f'(x_0) = \frac{f(b) - f(a)}{b - a}$
 	
 	\Korollar
 	Es sei $f: I \rightarrow \mathbb{R}$ diff'bar.
-	\begin{tasks}
-		\task Aus $m \le f'(x) \le M$ $\forall x \in I$ folgt: $\forall a, b \in I$ mit $a < b$ gilt: $m(b - a) \le f(b) - f(a) \le M(b - a)$ 
-		\task f' = 0 $\Rightarrow$ f Konstant
-		\task Aus $f'(x) > 0 \forall x \in I$ folgt, dass f streng monoton wachsend ist \newline
-		Analog für $f'(x) < 0$ streng monoton fallend
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item Aus $m \le f'(x) \le M$ $\forall x \in I$ folgt: $\forall a, b \in I$ mit $a < b$ gilt: $m(b - a) \le f(b) - f(a) \le M(b - a)$ 
+		\item f' = 0 $\Rightarrow$ f Konstant
+		\item Aus $f'(x) > 0 \forall x \in I$ folgt, dass f \hyperref[def:Monoton]{streng monoton wachsend} ist \newline
+		Analog für $f'(x) < 0$ \hyperref[def:Monoton]{streng monoton fallend}
+	\end{enumerate}
 
 	\Satz[Hinreichendes Kriterium für Extrema]
 	Es sei $f \in C^2(I)$ und $a \in I$ mit $f'(a) = 0$ und $f''(a) > 0 (\text{ bzw. < 0})$. Dann hat f in a ein lokales Minimum (bzw. Maximum)
 	
 	\Satz[Verallgemeinerter Mittelwert]
-	Es seien $f, g: [a, b] \rightarrow \mathbb{R}$ stetig und diff'bar auf (a, b). Es gilt $g(x) \ne 0 \forall x \in (a, b)$. Dann folgt: $g(a) \ne g(b)$ und $\exists x_0 \in (a, b)$ mit: $\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(x_0)}{g'(x_0)}$ \newline	
+	Es seien $f, g: [a, b] \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} und diff'bar auf (a, b). Es gilt $g(x) \ne 0 \forall x \in (a, b)$. Dann folgt: $g(a) \ne g(b)$ und $\exists x_0 \in (a, b)$ mit: $\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(x_0)}{g'(x_0)}$ \newline	
 	Beweis als Hausaufgabe, kam in VL 21 vor. 
 	
 	\Satz[Regel von l'Hospital]
-	Es seien $f, g: [a, b] \rightarrow \mathbb{R}$ stetig auf (a, b) diff'bar mit $g'(x) \ne 0 \forall x \in (a, b)$. Außerdem sei $f(b) = g(b) = 0$. Dann gilt $\lim\limits_{x \rightarrow b} \frac{f(x)}{g(x)} = \lim\limits_{x \rightarrow b} \frac{f'(x)}{g'(x)}$, falls dieser Limes existiert.
+	Es seien $f, g: [a, b] \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} auf (a, b) diff'bar mit $g'(x) \ne 0 \forall x \in (a, b)$. Außerdem sei $f(b) = g(b) = 0$. Dann gilt $\lim\limits_{x \rightarrow b} \frac{f(x)}{g(x)} = \lim\limits_{x \rightarrow b} \frac{f'(x)}{g'(x)}$, falls dieser \hyperref[def:Konvergenz]{Limes} existiert.
 	
 	Eigentlich gilt das auch für $f(b) = g(b) = \infty$
 	
 	\newpage
 	\section{Reihen}
 	\Definition[n-te Partialsumme und (Unendliche) Reihen]
-	Sei $(a_k)_{k \in \mathbb{N}}$ eine Folge in $\mathbb{C}$. Dann heißt $s_n = \sum\limits_{k = 1}^{n} a_k = a_1 + a_2 + ... + a_n$ die n-te Partialsumme. Die Folge $(s_n)_{n \in \mathbb{N}}$ heißt (unendliche) Reihe. Das Symbol $\sum\limits_{k = 1}^{\infty} a_k$ bedeutet. 
+	Sei $(a_k)_{k \in \mathbb{N}}$ eine Folge in $\mathbb{C}$. Dann heißt $s_n = \sum_{k = 1}^{n} a_k = a_1 + a_2 + ... + a_n$ die n-te Partialsumme. Die Folge $(s_n)_{n \in \mathbb{N}}$ heißt (unendliche) Reihe. Das Symbol $\sum_{k = 1}^{\infty} a_k$ bedeutet. 
 	\begin{enumerate}
-		\item $(\sum\limits_{k = 1}^{n} a_k)_{n \in \mathbb{N}}$ Folge der Partialsummen 
-		\item Falls die Folge der Partialsummen konvergiert, so bezeichnet $\sum\limits_{k = 1}^{\infty} a_k$ den Limes. Dann heißt die Reihe konvergent, sonst divergent
+		\item $(\sum_{k = 1}^{n} a_k)_{n \in \mathbb{N}}$ Folge der Partialsummen 
+		\item Falls die Folge der Partialsummen \hyperref[def:Konvergenz]{konvergiert}, so bezeichnet $\sum_{k = 1}^{\infty} a_k$ den \hyperref[def:Konvergenz]{Limes}. Dann heißt die Reihe \hyperref[def:Konvergenz]{konvergent}, sonst \hyperref[def:Konvergenz]{divergent}
 	\end{enumerate}
 	
 	\subsection{Konvergenzkriterien}
 	Rechenregeln (\hyperref[lem:RechenregelnFurGrenzwerte]{Lemma 3.2}): \newline
-	$\sum\limits_{k} a_k, \sum\limits_{k} b_k$ konvergent sind: \newline	
+	$\sum_{k} a_k, \sum_{k} b_k$ \hyperref[def:Konvergenz]{konvergent} sind: \newline	
 	\begin{tabular}{l l}
-		$\Rightarrow$ & $\sum\limits_{k = 0}^{\infty} (\lambda a_k) = \lambda \sum\limits_{k = 0}^{\infty} a_k, \lambda \in \mathbb{C}$ \\
-		& $\sum\limits_{k = 0}^{\infty} (a_k \pm b_k) = \sum\limits_{k = 0}^{\infty} a_k \pm \sum\limits_{k = 0}^{\infty} b_k$
+		$\Rightarrow$ & $\sum_{k = 0}^{\infty} (\lambda a_k) = \lambda \sum_{k = 0}^{\infty} a_k, \lambda \in \mathbb{C}$ \\
+		& $\sum_{k = 0}^{\infty} (a_k \pm b_k) = \sum_{k = 0}^{\infty} a_k \pm \sum_{k = 0}^{\infty} b_k$
 	\end{tabular}
 
-	Cauchy-Kriterium für Folgen (\hyperref[def:Cauchy]{Satz 3.5}) auf Folgen der Partialsumme angewendet: $\forall \varepsilon > 0 \exists n_0 \in \mathbb{N} \forall m, n \ge n_0: |\sum\limits_{k = m}^{n} a_k| < \varepsilon$ 
+	Cauchy-Kriterium für Folgen (\hyperref[def:Cauchy]{Satz 3.5}) auf Folgen der Partialsumme angewendet: $\forall \varepsilon > 0 \exists n_0 \in \mathbb{N} \forall m, n \ge n_0: |\sum_{k = m}^{n} a_k| < \varepsilon$ 
 	
 	\Korollar
-	Ist $\sum\limits_{k = 0}^{\infty} a_k a_k$ konvergiert, so ist $(a_k)_{k \in \mathbb{N}}$ eine Nullfolge.
+	Ist $\sum_{k = 0}^{\infty} a_k a_k$ \hyperref[def:Konvergenz]{konvergiert}, so ist $(a_k)_{k \in \mathbb{N}}$ eine Nullfolge.
 	
 	\Satz
-	Die Reihe $\sum\limits_{k = 1}^{\infty}$ mit $a_k \ge 0$ für alle bis auf endlich viele $k \in \mathbb{N}$ konvergiert genau dann, wenn die Reihe (= Folge von Partialsummen) beschränkt ist
+	Die Reihe $\sum_{k = 1}^{\infty}$ mit $a_k \ge 0$ für alle bis auf endlich viele $k \in \mathbb{N}$ \hyperref[def:Konvergenz]{konvergiert} genau dann, wenn die Reihe (= Folge von Partialsummen) \hyperref[lem:BeschrankteFolgen]{beschränkt} ist
 	
-	Heißt wenn die Reihe beschränkt ist (basically Konvergiert) und die Folgenelemente $a_k \ge 0$ sprich man nie etwas abzieht, dann konvergiert die Reihe auch. Wir wissen auch, dass damit die Reihe konvergieren kann, die Folge eine Nullfolge sein muss.
+	Heißt wenn die Reihe \hyperref[lem:BeschrankteFolgen]{beschränkt} ist (basically \hyperref[def:Konvergenz]{konvergiert}) und die Folgenelemente $a_k \ge 0$ sprich man nie etwas abzieht, dann \hyperref[def:Konvergenz]{konvergiert} die Reihe auch. Wir wissen auch, dass damit die Reihe konvergieren kann, die Folge eine Nullfolge sein muss.
 	
 	\Satz[Leibnitz-Kriterium]
-	Es sei $(a_n)$ eine monoton fallende Folge nichtnegativer Zahlen mit $\lim a_n = 0$ Dann ist $\sum\limits_{k = 0}^{\infty} (-1)^k a_k$ konvergent.
+	Es sei $(a_n)$ eine \hyperref[def:Monoton]{monoton fallende} Folge nichtnegativer Zahlen mit $\lim a_n = 0$ Dann ist $\sum_{k = 0}^{\infty} (-1)^k a_k$ \hyperref[def:Konvergenz]{konvergent}.
 	
 	\Definition[Absolut Konvergent]
-	Eine Reihe $\sum a_k$ heißt absolut konvergent, falls $\sum |a_k|$ konvergent ist. 
+	\label{def:AbsKonvergenz}
+	Eine Reihe $\sum a_k$ heißt absolut konvergent, falls $\sum |a_k|$ \hyperref[def:Konvergenz]{konvergent} ist. 
 	
 	\Satz[Majorantenkriterium]
-	Es sei $\sum b_k$ absolut konvergent und $\sum a_k$ eine Reihe mit $a_k \le b_k$ für fast alle $k \in \mathbb{N}$. Dann ist auch $\sum a_k$ absolut konvergent. Die Reihe $\sum b_k$ heißt Majorante.
+	Es sei $\sum b_k$ absolut \hyperref[def:Konvergenz]{konvergent} und $\sum a_k$ eine Reihe mit $a_k \le b_k$ für fast alle $k \in \mathbb{N}$. Dann ist auch $\sum a_k$ \hyperref[def:AbsKonvergenz]{absolut konvergent}. Die Reihe $\sum b_k$ heißt Majorante.
 	
 	\Satz[Quotientenkriterium]
 	Es sei $\sum a_k$ eine Reihe mit $a_k \ne 0$ für fast alle $k \in \mathbb{N}$. Dann gilt:
 	\begin{enumerate}
-		\item Falls $q \in (0, 1)$ mit $|\frac{a_{k + 1}}{a_k}| \le q$ für fast alle $k \in \mathbb{N}$ existiert, so konvergiert die Reihe absolut
-		\item Falls $|\frac{a_{k + 1}}{a_k}| \ge 1$ für fast alle $k \in \mathbb{N}$, so divergiert $\sum a_k$
+		\item Falls $q \in (0, 1)$ mit $|\frac{a_{k + 1}}{a_k}| \le q$ für fast alle $k \in \mathbb{N}$ existiert, so \hyperref[def:AbsKonvergenz]{konvergiert die Reihe absolut}
+		\item Falls $|\frac{a_{k + 1}}{a_k}| \ge 1$ für fast alle $k \in \mathbb{N}$, so \hyperref[def:Konvergenz]{divergiert} $\sum a_k$
 	\end{enumerate}
 	
 	\subsubsection{Umordnung und absolute Konvergenz}
 	Es sei $\sum a_k$ eine Reihe und $\tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ eine Bijektion. Dann heißt die Reihe $\sum\limits_{k} a_{\tau_{(k)}} "=" a_{\tau_{(1)}} + a_{\tau_{(2)}} + a_{\tau_{(3)}} + ...$ eine Umordnung der Reihe $\sum a_k$
 	
 	\Satz[Absolute Konvergenz bei Umordnung]
-	Es sei $\sum a_k$ absolut konvergent. Dann gilt $\sum\limits_{k} a_{\tau_{(k)}}$ ebenfalls als absolut konvergent mit:
+	Es sei $\sum a_k$ \hyperref[def:AbsKonvergenz]{absolut konvergent}. Dann gilt $\sum\limits_{k} a_{\tau_{(k)}}$ ebenfalls als \hyperref[def:AbsKonvergenz]{absolut konvergent} mit:
 	$\sum\limits_{k = 1}^{\infty} a_k = \sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}}$
 	
 	\Satz
-	Es sei $\sum a_k$ konvergent, aber nicht absolut konvergent
-	\begin{tasks}
-		\task $\forall c \in \mathbb{R} \exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ Bijektion mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}} = c$
-		\task $\exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ Bijektion mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}} = + \infty (oder - \infty)$ (divergiert bestimmt)
-		\task $\exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}}$ ist divergent (und nicht bestimmt divergent)
-	\end{tasks}
-
+	Es sei $\sum a_k$ \hyperref[def:Konvergenz]{konvergent}, aber nicht \hyperref[def:AbsKonvergenz]{absolut konvergent}
+	\begin{enumerate}[(a)]
+		\item $\forall c \in \mathbb{R} \exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ Bijektion mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}} = c$
+		\item $\exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ Bijektion mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}} = + \infty (oder - \infty)$ (\hyperref[def:BesDivergent]{divergiert bestimmt})
+		\item $\exists \tau: \mathbb{N} \xrightarrow{\cong} \mathbb{N}$ mit $\sum\limits_{k = 1}^{\infty} a_{\tau_{(k)}}$ ist \hyperref[def:Konvergenz]{divergent} (und nicht \hyperref[def:BesDivergent]{bestimmt divergent})
+	\end{enumerate}
+	
 	\subsection{Die Exponentialreihe}
 	\Definition[Exponentialreihe]
 	Für $z \in \mathbb{C}$ definieren wir $\exp(z) \equiv e^z := \sum\limits_{k = 0}^{\infty} \frac{z^k}{k!}$ die Exponentialreihe an der Stelle z.
 	
 	\Satz[Konvergenz der Exponentialreihe]
-	Die Exponentialreihe konvergiert absolut für alle $z \in \mathbb{C}$
+	Die Exponentialreihe \hyperref[def:AbsKonvergenz]{konvergiert absolut} für alle $z \in \mathbb{C}$
 	
 	\Satz[Restgliedabschätzung]
 	Es gilt für $\exp(z) =: \sum\limits_{k = 0}^N \frac{z^k}{k!} + R_{N + 1}(z)$ die Abschätzung: $|R_{N + 1} (z)| \le \frac{2 |z|^{N + 1}}{(N + 1)!}$ falls $|z| \le 1 + \frac{N}{2} (bzw. N \ge 2(|z| + 1))$
 	
 	\Satz[Cauchy-Produkt von Reihen]
-	Es seien $\sum a_k, \sum b_k$ absolut konvergent. Wir definieren die Reihe $\sum c_k$ durch: $c_k := a_0 b_k + a_1 b_{k - 1} + ... + a_k b_0 = \sum\limits_{l = 0}^k a_l * b_{k - l}$ Dann ist $\sum c_k$ absolut konvergent, und es gilt: $(\sum\limits_{k = 0}^{\infty} a_k) * (\sum\limits_{k = 0}^{\infty} b_k) = \sum\limits_{k = 0}^{\infty} c_k$ (Produkt von Limes [Limes ist der Plural von Limes, I GOOGLED IT AND IT'S STUPID]) $\sum\limits_{k = 0}^{\infty} c_k = \sum\limits_{k = 0}^{\infty} (\sum\limits_{l = 0}^{k} a_l * b_{k - l})$
+	Es seien $\sum a_k, \sum b_k$ \hyperref[def:AbsKonvergenz]{absolut konvergent}. Wir definieren die Reihe $\sum c_k$ durch: $c_k := a_0 b_k + a_1 b_{k - 1} + ... + a_k b_0 = \sum\limits_{l = 0}^k a_l * b_{k - l}$ Dann ist $\sum c_k$ \hyperref[def:AbsKonvergenz]{absolut konvergent}, und es gilt: $(\sum\limits_{k = 0}^{\infty} a_k) * (\sum\limits_{k = 0}^{\infty} b_k) = \sum\limits_{k = 0}^{\infty} c_k$ (Produkt von \hyperref[def:Konvergenz]{Limes} [Limes ist der Plural von Limes, I GOOGLED IT AND IT'S STUPID]) $\sum\limits_{k = 0}^{\infty} c_k = \sum\limits_{k = 0}^{\infty} (\sum\limits_{l = 0}^{k} a_l * b_{k - l})$
 	
 	\Satz[Funktionalgleichung für exp]
 	$\forall z, w \in \mathbb{C}$ gilt: $\exp(z + w) = \exp(z) * \exp(w) \Leftrightarrow e^{z + w} = e^z * e^w$
 	
 	\Korollar
-	\begin{tasks}
-		\task $\exp(z) \ne 0 \forall z \in \mathbb{C}$ mit $\exp(-z) = \frac{1}{\exp(z)}; e^{-z} = \frac{1}{e^z}$
-		\task $x \in \mathbb{R} \Rightarrow e^x \in \mathbb{R}_+ = (0, \infty)$
-		\task $\forall n \in \mathbb{N}_0: e^n = \exp(n)$
-	\end{tasks}
+	\begin{enumerate}[(a)]
+		\item $\exp(z) \ne 0 \forall z \in \mathbb{C}$ mit $\exp(-z) = \frac{1}{\exp(z)}; e^{-z} = \frac{1}{e^z}$
+		\item $x \in \mathbb{R} \Rightarrow e^x \in \mathbb{R}_+ = (0, \infty)$
+		\item $\forall n \in \mathbb{N}_0: e^n = \exp(n)$
+	\end{enumerate}
+	
+	\Satz[exp Funktion im Komplexen]
+	$\exp(\overline{z}) = \overline{\exp(z)} \forall z \in \mathbb{C}$
+	
+	\Satz[Stetigkeit von exp]
+	$\exp: \mathbb{C} \rightarrow \mathbb{C}$ ist \hyperref[def:Stetig]{stetig} ($\mathbb{C} \rightarrow \mathbb{C}$ ebenso)
+	
+	\subsection{Trigometrische Funktion}
+	\Definition[Sinus und Kosinus]
+	Für $x \in \mathbb{R}$ setzen wir:\newline
+	$\cos x := \Re(e^{ix}) \in \mathbb{R}$ \newline
+	$\sin x := \Im(e^{ix}) \in \mathbb{R}$
+	
+	$\rightsquigarrow$ Euler Formel $e^{ix} = \cos x + i \sin x \forall x \in \mathbb{R}$
+	
+	\Satz
+	Es gilt für $x \in \mathbb{R}$
+	\begin{enumerate}[(a)]
+		\item $\cos x = \frac{1}{2} (e^{ix} + e^{-ix})$ \newline
+		$\sin x = \frac{1}{2i} (e^{ix} - e^{-ix})$
+		\item $\cos(-x) = cos(x)$ \newline
+		$\sin(-x) = -sin(x)$
+		\item $\cos^2(x) + \sin^2(x) = 1 [\cos^2(x) = (\cos(x))^2]$
+	\end{enumerate}
+	
+	\Satz
+	$\cos, \sin: \mathbb{R} \rightarrow \mathbb{R}$ sind \hyperref[def:Stetig]{stetig}
+	
+	\Satz[Additionstheorem]
+	\begin{tabular}{l l}
+		$\forall x, y \in \mathbb{R}$ & $\cos(x + y) = \cos x \cos y - \sin x \sin y$ \\
+		& $\sin(x + y) = \sin x \cos y + \cos x \sin y$
+	\end{tabular}
+	
+	\Satz
+	Für $x \in \mathbb{R}$ gilt: \newline
+	$\cos x = \sum_{k = 0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!} = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} \mp ...$ \newline
+	$\sin x = \sum_{k = 0}^{\infty} (-1)^k \frac{x^{2k + 1}}{(2k + 1)!} = 1 - \frac{x^2}{3!} + \frac{x^4}{5!} \mp ...$
+	
+	Diese Reihen konvergieren absolut
+	
+	\Satz[Restgliedabschätzung]
+	$\cos x = \sum_{k = 0}^{\infty} (-1)^k \frac{x^{2k}}{(2k)!} + r_{2n + 2}(x), n \ge 0$ \newline
+	$\sin x = \sum_{k = 0}^{\infty} (-1)^k \frac{x^{2k + 1}}{(2k + 1)!} + r_{2n + 3}(x), n \ge 0$
+	
+	\begin{tabular}{r l l}
+		Es gilt: & $|r_{2n + 2}(x)| \le \frac{|x|^{2n + 2}}{(2n + 2)!}$ & , falls $|x| \le 2n + 3$ \\ 
+		und & $|r_{2n + 3}(x)| \le \frac{|x|^{2n + 3}}{(2n + 3)!}$ & , falls $|x| \le 2n + 4$ 
+	\end{tabular}
+
+	\subsection*{Die Zahl $\pi$}
+	\addcontentsline{toc}{subsection}{Die Zahl $\pi$}
+	
+	\Satz
+	Die Funktion $\cos$ hat auf (0, 2) genau eine Nullstelle
+	
+	\Definition[$\pi$]
+	Es sei $\pi$ die eindeutig bestimmte reelle Zahl mit $\frac{\pi}{2} \in (0, 2)$ und $\cos(\frac{\pi}{2}) = 0$ 
+	
+	\Satz[Komplexer Einheitskreis mit e]
+	$e^{\frac{i\pi}{2}} = i$
+	$e^{i\frac{2\pi}{2}} = -i$
+	$e^{i\pi} = -1$
+	$e^{2\pi i} = 1$
+	
+	\Korollar
+	$\sin$ und $\cos$ sind $2\pi$-periodisch, d.h.:
+	
+	\begin{tabular}{l l}
+		$\sin(x + 2\pi)$ & $= \sin x$ \\
+		$\cos(x + 2\pi)$ & $= \cos x$
+	\end{tabular}
+	$\forall x \in \mathbb{R}$
+	
+	\subsection{Logarithmus und allgemeine Potenzen}
+	\Satz[Exponentialfunktion]
+	Die Exponentialfunktion $\exp$ bildet $\mathbb{R}$ bijektiv auf $\mathbb{R}_+$ ab, $\exp: \mathbb{R} \xrightarrow{\cong} \mathbb{R}_+, (0, \infty)$ und ist streng monoton steigend.
+	
+	\Definition[(natürlicher) Logarithmus]
+	Die Umkehrfunktion von exp heißt (natürlicher) Logarithmus mit $\log: \mathbb{R}_+ \xrightarrow{\cong} \mathbb{R}$
+	
+	\Korollar
+	Es gilt:
+	\begin{enumerate}[i)]
+		\item $\log$ ist streng monoton steigend und $\lim\limits_{x \searrow 0} \log x = -\infty$ und $\lim\limits_{x \rightarrow +\infty} \log x = +\infty$
+		\item $\log(1) = 0$
+		\item Funktionalgleichung $\log(x * y) = \log(x) + \log(y) \forall x, y \in \mathbb{R}_+$
+	\end{enumerate}
+
+	\Definition
+	Für $a > 0$ definieren wir: $a^x := \exp(x * \log(a)) = e^{x * \log(a)} \forall x \in \mathbb{R}$
+	
+	\Satz
+	\begin{enumerate}[a)]
+		\item $a^x: \mathbb{R} \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} 
+		\item $a^{x + y} = a^x * a^y \forall x, y \in \mathbb{R}$
+		\item $a^{\frac{p}{q}} = \sqrt[q]{a^p} \forall q \in \mathbb{N}, p \in \mathbb{Z}$
+		\item $(a^x)^y = a^{x * y} \forall x, y \in \mathbb{R}$
+		\item $a^{-x} = \frac{1}{a^x} \forall x \in \mathbb{R}$
+		\item $a^x * b^x = (a * b)^x \forall x \in \mathbb{R}, a, b > 0$
+	\end{enumerate}
+
+	Dessen Beweis wurde als Hausaufgabe aufgegeben, VL 25.
+	
+	\Satz
+	Für $k \in \mathbb{N}$ gilt: $\lim\limits_{x \rightarrow \infty} \frac{e^x}{x^k} = +\infty$ 
+	
+	\subsection{Ableitungen}
+	\Satz[exp ist Differenzierbar]
+	Die Exponentialfunktion $\exp: \mathbb{R} \rightarrow \mathbb{R}_+$ ist \hyperref[def:Differenzierbar]{differenzierbar} mit $\exp'(x) = \exp(x) \forall x \in \mathbb{R}$
+	
+	\Satz[sin und cos sind Differenzierbar]
+	$\sin, \cos: \mathbb{R} \rightarrow \mathbb{R}$ sind \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{differenzierbar} mit: $\sin'(x) = \cos(x)$ und $\cos'(x) = -\sin(x)$
+	
+	\Satz[log ist Differenzierbar]
+	Der Logarithmus $\log: \mathring{R}_+ \rightarrow \mathbb{R}$ ist \hyperref[def:Differenzierbar]{differenzierbar} mit $\log'(x) = \frac{1}{x}$
+	
+	\Korollar
+	$\lim\limits_{n \rightarrow \infty} (1 + \frac{1}{n})^n = e$
+	
+	\newpage
+	\section{Integralrechnung}
+	\subsection{Riemann Integral}
+	Es sei $f: [a, b] \rightarrow \mathbb{R}$ im folgenden eine beschränkte Funktion. D.h. $\exists m, M \in \mathbb{R}$ mit $m \le f(x) \le M \forall x \in [a, b]$
+	
+	\subsubsection{Ziel}
+	(effektive) Fläche unter dem Graphen. Eine Zerlegung Z von $[a, b]$ ist ein Tupel $(x_0, ..., x_n)$ mit $x_0 = a < x_1 < ... < x_n = b$ Die Riemann Ober-/Untersumme ist: \newline
+	$U(Z, f) := \sum_{i = 1}^{n}(x_i - x_{i - 1}) * \inf(f|_{x_{i - 1}, x_i})$  \newline
+	$O(Z, f) := \sum_{i = 1}^{n}(x_i - x_{i - 1}) * \sup(f|_{x_{i - 1}, x_i})$
+	
+	\Definition[Riemann Integrierbar]
+	\label{def:Intbar}
+	Falls $\sup U(Z, f) = \inf O(Z, f)$ so heißt, f Riemann Integrierbar: $\int\limits_{a}^{b} f(x) dx := \sup U(Z, f) = \inf O(Z, f)$
+	
+	\Satz[Eigenschaften Integrierbarer Funktionen]
+	Es seien $f, g: [a, b] \rightarrow \mathbb{R}$ \hyperref[def:Intbar]{integrierbar}. Dann gilt:
+	\begin{enumerate}[a)]
+		\item $\int\limits_a^b \lambda f(x) dx = \lambda \int\limits_a^b f(x) dx \forall \lambda \in \mathbb{R}$
+		\item $\int\limits_a^b (f + g)(x) dx = \int\limits_a^b f(x) dx +\int\limits_a^b g(x) dx$
+		\item Für $a \le c \le b$ gilt: $\int\limits_a^b f(x) dx = \int\limits_a^c f(x) dx + \int\limits_c^b f(x) dx$
+		\item $|\int\limits_a^b f(x) dx| \le \int\limits_a^b |f(x)| dx$
+		\item $f \le g \Rightarrow \int\limits_a^b f(x) dx \le \int\limits_a^b g(x) dx$
+	\end{enumerate}
+
+	\Definition
+	$\int\limits_b^a f(x) dx = - \int\limits_a^b f(x) dx$
+	
+	\subsection{Gleichmäßige Stetigkeit und Existenz des Integrals}
+	\label{def:GlStetig}
+	\Definition[Gleichmäßig Stetig]
+	Eine Funktion $f: D \rightarrow \mathbb{R}, D \subset \mathbb{R}^n$, heißt gleichmäßig Stetig, falls gilt: $\forall \epsilon > 0 \exists \delta > 0 \forall x, y \in D: |x - y| < \delta \Rightarrow |f(x) - f(y)| < \epsilon$
+	
+	\Satz[Gleichmäßig Stetig]
+	Es sei $K \subset \mathbb{R}^n$ \hyperref[def:Kompakt]{kompakt} und $f: K \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig}. Dann ist f \hyperref[def:GlStetig]{gleichmäßig stetig}.
+	
+	\hyperref[def:Stetig]{Stetige} Funktionen auf \hyperref[def:Kompakt]{Kompaktem Intervall} sind \hyperref[def:GlStetig]{gleichmäßig stetig}.
+	
+	\Satz
+	Jede \hyperref[def:Stetig]{stetige} Funktion $f: [a, b] \rightarrow \mathbb{R}$ ist Riemann \hyperref[def:Intbar]{integrierbar}
+	
+	\subsection{Hauptsatz der Differenzial und Integralrechnung}
+	\Satz[Hauptsatz]
+	Sei $I \subset \mathbb{R}$ ein Intervall und $a \in I$:
+	\begin{enumerate}[a)]
+		\item Sei $f \in C^0(I)$. Dann gilt für $F(x) := \int\limits_{a}^{x}f(t) dt$ \newline
+		$F \in C^1(I)$ mit $F'(x) = f(x)$
+		\item Es gilt für alle $F \in C^1(I): F(x) = F(a) + \int\limits_{a}^x F'(t) dt, x \in I$
+	\end{enumerate}
+	
+	\Definition[Stammfunktion]
+	Eine Funktion $I \rightarrow \mathbb{R}$ heißt Stammfunktion von $f: I \rightarrow \mathbb{R}$, falls gilt: F \hyperref[def:Differenzierbar]{differenzierbar} mit $F'(x) = f(x) \forall x \in I$
+	
+	\subsection{Integrationstechniken}
+	\Satz[Partielle Integration]
+	Es seien $f, g: [a, b] \rightarrow \mathbb{R}$ \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{differenzierbar}. Es gilt: \newline
+	$\int\limits_a^b f * g' dx = \left.f * g\right\vert_a^b - \int\limits_a^b f' * g dx$ wobei $\left.h\right\vert_a^b := [h]_a^b := h(b) - h(a)$ für eine beliebige Funktion $h: [a, b] \rightarrow \mathbb{R}$	
+	
+	\Satz[Substitutionsregel]
+	Es sei $f: I \rightarrow \mathbb{R}, I \subset \mathbb{R}$ Intervall, \hyperref[def:Stetig]{stetig} und $g: [a, b] \rightarrow I$ \hyperref[def:Stetig]{stetig} \hyperref[def:Differenzierbar]{differenzierbar}. Dann gilt: $\int\limits_{g(a)}^{g(b)} f(y) dy = \int\limits_a^b f(g(x)) * g'(x) dx$
+	
+	\subsection{Uneigentliche Integrale}
+	\Definition
+	Sei $I := [a, b)$ mit $b \in \mathbb{R} \cup \{+\infty\}, a \in \mathbb{R}$ Dann heißt $f: I \rightarrow \mathbb{R}$ \hyperref[def:Intbar]{integrierbar} auf I, falls f auf jedem \hyperref[def:Kompakt]{kompakten Intervall} von I \hyperref[def:Intbar]{integrierbar} ist und: $\lim\limits_{s \nearrow b} \int\limits_a^s f(t) dt$ als Limes in $\mathbb{R}$ existiert. Diesen Limes bezeichnen wir mit $\int\limits_a^b f(t) dt$ \newline
+	Analog für \hyperref[def:Intbar]{integrierbar} auf $(a, b], a \in \mathbb{R} \cup \{-\infty\}, b \in \mathbb{R}$. \newline
+	Im Fall $(a, b), a \in \mathbb{R} \cup \{-\infty\}, b \in \mathbb{R} \cup \{+\infty\}$ wähle $c \in (a, b)$ und betrachte $\int\limits_a^c f(t) dt$ und $\int\limits_c^b f(t) dt$ einzeln.
 \end{document}
