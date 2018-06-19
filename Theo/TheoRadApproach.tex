@@ -1,0 +1,60 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{lmodern}
+\usepackage{datetime}
+
+\usepackage{amsmath} % this package is one option for math lines
+\usepackage{enumerate}
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\usepackage{amssymb} % package for Natural Number sign etc
+\usepackage{wasysym}
+\hypersetup{linktoc=all}
+
+\begin{document}
+	\tableofcontents
+	
+	\newpage
+	\section{Alphabete, Wörter, Sprachen}
+	Wörter sind endliche Zusammensetzungen aus Elementen einer Menge, auch Buchstaben genannt. Da es eine abzählbar unendliche Menge an Zusammensetzungen gibt, kann man Wörter auch durch Zahlen ersetzen. 
+	
+	Ein Wort kann aufgelistet werden mit w = w(0)...w(n - 1) wobei w(i) der (i + 1)te Buchstabe ist
+	
+	Die Länge eines Wortes wird mit | $\cdot$ | bestimmt. Es gilt hierbei, dass das leere Wort $\lambda$ die Länge 0 hat, also |$\lambda$| = 0. Jedes Wort w hat die Länge |w| = |w(0)...w(n - 1)| = n
+	
+	Die Funktion $\#_a(w)$ gibt die Häufigkeit des Buchstabens a im Wort w an.
+	
+	Das Funktionszeichen $\circ$ beschreibt die Konkatenation von Wörtern. (v $\circ$ w = vw)
+	
+	Das Funktionszeichen $\upharpoonright x$ beschreibt die Beschränkung eines Wortes auf die ersten x Buchstaben
+	
+	Es gibt verschiedene arten die Zahlen zu Ordnen, eine davon ist die Lexikographische Ordnung, welche den Nachteil haben kann, dass manche Wörter unendlich viele Vorgänger haben können (Beispiel mit dem binären Alphabet $\Sigma_2$ mit \[\lambda <_{lex} 0 <_{lex} 00 <_{lex} 000 <_{lex} ... <_{lex} 1\])
+	
+	Eine Zweite Ordnung ist die Längen-lexikographische Ordnung mit der Definition \[v < w \Leftrightarrow |v| < |w| \text{ oder } [|v| = |w| \text{ und } v <_{lex} w]\]
+	
+	LOADS OF RANDOM PROBABLY NOT NEEDED STUFFS
+	
+	\section{Algorithmen}
+	
+	Typen von Algorithmen:
+	\begin{itemize}
+		\item Entscheidungsverfahren
+		\item Aufzählungsverfahren
+		\item Berechnungsverfahren
+	\end{itemize}
+	
+	Ein Entscheidungsverfahren ist ein Algorithmus zur Lösung eines Entscheidungsproblems L. Es erhält eine Eingabe und kann basierend auf bestimmten Parametern bestimmen, ob die Eingabe wahr ($x \in L$ auch E(X)) oder falsch ($x \notin L$ auch $\neg$E(X)) ist. 
+	
+	Sollte E(X) oder $\neg$E(X) gegeben sein oder einfach zu zeigen, gilt auch das Komplement ist entscheidbar.
+	
+	Ein Aufzählungsverfahren listet alle Elemente mit einer gewissen Eigenschaft (die man sich dann immer aussuchen kann). Das Verfahren nimmt keine Eingabe, gibt dann alle zutreffenden Elemente in beliebiger Reihenfolge wieder.
+	
+	Ein Berechnungsverfahren nimmt eine Eingabe und führt vorgegebene Operationen durch und gibt das Resultat zurück.
+	
+	\subsection{Anforderungen an Algorithmen}
+	
+	
+\end{document}
