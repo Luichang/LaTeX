@@ -1,0 +1,429 @@
+\documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+
+\usepackage[a4paper, bindingoffset=0.5cm, left=0.25cm, right=1cm, top=4cm, bottom=3cm, footskip=0.5cm]{geometry}
+\usepackage{setspace}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel} % german spell check
+%\usepackage{lmodern}
+\usepackage{datetime}
+
+\usepackage{amsmath} % this package is one option for math lines
+\usepackage{enumerate}
+\usepackage{enumitem}
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\usepackage{amssymb} % package for Natural Number sign etc
+\usepackage{wasysym}
+\hypersetup{linktoc=all}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{tikz-er2}
+\usetikzlibrary{automata, positioning}
+\tikzstyle{bplus}=[rectangle split, rectangle split horizontal,rectangle split ignore empty parts, rectangle split parts=5,draw]
+
+\tikzstyle{every node}=[bplus]
+\tikzstyle{level 1}=[sibling distance=45mm]
+\tikzstyle{level 2}=[sibling distance=20mm]
+
+\tikzstyle{every edge} = [link]
+
+\begin{document}
+
+\section{musikDB}
+\begin{tabular}{| l | l || l | l |}
+	\hline
+	\multicolumn{4}{| c |}{AREA\_TYPE} \\ \hline
+	\underline{id} & name & \underline{id} & name \\ \hline 
+	1 & Country & 5 & District \\ 
+	2 & Subdivision & 6 & Island \\
+	3 & City & 7 & County  \\
+	4 & Municipality & & \\ \hline
+\end{tabular}
+\begin{tabular}{| l | l | l |}
+	\hline
+	\multicolumn{3}{| c |}{AREA} \\ \hline
+	\underline{id} & name & type \\ \hline 
+	432 & England & 1 \\
+	1178 & London & 3 \\
+	81 & Germany & 1 \\
+	334 & Nordrhein-Westfahlen & 2 \\
+	7709 & Düsseldorf & 3 \\ \hline
+\end{tabular}
+\begin{tabular}{| l | l | l |}
+	\hline
+	\multicolumn{3}{| c |}{AREA\_IN} \\ \hline
+	& Contains & Within other \\ \hline 
+	\underline{id} & entity0 & entity1 \\ \hline 
+	964 & 432 & 1178 \\
+	3587 & 432 & 3821 \\
+	71 & 81 & 334 \\
+	7475 & 334 & 7709 \\ \hline
+\end{tabular}
+\newline
+\begin{tabular}{| l | l | l | l |}
+	\hline
+	\multicolumn{4}{| c |}{PLACE} \\ \hline
+	\underline{id} & name & type & area \\ \hline 
+	2418 & The Crystal Palace & 3 & 1178 \\
+	2387 & BBC Radio Theatre & 1 & 1178 \\
+	789 & ESPRIT area & 4 & 7709 \\ \hline
+\end{tabular}
+\newline
+\begin{tabular}{| l | l | l | l | c | c |}
+	\hline
+	\multicolumn{6}{| c |}{ARTIST\_ARTIST} \\ \hline
+	& Relationship & Person & Band &  & \\ \hline 
+	\underline{id} & r\_type & entity0 & entity1 & begin\_year & end\_year \\ \hline 
+	32164 & member of band & 285850 & 1352 & 1974 & 1980 \\
+	164036 & member of band & 290121 & 1352 & 1973 & \\
+	54623 & sibling & 290121 & 316942 & & \\ \hline
+\end{tabular}
+\begin{minipage}{4.5cm}
+	\noindent\fbox{\parbox{4cm}{
+			\underline{r\_type possibilities}
+			\begin{itemize}[noitemsep]
+				\item is person
+				\item sibling
+				\item married 
+				\item member of band
+				\item parent 
+				\item founder
+			\end{itemize}
+	}}
+\end{minipage}
+\newline
+\begin{tabular}{| l | l | c | c | c | c | c | l | l | l |}
+	\hline
+	\multicolumn{10}{| c |}{ARTIST} \\ \hline
+	&  & birth &  &  & death &  &  &  & \\ \hline
+	\underline{id} & name & b\_year & b\_month & b\_day & e\_year & type & area & gender & b\_area \\ \hline 
+	938 & Eric Clapton & 1945 & 3 & 30 &  & p & 221 & m & 53564 \\
+	1352 & AC/DC & 1973 & 11 & & & g & 13 & & 5126 \\
+	290121 & Angus Young & 1955 & 3 & 31 & & p & 80658 & m & 3855 \\
+	341872 & Doro Pesch & 1964 & 6 & 3 & & p & 81 & f & 7709 \\
+	285850 & Bon Scott & 1946 & 7 & 9 & 1980 & p & 221 & m & 80661 \\ \hline
+\end{tabular}
+\newline
+\begin{tabular}{| l | l | l | l | c | c | c |}
+	\hline
+	\multicolumn{7}{| c |}{RELEASE} \\ \hline
+	\underline{release\_id} & name & artist\_credit & country & date\_year & date\_month & date\_day \\ \hline 
+	1610822 & Back in Black & 1352 & 81 & 1986 & & \\
+	1085503 & Back in Black & 1352 & 13 & 1989 & & \\
+	1386549 & Atemlos durch die Nacht & 397683 & 81 & 2013 & 11 & 29 \\ \hline
+\end{tabular}
+\newline
+\begin{tabular}{| l | l | l | l | l | l |}
+	\hline
+	\multicolumn{6}{| c |}{TRACK} \\ \hline
+	\underline{id} & release\_id & name & position & lenght & artist\_credit \\ \hline 
+	14242945 & 1085503 & Hells Bells & 1 & 312000 & 1352 \\
+	18709752 & 1610822 & Hells Bells & 1 & 311866 & 1352 \\
+	18709759 & 1610822 & Have a Drink on Me & 8 & 238400 & 1352 \\
+	20084778 & 1722097 & I Lost My Heart in Heidelberg & 18 & 198040 & 35001 \\ \hline
+\end{tabular}
+
+
+\newpage
+\section{SQL}
+
+\noindent\fbox{\parbox{0.8\textwidth}{
+	\underline{EXISTS}
+	
+\begin{minipage}{0.6\textwidth}
+	\begin{tabular}{l}
+		SELECT artist.name FROM artist \\
+		WHERE EXISTS (SELECT track.name FROM track \\
+		WHERE track.artist\_credit = artist.id \\
+		AND track.lenght BETWEEN 7200000 AND 14400000 \\
+		AND artist.type = 'g')
+	\end{tabular}
+\end{minipage}
+\begin{minipage}{0.07\textwidth}
+	\begin{tabular}{|l|l|}
+		\hline
+		& name \\ \hline
+		1 & Exodus \\ \hline 
+	\end{tabular}
+\end{minipage}}}
+
+\noindent\fbox{\parbox{0.8\textwidth}{
+		\underline{String Functions}
+		Im Umgang mit Wörtern ist es am sinnvollsten wenn man \textbf{LIKE} statt = verwendet, da wenn man so was wie '\%a\%' haben möchte sucht = nach genau dieser Zeichenfolge und LIKE nach einem a mit sämtlichen Zeichen vor und nach einem a. \\
+		\textbf{UPPER} und \textbf{LOWER} sollten selbsterklärend sein \\
+		Die Zeichen \% und \_ sind jeweils 'Wildcards' sprich da kann jeder Buchstabe hin. \% ist für 0 bis $\infty$ Charaktere und \_ für genau ein Charakter
+}}
+
+\noindent\fbox{\parbox{0.9\textwidth}{
+		\underline{HAVING + ORDER BY + GROUP BY}
+		
+		\begin{minipage}{0.6\textwidth}
+			\begin{tabular}{l}
+				SELECT area.name, COUNT(artist.name) FROM artist, area \\
+				WHERE artist.b\_area = area.id \\
+				GROUP BY area.name \\
+				HAVING COUNT(artist.name) > 1000 \\
+				ORDER BY area.name ASC
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}{0.07\textwidth}
+			$\left.
+			\begin{tabular}{|l|l|c|}
+				\hline
+				& \multicolumn{2}{|r|}{$\downarrow$ GROUP BY}  \\ \hline
+				& name & count \\ \hline 
+				1 & London & 2094 \\ \hline 
+				2 & Los Angeles & 1319 \\ \hline 
+				3 & New York & 1403 \\ \hline 
+				4 & Tokyo & 1157 \\ \hline 
+			\end{tabular}
+			\right\Downarrow\rotatebox[origin=c]{90}{ORDER BY ASC}$
+		\end{minipage}}
+	}
+
+\noindent\fbox{\parbox{0.9\textwidth}{
+		\underline{WITH AS + LIMIT}
+		
+		\begin{minipage}{0.5\textwidth}
+			\begin{tabular}{l}
+				WITH tmp AS ( \\
+				SELECT artist.name as artist, r.name as album \\
+				FROM artist, release as r \\
+				WHERE r.artist\_credit = artist.id ) \\
+				SELECT * FROM tmp \\
+				LIMIT 1 \\
+			\end{tabular}
+		\end{minipage}
+		\begin{minipage}{0.07\textwidth}
+			\begin{tabular}{|l|l|l|l|}
+				\hline
+				& artist & album \\ \hline 
+				1 & Damn Seagulls & Soul Politics \\ \hline 
+			\end{tabular}
+\end{minipage}}}
+
+\subsection{DDL/DML}
+create Table Unikurs( \\
+KursID int, \\
+Name varchar(30) not null, \\
+AnzahlStudis int check (AnzahlStudis >=5), \\
+primary key(KursID) \\
+foreign key(Name) references Vorlesung(Name)\\
+);
+
+insert into unikurs \\
+values(0, 'LA1', 777)
+
+insert into unikurs (KursID, Name) \\
+values(1, 'Ana1')
+
+\section{ER-Schema}
+
+\begin{tikzpicture}[node distance=3cm]
+\node[entity] (sp) {Spieler};
+\node[attribute] (name) [above of=sp] {Name} edge (sp);
+\node[attribute] (id) [above right of=sp] {\underline{id}} edge (sp);
+
+\node[relationship] (in) [right=3cm of sp] {spielt in} edge node {[11, 11]} (sp);
+
+\node[entity](mn) [right=3cm of in] {Mannschaft} edge node {[1, 1]} (in);
+\end{tikzpicture}
+
+
+\section{Relationale Algebra}
+\underline{Umbenennung $\beta$}
+
+Ganze Tabelle: $\beta_b$(Band). Einzelne Spalte: $\beta_{ph \leftarrow Photo}$(R)\\
+\underline{Gruppierung}
+
+$\gamma_{A, sum(a)}$(R) Gruppiert nach A mit der Summe über a (oder andere Aggregat Funktionen)\\
+\underline{min/max}
+
+min: $\varPi_a$(R) - ($\beta_{a \leftarrow a2}(\varPi_{a2}(\sigma_{a1 < a2}(\beta_{a1 \leftarrow a}(R) \times \beta_{a2 \leftarrow a}(R))))$) $\Leftrightarrow \gamma_{A, min(a)}$(R) - Man selektiert alle Elemente die noch ein kleineres Element haben und zieht dann alle anderen ab
+
+max: $\varPi_a$(R) - ($\beta_{a \leftarrow a1}(\varPi_{a2}(\sigma_{a1 < a2}(\beta_{a1 \leftarrow a}(R) \times \beta_{a2 \leftarrow a}(R))))$) $\Leftrightarrow \gamma_{A, max(a)}$(R) - Man selektiert alle Elemente die noch ein größeres Element haben und zieht dann alle anderen ab
+
+\underline{Von SQL zu Relationale Algebra}
+
+SELECT DISTINCT artist.name, \\
+artist.b\_year \\
+FROM area, release, artist \\
+WHERE artist.type = 'g' \\ 
+AND area.name = artist.name \\
+AND area.type = 1; \\
+$\varPi_{artist.name, artist.b\_year}(\sigma_{artist.type=’g’ \land area.name=artist.name \land area.type=1 \land artist.id=release.artist_credit \land release.date_year>=2010})$
+
+$(AREA \times RELEASE \times ARTIST))$
+
+\underline{Operator Baum}
+
+\begin{tikzpicture}
+	\node {$\varPi_{artist.name, artist.b\_year}$}
+	child {node [text width=6cm]{$\sigma_{artist.type=’g’ \land area.name=artist.name \land}$ ${}_{area.type=1 \land artist.id=release.artist\_credit \land}$ $ {}_{release.date\_year>=2010}$}
+	child {node {$\times$}
+	child {node {$\times$}
+	child {node {Area}}
+	child {node {Release}}}
+	child {node {Artist}}}};
+\end{tikzpicture}
+\begin{tikzpicture}%[node distance=1cm]
+	\node {$\varPi_{artist.name, artist.b\_year}$}
+	child {node {$\sigma_{artist.type=’g’}$}
+	child {node {$\sigma_{area.name=artist.name}$}
+	child {node {$\sigma_{area.type=1}$}
+	child {node {$\sigma_{artist.id=release.artist\_credit}$}
+	child {node {$\sigma_{release.date\_year>=2010}$}
+	child {node {$\times$}
+	child {node {$\times$}
+	child {node {Area}}
+	child {node {Release}}}
+	child {node {Artist}}}}}}}};
+\end{tikzpicture}
+\begin{tikzpicture}[level 2/.style={sibling distance=3cm}]
+\node {$\varPi_{artist.name, artist.b\_year}$}
+child {node {$\sigma_{artist.type=’g’}$}
+	child {node {$\sigma_{area.type=1}$}
+		child {node {$\sigma_{release.date\_year>=2010}$}
+			child {node {$\bowtie_{artist.id=release.artist\_credit}$}
+				child {node {$\bowtie_{area.name=artist.name}$}
+					child {node {Area}}
+					child {node {Release}}}
+				child {node {Artist}}}}}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[level 2/.style={sibling distance=4.4cm},level 3/.style={sibling distance=3cm}]
+\node {$\varPi_{artist.name, artist.b\_year}$}
+	child {node {$\bowtie_{artist.id=release.artist\_credit}$}
+		child {node {$\bowtie_{area.name=artist.name}$}
+			child {node {$\sigma_{area.type=1}$}
+			child {node {Area}}}
+			child {node {$\sigma_{artist.type=’g’}$}
+				child {node {Artist}}}}
+	child {node {$\sigma_{release.date\_year>=2010}$}
+		child {node {Release}}}};
+\end{tikzpicture}
+\begin{tikzpicture}[level 2/.style={sibling distance=5cm},level 3/.style={sibling distance=3cm}]
+\node {$\varPi_{artist.name, artist.b\_year}$}
+child {node {$\bowtie_{artist.id=release.artist\_credit}$}
+	child {node {$\bowtie_{area.name=artist.name}$}
+		child {node {$\varPi_{name}$}
+			child {node {$\sigma_{area.type=1}$}
+				child {node {Area}}}}
+		child {node {$\varPi_{name, b\_year, id}$}
+			child {node {$\sigma_{artist.type=’g’}$}
+				child {node {Artist}}}}}
+	child {node {$\varPi_{artist\_credit}$}
+		child {node {$\sigma_{release.date\_year>=2010}$}
+			child {node {Release}}}}};
+\end{tikzpicture}
+
+\section{Tupelkalküle}
+Name und Wohnort aller Mitarbeiter, welche in der Forschung arbeiten \\
+\{<m.name, m.wohnort> | m $\in$ Mitarbeiter $\land \exists a \in$ Abteilung (a.abtname = 'Forschung' $\land$ a.nr = m.abtnr)\}
+
+\section{Formeln}
+\subsection{Selectivität}
+Erwartete größe der resultierenden Tabelle: \\
+sel(P, R) = $\frac{|\sigma_P(R)|}{|R|}$, sel(B $\bowtie$ C) = $\frac{|B \bowtie C|}{|B| * |C|}$, sel = $\frac{\text{Output - Relation}}{\text{Input - Relation}}$
+
+Erwartete größe der Suche: \\
+sel(A = v, R) = $\frac{1}{val_{A, r}}$, sel(A < v, R) = $\frac{v - A_{min}}{A_{max} - A_{min}}$, sel(A > v, R) = $\frac{A_{max} - v}{A_{max} - A_{min}}$
+
+Projektion ohne Duplikateliminierung: |r| = |$\varPi$(r)| $\Rightarrow$ sel = 1\\
+Mit Duplikateliminierung: |$\varPi_k$(r)| = $val_{k, r}$\\
+Spezialfälle sind: Keine gemeinsamen Werte |r $\bowtie$ s| = 0, Fremdschlüsselbeziehung (r $\rightarrow$ s): |r $\bowtie$ s| = |r|, Im Verbundsattribut ist nur ein verschiedenes Element: |r $\bowtie$ s| = |r * s|, sonst |r $\bowtie$ s| = $\frac{|r| * |s|}{\max\{val_{B, r}, val_{B, s}\}}$
+
+\subsection{B+Bäume}
+d := Daten, k := (Einordnungs-)Attribut, s := Seite (=Knoten), z := Zeiger, n := Anzahl Datensätze, x := Zellen inneres Knoten, y := Zellen Blattknotens\\ \\
+\underline{Ordnung des Blattknoten i}
+
+i = $\lfloor\frac{s - 2z}{2(d + k)}\rfloor$\\ \\
+\underline{Ordnung des Innerknotens j}
+
+j = $\lfloor\frac{s - z}{2(d + k)}\rfloor$ \\ \\ 
+\underline{Höhe}
+
+$1 + \lceil \log_{2x + 1}(\frac{n}{2y}) \rceil \le n \le 1 + \lceil \log_{2x + 1}(\frac{n}{y}) \rceil$
+
+\section{Anfrage Optimierung}
+\underline{Variablen}
+
+\begin{tabular}{r l}
+	$b_{size}$ & Blockgröße \\
+	mem & Puffergröße (in Anzahl Blöcken) \\
+	|r| & Anzahl Tupel in Relation r \\
+	$b_r$ & Anzahl Blöcke für Tupel aus r \\
+	$size_r$ & Mittlerer Tupel-Größe \\
+	$f_r$ & Blockungsfaktor $\frac{b_{size}}{size_r}$ - Wie viele Relationen in einen Block passen \\
+	$val_{A, r}$ & Anzahl verschiedener Werte für A in r \\
+	$lev_{I(R(A))}$ & Anzahl Indexebenen im $B^+$Baum für Index auf R(A)
+\end{tabular}
+
+\underline{Externes Sortieren}
+
+Anzahl Mischläufe: $\lceil \log_{mem - 1}(\frac{b_r}{mem}) \rceil$
+
+Blockzugriff pro Mischlauf: $(L + S) * b_r * (1 + \lceil \log_{mem - 1}(\frac{b_r}{mem}) \rceil)$
+
+Bottleneck bei Anfragebearbeitung sind immer Blockzugriffe. Operationen im Hauptspeicher werden vernachlässigt.
+
+\underline{Scans}
+
+Scans durchlaufen alle Tupel/Sucht nach einem bestimmten Tupel mit den entsprechenden Bedingungen
+
+Kosten eines Relationsscans: $b_r$
+
+Kosten eines Indexscans: $lev_{I(R(A))} + \frac{|r|}{val_{A, r}}$
+
+\underline{Join-Methods}
+
+Block-Nested-Loop-Join: liest so viele Blöcke von r ein, dass der
+Buffer fast voll ist (mem-1). In dem letzten Buffer Slot wird Sequenziell jeder Block von S eingelesen. Dies wird mit r gejoined in den Hauptspeicher wieder gehashed. Kosten sind \[b_r + \lceil\frac{b_r}{mem-1}\rceil * b_s\]
+
+Merge-Join: Zunächst werden beide Tabellen nach Join-Attribut sortiert. Dann werden beide linear durchlaufen und gemerged. Kosten sind \[[sortieren] + b_r + b_s \text{ wobei das Sortieren abgeschätzt werden kann mit } b_x \log_{mem}b_x\]
+
+Classic-Hash-Join: Die ganze Relation r wird durchgegangen und ein block nach dem anderen gehashed. Nach jedem hash schritt wird überprüft, ob ein block aus s zusammen gesetzt werden kann, mit der selben hash Funktion. Kosten: \[b_r + p * b_s \text{ mit } p = \lceil\frac{b_r}{mem-1}\rceil\]
+
+\section{Codd'schen Regeln}
+\begin{enumerate}
+	\item Integration: Einheitliche nicht redundante Datenverwaltung
+	\item Operationen: Speicher, Suchen, Ändern
+	\item Katalog: Zugriff auf Datenbankbeschreibung im Data Dictionary
+	\item Benutzerschichten
+	\item Integritätssicherung: Korrektur des Datenbankinhaltes
+	\item Datenschutz: Ausschluss unautorisierter Zugriffe
+	\item Synchronisation: Parallele Transaktionen Koordinierung 
+	\item Datensicherung: Wiederherstellung von Daten nach Systemfehlern
+\end{enumerate}
+
+\section{B+ Bäume} 
+Eingabe = Dallas, Miami, Memphis, Atlanta, Phoenix, Portland, Detroit, Austin, Columbus, Houston, Chicago, Philadelphia \\
+m = 1
+\begin{center}
+	\begin{tikzpicture}[level 1/.style={sibling distance=5cm}, level 2/.style={sibling distance=4cm},level 3/.style={sibling distance=3cm}]
+	\node {Ho}
+		child {node {Ch \nodepart{two} De}
+			child {node {Au}
+				child {node {Atlanta}}
+				child {node {Austin}}}
+			child {node {Da}
+				child {node {Chicago \nodepart{two} Columbus}}
+				child {node {Dallas}}}
+			child {node {Detroit}}}
+		child {node {Mi}
+			child {node {Houston \nodepart{two} Memphis}}
+			child {node {Pho \nodepart{two} Po}
+				child {node {Miami \nodepart{two} Philidelphia}}
+				child {node {Phoenix}}
+				child {node {Portland}}}}
+			
+	;
+	\end{tikzpicture}
+	
+
+\end{center}
+\end{document}

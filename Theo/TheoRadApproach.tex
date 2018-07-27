@@ -1,7 +1,7 @@
 \documentclass[12pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
 \usepackage{graphicx}
-\usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel} % german spell check
 \usepackage{lmodern}
 \usepackage{datetime}
@@ -18,6 +18,34 @@
 	\tableofcontents
 	
 	\newpage
+	\section{Klausur relevante Bereiche}
+	%\input{klausurAufgaben.tex}
+	Von den betrachteten 10 Altklausuren ergab zu den folgenden Aufgaben die entsprechende Häufigkeit
+	
+	\begin{tabular}{r | l}
+		Aufgabentyp & Häufigkeit \\ \hline
+		Turingmaschinen & 10 \\
+		Registeroperatoren & 10 \\
+		Primitiv rekursive Funktionen & 11 \\
+		Rekursiv aufzählbare Mengen & 11 \\
+		Härte und Vollständigkeit & 1 \\
+		Kontextfreie Sprachen & 15 \\
+		(Rechts-)Lineare Sprachen & 2 \\
+		Reguläre Sprachen & 4 \\
+		Reduktionsmethode & 5 \\
+		Chomsky-Hierarchie & 1 \\
+		Registermaschinen & 2 \\
+		Diagonalisierung & 1 \\
+		Komplexitätsklassen & 1 \\
+		Entscheidbarkeitsfragen & 1 \\
+		Nichtkontextfreie Sprachen & 3 \\
+		Endliche Automaten & 1 \\
+		Rechtslineare Sprachen / Endliche Automaten & 4 \\
+		Kontextfreie vs. rechtslineare Sprachen & 1 \\
+		Partiell rekursive Funktionen & 1 \\
+	\end{tabular}
+	
+	\newpage
 	\section{Alphabete, Wörter, Sprachen}
 	Wörter sind endliche Zusammensetzungen aus Elementen einer Menge, auch Buchstaben genannt. Da es eine abzählbar unendliche Menge an Zusammensetzungen gibt, kann man Wörter auch durch Zahlen ersetzen. 
 	
@@ -31,7 +59,9 @@
 	
 	Das Funktionszeichen $\upharpoonright x$ beschreibt die Beschränkung eines Wortes auf die ersten x Buchstaben
 	
-	Es gibt verschiedene arten die Zahlen zu Ordnen, eine davon ist die Lexikographische Ordnung, welche den Nachteil haben kann, dass manche Wörter unendlich viele Vorgänger haben können (Beispiel mit dem binären Alphabet $\Sigma_2$ mit \[\lambda <_{lex} 0 <_{lex} 00 <_{lex} 000 <_{lex} ... <_{lex} 1\])
+	Es gibt verschiedene arten die Zahlen zu Ordnen, eine davon ist die Lexikographische Ordnung, welche den Nachteil haben kann, dass manche Wörter unendlich viele Vorgänger haben können 
+	
+	(Beispiel mit dem binären Alphabet $\Sigma_2$ mit \[\lambda <_{lex} 0 <_{lex} 00 <_{lex} 000 <_{lex} ... <_{lex} 1\])
 	
 	Eine Zweite Ordnung ist die Längen-lexikographische Ordnung mit der Definition \[v < w \Leftrightarrow |v| < |w| \text{ oder } [|v| = |w| \text{ und } v <_{lex} w]\]
 	
@@ -55,6 +85,176 @@
 	Ein Berechnungsverfahren nimmt eine Eingabe und führt vorgegebene Operationen durch und gibt das Resultat zurück.
 	
 	\subsection{Anforderungen an Algorithmen}
+	Ein Algorithmus ist eine Rechenvorschrift, welche rein mechanisch ausgeführt werden kann. Heißt es muss bestimmte Anforderungen erfüllen
+	\begin{itemize}
+		\item Finitheit - Beschreibung ist endlich
+		\item Determiniertheit - Ausgabe hängt nur von Beschreibung und Eingabewerten ab (selbe Eingabe muss in selbe ausgabe resultieren)
+		\item Effektivität - Das Verfahren ist durchführbar 
+		\item Sequentialität - Die Beschreibung muss aus einzelnen Schritten bestehen, welche nacheinander ausgeführt werden. 
+		\item Determinismus - Die Reihenfolge der Schritte ist eindeutig festgelegt, wenn auch durch die Eingabe veränderbar
+		\item Häufig wird auch gefordert: Terminierung - Algorithmus stoppt nach endlich vielen schritten
+	\end{itemize}
 	
+	Dadurch, dass man eine einzige Antwort oder eine bestimmte Antwort erwartet, müssen Entscheidungs- und Berechnungsverfahren diese Anforderungen erfüllen. Hingegen Partielle Berechnungsverfahren und Aufzählungsverfahren müssen nicht terminieren.
+	
+	\subsection{Berechenbarkeit, Entscheidbarkeit, Aufzählbarkeit}
+	\subsubsection{Entscheidbare Sprachen}
+	Wenn wir eine Menge A haben und kennen einige Eigenschaften, können wir andere Eigenschaften daraus schließen:
+	
+	\begin{itemize}
+		\item A endlich $\Rightarrow$ A Entscheidbar
+		\item A entscheidbar $\Rightarrow \overline{A}$ Entscheidbar
+		\item A entscheidbar $\Leftrightarrow c_A$ berechenbar
+		\item A entscheidbar $\Leftrightarrow$ A monoton auf zählbar
+		\item A entscheidbar $\Leftrightarrow$ A und $\overline{A}$ auf zählbar
+	\end{itemize}
+	
+	\subsubsection{Aufzählbare Sprachen}
+	
+	
+	[Bla Bla Bla ...]
+	\section{Turingmaschinen}
+	Turingmaschinen operieren auf Wörtern (d.h. benutzen Zahldarstellungen).
+	Grundoperationen sind elementare Zeichenmanipulationen (Lesen, Streichen, Hinzufügen, Ersetzen einzelner Buchstaben).
+	
+	Die Speicherstruktur einer Turingmaschine hat folgende Komponenten:
+	
+	\begin{itemize}
+		\item Das Band hat einen Cursor, von dem auf beiden Seiten das Band ins Unendliche verläuft. Das Band ist in dementsprechend unendlich viele Felder aufgeteilt
+		\item Jedes Feld des Bandalphabeten $\Gamma$ wird durch einen Buchstaben beschrieben, ein Leeres Feld wird mit einem 'b' beschrieben
+		\item Der Cursor hat zugriff auf die Daten und kann diese Lesen und neu beschreiben. Der Cursor befindet sich zu jedem Zeitpunkt auf genau einem Feld, kann aber in jedem Zeitpunkt sich nach links oder rechts bewegen 
+	\end{itemize}
+	
+	Die Eingabe und Ausgabe haben beide ihre eigenen Alphabete, welche für jeweilige Programme festgelegt sind. 
+	
+	Das Eingabewort befindet sich anfangs immer rechts neben dem Cursor. Außer der Eingabe ist auf dem ganzen Band nur Blanks aufzufinden. Sollten mehrere Eingaben eingegeben worden sein, werden diese durch Blanks getrennt.
+	
+	Auch das Ausgabewort befindet sich am ende rechts von dem Cursor
+	
+	Die Turingmaschine befindet sich zu jedem Zeitpunkt in einem von endlich viel beschriebenen Zuständen. 
+	
+	Für jede Rechnung beginnt die Maschine in einem Startzustand. Von hier befolgt die Maschine ein endlichen Ablauf von Instruktionen, welche durch das Programm festgelegt wurden. Eine Instruktion gibt an, welchen Ablauf die Maschine befolgen sollte. Es wird der momentane Zustand betrachtet, von da auf was für einen Buchstaben sich der Cursor befindet. Basierend auf den zwei Parametern, wird der betrachtete Buchstabe überschrieben, der Kopf bewegt sich und der Zustand wird gewechselt.
+	
+	Jede Kombination von Zustand und gelesenen Buchstaben hat maximal einen Folgezustand. Das Programm wird anhand partieller Funktionen beschrieben mit folgender Form \[\delta: Z \times \Gamma \rightarrow \Gamma \times Bew \times Z\]
+	Hierbei beschreibt Z die Menge an Zuständen, $\Gamma$ das Bandalphabet und Bew die Menge der Möglichen Bewegungen.
+	
+	Existiert kein Folgezustand für die gegebene Kombination, so Terminiert das Programm.
+	
+	Formal ist eine Turingmaschine durch ein 7-Tupel gegeben mit der Definition $M = (\Sigma, m, T, \Gamma, Z, z_0 \delta)$ wobei\footnote{Disclaimer: Grammatik könnte hier keinen Sinn ergeben}
+	
+	\begin{itemize}
+		\item $\Sigma$ das Eingabealphabet darstellt
+		\item T das Ausgabealphabet darstellt
+		\item m die Stelligkeit der zu berechnenden Funktion (Wie viele Eingabewörter existieren) darstellt
+		\item $\Gamma$ das Bandalphabet, welches mindestens aus der Vereinigung der Ein- und Ausgabealphabete und dem b (Blank) besteht, darstellt
+		\item Z die endliche an Zuständen, welche in diesem Programm vorkommen, beschreibt
+		\item $z_0$ ein spezielles Element aus Z welches den Anfang des Programms beschreibt
+		\item $\delta$ eine partielle Funktion darstellt.
+	\end{itemize}
+	
+	Eine k-Band-Turingmaschine M wird beschrieben durch \[M = (k, \Sigma, m, T, \Gamma, Z, z_0, \delta)\] Wobei k die Anzahl der Bänder darstellt und das $\delta: Z \times \Gamma^k \rightarrow (\Gamma \times Bew)^k \times Z$ . Der Rest wie oben definiert ist.
+	
+	Die Eingabe ist wieder rechts neben dem Cursor, nur hier wird noch spezifiziert, dass es das erste Band ist. Alle anderen Bänder sind komplett leer.
+	
+	Die Ausgabe ist ebenfalls rechts vom Cursor, nur dass es hier auf dem letzten Band ist.
+	
+	Man Bemerke, dass jedes Programm, welches auf einem k-Band möglich ist, auch auf einer normalen 1-Band-Turingmaschine möglich ist.
+	
+	Blatt 3
+	
+	Insert Beispielaufgaben here
+	
+	\section{Registermaschinen}
+	Es wird von der Zahldarstellung abstrahiert.
+	Grundoperationen sind elementare Zähloperationen (Inkrementieren, Dekrementieren, Nulltest).
+	
+	Der Speicher besteht aus k Registern mit $k \ge n + 1$ 
+	
+	Wobei die Aufteilung der Register aussieht wie folgt 
+	
+	\begin{itemize}
+		\item Register 1 bis n sind die Eingaberegister
+		\item Register n + 1 ist das Ausgabe Register
+		\item sofern man noch weitere Hilfsregister benötigt sind diese n + 2 bis k
+	\end{itemize}
+	
+	Die Operationen werden abgekürzt mit \newline 
+	$a_i(x_1, ..., x_{i - 1}, x_i, x_{i + 1}, ..., x_k) = (x_1, ..., x_{i - 1}, x_i + 1, x_{i + 1}, ..., x_k)$ \newline
+	$s_i(x_1, ..., x_{i - 1}, x_i, x_{i + 1}, ..., x_k) = (x_1, ..., x_{i - 1}, x_i - 1, x_{i + 1}, ..., x_k)$ wobei beachtet werden muss, dass an jeder stelle die Rechnung 0 - 1 = 0 \newline 
+	\[t_i(x_1, ..., x_{i - 1}, x_i, x_{i + 1}, ..., x_k) = \left\{ 
+		\begin{array}{l l}
+			1 & \text{falls } x_i = 0 \\
+			0 & \text{falls } x_i > 0
+		\end{array}
+	\right.\]
+	
+	Die Beschreibung des Programmes ist wie folgt
+	
+	\begin{itemize}
+		\item $(z, a_i, z') \text{ bzw } (z, s_i, z')$ für die Inkrementierung bzw. Dekrementierung
+		\item $z, t_i, z', z'')$ um zu testen, ob das i-te Register leer ist, wenn dem so ist, ist der nächste Zustand z'', sonst z'
+	\end{itemize}
+	
+	Die formale Beschreibung von k-Registermaschinen lautet $M = (k, n, Z, z_0, \delta)$
+	
+	Blatt 5
+	
+	VL 5
+	
+	\section{Registermaschinen und Registeroperatoren}
+	Blatt 5
+	VL 3
+	
+	\section{Primitiv rekursive Funktionen}
+	Blatt 6-9(?)
+	VL 5
+	
+	\section{Rekursiv aufzählbare Mengen}
+	Blatt 8?
+	VL 7
+	
+	\section{!Härte und Vollständigkeit}
+	
+	
+	\section{Kontextfreie Sprachen}
+	VL 15?
+	
+	\section{(Rechts-)Lineare Sprachen}
+	VL 13+?
+	
+	\section{Reguläre Sprachen}
+	VL 16?
+	
+	\section{!Reduktionsmethode}
+	
+	
+	\section{Chomsky-Hierarchie}
+	VL 13?
+	
+	\section{!Diagonalisierung}
+	
+	
+	\section{Komplexitätsklassen}
+	VL 12?
+	
+	\section{Entscheidbarkeitsfragen}
+	Blatt 1, 2, 4
+	VL 2
+	
+	\section{Nichtkontextfreie Sprachen}
+	VL 15?
+	
+	\section{Endliche Automaten}
+	
+	
+	\section{Rechtslineare Sprachen / Endliche Automaten}
+	VL 13+?
+	
+	\section{Kontextfreie vs. rechtslineare Sprachen}
+	VL 15?
+	
+	\section{Partiell rekursive Funktionen}
+	Blatt 10
+	VL 3?
 	
 \end{document}

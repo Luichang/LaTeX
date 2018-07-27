@@ -1,0 +1,63 @@
+\documentclass[10pt,a4paper]{article} % using article ensures it starts at 1 and does not have odd numberings for section
+
+\usepackage[a4paper, bindingoffset=0.5cm, left=0.25cm, right=1cm, top=1cm, bottom=1cm, footskip=0.5cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} % this way umlaute are included from the get go
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel} % german spell check
+\usepackage{lmodern}
+\usepackage{datetime}
+
+\usepackage{amsmath} % this package is one option for math lines
+\usepackage{enumerate}
+
+\usepackage{hyperref} % these two lines are so that the table of content is clickable
+\usepackage{amssymb} % package for Natural Number sign etc
+\usepackage{wasysym}
+\hypersetup{linktoc=all}
+
+\begin{document}
+	Turingmaschine: $M = (\Sigma, m, T, \Gamma, Z, z_0, \delta)$ Mit: $\Sigma$ = Eingabealphabet, m = Stelligkeit der Eingabe, T = Ausgabealphabet, \\
+	$\Gamma$ = Bandalphabet, Z = Menge der Zustände, $z_0$ = Anfangszustand, $\delta$ = $Z \times \Gamma \rightarrow \Gamma \times Bew \times Z$
+	
+	\rule{0.5\paperwidth}{0.5pt}
+	
+	Registeroperator: m-Registeroperator zur Berechnung von f ist \\
+	RO = \{Befehle wie s (=Subtraktion) oder a (= Addition) [] bis Register leer ist\}
+	
+	\rule{0.5\paperwidth}{0.5pt}
+	
+	Registermaschine: Eine f berechnende Registermaschine ist die 3-Registermaschine \\
+	RM = $(m, n, Z, z_0, \delta)$ \\
+	mit m = Registeranzahl $\ge$ n + 1, n = Eingabeelemente, Z = Zustandsmenge, $z_0$ = Anfangs Zustand, \\
+	$\delta$ = Durchführungsfunktion von oben nach Unten durchgeführt \\
+	$\delta Z \rightarrow (OPER \times Z) \cup (Test \times Z \times Z)$ wobei der Test funktioniert, indem wenn das abgefragte Register leer ist, wird in den 2. Zustand gewechselt, sonst in den ersten  
+	
+	\rule{0.5\paperwidth}{0.5pt}
+	
+	Primitive Rekursion: i) $S, U^n_i, C^m_j \in F(PRIM)$ ii) $g^{n}, h^{m}_1, ..., h^{m}_n \in F(PRIM) \Rightarrow g(h_1, ..., h_n) \in F(PRIM)$ \\
+	iii) $g^{n - 1}, h^{n + 1} \in F(PRIM) \Rightarrow PR(g, h) \in F(PRIM)$
+	
+	Rekursive Funktionen: Eine Rekursive Funktion ist Total i) - iii) wie bei Prim Rek iv) Ist $g^{(n + 1)} \in F(REK)$ so auch $\mu(g)^{n}$ \\
+	Wobei der $\mu$ Operator das kleinste existierende $y \in \mathbb{N}$ sucht s.d. $g(\overrightarrow{x}, y) = 0 \& \forall z < y (g(\overrightarrow{x}, z) \downarrow)$
+	
+	\{Beschränkter Addition, Beschränkter Multiplikation, Maximum Bildung, Minimum Bildung, Iteration\} $\in$ F(REK) und $\in$ F(PRIM) \\
+	Außerdem ist F(PRIM) gegen den beschränken $\mu$-Operator abgeschlossen. F(REK) und F(PRIM) sind gegen endliche Fallunterscheidung mit Operationen aus dem jeweiligen abgeschlossen. 
+	
+	\rule{0.5\paperwidth}{0.5pt}
+	
+	Sprachen: Kontextsensitiv - , Kontextfrei - , linkslinear - , rechtslinear - 
+	
+	Chomsky Normalform: Kontextfrei: Heißt die Beschriebene Grammatik ist $\lambda$-treu, und eine Variable darf nie auf eine Kombination von Variable und Ausgabezeichen oder mehrere Ausgabezeichen oder auf $\ne$ 2 Variablen geschickt werden.
+	
+	Rechtslinear: Ähnlich wie die Kontextfreie, nur dass hier die Variablen entweder auf ein Ausgabezeichen und eine Variable oder ein Ausgabezeichen geschickt werden darf, sonst nichts.
+	
+	Pumpinlemma: $L \subseteq \Sigma^*$ eine KF Sprache $\exists p \in \mathbb{N} \forall z \in L: |z| \ge p \exists \text{ Zerlegung } z = uvwxy, u, v, w, x, y \in \Sigma^*$  mit Eigenschaften i) $vx \ne \lambda$ ii) $|vwx| \le p$ iii) $\forall n \ge 0 \{z_n = uv^nwx^ny \in L \}$
+	
+	\rule{0.5\paperwidth}{0.5pt}
+	
+	Rechtslineare Sprache/Endlicher Automat: 5-Toupel $M = (\Sigma, Z, \delta, z_0, E)$ \\
+	Meistens darf man ein gewohntes Übergangdiagramm zeichnen - Trivial. \\
+	Nicht Deterministischer Automat darf theoretisch in mehreren Zuständen gleichzeitig existieren - Die Zuweisung muss nicht eindeutig sein. Bei Deterministischen halt schon.
+\end{document}

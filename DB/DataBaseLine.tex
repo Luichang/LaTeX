@@ -11,6 +11,7 @@
 
 \usepackage{hyperref} % these two lines are so that the table of content is clickable
 \usepackage{amssymb} % package for Natural Number sign etc
+\usepackage{wasysym}
 \hypersetup{linktoc=all}
 
 \begin{document}
@@ -60,11 +61,17 @@
 		\item[date] oder time oder timestamp für Datums-, Zeit- und kombinierte Datums-Zeit-Angaben
 	\end{description}
 	
-	Man kann in SQL vorbestimmen ob Einträge bestimmte Eigenschaften erfüllen damit sie eingespeichert werden können. Ein Pflichtkriterium ist, jede Tabelle braucht ein Primary-Key. Dieser ist nie Null und muss von allen anderen Verschieden sein. Oft werden Integer verwendet, welche hoch zählen, aber es kommt auch vor, dass Strings verwendet werden. Ähnlich wie die Primari-Keys kann man eine Spalte designieren, die Primary-Keys einer anderen Tabelle mit einzuspeichern. Man kann auch zu der Art des Datentypes noch weitere Argumente angeben, wie "not null" was ebenfalls einen Fehler geben würde, wenn das Feld beim Eintragen leer gelassen werden würde. Man kann ebenfalls ein "default" Wert angeben, welcher Angenommen wird, wenn man das Feld leer lässt. Man kann eine check-Klausel verwenden, um zu sehen ob der eingegebene Wert bestimmte Eigenschaften erfüllt. Weiterhin gibt es eine "create domain" Anweisung (keine ahnung was das macht hlp pls)
-	
-	
+	Man kann in SQL vorbestimmen ob Einträge bestimmte Eigenschaften erfüllen damit sie eingespeichert werden können. Ein Pflichtkriterium ist, jede Tabelle braucht ein Primary-Key. Dieser ist nie Null und muss von allen anderen Verschieden sein. Oft werden Integer verwendet, welche hoch zählen, aber es kommt auch vor, dass Strings verwendet werden. Ähnlich wie die Primary-Keys kann man eine Spalte designieren, die Primary-Keys einer anderen Tabelle mit einzuspeichern. Man kann auch zu der Art des Datentypes noch weitere Argumente angeben, wie "not null" was ebenfalls einen Fehler geben würde, wenn das Feld beim Eintragen leer gelassen werden würde. Man kann ebenfalls ein "default" Wert angeben, welcher Angenommen wird, wenn man das Feld leer lässt. Man kann eine check-Klausel verwenden, um zu sehen ob der eingegebene Wert bestimmte Eigenschaften erfüllt. Weiterhin gibt es eine "create domain" Anweisung (keine ahnung was das macht hlp pls)	
 	
 	\subsection{Grundoperationen: Die Relationenalgebra}
+	Mit Basisoperationen kann man neue Ergebnistabellen erzeugen, welche Datenbanktabellen nehmen und an bestimmten Attributen mit einander vereinen. Die Operationen kommen aus der Relationalenalgebra und können beliebig mit einander und in einander verknüpft werden. 
+	
+	\begin{itemize}
+		\item Selektion: In der Relationalenalgebra mit einem $\sigma$ gekennzeichnet. Erlaubt eine Selektion basierend auf Eigenschaften die man im $\sigma$ spezifiziert. (so was wie aus spalte X möchte ich alle Einträge mit einem Wert größer als 2 welche sich in der Tabelle Y befinden wäre $\sigma_{X>2}$(Y))
+		\item Projektion: In der Relationalenalgebra mit einem $\pi$ gekennzeichnet. Hier Kann man sich ganze Spalten ausgeben lassen, wo keine Duplikate vorkommen. (Ein Beispiel hierfür wäre aus Tabelle X möchte ich Spalte Y $\pi_{Y}$(X))
+		\item Verbund: In der Relationalenalgebra mit $\bowtie$ oder $\Bowtie$ bezeichnet. Hiermit werden zwei Tabellen anhand gemeinsamer Attribute in Spalten mit der selben Bezeichnung vereint/verschmilzt (Ein Beispiel hierfür wäre wenn man die Tabellen X und Y Verbinden wollte X $\Bowtie$ Y)
+		\item Umbenennung: 
+	\end{itemize}
 	
 	\subsection{SQL als Anfragesprache}
 	
